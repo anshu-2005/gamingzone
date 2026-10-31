@@ -1,0 +1,14 @@
+node_modules/
+dist/
+.env
+data/*.db*
+data/*.sqlite*
+uploads/games/*
+!uploads/games/.gitkeep
+uploads/thumbnails/*
+!uploads/thumbnails/.gitkeep
+uploads/previews/space-dodge*
+.DS_Store
+Thumbs.db
+*.log
+.vercel

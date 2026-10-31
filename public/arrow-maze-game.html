@@ -1,0 +1,2521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Arrow Escape — Minimalist Zen Path Puzzle</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    /* ==========================================================================
+       1. GAME & BRANDING CONFIGURATION TOKENS (LIGHT / DARK THEMES)
+       ========================================================================== */
+    :root {
+      --brand-title: "Arrow Escape";
+      --brand-accent: #6366f1; /* Soft Indigo */
+      --brand-accent-glow: rgba(99, 102, 241, 0.35);
+      
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-display: 'Outfit', 'Inter', -apple-system, sans-serif;
+
+      /* Dark Theme (Default) */
+      --bg-base: #090d16;
+      --bg-surface: #111726;
+      --bg-surface-elevated: #1a233a;
+      --bg-surface-hover: #222d4a;
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-strong: rgba(255, 255, 255, 0.16);
+      
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+
+      --board-bg: #0d121f;
+      --grid-dot: rgba(255, 255, 255, 0.08);
+      --grid-line: rgba(255, 255, 255, 0.04);
+      --shadow-board: 0 25px 60px -15px rgba(0, 0, 0, 0.7);
+
+      --heart-color: #ef4444;
+      --star-gold: #f59e0b;
+      --error-glow: rgba(239, 68, 68, 0.45);
+      --hint-glow: rgba(56, 189, 248, 0.75);
+
+      /* Dynamic Palette Token (Default: Indigo Breeze) */
+      --arrow-fill: #6366f1;
+      --arrow-border: #4f46e5;
+      --arrow-head-fill: #818cf8;
+      --arrow-text: #ffffff;
+      --arrow-shadow: rgba(0, 0, 0, 0.35);
+    }
+
+    [data-theme="light"] {
+      --bg-base: #f8fafc;
+      --bg-surface: #ffffff;
+      --bg-surface-elevated: #f1f5f9;
+      --bg-surface-hover: #e2e8f0;
+      --border-subtle: rgba(0, 0, 0, 0.07);
+      --border-strong: rgba(0, 0, 0, 0.15);
+
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --text-dim: #94a3b8;
+
+      --board-bg: #ffffff;
+      --grid-dot: rgba(0, 0, 0, 0.08);
+      --grid-line: rgba(0, 0, 0, 0.04);
+      --shadow-board: 0 20px 45px -12px rgba(0, 0, 0, 0.12);
+
+      --arrow-shadow: rgba(0, 0, 0, 0.12);
+    }
+
+    /* Palette Variants */
+    [data-palette="classic-ink"] {
+      --arrow-fill: #334155;
+      --arrow-border: #1e293b;
+      --arrow-head-fill: #475569;
+    }
+    [data-theme="light"][data-palette="classic-ink"] {
+      --arrow-fill: #1e293b;
+      --arrow-border: #0f172a;
+      --arrow-head-fill: #334155;
+    }
+    [data-palette="indigo"] {
+      --arrow-fill: #6366f1;
+      --arrow-border: #4f46e5;
+      --arrow-head-fill: #818cf8;
+    }
+    [data-palette="teal"] {
+      --arrow-fill: #0d9488;
+      --arrow-border: #0f766e;
+      --arrow-head-fill: #14b8a6;
+    }
+    [data-palette="amber"] {
+      --arrow-fill: #d97706;
+      --arrow-border: #b45309;
+      --arrow-head-fill: #f59e0b;
+    }
+    [data-palette="rose"] {
+      --arrow-fill: #e11d48;
+      --arrow-border: #be123c;
+      --arrow-head-fill: #fb7185;
+    }
+    [data-palette="mono"] {
+      --arrow-fill: #4b5563;
+      --arrow-border: #374151;
+      --arrow-head-fill: #6b7280;
+    }
+    [data-theme="light"][data-palette="mono"] {
+      --arrow-fill: #374151;
+      --arrow-border: #1f2937;
+      --arrow-head-fill: #4b5563;
+    }
+
+    /* Accessibility: Reduced Motion */
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+      }
+    }
+    body.reduced-motion * {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
+
+    /* ==========================================================================
+       2. RESET & GLOBAL LAYOUT
+       ========================================================================== */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      user-select: none;
+      -webkit-user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--bg-base);
+      color: var(--text-main);
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    #app-container {
+      width: 100%;
+      max-width: 680px;
+      height: 100vh;
+      height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      background: var(--bg-base);
+      overflow: hidden;
+    }
+
+    /* Screens Container */
+    .screen {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: none;
+      flex-direction: column;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+      z-index: 10;
+    }
+
+    .screen.active {
+      display: flex;
+      opacity: 1;
+      pointer-events: auto;
+      z-index: 20;
+    }
+
+    /* ==========================================================================
+       3. TOP NAVIGATION & HEADER
+       ========================================================================== */
+    .app-header {
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border-subtle);
+      background: var(--bg-surface);
+      z-index: 30;
+      flex-shrink: 0;
+    }
+
+    .brand-mark {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.15rem;
+      letter-spacing: -0.02em;
+      color: var(--text-main);
+      cursor: pointer;
+    }
+
+    .brand-icon {
+      width: 32px;
+      height: 32px;
+      background: var(--brand-accent);
+      border-radius: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      box-shadow: 0 4px 12px var(--brand-accent-glow);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .icon-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      border: 1px solid var(--border-subtle);
+      background: var(--bg-surface-elevated);
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.05rem;
+      cursor: pointer;
+      transition: all 0.18s ease;
+    }
+
+    .icon-btn:hover {
+      background: var(--bg-surface-hover);
+      border-color: var(--border-strong);
+      transform: translateY(-1px);
+    }
+
+    .icon-btn:active {
+      transform: translateY(1px);
+    }
+
+    /* ==========================================================================
+       4. SCREEN: HOME / MENU
+       ========================================================================== */
+    .home-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 30px 24px;
+      text-align: center;
+      overflow-y: auto;
+    }
+
+    .hero-title-wrap {
+      margin-bottom: 32px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      background: rgba(99, 102, 241, 0.12);
+      color: var(--brand-accent);
+      border: 1px solid rgba(99, 102, 241, 0.25);
+      margin-bottom: 14px;
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 10px;
+      color: var(--text-main);
+    }
+
+    .hero-subtitle {
+      font-size: 1rem;
+      color: var(--text-muted);
+      max-width: 380px;
+      line-height: 1.5;
+    }
+
+    .menu-options {
+      width: 100%;
+      max-width: 360px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .menu-btn {
+      width: 100%;
+      padding: 15px 20px;
+      border-radius: 14px;
+      border: 1px solid var(--border-subtle);
+      background: var(--bg-surface);
+      color: var(--text-main);
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+    }
+
+    .menu-btn:hover {
+      background: var(--bg-surface-elevated);
+      border-color: var(--brand-accent);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .menu-btn.primary {
+      background: var(--brand-accent);
+      color: #ffffff;
+      border-color: var(--brand-accent);
+      box-shadow: 0 8px 25px var(--brand-accent-glow);
+    }
+
+    .menu-btn.primary:hover {
+      background: #4f46e5;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px var(--brand-accent-glow);
+    }
+
+    .menu-btn-icon {
+      font-size: 1.25rem;
+    }
+
+    .home-stats-bar {
+      display: flex;
+      gap: 20px;
+      padding: 12px 24px;
+      border-radius: 14px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .home-stat-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .home-stat-item strong {
+      color: var(--text-main);
+    }
+
+    /* ==========================================================================
+       5. SCREEN: LEVEL MAP
+       ========================================================================== */
+    .map-header {
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .map-title {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+
+    .tier-tabs {
+      display: flex;
+      padding: 10px 18px;
+      gap: 8px;
+      background: var(--bg-base);
+      border-bottom: 1px solid var(--border-subtle);
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .tier-tabs::-webkit-scrollbar { display: none; }
+
+    .tier-tab {
+      padding: 8px 14px;
+      border-radius: 10px;
+      border: 1px solid var(--border-subtle);
+      background: var(--bg-surface);
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      font-weight: 600;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .tier-tab.active {
+      background: var(--brand-accent);
+      color: #fff;
+      border-color: var(--brand-accent);
+    }
+
+    .map-grid-container {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(78px, 1fr));
+      gap: 14px;
+      align-content: start;
+    }
+
+    .level-cell-btn {
+      aspect-ratio: 1;
+      border-radius: 14px;
+      border: 1px solid var(--border-subtle);
+      background: var(--bg-surface);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      position: relative;
+      transition: all 0.18s ease;
+    }
+
+    .level-cell-btn:hover:not(.locked) {
+      transform: translateY(-2px);
+      border-color: var(--brand-accent);
+      background: var(--bg-surface-elevated);
+    }
+
+    .level-cell-btn.current {
+      border: 2px solid var(--brand-accent);
+      box-shadow: 0 0 16px var(--brand-accent-glow);
+    }
+
+    .level-cell-btn.locked {
+      opacity: 0.45;
+      cursor: not-allowed;
+      background: transparent;
+    }
+
+    .lvl-num {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .lvl-stars {
+      display: flex;
+      gap: 2px;
+      font-size: 0.65rem;
+      margin-top: 4px;
+      color: var(--star-gold);
+    }
+
+    .lvl-lock-icon {
+      font-size: 1.1rem;
+      color: var(--text-dim);
+    }
+
+    /* ==========================================================================
+       6. SCREEN: MAIN GAMEPLAY
+       ========================================================================== */
+    .game-hud {
+      padding: 10px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border-subtle);
+      z-index: 10;
+    }
+
+    .hud-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .hud-level-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hud-level-num {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hud-tier-tag {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--brand-accent);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .hud-center {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .heart-icon {
+      font-size: 1.15rem;
+      color: var(--heart-color);
+      transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.2s ease;
+    }
+
+    .heart-icon.lost {
+      opacity: 0.2;
+      filter: grayscale(1);
+      transform: scale(0.85);
+    }
+
+    .hud-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .arrows-counter-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 10px;
+      background: var(--bg-surface-elevated);
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .arrows-counter-badge strong {
+      color: var(--text-main);
+    }
+
+    /* Zoom & Pan Viewport */
+    .board-viewport {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--bg-base);
+      touch-action: none;
+    }
+
+    .zoom-toolbar {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      z-index: 20;
+    }
+
+    .zoom-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      border: 1px solid var(--border-subtle);
+      background: var(--bg-surface);
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      transition: all 0.15s ease;
+    }
+    .zoom-btn:hover { background: var(--bg-surface-elevated); }
+
+    /* The Board Container */
+    #board-wrapper {
+      transform-origin: center center;
+      transition: transform 0.12s ease-out;
+      will-change: transform;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #game-board {
+      position: relative;
+      background: var(--board-bg);
+      border: 1px solid var(--border-subtle);
+      border-radius: 18px;
+      box-shadow: var(--shadow-board);
+      overflow: visible;
+    }
+
+    /* Grid background dots/lines */
+    .grid-cell-guide {
+      position: absolute;
+      border-right: 1px dashed var(--grid-line);
+      border-bottom: 1px dashed var(--grid-line);
+      pointer-events: none;
+    }
+
+    /* Arrow Entity Styles */
+    .arrow-entity {
+      position: absolute;
+      cursor: pointer;
+      z-index: 10;
+      transition: filter 0.15s ease;
+    }
+
+    .arrow-entity:hover .arrow-segment {
+      filter: brightness(1.12);
+    }
+
+    .arrow-entity:active {
+      transform: scale(0.97);
+    }
+
+    /* Arrow Segments (Cells) */
+    .arrow-segment {
+      position: absolute;
+      background: var(--arrow-fill);
+      border: 1px solid var(--arrow-border);
+      border-radius: 8px;
+      box-shadow: 0 4px 10px var(--arrow-shadow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+
+    /* Arrowhead at the tip */
+    .arrow-head-svg {
+      width: 70%;
+      height: 70%;
+      fill: var(--arrow-text);
+      filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.3));
+    }
+
+    /* Arrow Error Shake */
+    @keyframes arrowErrorShake {
+      0%, 100% { transform: translate3d(0, 0, 0); }
+      15%, 45%, 75% { transform: translate3d(-6px, 0, 0); }
+      30%, 60%, 90% { transform: translate3d(6px, 0, 0); }
+    }
+
+    .arrow-entity.blocked {
+      animation: arrowErrorShake 0.45s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+    }
+
+    .arrow-entity.blocked .arrow-segment {
+      background: #dc2626 !important;
+      border-color: #b91c1c !important;
+      box-shadow: 0 0 18px var(--error-glow) !important;
+    }
+
+    /* Arrow Hint Glow */
+    @keyframes hintPulse {
+      0%, 100% { transform: scale(1); filter: drop-shadow(0 0 8px var(--hint-glow)); }
+      50% { transform: scale(1.05); filter: drop-shadow(0 0 20px var(--hint-glow)); }
+    }
+
+    .arrow-entity.hinted {
+      z-index: 15;
+      animation: hintPulse 1.2s infinite ease-in-out;
+    }
+
+    .arrow-entity.hinted .arrow-segment {
+      border-color: #38bdf8 !important;
+    }
+
+    /* Bottom Control Bar */
+    .game-controls-bar {
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      background: var(--bg-surface);
+      border-top: 1px solid var(--border-subtle);
+      gap: 12px;
+      z-index: 10;
+    }
+
+    .tool-btn {
+      flex: 1;
+      max-width: 120px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--border-subtle);
+      background: var(--bg-surface-elevated);
+      color: var(--text-main);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+      position: relative;
+      transition: all 0.16s ease;
+    }
+
+    .tool-btn:hover:not(:disabled) {
+      background: var(--bg-surface-hover);
+      border-color: var(--border-strong);
+      transform: translateY(-1px);
+    }
+
+    .tool-btn:active:not(:disabled) {
+      transform: translateY(1px);
+    }
+
+    .tool-btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    .tool-btn-icon {
+      font-size: 1.25rem;
+    }
+
+    .tool-badge {
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--brand-accent);
+      color: #fff;
+      font-size: 0.68rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid var(--bg-surface);
+    }
+
+    /* ==========================================================================
+       7. MODALS & POPUPS
+       ========================================================================== */
+    .modal-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.65);
+      backdrop-filter: blur(6px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 100;
+      opacity: 0;
+      transition: opacity 0.22s ease;
+    }
+
+    .modal-backdrop.show {
+      display: flex;
+      opacity: 1;
+    }
+
+    .modal-box {
+      width: 100%;
+      max-width: 420px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-strong);
+      border-radius: 22px;
+      padding: 26px 24px;
+      text-align: center;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+      transform: scale(0.94);
+      transition: transform 0.22s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .modal-backdrop.show .modal-box {
+      transform: scale(1);
+    }
+
+    .modal-icon-badge {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      margin: 0 auto 16px auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+    }
+
+    .modal-icon-badge.win {
+      background: rgba(16, 185, 129, 0.15);
+      color: #10b981;
+      border: 2px solid rgba(16, 185, 129, 0.3);
+    }
+
+    .modal-icon-badge.lose {
+      background: rgba(239, 68, 68, 0.15);
+      color: #ef4444;
+      border: 2px solid rgba(239, 68, 68, 0.3);
+    }
+
+    .modal-title {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 6px;
+    }
+
+    .modal-desc {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+
+    .modal-stars-row {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      color: var(--text-dim);
+    }
+
+    .modal-stars-row .active-star {
+      color: var(--star-gold);
+      animation: starPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+    }
+
+    @keyframes starPop {
+      0% { transform: scale(0); opacity: 0; }
+      70% { transform: scale(1.25); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+    }
+
+    .modal-btn {
+      flex: 1;
+      padding: 13px 18px;
+      border-radius: 12px;
+      border: 1px solid var(--border-subtle);
+      background: var(--bg-surface-elevated);
+      color: var(--text-main);
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.16s ease;
+    }
+
+    .modal-btn:hover {
+      background: var(--bg-surface-hover);
+      border-color: var(--border-strong);
+    }
+
+    .modal-btn.primary {
+      background: var(--brand-accent);
+      color: #fff;
+      border-color: var(--brand-accent);
+    }
+    .modal-btn.primary:hover {
+      background: #4f46e5;
+    }
+
+    /* Settings Group */
+    .settings-group {
+      text-align: left;
+      margin-bottom: 18px;
+    }
+
+    .settings-label {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+    }
+
+    .palette-picker {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
+
+    .palette-circle {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      cursor: pointer;
+      border: 2px solid transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      color: #fff;
+      transition: all 0.15s ease;
+      flex-shrink: 0;
+    }
+    .palette-circle.active {
+      border-color: var(--text-main);
+      transform: scale(1.1);
+    }
+
+    .toggle-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border-subtle);
+      font-size: 0.95rem;
+      color: var(--text-main);
+    }
+
+    .switch-wrap {
+      position: relative;
+      width: 44px;
+      height: 24px;
+    }
+
+    .switch-wrap input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider-toggle {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: var(--bg-surface-elevated);
+      border: 1px solid var(--border-subtle);
+      transition: .2s;
+      border-radius: 24px;
+    }
+
+    .slider-toggle:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 2px;
+      bottom: 2px;
+      background-color: var(--text-muted);
+      transition: .2s;
+      border-radius: 50%;
+    }
+
+    input:checked + .slider-toggle {
+      background-color: var(--brand-accent);
+      border-color: var(--brand-accent);
+    }
+
+    input:checked + .slider-toggle:before {
+      transform: translateX(20px);
+      background-color: #ffffff;
+    }
+
+    /* Soft Zen Canvas Floating Particles */
+    #particle-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 90;
+    }
+  </style>
+</head>
+<body data-theme="dark" data-palette="indigo">
+
+  <!-- Confetti / Zen Ambient Canvas -->
+  <canvas id="particle-canvas"></canvas>
+
+  <div id="app-container">
+
+    <!-- Top App Header -->
+    <header class="app-header">
+      <div class="brand-mark" id="btn-brand-home">
+        <div class="brand-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </div>
+        <span>Arrow Escape</span>
+      </div>
+
+      <div class="header-actions">
+        <button class="icon-btn" id="btn-header-theme" title="Toggle Light/Dark Theme">🌙</button>
+        <button class="icon-btn" id="btn-header-settings" title="Settings">⚙️</button>
+        <button class="icon-btn" id="btn-header-help" title="How to Play">❓</button>
+      </div>
+    </header>
+
+    <!-- ======================================================================
+         SCREEN 1: HOME
+         ====================================================================== -->
+    <section class="screen active" id="screen-home">
+      <div class="home-content">
+        <div class="hero-title-wrap">
+          <div class="hero-badge">
+            <span>✨</span>
+            <span>Minimalist Zen Puzzle</span>
+          </div>
+          <h1 class="hero-title">Arrow Escape</h1>
+          <p class="hero-subtitle">Calm your mind. Slide the unobstructed arrows off the grid one by one.</p>
+        </div>
+
+        <div class="menu-options">
+          <button class="menu-btn primary" id="btn-play-campaign">
+            <span>Play Campaign</span>
+            <span class="menu-btn-icon">➔</span>
+          </button>
+
+          <button class="menu-btn" id="btn-daily-puzzle">
+            <span style="display: flex; align-items: center; gap: 8px;">
+              <span>📅</span>
+              <span>Daily Challenge</span>
+            </span>
+            <span class="hero-badge" id="daily-streak-badge" style="margin: 0;">🔥 0 Day</span>
+          </button>
+
+          <button class="menu-btn" id="btn-open-levels">
+            <span style="display: flex; align-items: center; gap: 8px;">
+              <span>🗺️</span>
+              <span>Level Select</span>
+            </span>
+            <span style="font-size: 0.9rem; color: var(--star-gold); font-weight: 700;" id="total-stars-disp">⭐ 0</span>
+          </button>
+
+          <button class="menu-btn" id="btn-open-tutorial">
+            <span style="display: flex; align-items: center; gap: 8px;">
+              <span>📖</span>
+              <span>How to Play</span>
+            </span>
+            <span style="font-size: 0.9rem; color: var(--text-dim);">Tutorial</span>
+          </button>
+        </div>
+
+        <div class="home-stats-bar">
+          <div class="home-stat-item">
+            <span>Levels Cleared:</span>
+            <strong id="stat-levels-cleared">0 / 100</strong>
+          </div>
+          <div class="home-stat-item">
+            <span>Accuracy:</span>
+            <strong id="stat-accuracy">100%</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SCREEN 2: LEVEL MAP
+         ====================================================================== -->
+    <section class="screen" id="screen-map">
+      <div class="map-header">
+        <button class="icon-btn" id="btn-map-back" title="Back to Home">←</button>
+        <span class="map-title">Select Level</span>
+        <div style="font-size: 0.95rem; font-weight: 700; color: var(--star-gold); display: flex; align-items: center; gap: 4px;">
+          <span>⭐</span>
+          <span id="map-stars-count">0</span>
+        </div>
+      </div>
+
+      <div class="tier-tabs" id="map-tier-tabs">
+        <button class="tier-tab active" data-tier="easy">Easy (5x5)</button>
+        <button class="tier-tab" data-tier="medium">Medium (7x7)</button>
+        <button class="tier-tab" data-tier="hard">Hard (9x9)</button>
+        <button class="tier-tab" data-tier="expert">Expert (11x11)</button>
+      </div>
+
+      <div class="map-grid-container" id="map-grid">
+        <!-- Level cards injected by JavaScript -->
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SCREEN 3: MAIN GAMEPLAY
+         ====================================================================== -->
+    <section class="screen" id="screen-game">
+      <!-- Top In-Game HUD -->
+      <div class="game-hud">
+        <div class="hud-left">
+          <button class="icon-btn" id="btn-game-back" title="Back to Levels">←</button>
+          <div class="hud-level-info">
+            <div class="hud-level-num">
+              <span id="hud-level-title">Level 1</span>
+            </div>
+            <span class="hud-tier-tag" id="hud-tier-title">Easy</span>
+          </div>
+        </div>
+
+        <div class="hud-center">
+          <span class="heart-icon" id="heart-1">❤️</span>
+          <span class="heart-icon" id="heart-2">❤️</span>
+          <span class="heart-icon" id="heart-3">❤️</span>
+        </div>
+
+        <div class="hud-right">
+          <div class="arrows-counter-badge">
+            <span>Arrows:</span>
+            <strong id="hud-arrows-left">0</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- Zoom & Pan Viewport -->
+      <div class="board-viewport" id="board-viewport">
+        <div class="zoom-toolbar">
+          <button class="zoom-btn" id="btn-zoom-in" title="Zoom In">+</button>
+          <button class="zoom-btn" id="btn-zoom-fit" title="Fit to Screen">⛶</button>
+          <button class="zoom-btn" id="btn-zoom-out" title="Zoom Out">−</button>
+        </div>
+
+        <div id="board-wrapper">
+          <div id="game-board">
+            <!-- Dynamic Grid Guides & Arrow Elements Injected Here -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Controls Bar -->
+      <div class="game-controls-bar">
+        <button class="tool-btn" id="btn-undo" title="Undo Last Move [Z]" disabled>
+          <span class="tool-btn-icon">↩️</span>
+          <span>Undo</span>
+        </button>
+
+        <button class="tool-btn" id="btn-hint" title="Show Hint [H]">
+          <span class="tool-btn-icon">💡</span>
+          <span>Hint</span>
+          <span class="tool-badge" id="hint-count-badge">3</span>
+        </button>
+
+        <button class="tool-btn" id="btn-restart" title="Restart Level [R]">
+          <span class="tool-btn-icon">🔄</span>
+          <span>Restart</span>
+        </button>
+
+        <button class="tool-btn" id="btn-pause" title="Pause Game [Esc]">
+          <span class="tool-btn-icon">⏸️</span>
+          <span>Pause</span>
+        </button>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ======================================================================
+       MODAL 1: LEVEL COMPLETE
+       ====================================================================== -->
+  <div class="modal-backdrop" id="modal-complete">
+    <div class="modal-box">
+      <div class="modal-icon-badge win">
+        <span>✓</span>
+      </div>
+      <h2 class="modal-title" id="complete-title">Level Cleared!</h2>
+      <p class="modal-desc" id="complete-subtitle">All arrows successfully freed from the board.</p>
+
+      <div class="modal-stars-row" id="complete-stars-row">
+        <span>⭐</span>
+        <span>⭐</span>
+        <span>⭐</span>
+      </div>
+
+      <div style="background: var(--bg-surface-elevated); border-radius: 12px; padding: 12px; margin-bottom: 20px; display: flex; justify-content: space-around; font-size: 0.9rem;">
+        <div>
+          <div style="color: var(--text-dim); font-size: 0.78rem;">MOVES</div>
+          <strong id="complete-moves-count" style="font-size: 1.1rem;">0</strong>
+        </div>
+        <div>
+          <div style="color: var(--text-dim); font-size: 0.78rem;">LIVES LEFT</div>
+          <strong id="complete-lives-count" style="font-size: 1.1rem;">3/3</strong>
+        </div>
+      </div>
+
+      <div class="modal-actions">
+        <button class="modal-btn" id="btn-complete-replay">Replay</button>
+        <button class="modal-btn primary" id="btn-complete-next">Next Level ➔</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================================
+       MODAL 2: GAME OVER (NO LIVES LEFT)
+       ====================================================================== -->
+  <div class="modal-backdrop" id="modal-gameover">
+    <div class="modal-box">
+      <div class="modal-icon-badge lose">
+        <span>💔</span>
+      </div>
+      <h2 class="modal-title">Out of Lives</h2>
+      <p class="modal-desc">A blocked arrow was tapped with 0 lives remaining. Take a breath and try again.</p>
+
+      <div class="modal-actions">
+        <button class="modal-btn" id="btn-gameover-map">Level Map</button>
+        <button class="modal-btn primary" id="btn-gameover-retry">Try Again 🔄</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================================
+       MODAL 3: PAUSE MENU
+       ====================================================================== -->
+  <div class="modal-backdrop" id="modal-pause">
+    <div class="modal-box">
+      <h2 class="modal-title" style="margin-bottom: 18px;">Game Paused</h2>
+
+      <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px;">
+        <button class="modal-btn primary" id="btn-pause-resume">Resume</button>
+        <button class="modal-btn" id="btn-pause-restart">Restart Level</button>
+        <button class="modal-btn" id="btn-pause-map">Select Level</button>
+        <button class="modal-btn" id="btn-pause-home">Main Menu</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================================
+       MODAL 4: SETTINGS
+       ====================================================================== -->
+  <div class="modal-backdrop" id="modal-settings">
+    <div class="modal-box">
+      <h2 class="modal-title" style="margin-bottom: 18px;">Settings</h2>
+
+      <!-- Arrow Color Palette -->
+      <div class="settings-group">
+        <div class="settings-label">Arrow Color Palette</div>
+        <div class="palette-picker" id="palette-picker">
+          <div class="palette-circle active" data-pal="indigo" style="background: #6366f1;" title="Indigo Breeze">●</div>
+          <div class="palette-circle" data-pal="teal" style="background: #0d9488;" title="Emerald Teal">●</div>
+          <div class="palette-circle" data-pal="amber" style="background: #d97706;" title="Amber Gold">●</div>
+          <div class="palette-circle" data-pal="rose" style="background: #e11d48;" title="Rose Quartz">●</div>
+          <div class="palette-circle" data-pal="classic-ink" style="background: #334155;" title="Classic Ink">●</div>
+          <div class="palette-circle" data-pal="mono" style="background: #4b5563;" title="Monochrome">●</div>
+        </div>
+      </div>
+
+      <!-- Toggles -->
+      <div class="settings-group">
+        <div class="toggle-row">
+          <span>Dark Mode</span>
+          <label class="switch-wrap">
+            <input type="checkbox" id="toggle-dark-mode" checked>
+            <span class="slider-toggle"></span>
+          </label>
+        </div>
+
+        <div class="toggle-row">
+          <span>Sound Effects</span>
+          <label class="switch-wrap">
+            <input type="checkbox" id="toggle-sound-fx" checked>
+            <span class="slider-toggle"></span>
+          </label>
+        </div>
+
+        <div class="toggle-row">
+          <span>Ambient Zen Chimes</span>
+          <label class="switch-wrap">
+            <input type="checkbox" id="toggle-ambient-music">
+            <span class="slider-toggle"></span>
+          </label>
+        </div>
+
+        <div class="toggle-row">
+          <span>Haptic Vibration</span>
+          <label class="switch-wrap">
+            <input type="checkbox" id="toggle-haptics" checked>
+            <span class="slider-toggle"></span>
+          </label>
+        </div>
+
+        <div class="toggle-row">
+          <span>Reduced Motion</span>
+          <label class="switch-wrap">
+            <input type="checkbox" id="toggle-reduced-motion">
+            <span class="slider-toggle"></span>
+          </label>
+        </div>
+      </div>
+
+      <div style="margin-top: 10px; margin-bottom: 18px;">
+        <button id="btn-reset-data" style="background: none; border: none; color: #ef4444; font-size: 0.85rem; font-weight: 600; cursor: pointer; text-decoration: underline;">
+          Reset All Progress
+        </button>
+      </div>
+
+      <button class="modal-btn primary" id="btn-close-settings" style="width: 100%;">Done</button>
+    </div>
+  </div>
+
+  <!-- ======================================================================
+       MODAL 5: HOW TO PLAY (TUTORIAL)
+       ====================================================================== -->
+  <div class="modal-backdrop" id="modal-tutorial">
+    <div class="modal-box" style="max-width: 460px;">
+      <h2 class="modal-title" style="margin-bottom: 6px;">How to Play</h2>
+      <p class="modal-desc" style="margin-bottom: 16px;">Master the rules in 3 simple steps.</p>
+
+      <div style="background: var(--bg-surface-elevated); border-radius: 14px; padding: 16px; margin-bottom: 18px; text-align: left; font-size: 0.9rem; line-height: 1.5;">
+        <div style="margin-bottom: 12px; display: flex; gap: 10px;">
+          <span style="font-size: 1.2rem;">1️⃣</span>
+          <div>
+            <strong>Tap to Slide:</strong> Arrows slide in the direction of their arrowhead. They must exit the board completely.
+          </div>
+        </div>
+        <div style="margin-bottom: 12px; display: flex; gap: 10px;">
+          <span style="font-size: 1.2rem;">2️⃣</span>
+          <div>
+            <strong>Clear Paths Only:</strong> An arrow can only escape if the path between its tip and the board border is totally empty.
+          </div>
+        </div>
+        <div style="display: flex; gap: 10px;">
+          <span style="font-size: 1.2rem;">3️⃣</span>
+          <div>
+            <strong>Watch Your Lives:</strong> Tapping a blocked arrow costs 1 life. Lose 3 lives and you must retry!
+          </div>
+        </div>
+      </div>
+
+      <button class="modal-btn primary" id="btn-close-tutorial" style="width: 100%;">Understood, Let's Play</button>
+    </div>
+  </div>
+
+  <!-- ======================================================================
+       JAVASCRIPT GAME ENGINE & AUDIO SYNTHESIZER
+       ====================================================================== -->
+  <script>
+    /* ==========================================================================
+       1. GLOBAL CONFIGURATION & GAME CONSTANTS
+       ========================================================================== */
+    const CONFIG = {
+      TOTAL_LEVELS: 100,
+      MAX_LIVES: 3,
+      HINTS_PER_LEVEL: 3,
+      TIERS: {
+        easy: { minLvl: 1, maxLvl: 25, size: 5, targetArrows: 5, name: "Easy", sub: "5x5 Grid" },
+        medium: { minLvl: 26, maxLvl: 50, size: 7, targetArrows: 9, name: "Medium", sub: "7x7 Grid" },
+        hard: { minLvl: 51, maxLvl: 75, size: 9, targetArrows: 15, name: "Hard", sub: "9x9 Grid" },
+        expert: { minLvl: 76, maxLvl: 100, size: 11, targetArrows: 22, name: "Expert", sub: "11x11 Grid" }
+      },
+      CELL_PIXEL_BASE: 52 // Base size in px for grid cells
+    };
+
+    const DIRS = {
+      UP:    { dr: -1, dc:  0, angle: 270, opp: 'DOWN' },
+      DOWN:  { dr:  1, dc:  0, angle:  90, opp: 'UP' },
+      LEFT:  { dr:  0, dc: -1, angle: 180, opp: 'RIGHT' },
+      RIGHT: { dr:  0, dc:  1, angle:   0, opp: 'LEFT' }
+    };
+
+    /* ==========================================================================
+       2. WEB AUDIO API SYNTHESIZER (NO EXTERNAL ASSETS)
+       ========================================================================== */
+    class ZenAudio {
+      constructor() {
+        this.ctx = null;
+        this.sfxEnabled = true;
+        this.musicEnabled = false;
+        this.musicTimer = null;
+      }
+
+      init() {
+        if (!this.ctx) {
+          const AudioCtx = window.AudioContext || window.webkitAudioContext;
+          if (AudioCtx) this.ctx = new AudioCtx();
+        }
+        if (this.ctx && this.ctx.state === 'suspended') {
+          this.ctx.resume();
+        }
+      }
+
+      playSlideWhoosh() {
+        if (!this.sfxEnabled) return;
+        this.init();
+        if (!this.ctx) return;
+
+        const now = this.ctx.currentTime;
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(260, now);
+        osc.frequency.exponentialRampToValueAtTime(540, now + 0.16);
+
+        gain.gain.setValueAtTime(0.08, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.16);
+
+        osc.connect(gain);
+        gain.connect(this.ctx.destination);
+
+        osc.start(now);
+        osc.stop(now + 0.16);
+      }
+
+      playErrorThud() {
+        if (!this.sfxEnabled) return;
+        this.init();
+        if (!this.ctx) return;
+
+        const now = this.ctx.currentTime;
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(95, now);
+        osc.frequency.exponentialRampToValueAtTime(40, now + 0.22);
+
+        gain.gain.setValueAtTime(0.25, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.22);
+
+        osc.connect(gain);
+        gain.connect(this.ctx.destination);
+
+        osc.start(now);
+        osc.stop(now + 0.22);
+      }
+
+      playChime(noteIndex = 0) {
+        if (!this.sfxEnabled) return;
+        this.init();
+        if (!this.ctx) return;
+
+        const pentatonic = [523.25, 587.33, 659.25, 783.99, 880.00, 1046.50];
+        const freq = pentatonic[noteIndex % pentatonic.length];
+        const now = this.ctx.currentTime;
+
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, now);
+
+        gain.gain.setValueAtTime(0.12, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
+
+        osc.connect(gain);
+        gain.connect(this.ctx.destination);
+
+        osc.start(now);
+        osc.stop(now + 0.35);
+      }
+
+      playWinFanfare() {
+        if (!this.sfxEnabled) return;
+        this.init();
+        if (!this.ctx) return;
+
+        const notes = [523.25, 659.25, 783.99, 1046.50];
+        notes.forEach((freq, idx) => {
+          setTimeout(() => {
+            if (!this.ctx) return;
+            const now = this.ctx.currentTime;
+            const osc = this.ctx.createOscillator();
+            const gain = this.ctx.createGain();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(freq, now);
+            gain.gain.setValueAtTime(0.15, now);
+            gain.gain.exponentialRampToValueAtTime(0.001, now + 0.45);
+            osc.connect(gain);
+            gain.connect(this.ctx.destination);
+            osc.start(now);
+            osc.stop(now + 0.45);
+          }, idx * 110);
+        });
+      }
+
+      toggleAmbientMusic(enabled) {
+        this.musicEnabled = enabled;
+        if (!enabled) {
+          if (this.musicTimer) clearInterval(this.musicTimer);
+          return;
+        }
+
+        this.init();
+        if (this.musicTimer) clearInterval(this.musicTimer);
+
+        // Procedural calm chime every 4 seconds
+        const zenNotes = [261.63, 329.63, 392.00, 440.00, 523.25];
+        this.musicTimer = setInterval(() => {
+          if (!this.musicEnabled || !this.ctx) return;
+          const note = zenNotes[Math.floor(Math.random() * zenNotes.length)];
+          const now = this.ctx.currentTime;
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(note, now);
+          gain.gain.setValueAtTime(0.03, now);
+          gain.gain.exponentialRampToValueAtTime(0.0001, now + 2.8);
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+          osc.start(now);
+          osc.stop(now + 2.8);
+        }, 4200);
+      }
+    }
+
+    const audio = new ZenAudio();
+
+    /* Haptic Feedback */
+    function vibrate(pattern) {
+      if (!saveData.settings.haptics) return;
+      if (navigator.vibrate) {
+        try { navigator.vibrate(pattern); } catch (e) {}
+      }
+    }
+
+    /* ==========================================================================
+       3. REVERSE-CONSTRUCTION DETERMINISTIC LEVEL GENERATOR & SOLVER
+       ========================================================================== */
+    function mulberry32(seed) {
+      return function() {
+        let t = seed += 0x6D2B79F5;
+        t = Math.imul(t ^ (t >>> 15), t | 1);
+        t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+        return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+      };
+    }
+
+    function canArrowEscape(arrow, grid, size) {
+      const d = DIRS[arrow.direction];
+      let r = arrow.head.r + d.dr;
+      let c = arrow.head.c + d.dc;
+      while (r >= 0 && r < size && c >= 0 && c < size) {
+        if (grid[r][c] !== null && grid[r][c] !== arrow.id) {
+          return false;
+        }
+        r += d.dr;
+        c += d.dc;
+      }
+      return true;
+    }
+
+    function solveArrowSet(arrows, size) {
+      let grid = Array(size).fill(0).map(() => Array(size).fill(null));
+      let remaining = new Map();
+      arrows.forEach(a => {
+        remaining.set(a.id, a);
+        a.cells.forEach(pt => { grid[pt.r][pt.c] = a.id; });
+      });
+
+      let order = [];
+      while (remaining.size > 0) {
+        let unblocked = null;
+        for (let a of remaining.values()) {
+          if (canArrowEscape(a, grid, size)) {
+            unblocked = a;
+            break;
+          }
+        }
+        if (!unblocked) return { solved: false, steps: order };
+        order.push(unblocked.id);
+        unblocked.cells.forEach(pt => { grid[pt.r][pt.c] = null; });
+        remaining.delete(unblocked.id);
+      }
+      return { solved: true, steps: order };
+    }
+
+    function generateDeterministicLevel(seed, size, targetCount) {
+      const rng = mulberry32(seed);
+      let attempts = 0;
+
+      while (attempts++ < 35) {
+        let grid = Array(size).fill(0).map(() => Array(size).fill(null));
+        let arrows = [];
+        let arrowId = 1;
+        const dirKeys = ['UP', 'DOWN', 'LEFT', 'RIGHT'];
+
+        for (let step = 0; step < targetCount * 3 && arrows.length < targetCount; step++) {
+          const dir = dirKeys[Math.floor(rng() * 4)];
+          const d = DIRS[dir];
+
+          // Head placement
+          const headR = Math.floor(rng() * size);
+          const headC = Math.floor(rng() * size);
+
+          // Verify exit ray is clear of current placed arrows
+          let clear = true;
+          let checkR = headR;
+          let checkC = headC;
+          while (checkR >= 0 && checkR < size && checkC >= 0 && checkC < size) {
+            if (grid[checkR][checkC] !== null) {
+              clear = false;
+              break;
+            }
+            checkR += d.dr;
+            checkC += d.dc;
+          }
+          if (!clear) continue;
+
+          // Length 2 or 3 cells, optional L-shape for size >= 7
+          const len = 2 + (rng() < 0.35 ? 1 : 0);
+          const isL = (size >= 7 && rng() < 0.45);
+
+          let cells = [{ r: headR, c: headC }];
+          let valid = true;
+          let curR = headR;
+          let curC = headC;
+
+          if (!isL) {
+            for (let i = 1; i < len; i++) {
+              curR -= d.dr;
+              curC -= d.dc;
+              if (curR < 0 || curR >= size || curC < 0 || curC >= size || grid[curR][curC] !== null) {
+                valid = false;
+                break;
+              }
+              cells.push({ r: curR, c: curC });
+            }
+          } else {
+            // Straight 1 step backwards
+            curR -= d.dr;
+            curC -= d.dc;
+            if (curR < 0 || curR >= size || curC < 0 || curC >= size || grid[curR][curC] !== null) {
+              valid = false;
+            } else {
+              cells.push({ r: curR, c: curC });
+              // Bend 90 degrees
+              const bends = (d.dr !== 0) ? [{ dr: 0, dc: -1 }, { dr: 0, dc: 1 }] : [{ dr: -1, dc: 0 }, { dr: 1, dc: 0 }];
+              const bend = bends[Math.floor(rng() * 2)];
+              curR += bend.dr;
+              curC += bend.dc;
+              if (curR < 0 || curR >= size || curC < 0 || curC >= size || grid[curR][curC] !== null) {
+                valid = false;
+              } else {
+                cells.push({ r: curR, c: curC });
+              }
+            }
+          }
+
+          if (valid && cells.length >= 2) {
+            const arr = {
+              id: arrowId++,
+              head: { r: headR, c: headC },
+              direction: dir,
+              cells: cells,
+              shape: isL ? 'L_SHAPE' : 'STRAIGHT'
+            };
+            cells.forEach(pt => { grid[pt.r][pt.c] = arr.id; });
+            arrows.push(arr);
+          }
+        }
+
+        if (arrows.length >= Math.max(3, Math.floor(targetCount * 0.75))) {
+          const check = solveArrowSet(arrows, size);
+          if (check.solved && check.steps.length === arrows.length) {
+            return { arrows, size, seed };
+          }
+        }
+      }
+
+      // Fallback simple solvable set
+      return createFallbackLevel(size);
+    }
+
+    function createFallbackLevel(size) {
+      const arrows = [];
+      let id = 1;
+      // Border arrows that slide straight out
+      for (let r = 1; r < size - 1; r += 2) {
+        arrows.push({
+          id: id++,
+          head: { r, c: 0 },
+          direction: 'LEFT',
+          cells: [{ r, c: 0 }, { r, c: 1 }],
+          shape: 'STRAIGHT'
+        });
+        arrows.push({
+          id: id++,
+          head: { r, c: size - 1 },
+          direction: 'RIGHT',
+          cells: [{ r, c: size - 1 }, { r, c: size - 2 }],
+          shape: 'STRAIGHT'
+        });
+      }
+      return { arrows, size, seed: 999 };
+    }
+
+    /* ==========================================================================
+       4. LOCAL STORAGE & PROGRESS PERSISTENCE
+       ========================================================================== */
+    const SAVE_KEY = 'arrow_escape_zen_save_v2';
+
+    let defaultSave = {
+      unlockedLevel: 1,
+      stars: {}, // { "1": 3, "2": 2 }
+      streak: 0,
+      lastDailyDate: null,
+      settings: {
+        theme: 'dark',
+        palette: 'indigo',
+        sound: true,
+        music: false,
+        haptics: true,
+        reducedMotion: false
+      }
+    };
+
+    let saveData = loadSaveData();
+
+    function loadSaveData() {
+      try {
+        const stored = localStorage.getItem(SAVE_KEY);
+        if (stored) return Object.assign({}, defaultSave, JSON.parse(stored));
+      } catch (e) {}
+      return defaultSave;
+    }
+
+    function persistSaveData() {
+      try {
+        localStorage.setItem(SAVE_KEY, JSON.stringify(saveData));
+      } catch (e) {}
+      updateHomeScreenStats();
+    }
+
+    /* ==========================================================================
+       5. GAME STATE & CONTROLLER
+       ========================================================================== */
+    let currentMode = 'campaign'; // 'campaign' | 'daily' | 'practice'
+    let currentLevelNumber = 1;
+    let currentGridSize = 5;
+    let levelArrows = []; // array of arrow objects
+    let boardGrid = [];   // 2D grid of arrow IDs or null
+    let livesRemaining = 3;
+    let hintsRemaining = 3;
+    let movesCount = 0;
+    let historyStack = []; // for Undo
+    let isLevelComplete = false;
+    let isProcessingMove = false;
+
+    // Zoom & Pan transform state
+    let zoomScale = 1.0;
+    let panX = 0;
+    let panY = 0;
+
+    function getTierForLevel(levelNum) {
+      if (levelNum <= 25) return CONFIG.TIERS.easy;
+      if (levelNum <= 50) return CONFIG.TIERS.medium;
+      if (levelNum <= 75) return CONFIG.TIERS.hard;
+      return CONFIG.TIERS.expert;
+    }
+
+    /* Start / Load Level */
+    function loadLevel(levelNum, mode = 'campaign') {
+      currentMode = mode;
+      currentLevelNumber = levelNum;
+      isLevelComplete = false;
+      isProcessingMove = false;
+      livesRemaining = CONFIG.MAX_LIVES;
+      hintsRemaining = CONFIG.HINTS_PER_LEVEL;
+      movesCount = 0;
+      historyStack = [];
+
+      let seed = 1000 + levelNum * 31;
+      let tier = getTierForLevel(levelNum);
+      currentGridSize = tier.size;
+
+      if (mode === 'daily') {
+        const todayStr = new Date().toISOString().slice(0, 10).replace(/-/g, '');
+        seed = parseInt(todayStr, 10) || 20261029;
+        currentGridSize = 7;
+        tier = { name: "Daily", sub: "Daily Challenge", targetArrows: 11 };
+      }
+
+      const generated = generateDeterministicLevel(seed, currentGridSize, tier.targetArrows);
+      levelArrows = generated.arrows;
+
+      // Build 2D grid matrix
+      boardGrid = Array(currentGridSize).fill(0).map(() => Array(currentGridSize).fill(null));
+      levelArrows.forEach(a => {
+        a.cells.forEach(pt => {
+          boardGrid[pt.r][pt.c] = a.id;
+        });
+      });
+
+      renderHUD();
+      renderBoard();
+      fitBoardToScreen();
+      showScreen('screen-game');
+    }
+
+    /* Render Top In-game HUD */
+    function renderHUD() {
+      const tier = (currentMode === 'daily') ? { name: "Daily" } : getTierForLevel(currentLevelNumber);
+      document.getElementById('hud-level-title').textContent = (currentMode === 'daily') ? 'Daily Puzzle' : `Level ${currentLevelNumber}`;
+      document.getElementById('hud-tier-title').textContent = tier.name;
+
+      // Hearts
+      for (let i = 1; i <= 3; i++) {
+        const heartEl = document.getElementById(`heart-${i}`);
+        if (i <= livesRemaining) {
+          heartEl.classList.remove('lost');
+        } else {
+          heartEl.classList.add('lost');
+        }
+      }
+
+      // Arrows Left counter
+      document.getElementById('hud-arrows-left').textContent = levelArrows.length;
+
+      // Hint count badge
+      document.getElementById('hint-count-badge').textContent = hintsRemaining;
+      document.getElementById('btn-hint').disabled = (hintsRemaining <= 0);
+
+      // Undo button state
+      document.getElementById('btn-undo').disabled = (historyStack.length === 0);
+    }
+
+    /* Render The Visual Board */
+    function renderBoard() {
+      const board = document.getElementById('game-board');
+      board.innerHTML = '';
+
+      const cellSize = getOptimalCellSize();
+      const boardPixelSize = currentGridSize * cellSize;
+
+      board.style.width = `${boardPixelSize}px`;
+      board.style.height = `${boardPixelSize}px`;
+
+      // 1. Grid guides (clean subtle lines)
+      for (let r = 0; r < currentGridSize; r++) {
+        for (let c = 0; c < currentGridSize; c++) {
+          const guide = document.createElement('div');
+          guide.className = 'grid-cell-guide';
+          guide.style.top = `${r * cellSize}px`;
+          guide.style.left = `${c * cellSize}px`;
+          guide.style.width = `${cellSize}px`;
+          guide.style.height = `${cellSize}px`;
+          board.appendChild(guide);
+        }
+      }
+
+      // 2. Render each arrow entity
+      levelArrows.forEach(arrow => {
+        const entity = document.createElement('div');
+        entity.className = 'arrow-entity';
+        entity.id = `arrow-ent-${arrow.id}`;
+        entity.setAttribute('data-id', arrow.id);
+
+        arrow.cells.forEach(pt => {
+          const seg = document.createElement('div');
+          seg.className = 'arrow-segment';
+          seg.style.top = `${pt.r * cellSize + 2}px`;
+          seg.style.left = `${pt.c * cellSize + 2}px`;
+          seg.style.width = `${cellSize - 4}px`;
+          seg.style.height = `${cellSize - 4}px`;
+
+          // If this cell is the head, render the arrowhead icon
+          if (pt.r === arrow.head.r && pt.c === arrow.head.c) {
+            seg.innerHTML = getArrowSvg(arrow.direction);
+          }
+
+          entity.appendChild(seg);
+        });
+
+        // Tap listener
+        entity.addEventListener('pointerdown', (e) => {
+          e.stopPropagation();
+          onArrowTapped(arrow.id);
+        });
+
+        board.appendChild(entity);
+      });
+    }
+
+    function getOptimalCellSize() {
+      if (currentGridSize <= 5) return 56;
+      if (currentGridSize <= 7) return 46;
+      if (currentGridSize <= 9) return 38;
+      return 32;
+    }
+
+    function getArrowSvg(direction) {
+      const angle = DIRS[direction].angle;
+      return `
+        <svg class="arrow-head-svg" style="transform: rotate(${angle}deg);" viewBox="0 0 24 24">
+          <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      `;
+    }
+
+    /* Arrow Tap Handler */
+    function onArrowTapped(arrowId) {
+      if (isProcessingMove || isLevelComplete) return;
+
+      const arrowIndex = levelArrows.findIndex(a => a.id === arrowId);
+      if (arrowIndex === -1) return;
+      const arrow = levelArrows[arrowIndex];
+
+      const entity = document.getElementById(`arrow-ent-${arrow.id}`);
+      if (!entity) return;
+
+      // Remove hint glow if any
+      entity.classList.remove('hinted');
+
+      // Check if unblocked
+      const canEscape = canArrowEscape(arrow, boardGrid, currentGridSize);
+
+      if (canEscape) {
+        // Successful Escape Move!
+        isProcessingMove = true;
+        movesCount++;
+        audio.playSlideWhoosh();
+        audio.playChime(movesCount);
+        vibrate(25);
+
+        // Record history for Undo
+        historyStack.push({
+          arrow: JSON.parse(JSON.stringify(arrow)),
+          index: arrowIndex
+        });
+
+        // Clear cells from boardGrid immediately to avoid race conditions
+        arrow.cells.forEach(pt => {
+          boardGrid[pt.r][pt.c] = null;
+        });
+
+        // Animate slide in direction of head
+        const d = DIRS[arrow.direction];
+        const cellSize = getOptimalCellSize();
+        const slideDistance = (currentGridSize + 3) * cellSize;
+        const transX = d.dc * slideDistance;
+        const transY = d.dr * slideDistance;
+
+        entity.style.transition = 'transform 0.32s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.3s ease';
+        entity.style.transform = `translate3d(${transX}px, ${transY}px, 0)`;
+        entity.style.opacity = '0';
+
+        setTimeout(() => {
+          if (entity.parentNode) entity.parentNode.removeChild(entity);
+          levelArrows.splice(arrowIndex, 1);
+          isProcessingMove = false;
+          renderHUD();
+
+          // Check Win Condition
+          if (levelArrows.length === 0) {
+            onLevelCleared();
+          }
+        }, 340);
+
+      } else {
+        // Blocked Arrow: Error shake, loss of 1 life
+        audio.playErrorThud();
+        vibrate([40, 50, 40]);
+        livesRemaining--;
+        renderHUD();
+
+        entity.classList.add('blocked');
+        setTimeout(() => {
+          entity.classList.remove('blocked');
+        }, 480);
+
+        // Check Game Over
+        if (livesRemaining <= 0) {
+          setTimeout(() => {
+            onGameOver();
+          }, 350);
+        }
+      }
+    }
+
+    /* Undo Move */
+    function undoLastMove() {
+      if (historyStack.length === 0 || isProcessingMove || isLevelComplete) return;
+
+      const last = historyStack.pop();
+      const arrow = last.arrow;
+
+      // Re-occupy boardGrid
+      arrow.cells.forEach(pt => {
+        boardGrid[pt.r][pt.c] = arrow.id;
+      });
+
+      levelArrows.splice(last.index, 0, arrow);
+      renderHUD();
+      renderBoard();
+      audio.playChime(1);
+    }
+
+    /* Hint System */
+    function useHint() {
+      if (hintsRemaining <= 0 || isLevelComplete || isProcessingMove) return;
+
+      // Find an arrow that can escape right now
+      let candidate = null;
+      for (let a of levelArrows) {
+        if (canArrowEscape(a, boardGrid, currentGridSize)) {
+          candidate = a;
+          break;
+        }
+      }
+
+      if (candidate) {
+        hintsRemaining--;
+        renderHUD();
+        audio.playChime(4);
+        vibrate(30);
+
+        const entity = document.getElementById(`arrow-ent-${candidate.id}`);
+        if (entity) {
+          entity.classList.add('hinted');
+        }
+      }
+    }
+
+    /* Level Cleared Event */
+    function onLevelCleared() {
+      isLevelComplete = true;
+      audio.playWinFanfare();
+      vibrate([60, 80, 140]);
+      triggerZenParticleBurst();
+
+      // Calculate Stars (3 stars: 0 lives lost and 0 hints used)
+      let stars = 1;
+      if (livesRemaining === CONFIG.MAX_LIVES && hintsRemaining === CONFIG.HINTS_PER_LEVEL) {
+        stars = 3;
+      } else if (livesRemaining >= 2) {
+        stars = 2;
+      }
+
+      // Persist progress
+      if (currentMode === 'campaign') {
+        const prevStars = saveData.stars[currentLevelNumber] || 0;
+        if (stars > prevStars) saveData.stars[currentLevelNumber] = stars;
+
+        if (currentLevelNumber >= saveData.unlockedLevel && currentLevelNumber < CONFIG.TOTAL_LEVELS) {
+          saveData.unlockedLevel = currentLevelNumber + 1;
+        }
+        persistSaveData();
+      } else if (currentMode === 'daily') {
+        const todayStr = new Date().toISOString().slice(0, 10);
+        if (saveData.lastDailyDate !== todayStr) {
+          saveData.streak = (saveData.streak || 0) + 1;
+          saveData.lastDailyDate = todayStr;
+          persistSaveData();
+        }
+      }
+
+      // Populate Complete Modal
+      document.getElementById('complete-title').textContent = (currentMode === 'daily') ? 'Daily Solved!' : `Level ${currentLevelNumber} Cleared!`;
+      document.getElementById('complete-moves-count').textContent = movesCount;
+      document.getElementById('complete-lives-count').textContent = `${livesRemaining} / ${CONFIG.MAX_LIVES}`;
+
+      const starsContainer = document.getElementById('complete-stars-row');
+      starsContainer.innerHTML = '';
+      for (let i = 1; i <= 3; i++) {
+        const star = document.createElement('span');
+        star.textContent = '⭐';
+        if (i <= stars) {
+          star.className = 'active-star';
+          star.style.animationDelay = `${i * 0.15}s`;
+        } else {
+          star.style.opacity = '0.25';
+        }
+        starsContainer.appendChild(star);
+      }
+
+      setTimeout(() => {
+        document.getElementById('modal-complete').classList.add('show');
+      }, 350);
+    }
+
+    /* Game Over Event */
+    function onGameOver() {
+      audio.playErrorThud();
+      document.getElementById('modal-gameover').classList.add('show');
+    }
+
+    /* ==========================================================================
+       6. ZOOM & PAN IMPLEMENTATION
+       ========================================================================== */
+    const boardWrapper = document.getElementById('board-wrapper');
+    const viewport = document.getElementById('board-viewport');
+
+    function updateTransform() {
+      boardWrapper.style.transform = `translate3d(${panX}px, ${panY}px, 0) scale(${zoomScale})`;
+    }
+
+    function fitBoardToScreen() {
+      const vWidth = viewport.clientWidth - 40;
+      const vHeight = viewport.clientHeight - 40;
+      const cellSize = getOptimalCellSize();
+      const bSize = currentGridSize * cellSize;
+
+      const scaleX = vWidth / bSize;
+      const scaleY = vHeight / bSize;
+      zoomScale = Math.min(1.15, Math.max(0.65, Math.min(scaleX, scaleY)));
+      panX = 0;
+      panY = 0;
+      updateTransform();
+    }
+
+    document.getElementById('btn-zoom-in').addEventListener('click', () => {
+      zoomScale = Math.min(1.8, zoomScale + 0.15);
+      updateTransform();
+    });
+
+    document.getElementById('btn-zoom-out').addEventListener('click', () => {
+      zoomScale = Math.max(0.55, zoomScale - 0.15);
+      updateTransform();
+    });
+
+    document.getElementById('btn-zoom-fit').addEventListener('click', fitBoardToScreen);
+
+    // Pan via touch / drag
+    let isPanning = false;
+    let startX = 0;
+    let startY = 0;
+
+    viewport.addEventListener('pointerdown', (e) => {
+      if (e.target.closest('.arrow-entity') || e.target.closest('.zoom-btn')) return;
+      isPanning = true;
+      startX = e.clientX - panX;
+      startY = e.clientY - panY;
+    });
+
+    window.addEventListener('pointermove', (e) => {
+      if (!isPanning) return;
+      panX = e.clientX - startX;
+      panY = e.clientY - startY;
+      updateTransform();
+    });
+
+    window.addEventListener('pointerup', () => {
+      isPanning = false;
+    });
+
+    /* ==========================================================================
+       7. LEVEL MAP POPULATION & TIERS
+       ========================================================================== */
+    function renderLevelMap(tierKey = 'easy') {
+      const container = document.getElementById('map-grid');
+      container.innerHTML = '';
+
+      const tier = CONFIG.TIERS[tierKey];
+      let totalStars = 0;
+      Object.values(saveData.stars).forEach(s => totalStars += s);
+      document.getElementById('map-stars-count').textContent = totalStars;
+
+      for (let lvl = tier.minLvl; lvl <= tier.maxLvl; lvl++) {
+        const isUnlocked = lvl <= saveData.unlockedLevel;
+        const isCurrent = lvl === saveData.unlockedLevel;
+        const stars = saveData.stars[lvl] || 0;
+
+        const cell = document.createElement('div');
+        cell.className = 'level-cell-btn';
+        if (!isUnlocked) cell.classList.add('locked');
+        if (isCurrent) cell.classList.add('current');
+
+        if (isUnlocked) {
+          cell.innerHTML = `
+            <span class="lvl-num">${lvl}</span>
+            <div class="lvl-stars">
+              ${stars >= 1 ? '⭐' : '☆'}${stars >= 2 ? '⭐' : '☆'}${stars >= 3 ? '⭐' : '☆'}
+            </div>
+          `;
+          cell.addEventListener('click', () => {
+            loadLevel(lvl, 'campaign');
+          });
+        } else {
+          cell.innerHTML = `
+            <span class="lvl-lock-icon">🔒</span>
+            <span style="font-size: 0.75rem; color: var(--text-dim); margin-top: 2px;">${lvl}</span>
+          `;
+        }
+
+        container.appendChild(cell);
+      }
+    }
+
+    // Tier Tabs click
+    document.querySelectorAll('#map-tier-tabs .tier-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('#map-tier-tabs .tier-tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        renderLevelMap(tab.getAttribute('data-tier'));
+      });
+    });
+
+    /* ==========================================================================
+       8. SCREENS NAVIGATION & MODALS
+       ========================================================================== */
+    function showScreen(screenId) {
+      document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+      const target = document.getElementById(screenId);
+      if (target) target.classList.add('active');
+    }
+
+    function closeModal(modalId) {
+      document.getElementById(modalId).classList.remove('show');
+    }
+
+    function updateHomeScreenStats() {
+      let totalStars = 0;
+      let clearedCount = 0;
+      for (let i = 1; i <= CONFIG.TOTAL_LEVELS; i++) {
+        if (saveData.stars[i]) {
+          clearedCount++;
+          totalStars += saveData.stars[i];
+        }
+      }
+      document.getElementById('total-stars-disp').textContent = `⭐ ${totalStars}`;
+      document.getElementById('stat-levels-cleared').textContent = `${clearedCount} / ${CONFIG.TOTAL_LEVELS}`;
+      document.getElementById('daily-streak-badge').textContent = `🔥 ${saveData.streak || 0} Day`;
+    }
+
+    // Home buttons
+    document.getElementById('btn-play-campaign').addEventListener('click', () => {
+      loadLevel(saveData.unlockedLevel || 1, 'campaign');
+    });
+
+    document.getElementById('btn-daily-puzzle').addEventListener('click', () => {
+      loadLevel(1, 'daily');
+    });
+
+    document.getElementById('btn-open-levels').addEventListener('click', () => {
+      renderLevelMap('easy');
+      showScreen('screen-map');
+    });
+
+    document.getElementById('btn-open-tutorial').addEventListener('click', () => {
+      document.getElementById('modal-tutorial').classList.add('show');
+    });
+
+    document.getElementById('btn-brand-home').addEventListener('click', () => {
+      showScreen('screen-home');
+    });
+
+    document.getElementById('btn-map-back').addEventListener('click', () => {
+      showScreen('screen-home');
+    });
+
+    document.getElementById('btn-game-back').addEventListener('click', () => {
+      renderLevelMap(getTierKeyForLevel(currentLevelNumber));
+      showScreen('screen-map');
+    });
+
+    function getTierKeyForLevel(lvl) {
+      if (lvl <= 25) return 'easy';
+      if (lvl <= 50) return 'medium';
+      if (lvl <= 75) return 'hard';
+      return 'expert';
+    }
+
+    // In-game bottom bar buttons
+    document.getElementById('btn-undo').addEventListener('click', undoLastMove);
+    document.getElementById('btn-hint').addEventListener('click', useHint);
+    document.getElementById('btn-restart').addEventListener('click', () => {
+      loadLevel(currentLevelNumber, currentMode);
+    });
+    document.getElementById('btn-pause').addEventListener('click', () => {
+      document.getElementById('modal-pause').classList.add('show');
+    });
+
+    // Pause Modal Buttons
+    document.getElementById('btn-pause-resume').addEventListener('click', () => {
+      closeModal('modal-pause');
+    });
+    document.getElementById('btn-pause-restart').addEventListener('click', () => {
+      closeModal('modal-pause');
+      loadLevel(currentLevelNumber, currentMode);
+    });
+    document.getElementById('btn-pause-map').addEventListener('click', () => {
+      closeModal('modal-pause');
+      renderLevelMap(getTierKeyForLevel(currentLevelNumber));
+      showScreen('screen-map');
+    });
+    document.getElementById('btn-pause-home').addEventListener('click', () => {
+      closeModal('modal-pause');
+      showScreen('screen-home');
+    });
+
+    // Level Complete Modal Buttons
+    document.getElementById('btn-complete-replay').addEventListener('click', () => {
+      closeModal('modal-complete');
+      loadLevel(currentLevelNumber, currentMode);
+    });
+    document.getElementById('btn-complete-next').addEventListener('click', () => {
+      closeModal('modal-complete');
+      if (currentMode === 'daily') {
+        showScreen('screen-home');
+      } else {
+        const nextLvl = Math.min(CONFIG.TOTAL_LEVELS, currentLevelNumber + 1);
+        loadLevel(nextLvl, 'campaign');
+      }
+    });
+
+    // Game Over Modal Buttons
+    document.getElementById('btn-gameover-retry').addEventListener('click', () => {
+      closeModal('modal-gameover');
+      loadLevel(currentLevelNumber, currentMode);
+    });
+    document.getElementById('btn-gameover-map').addEventListener('click', () => {
+      closeModal('modal-gameover');
+      renderLevelMap(getTierKeyForLevel(currentLevelNumber));
+      showScreen('screen-map');
+    });
+
+    // Settings Modal
+    document.getElementById('btn-header-settings').addEventListener('click', () => {
+      document.getElementById('modal-settings').classList.add('show');
+    });
+    document.getElementById('btn-close-settings').addEventListener('click', () => {
+      closeModal('modal-settings');
+    });
+    document.getElementById('btn-header-help').addEventListener('click', () => {
+      document.getElementById('modal-tutorial').classList.add('show');
+    });
+    document.getElementById('btn-close-tutorial').addEventListener('click', () => {
+      closeModal('modal-tutorial');
+    });
+
+    // Header Theme Button
+    document.getElementById('btn-header-theme').addEventListener('click', () => {
+      const isDark = document.body.getAttribute('data-theme') === 'dark';
+      applyTheme(isDark ? 'light' : 'dark');
+    });
+
+    function applyTheme(theme) {
+      document.body.setAttribute('data-theme', theme);
+      document.getElementById('btn-header-theme').textContent = (theme === 'dark') ? '🌙' : '☀️';
+      document.getElementById('toggle-dark-mode').checked = (theme === 'dark');
+      saveData.settings.theme = theme;
+      persistSaveData();
+    }
+
+    function applyPalette(palette) {
+      document.body.setAttribute('data-palette', palette);
+      document.querySelectorAll('.palette-circle').forEach(c => {
+        c.classList.toggle('active', c.getAttribute('data-pal') === palette);
+      });
+      saveData.settings.palette = palette;
+      persistSaveData();
+    }
+
+    // Palette options
+    document.querySelectorAll('.palette-circle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        applyPalette(btn.getAttribute('data-pal'));
+      });
+    });
+
+    // Settings Toggles
+    document.getElementById('toggle-dark-mode').addEventListener('change', (e) => {
+      applyTheme(e.target.checked ? 'dark' : 'light');
+    });
+
+    document.getElementById('toggle-sound-fx').addEventListener('change', (e) => {
+      saveData.settings.sound = e.target.checked;
+      audio.sfxEnabled = e.target.checked;
+      persistSaveData();
+    });
+
+    document.getElementById('toggle-ambient-music').addEventListener('change', (e) => {
+      saveData.settings.music = e.target.checked;
+      audio.toggleAmbientMusic(e.target.checked);
+      persistSaveData();
+    });
+
+    document.getElementById('toggle-haptics').addEventListener('change', (e) => {
+      saveData.settings.haptics = e.target.checked;
+      persistSaveData();
+    });
+
+    document.getElementById('toggle-reduced-motion').addEventListener('change', (e) => {
+      saveData.settings.reducedMotion = e.target.checked;
+      document.body.classList.toggle('reduced-motion', e.target.checked);
+      persistSaveData();
+    });
+
+    document.getElementById('btn-reset-data').addEventListener('click', () => {
+      if (confirm('Are you sure you want to reset all game progress and stars?')) {
+        saveData = Object.assign({}, defaultSave);
+        persistSaveData();
+        closeModal('modal-settings');
+        showScreen('screen-home');
+      }
+    });
+
+    /* Keyboard Shortcuts */
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'z' || e.key === 'Z') {
+        undoLastMove();
+      } else if (e.key === 'h' || e.key === 'H') {
+        useHint();
+      } else if (e.key === 'r' || e.key === 'R') {
+        loadLevel(currentLevelNumber, currentMode);
+      } else if (e.key === 'Escape') {
+        const modal = document.getElementById('modal-pause');
+        if (modal.classList.contains('show')) {
+          closeModal('modal-pause');
+        } else {
+          modal.classList.add('show');
+        }
+      } else if (e.key === 'f' || e.key === 'F') {
+        fitBoardToScreen();
+      }
+    });
+
+    /* ==========================================================================
+       9. SOFT ZEN FLOATING PARTICLES CANVAS
+       ========================================================================== */
+    const canvas = document.getElementById('particle-canvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', () => {
+      resizeCanvas();
+      if (document.getElementById('screen-game').classList.contains('active')) {
+        fitBoardToScreen();
+      }
+    });
+    resizeCanvas();
+
+    function triggerZenParticleBurst() {
+      const count = 40;
+      const w = canvas.width;
+      const h = canvas.height;
+      for (let i = 0; i < count; i++) {
+        particles.push({
+          x: w / 2 + (Math.random() - 0.5) * 120,
+          y: h / 2 + (Math.random() - 0.5) * 120,
+          vx: (Math.random() - 0.5) * 6,
+          vy: (Math.random() - 0.5) * 6 - 2,
+          radius: Math.random() * 4 + 2,
+          alpha: 1,
+          color: Math.random() < 0.5 ? '#6366f1' : '#10b981'
+        });
+      }
+    }
+
+    function animateParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (let i = particles.length - 1; i >= 0; i--) {
+        const p = particles[i];
+        p.x += p.vx;
+        p.y += p.vy;
+        p.alpha -= 0.015;
+        if (p.alpha <= 0) {
+          particles.splice(i, 1);
+        } else {
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+          ctx.fillStyle = p.color;
+          ctx.globalAlpha = p.alpha;
+          ctx.fill();
+        }
+      }
+      ctx.globalAlpha = 1;
+      requestAnimationFrame(animateParticles);
+    }
+    requestAnimationFrame(animateParticles);
+
+    /* ==========================================================================
+       10. INITIALIZATION
+       ========================================================================== */
+    applyTheme(saveData.settings.theme || 'dark');
+    applyPalette(saveData.settings.palette || 'indigo');
+    document.getElementById('toggle-sound-fx').checked = saveData.settings.sound;
+    document.getElementById('toggle-ambient-music').checked = saveData.settings.music;
+    document.getElementById('toggle-haptics').checked = saveData.settings.haptics;
+    document.getElementById('toggle-reduced-motion').checked = saveData.settings.reducedMotion;
+    document.body.classList.toggle('reduced-motion', !!saveData.settings.reducedMotion);
+
+    updateHomeScreenStats();
+  </script>
+</body>
+</html>

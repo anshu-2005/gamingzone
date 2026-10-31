@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Space Dodge 2026 — Modular HTML5 Game</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="game-container">
+    <canvas id="game-canvas"></canvas>
+    
+    <!-- UI Overlay -->
+    <div id="ui-overlay">
+      <div id="hud">
+        <div class="hud-item">SCORE: <span id="score-val">0</span></div>
+        <div class="hud-item">BEST: <span id="high-score-val">0</span></div>
+      </div>
+
+      <div id="start-screen" class="screen">
+        <h1 class="title">🚀 SPACE DODGE</h1>
+        <p class="subtitle">Dodge incoming space asteroids and collect cosmic crystals!</p>
+        <div class="controls-hint">
+          <span>🕹️ <b>Controls:</b> Arrow Keys / A-D / Touch Screen</span>
+        </div>
+        <button id="btn-start" class="btn">LAUNCH MISSION</button>
+      </div>
+
+      <div id="game-over-screen" class="screen hidden">
+        <h2 class="title red">💥 CRITICAL IMPACT</h2>
+        <p>Final Score: <span id="final-score" class="highlight">0</span></p>
+        <button id="btn-restart" class="btn">RETRY FLIGHT</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
+

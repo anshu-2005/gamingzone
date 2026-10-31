@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>GAMINGZONE — Play 56+ Free Online Browser Games</title>
+  <meta name="description" content="Play 56+ premier free online browser games on GAMINGZONE. Instant high-performance HTML5 gameplay across all devices.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2300e5ff'/%3E%3Cpath d='M8 8 L24 8 L24 13 L14 13 L14 19 L20 19 L20 24 L8 24 Z' fill='%230a0e17'/%3E%3C/svg%3E">
+  <link rel="alternate icon" href="favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700;800&family=Lilita+One&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/design-system.css">
+  <link rel="stylesheet" href="css/portal.css">
+  <link rel="stylesheet" href="css/games.css">
+  <link rel="stylesheet" href="css/levels.css">
+  <link rel="stylesheet" href="css/profile.css">
+  <link rel="stylesheet" href="css/admin.css">
+  <link rel="stylesheet" href="css/developer.css">
+</head>
+<body class="crazy-portal-body">
+
+  <!-- ==============================================
+       1. GLOBAL TOP HEADER
+       ============================================== -->
+  <header class="crazy-top-header">
+    <div class="header-left-zone">
+      <button class="btn-sidebar-toggle" id="btn-sidebar-toggle" title="Toggle Sidebar">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+      <a class="crazy-brand-logo" id="portal-logo-link">
+        <div class="brand-logo-icon">G</div>
+        <span class="brand-logo-text">GAMING<span>ZONE</span></span>
+      </a>
+    </div>
+
+    <!-- Center Live Search Bar -->
+    <div class="crazy-search-wrapper">
+      <div class="crazy-search-bar">
+        <span class="search-lens-icon">🔍</span>
+        <input type="text" id="portal-search-input" class="crazy-search-input" placeholder="Search 56+ games and categories..." autocomplete="off">
+        <button class="btn-search-clear hidden" id="btn-search-clear" title="Clear Search">✕</button>
+      </div>
+    </div>
+
+    <!-- Right Header Actions -->
+    <div class="header-right-zone">
+      <button id="btn-surprise-me" class="btn-surprise-me" title="Play a Random Game!">
+        <span>🎲</span>
+        <span class="surprise-text">Surprise Me!</span>
+      </button>
+
+      <button id="btn-portal-sound" class="btn-header-action" title="Toggle Sound">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+      </button>
+
+      <button class="btn-header-action" id="btn-header-favs" title="Favorite Games">
+        <span>❤️</span>
+      </button>
+
+      <button id="btn-portal-admin" class="btn-header-action btn-header-admin-subtle" title="Admin Console" aria-label="Admin Console">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+          <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+        </svg>
+      </button>
+
+      <!-- Player Profile Pill / Log In -->
+      <div id="header-player-profile-strip" class="crazy-profile-pill" title="Player Rank & Wallet">
+        <!-- Dynamic Player Stats -->
+      </div>
+    </div>
+  </header>
+
+  <!-- ==============================================
+       2. MAIN APPLICATION CONTAINER (Sidebar + Feed)
+       ============================================== -->
+  <div class="crazy-app-layout">
+    <!-- Mobile Sidebar Backdrop -->
+    <div id="sidebar-backdrop" class="sidebar-backdrop"></div>
+    
+    <!-- Vertical Clean Sidebar -->
+    <aside class="crazy-sidebar" id="crazy-sidebar">
+      <nav class="sidebar-nav-list">
+        <a href="#" class="sidebar-item active" data-nav="home">
+          <span class="nav-icon">🏠</span>
+          <span class="nav-label">Home</span>
+        </a>
+        <a href="#" class="sidebar-item" data-nav="recent">
+          <span class="nav-icon">🕒</span>
+          <span class="nav-label">Recently Played</span>
+        </a>
+        <a href="#" class="sidebar-item" data-nav="new">
+          <span class="nav-icon">✨</span>
+          <span class="nav-label">New Games</span>
+        </a>
+        <a href="#" class="sidebar-item" data-nav="trending">
+          <span class="nav-icon">🔥</span>
+          <span class="nav-label">Popular Games</span>
+        </a>
+        <a href="#" class="sidebar-item" data-cat="favorites">
+          <span class="nav-icon">❤️</span>
+          <span class="nav-label">Favorites</span>
+        </a>
+
+        <div class="sidebar-divider">Categories</div>
+
+        <a href="#" class="sidebar-item" data-cat="puzzle">
+          <span class="nav-icon">🏹</span>
+          <span class="nav-label">Arrow & Puzzle</span>
+        </a>
+        <a href="#" class="sidebar-item" data-cat="cricket">
+          <span class="nav-icon">🏏</span>
+          <span class="nav-label">Cricket Arena</span>
+        </a>
+        <a href="#" class="sidebar-item" data-cat="racing">
+          <span class="nav-icon">🏎️</span>
+          <span class="nav-label">Racing & Speed</span>
+        </a>
+        <a href="#" class="sidebar-item" data-cat="action">
+          <span class="nav-icon">⚔️</span>
+          <span class="nav-label">Action & Combat</span>
+        </a>
+        <a href="#" class="sidebar-item" data-cat="arcade">
+          <span class="nav-icon">🕹️</span>
+          <span class="nav-label">Arcade Classics</span>
+        </a>
+        <a href="#" class="sidebar-item" data-cat="sports">
+          <span class="nav-icon">⚽</span>
+          <span class="nav-label">Sports Champions</span>
+        </a>
+        <a href="#" class="sidebar-item" data-cat="2player">
+          <span class="nav-icon">👥</span>
+          <span class="nav-label">2-Player Battles</span>
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="crazy-main-content">
+      <!-- Category Pills Scroll Bar -->
+      <nav class="crazy-pills-bar" id="category-pills-container"></nav>
+
+      <!-- Dynamic Portal View -->
+      <div id="portal-main-view" class="portal-main-view"></div>
+
+      <!-- GAMINGZONE Informative Footer -->
+      <footer class="crazy-footer">
+        <div class="footer-top-grid">
+          <div class="footer-col-brand">
+            <div class="footer-brand-logo">
+              <span class="footer-brand-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                  <path d="M12 2L21 7V17L12 22L3 17V7L12 2Z" fill="#00e5ff" fill-opacity="0.2" stroke="#00e5ff" stroke-width="2"/>
+                  <path d="M15 12H12V15H15V12Z" fill="#00e5ff"/>
+                  <path d="M15 9H9V15H12" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </span>
+              <span class="footer-brand-name">GAMING<span>ZONE</span></span>
+            </div>
+            <p class="footer-tagline">Play 56+ instant, high-performance HTML5 browser games. Free forever, no downloads or installs required.</p>
+            <div class="footer-features-badges">
+              <span class="footer-badge">⚡ Instant Play</span>
+              <span class="footer-badge">📱 All Devices</span>
+              <span class="footer-badge">🆓 100% Free</span>
+            </div>
+          </div>
+          <div class="footer-col-nav">
+            <h4 class="footer-col-title">Navigation</h4>
+            <a href="#" class="footer-link" id="btn-footer-home">Home</a>
+            <a href="#" class="footer-link" id="btn-footer-games">All 56+ Games</a>
+            <a href="#" class="footer-link" id="btn-footer-popular">Popular Games</a>
+            <a href="#" class="footer-link" id="btn-footer-new">New Releases</a>
+          </div>
+          <div class="footer-col-nav">
+            <h4 class="footer-col-title">Top Genres</h4>
+            <a href="#" class="footer-link" data-cat="action">Action & Combat</a>
+            <a href="#" class="footer-link" data-cat="puzzle">Brain & Puzzle</a>
+            <a href="#" class="footer-link" data-cat="cricket">Cricket & Sports</a>
+            <a href="#" class="footer-link" data-cat="racing">Cars & Racing</a>
+          </div>
+          <div class="footer-col-nav">
+            <h4 class="footer-col-title">Platform & Tools</h4>
+            <a href="#admin" class="footer-link footer-admin-link" id="btn-footer-admin" title="Admin Login">🔒 Admin Login</a>
+            <a href="#" class="footer-link" id="btn-footer-dev">Developer Studio</a>
+            <span class="footer-status-pill"><span class="status-dot"></span> 56 Games Live</span>
+          </div>
+        </div>
+        <div class="footer-bottom-bar">
+          <span>&copy; 2026 GAMINGZONE. All rights reserved. High-performance browser gaming platform.</span>
+          <div class="footer-legal-links">
+            <a href="#" id="btn-footer-privacy">Privacy</a>
+            <a href="#" id="btn-footer-terms">Terms</a>
+            <a href="#" id="btn-footer-about">About</a>
+          </div>
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <!-- ==============================================
+       3. UNIVERSAL GAME PLAYER THEATER
+       ============================================== -->
+  <div id="screen-game-player" class="game-player-screen hidden">
+    <div id="game-embed-stage"></div>
+  </div>
+
+  <!-- ==============================================
+       4. LEVEL COMPLETE VICTORY MODAL
+       ============================================== -->
+  <div id="screen-level-complete-modal" class="modal-screen hidden">
+    <div class="level-complete-dialog">
+      <div style="font-size: 3.2rem; margin-bottom: 4px;">🎉</div>
+      <h1 id="modal-lvl-title" style="font-family: var(--font-display); font-size: 2.2rem; color: #ffd166;">LEVEL COMPLETE!</h1>
+
+      <!-- Animated 3-Star Sequence -->
+      <div class="modal-stars-row" id="modal-lvl-stars-row">
+        <span class="modal-star-icon empty">⭐</span>
+        <span class="modal-star-icon empty">⭐</span>
+        <span class="modal-star-icon empty">⭐</span>
+      </div>
+
+      <!-- Level Up Notification -->
+      <div id="modal-lvl-levelup-banner" class="modal-levelup-banner hidden">
+        <span id="modal-lvl-newlevel">PLAYER LEVEL UP! REACHED LEVEL 2 🚀</span>
+      </div>
+
+      <!-- Score & Rewards Box -->
+      <div class="level-rewards-box">
+        <div class="reward-stat-col">
+          <span>FINAL SCORE</span>
+          <b id="modal-lvl-score" style="color: #fff;">0</b>
+        </div>
+        <div class="reward-stat-col">
+          <span>COINS EARNED</span>
+          <b id="modal-lvl-coins" style="color: #ffd166;">+0 🪙</b>
+        </div>
+        <div class="reward-stat-col">
+          <span>XP GAINED</span>
+          <b id="modal-lvl-xp" style="color: #10b981;">+0 XP</b>
+        </div>
+      </div>
+
+      <div class="level-unlock-badge">
+        <span id="modal-lvl-unlock">Next Level Unlocked 🔓</span>
+      </div>
+
+      <div style="display: flex; gap: 10px; margin-bottom: 8px;">
+        <button id="btn-modal-lvl-next" class="btn btn-primary" style="flex: 2; font-size: 1.1rem;">
+          NEXT LEVEL ➔
+        </button>
+        <button id="btn-modal-lvl-replay" class="btn btn-secondary" style="flex: 1;">
+          🔄 REPLAY
+        </button>
+      </div>
+      <div style="display: flex; gap: 10px;">
+        <button id="btn-modal-lvl-map" class="btn btn-secondary" style="flex: 1; padding: 8px;">
+          🗺️ LEVEL MAP
+        </button>
+        <button id="btn-modal-lvl-portal" class="btn btn-secondary" style="flex: 1; padding: 8px;">
+          🏠 PORTAL
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==============================================
+       5. PLAYER PROFILE & STATS MODAL
+       ============================================== -->
+  <div id="screen-profile-modal" class="modal-screen hidden">
+    <div class="admin-modal-dialog" style="max-width: 540px;">
+      <div class="admin-header-row">
+        <h2>PLAYER PROFILE & RANK</h2>
+        <button id="btn-close-profile-modal" class="btn-close-kid">✕</button>
+      </div>
+
+      <div style="text-align: center; margin-bottom: 20px;">
+        <div style="font-size: 3.5rem; margin-bottom: 6px;">⚡</div>
+        <h2 id="modal-profile-name" style="font-family: var(--font-heading); font-size: 1.8rem; color: #fff;">CyberChampion</h2>
+        <span id="modal-profile-title" style="background: rgba(112, 72, 232, 0.2); color: #a5b4fc; border: 1px solid rgba(112, 72, 232, 0.4); font-weight: 700; font-size: 0.85rem; padding: 3px 12px; border-radius: 12px;">Rookie Gamer</span>
+      </div>
+
+      <!-- XP Bar -->
+      <div class="info-card-box" style="margin-bottom: 16px;">
+        <div style="display: flex; justify-content: space-between; font-size: 0.9rem; margin-bottom: 6px;">
+          <b id="modal-profile-level" style="color: var(--brand-yellow);">LEVEL 1</b>
+          <span id="modal-profile-xp-text" style="color: #10b981;">150 / 500 XP</span>
+        </div>
+        <div style="height: 10px; background: rgba(255, 255, 255, 0.1); border-radius: 6px; overflow: hidden;">
+          <div id="modal-profile-xp-bar" style="height: 100%; background: linear-gradient(90deg, #6366f1, #a855f7); width: 30%;"></div>
+        </div>
+      </div>
+
+      <!-- Stats Grid -->
+      <div class="admin-stats-grid" style="grid-template-columns: repeat(2, 1fr); margin-bottom: 20px;">
+        <div class="admin-stat-card">
+          <div class="label">COIN WALLET</div>
+          <div id="modal-profile-coins" class="val" style="color: #ffd166;">300</div>
+        </div>
+        <div class="admin-stat-card">
+          <div class="label">STARS EARNED</div>
+          <div id="modal-profile-stars" class="val" style="color: #ec4899;">6</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==============================================
+       6. DEVELOPER STUDIO MODAL
+       ============================================== -->
+  <div id="screen-developer-studio" class="modal-screen hidden">
+    <div class="admin-modal-dialog dev-studio-dialog">
+      <div class="admin-header-row">
+        <h2>⚡ GAMINGZONE DEVELOPER STUDIO</h2>
+        <button class="btn-close-dev-studio btn-close-kid">✕</button>
+      </div>
+
+      <div class="dev-tabs-bar">
+        <button class="dev-tab-btn active" data-tab="publish">🚀 Publish Game</button>
+        <button class="dev-tab-btn" data-tab="analytics">📊 Developer Analytics</button>
+        <button class="dev-tab-btn" data-tab="submissions">📋 Submissions Tracker</button>
+      </div>
+
+      <!-- Tab 1: Publish Game -->
+      <div id="dev-pane-publish" class="dev-tab-content">
+        <form id="form-dev-studio-publish">
+          <div class="admin-form-row">
+            <div class="admin-form-group">
+              <label>Game Title *</label>
+              <input type="text" id="dev-game-title" class="admin-input" placeholder="e.g. Cyber Drift 2077" required>
+            </div>
+            <div class="admin-form-group">
+              <label>Developer / Studio Name *</label>
+              <input type="text" id="dev-game-developer" class="admin-input" placeholder="e.g. Pixel Forge Games" required>
+            </div>
+          </div>
+
+          <div class="admin-form-row" style="margin-top: 10px;">
+            <div class="admin-form-group">
+              <label>Category *</label>
+              <select id="dev-game-category" class="admin-input">
+                <option value="arcade">Arcade Classics</option>
+                <option value="puzzle">Arrow & Puzzle</option>
+                <option value="cricket">Cricket Arena</option>
+                <option value="racing">Racing & Speed</option>
+                <option value="action">Action & Combat</option>
+                <option value="sports">Sports Champions</option>
+                <option value="2player">2-Player Versus</option>
+              </select>
+            </div>
+            <div class="admin-form-group">
+              <label>Game Icon (Emoji)</label>
+              <input type="text" id="dev-game-icon" class="admin-input" placeholder="🎮" value="🎮">
+            </div>
+            <div class="admin-form-group">
+              <label>Version</label>
+              <input type="text" id="dev-game-version" class="admin-input" placeholder="1.0.0" value="1.0.0">
+            </div>
+          </div>
+
+          <div class="admin-form-row" style="margin-top: 10px;">
+            <div class="admin-form-group">
+              <label>Engine Base</label>
+              <select id="dev-game-engine" class="admin-input">
+                <option value="ArcheryMaster">Archery Master</option>
+                <option value="ArrowMazeEscape">Arrow Maze Escape</option>
+                <option value="SubwaySkaterRush">Subway Skater Rush</option>
+                <option value="CyberCarDrift">Cyber Car Drift</option>
+                <option value="StickmanShadowCombat">Stickman Shadow Combat</option>
+                <option value="CandyBlastMatch3">Candy Blast Match-3</option>
+                <option value="CricketPremierLeague">Cricket Premier League</option>
+                <option value="custom_url">External Embed URL</option>
+              </select>
+            </div>
+            <div class="admin-form-group">
+              <label>External Embed URL (Optional)</label>
+              <input type="url" id="dev-game-embed-url" class="admin-input" placeholder="https://example.com/game">
+            </div>
+          </div>
+
+          <div class="admin-form-group" style="margin-top: 10px;">
+            <label>Short Description *</label>
+            <textarea id="dev-game-desc" class="admin-input" rows="2" placeholder="Brief overview of gameplay mechanics and objective..." required></textarea>
+          </div>
+
+          <div class="admin-form-group" style="margin-top: 10px;">
+            <label>Controls Instructions</label>
+            <input type="text" id="dev-game-controls" class="admin-input" placeholder="e.g. Desktop: [WASD] or [Arrow Keys]. Mobile: Tap left or right.">
+          </div>
+
+          <div class="admin-form-group" style="margin-top: 10px;">
+            <label>Banner Gradient Color</label>
+            <input type="text" id="dev-game-banner-color" class="admin-input" value="linear-gradient(135deg, #00d2d3, #0284c7)">
+          </div>
+
+          <!-- Quality Scanner Trigger -->
+          <div style="display: flex; gap: 10px; margin-top: 14px;">
+            <button type="button" id="btn-dev-run-scanner" class="btn btn-secondary" style="flex: 1;">🔍 Run Quality & Performance Scanner</button>
+            <button type="button" id="btn-dev-preview-sandbox" class="btn btn-secondary" style="flex: 1;">🧪 Preview in Sandbox</button>
+          </div>
+
+          <div id="dev-scanner-results" class="dev-scanner-results-card hidden"></div>
+          <div id="dev-sandbox-stage" style="margin-top: 12px;"></div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 14px;">🚀 SUBMIT FOR PUBLISHING</button>
+        </form>
+      </div>
+
+      <!-- Tab 2: Analytics -->
+      <div id="dev-pane-analytics" class="dev-tab-content hidden">
+        <div class="admin-stats-grid">
+          <div class="admin-stat-card">
+            <div class="label">TOTAL PLAYS</div>
+            <div class="val" id="dev-stat-plays" style="color: var(--brand-cyan);">0</div>
+          </div>
+          <div class="admin-stat-card">
+            <div class="label">UNIQUE PLAYERS</div>
+            <div class="val" id="dev-stat-players" style="color: #ffd166;">0</div>
+          </div>
+          <div class="admin-stat-card">
+            <div class="label">ESTIMATED REVENUE</div>
+            <div class="val" id="dev-stat-revenue" style="color: #10b981;">$0.00</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 3: Submissions -->
+      <div id="dev-pane-submissions" class="dev-tab-content hidden">
+        <div style="overflow-x: auto;">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Game</th>
+                <th>Version</th>
+                <th>Category</th>
+                <th>Score</th>
+                <th>Status</th>
+                <th>Submitted</th>
+              </tr>
+            </thead>
+            <tbody id="dev-submissions-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==============================================
+       7. SECURE ADMIN LOGIN MODAL
+       ============================================== -->
+  <div id="screen-admin-login" class="modal-screen hidden">
+    <div class="admin-modal-dialog admin-login-dialog">
+      <div class="admin-header-row">
+        <h2>🔒 ADMIN CONSOLE LOGIN</h2>
+        <button class="btn-close-admin-modal btn-close-kid">✕</button>
+      </div>
+      <p style="color: #cbd5e1; margin-bottom: 16px; font-size: 0.88rem; line-height: 1.4;">
+        Sign in to manage game registry, upload ZIP game bundles, and publish releases.
+      </p>
+      <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 14px;">
+        <input type="text" id="admin-username-input" class="admin-input" placeholder="Admin Username (e.g. admin)" value="admin">
+        <input type="password" id="admin-password-input" class="admin-input" placeholder="Admin Password">
+      </div>
+      <div id="admin-login-error" style="color: #ef4444; font-size: 0.84rem; margin-bottom: 12px; min-height: 20px;"></div>
+      <button id="btn-admin-login-submit" class="btn btn-primary" style="width: 100%;">⚡ SIGN IN TO DASHBOARD</button>
+    </div>
+  </div>
+
+  <!-- ==============================================
+       8. SECURE ADMIN DASHBOARD MODAL
+       ============================================== -->
+  <div id="screen-admin-dashboard" class="modal-screen hidden">
+    <div class="admin-modal-dialog admin-dashboard-dialog">
+      <div class="admin-header-row">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <h2>⚡ GAMINGZONE ADMIN CONSOLE</h2>
+          <span class="backend-badge"><span class="status-dot"></span> SQLite Server Connected</span>
+        </div>
+        <div style="display: flex; gap: 8px;">
+          <button id="btn-admin-logout" class="btn btn-secondary" style="padding: 6px 12px; font-size: 0.8rem;">Log Out</button>
+          <button class="btn-close-admin-modal btn-close-kid">✕</button>
+        </div>
+      </div>
+
+      <div class="admin-nav-tabs-bar">
+        <button class="admin-nav-tab active" data-tab="catalog">🎮 Games Registry</button>
+        <button class="admin-nav-tab" data-tab="analytics">📊 Analytics & Health</button>
+      </div>
+
+      <!-- Tab 1: Games Registry -->
+      <div id="admin-pane-catalog" class="admin-tab-pane">
+        <!-- Filter Toolbar -->
+        <div class="admin-toolbar-row">
+          <div class="toolbar-left">
+            <input type="text" id="admin-filter-search" class="admin-input" placeholder="🔍 Search games..." style="max-width: 240px;">
+            <select id="admin-filter-status" class="admin-input" style="max-width: 150px;">
+              <option value="all">All Statuses</option>
+              <option value="published">Published</option>
+              <option value="draft">Drafts</option>
+              <option value="archived">Archived</option>
+            </select>
+            <select id="admin-filter-category" class="admin-input" style="max-width: 150px;">
+              <option value="all">All Categories</option>
+              <option value="arcade">Arcade</option>
+              <option value="puzzle">Puzzle</option>
+              <option value="cricket">Cricket</option>
+              <option value="racing">Racing</option>
+              <option value="action">Action</option>
+              <option value="sports">Sports</option>
+              <option value="2player">2-Player</option>
+            </select>
+          </div>
+          <button id="btn-admin-open-create" class="btn btn-primary" style="padding: 8px 18px; font-size: 0.88rem; white-space: nowrap;">
+            ➕ Create New Game
+          </button>
+        </div>
+
+        <div style="overflow-x: auto; max-height: 520px; overflow-y: auto; margin-top: 14px; border: 1px solid var(--border-subtle); border-radius: var(--radius-md);">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Game & Slug</th>
+                <th>Type</th>
+                <th>Category</th>
+                <th>Version</th>
+                <th>Status</th>
+                <th>Plays</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="admin-games-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Tab 2: Analytics & Health -->
+      <div id="admin-pane-analytics" class="admin-tab-pane hidden">
+        <div class="admin-stats-grid">
+          <div class="admin-stat-card">
+            <div class="label">TOTAL REGISTERED</div>
+            <div class="val" id="admin-stat-games" style="color: var(--brand-cyan);">0</div>
+          </div>
+          <div class="admin-stat-card">
+            <div class="label">PUBLISHED LIVE</div>
+            <div class="val" id="admin-stat-published" style="color: #10b981;">0</div>
+          </div>
+          <div class="admin-stat-card">
+            <div class="label">DRAFTS</div>
+            <div class="val" id="admin-stat-drafts" style="color: #f59e0b;">0</div>
+          </div>
+          <div class="admin-stat-card">
+            <div class="label">TOTAL PLAYS</div>
+            <div class="val" id="admin-stat-plays" style="color: #ffd166;">0</div>
+          </div>
+        </div>
+
+        <div class="info-card-box" style="margin-top: 14px; padding: 18px; background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle); border-radius: 14px;">
+          <h4 style="color: #fff; margin-bottom: 8px;">ℹ️ Dynamic Game Pipeline Specifications</h4>
+          <ul style="color: var(--text-secondary); font-size: 0.88rem; line-height: 1.6; padding-left: 18px;">
+            <li>Uploaded ZIP archives are validated for structure, magic headers, and safe <code>index.html</code> entry points.</li>
+            <li>Path-traversal attacks, zip-bombs, and server-side executables are automatically quarantined and rejected.</li>
+            <li>Uploaded games are sandboxed in isolated iframes with restricted privileges to protect parent session security.</li>
+            <li>Metadata updates are immediately persisted in SQLite and propagated to the public catalog via <code>/api/games</code>.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==============================================
+       9. GAME CREATE / EDIT / UPLOAD MODAL
+       ============================================== -->
+  <div id="screen-admin-edit-modal" class="modal-screen hidden">
+    <div class="admin-modal-dialog admin-edit-dialog">
+      <div class="admin-header-row">
+        <h2 id="edit-modal-title">✏️ Edit Game</h2>
+        <button class="btn-close-admin-modal btn-close-kid">✕</button>
+      </div>
+
+      <form id="form-admin-edit-game">
+        <div class="admin-form-row">
+          <div class="admin-form-group">
+            <label>Title *</label>
+            <input type="text" id="edit-game-title" class="admin-input" required placeholder="e.g. Cosmic Galaxy Defender">
+          </div>
+          <div class="admin-form-group">
+            <label>URL Slug *</label>
+            <input type="text" id="edit-game-slug" class="admin-input" required placeholder="e.g. cosmic-galaxy-defender">
+          </div>
+        </div>
+
+        <div class="admin-form-row">
+          <div class="admin-form-group">
+            <label>Category *</label>
+            <select id="edit-game-category" class="admin-input">
+              <option value="arcade">Arcade</option>
+              <option value="action">Action</option>
+              <option value="puzzle">Puzzle</option>
+              <option value="cricket">Cricket</option>
+              <option value="racing">Racing</option>
+              <option value="sports">Sports</option>
+              <option value="2player">2-Player</option>
+              <option value="strategy">Strategy</option>
+            </select>
+          </div>
+          <div class="admin-form-group">
+            <label>Version *</label>
+            <input type="text" id="edit-game-version" class="admin-input" value="1.0.0" placeholder="1.0.0">
+          </div>
+        </div>
+
+        <div class="admin-form-row">
+          <div class="admin-form-group">
+            <label>Tags (Comma-separated)</label>
+            <input type="text" id="edit-game-tags" class="admin-input" placeholder="arcade, space, runner">
+          </div>
+          <div class="admin-form-group">
+            <label>Status *</label>
+            <select id="edit-game-status" class="admin-input">
+              <option value="draft">Draft (Private, not visible in catalog)</option>
+              <option value="published">Published (Live in public catalog)</option>
+              <option value="archived">Archived (Hidden from catalog)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="admin-form-group">
+          <label>Short Description *</label>
+          <textarea id="edit-game-desc" class="admin-input" rows="2" placeholder="Describe the gameplay, objectives, and excitement..."></textarea>
+        </div>
+
+        <div class="admin-form-group">
+          <label>Controls & Instructions</label>
+          <input type="text" id="edit-game-controls" class="admin-input" placeholder="e.g. Arrow keys to steer, Space to boost, Touch on mobile">
+        </div>
+
+        <div class="admin-form-group" style="margin-top: 4px;">
+          <label style="display: flex; align-items: center; gap: 8px; color: #fff; cursor: pointer;">
+            <input type="checkbox" id="edit-game-featured"> ⭐ Feature this game prominently on Homepage
+          </label>
+        </div>
+
+        <!-- ZIP Bundle Upload Section -->
+        <div id="edit-bundle-upload-section" class="bundle-dropzone-box" style="margin-top: 16px;">
+          <h4 style="color: #fff; margin-bottom: 6px;">📦 Game Bundle Archive (ZIP)</h4>
+          <p style="color: var(--text-muted); font-size: 0.82rem; margin-bottom: 10px;">
+            Upload an HTML5 game build containing <code>index.html</code>, assets, scripts, and stylesheets.
+          </p>
+          <div id="edit-bundle-status" style="font-size: 0.84rem; margin-bottom: 10px;"></div>
+          
+          <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+            <input type="file" id="edit-game-zip-file" accept=".zip" class="admin-input" style="flex: 1; padding: 6px 10px;">
+            <button type="button" id="btn-admin-upload-zip" class="btn btn-secondary" style="padding: 8px 16px; white-space: nowrap;">
+              ⬆️ Upload ZIP Bundle
+            </button>
+          </div>
+
+          <div style="height: 4px; background: rgba(255,255,255,0.08); border-radius: 2px; margin-top: 10px; overflow: hidden;">
+            <div id="edit-upload-progress" style="width: 0%; height: 100%; background: var(--brand-cyan); transition: width 0.3s ease;"></div>
+          </div>
+          <div id="edit-upload-feedback" class="upload-feedback hidden" style="margin-top: 8px;"></div>
+        </div>
+
+        <div style="display: flex; gap: 10px; margin-top: 20px; justify-content: flex-end;">
+          <button type="button" class="btn btn-secondary btn-close-admin-modal" style="padding: 10px 20px;">Cancel</button>
+          <button type="submit" class="btn btn-primary" style="padding: 10px 24px;">💾 Save Game Metadata</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==============================================
+       10. SANDBOXED GAME PREVIEW MODAL
+       ============================================== -->
+  <div id="screen-admin-preview" class="modal-screen hidden">
+    <div class="admin-modal-dialog admin-preview-dialog">
+      <div class="admin-header-row">
+        <h2 id="admin-preview-title">🎮 Preview Sandbox</h2>
+        <button id="btn-close-preview" class="btn-close-kid">✕</button>
+      </div>
+      <div id="admin-preview-stage" class="admin-preview-viewport"></div>
+    </div>
+  </div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
