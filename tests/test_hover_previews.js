@@ -98,12 +98,12 @@ function runHoverPreviewTests() {
   // --- Test 1: Preview Manifest Structure ---
   console.log('--- Test 1: Preview Manifest Structure ---');
   assert(typeof PREVIEW_MANIFEST === 'object', 'PREVIEW_MANIFEST is exported as an object');
-  assert(Object.keys(PREVIEW_MANIFEST).length >= 3, 'Manifest contains spotlight preview entries');
+  assert(Object.keys(PREVIEW_MANIFEST).length >= 4, 'Manifest contains spotlight preview entries');
 
-  const cricketMeta = getGamePreviewMeta({ id: 'game_cricket_premier_league', slug: 'cricket-premier-league-3d' });
-  assert(cricketMeta.hasPreview === true, 'Cricket Premier League 3D has valid preview flag true');
-  assert(cricketMeta.previewVideo.includes('.webm') || cricketMeta.previewVideo.includes('.mp4'), 'Cricket Premier League video has valid media format');
-  assert(typeof cricketMeta.source === 'string', 'Preview source/license is specified');
+  const arrowMeta = getGamePreviewMeta({ id: 'game_arrow_maze_escape', slug: 'arrow-maze-escape-tangled-puzzle' });
+  assert(arrowMeta.hasPreview === true, 'Arrow Maze Escape has valid preview flag true');
+  assert(arrowMeta.previewVideo.includes('.webm') || arrowMeta.previewVideo.includes('.mp4'), 'Arrow Maze Escape video has valid media format');
+  assert(typeof arrowMeta.source === 'string', 'Preview source/license is specified');
 
   // --- Test 2: Missing Preview Graceful Fallback ---
   console.log('\n--- Test 2: Missing Preview Graceful Fallback ---');

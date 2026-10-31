@@ -328,6 +328,10 @@ export class GameEngineBase {
     }
   }
 
+  gameOver(score, extraData = {}) {
+    return this.finishGame(score, { isVictory: false, ...extraData });
+  }
+
   // Complete clean up of all resources
   destroy() {
     this.isDestroyed = true;

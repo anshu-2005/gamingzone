@@ -37,7 +37,25 @@ export const DEFAULT_GAMES = [
     status: 'published'
   },
 
-  // 🚇 0b. Subway Surfers: Track Dash 3D
+  // 🏹 0b. Arrow Maze Escape (Trending Viral Tangled Arrow Puzzle)
+  {
+    id: 'game_arrow_maze_escape',
+    title: 'Arrow Maze Escape (Tangled Arrows)',
+    slug: 'arrow-maze-escape-tangled-puzzle',
+    category: 'puzzle',
+    tags: ['puzzle', 'trending', 'arcade'],
+    gameMode: 'levels',
+    icon: '🏹',
+    rating: 5.0,
+    plays: 68900,
+    featured: true,
+    bannerColor: 'linear-gradient(135deg, #00e5ff, #0284c7)',
+    description: 'The viral trending arrow labyrinth puzzle! Tap arrows with clear exit paths to escape without collision. Master 60 verified solvable levels with multiple themes, smooth arrow flow, and smart hints!',
+    controls: 'Desktop & Mobile: Tap any unblocked arrow to release it. Plan your escape sequence to untangle the maze!',
+    engine: 'ArrowMazeEscape'
+  },
+
+  // 🚇 0c. Subway Surfers: Track Dash 3D
   {
     id: 'game_subway_surfers_dash',
     title: 'Subway Surfers: Track Dash 3D',

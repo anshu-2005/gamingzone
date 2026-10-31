@@ -6,6 +6,16 @@
 
 export const PREVIEW_MANIFEST = {
   // 1. Featured Spotlight Games (Verified Working Video Previews)
+  'game_arrow_maze_escape': {
+    gameId: 'game_arrow_maze_escape',
+    slug: 'arrow-maze-escape-tangled-puzzle',
+    title: 'Arrow Maze Escape (Tangled Arrows)',
+    hasPreview: true,
+    previewVideo: '/uploads/previews/arrow-maze-escape.webm',
+    previewPoster: null,
+    source: 'GAMINGZONE Original Gameplay Recording',
+    format: 'video/webm'
+  },
   'game_cricket_premier_league': {
     gameId: 'game_cricket_premier_league',
     slug: 'cricket-premier-league-3d',

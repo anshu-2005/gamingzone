@@ -216,25 +216,25 @@ async function runTests() {
   }
   assert(duplicateCount === 0, `Active database catalog has 0 duplicates across ${allDbGames.length} games.`);
 
-  // 7. Pilot Game Isolation Test: Cricket Premier League
-  console.log('\n--- Test 7: Pilot Game Isolation (Cricket Premier League) ---');
-  const pilotGame = db.prepare("SELECT * FROM games WHERE slug = 'cricket-premier-league-3d' OR id = 'game_cricket_premier_league'").get();
-  assert(!!pilotGame, 'Pilot game "Cricket Premier League" exists in central database.');
-  assert(pilotGame.engine === 'CricketPremierLeague', 'Engine points to CricketPremierLeague module.');
+  // 7. Pilot Game Isolation Test: Arrow Maze Escape
+  console.log('\n--- Test 7: Pilot Game Isolation (Arrow Maze Escape) ---');
+  const arrowGame = db.prepare("SELECT * FROM games WHERE slug = 'arrow-maze-escape' OR id = 'game_arrow_maze_escape'").get();
+  assert(!!arrowGame, 'Pilot game "Arrow Maze Escape" exists in central database.');
+  assert(arrowGame.engine === 'ArrowMazeEscape', 'Engine points to ArrowMazeEscape module.');
 
-  const enginePath = path.resolve('js/games/CricketPremierLeague.js');
-  assert(fs.existsSync(enginePath), 'CricketPremierLeague.js engine file exists and is cleanly isolated.');
+  const enginePath = path.resolve('js/games/ArrowMazeEscape.js');
+  assert(fs.existsSync(enginePath), 'ArrowMazeEscape.js engine file exists and is cleanly isolated.');
 
   // Verify independent update does not affect other games
-  const originalDesc = pilotGame.description;
+  const originalDesc = arrowGame.description;
   const testDesc = 'Updated pilot description test ' + Date.now();
-  db.prepare("UPDATE games SET description = ?, updated_at = ? WHERE id = ?").run(testDesc, Date.now(), pilotGame.id);
+  db.prepare("UPDATE games SET description = ?, updated_at = ? WHERE id = ?").run(testDesc, Date.now(), arrowGame.id);
 
-  const reloadedPilot = db.prepare("SELECT description FROM games WHERE id = ?").get(pilotGame.id);
-  assert(reloadedPilot.description === testDesc, 'Pilot game metadata independently updated without altering other games.');
+  const reloadedArrow = db.prepare("SELECT description FROM games WHERE id = ?").get(arrowGame.id);
+  assert(reloadedArrow.description === testDesc, 'Pilot game metadata independently updated without altering other games.');
 
   // Restore original description
-  db.prepare("UPDATE games SET description = ?, updated_at = ? WHERE id = ?").run(originalDesc, Date.now(), pilotGame.id);
+  db.prepare("UPDATE games SET description = ?, updated_at = ? WHERE id = ?").run(originalDesc, Date.now(), arrowGame.id);
   assert(true, 'Pilot game metadata restored cleanly.');
 
   // 8. Gameplay Preview Video Upload & Validation
