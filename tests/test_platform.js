@@ -356,8 +356,8 @@ async function runTests() {
   assert(persistentGame.preview_video === videoUrl, 'Preview video URL persists across server initialization.');
   assert(persistentGame.thumbnail === coverUrl, 'Cover image URL persists across server initialization.');
 
-  // Restore test game to published
-  db.prepare("UPDATE games SET status = 'published' WHERE id = ?").run(testId);
+  // Cleanup test game
+  db.prepare("DELETE FROM games WHERE id = ?").run(testId);
 
   console.log(`\n====================================================`);
   console.log(`TEST SUMMARY: ${passed} PASSED, ${failed} FAILED`);

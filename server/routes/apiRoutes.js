@@ -55,14 +55,14 @@ apiRouter.get('/games', (req, res) => {
       params.push(term, term, term, term);
     }
 
-    // Sort order
+    // Sort order: Newly added games always come first!
     if (sort === 'newest') {
-      query += ` ORDER BY created_at DESC`;
+      query += ` ORDER BY created_at DESC, updated_at DESC`;
     } else if (sort === 'title') {
       query += ` ORDER BY title ASC`;
     } else {
-      // Default: popular
-      query += ` ORDER BY plays DESC, rating DESC`;
+      // Default: new releases first (newest timestamp first), then by plays & rating
+      query += ` ORDER BY is_new DESC, created_at DESC, updated_at DESC, plays DESC, rating DESC`;
     }
 
     query += ` LIMIT ?`;

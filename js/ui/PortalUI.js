@@ -426,6 +426,22 @@ export class PortalUI {
 
     container.appendChild(featuredSection);
 
+    // 2b. ✨ New & Recent Releases Shelf (Always First!)
+    const newGames = [...allGames]
+      .filter(g => g.is_new || (g.tags && g.tags.includes('new')))
+      .sort((a, b) => {
+        const timeB = b.created_at || b.updated_at || 0;
+        const timeA = a.created_at || a.updated_at || 0;
+        return timeB - timeA;
+      });
+    if (newGames.length > 0) {
+      container.appendChild(this.createShelfSection({
+        title: '✨ New & Recent Releases',
+        subtitle: 'Fresh arrivals and newly added games • Play them first!',
+        games: newGames
+      }));
+    }
+
     // 3. Jump Back In (Recently Played)
     const recentGames = portalState.getRecentlyPlayed(8);
     if (recentGames && recentGames.length > 0) {
@@ -541,14 +557,29 @@ export class PortalUI {
   getSortedGames(gamesList) {
     const list = [...gamesList];
     if (this.currentSort === 'rating') {
-      return list.sort((a, b) => (b.rating || 0) - (a.rating || 0));
+      return list.sort((a, b) => {
+        if (Boolean(b.is_new) !== Boolean(a.is_new)) return (b.is_new ? 1 : 0) - (a.is_new ? 1 : 0);
+        return (b.rating || 0) - (a.rating || 0);
+      });
     } else if (this.currentSort === 'title') {
       return list.sort((a, b) => (a.title || '').localeCompare(b.title || ''));
     } else if (this.currentSort === 'new') {
-      return list.sort((a, b) => (b.is_new ? 1 : 0) - (a.is_new ? 1 : 0));
+      return list.sort((a, b) => {
+        const timeB = b.created_at || b.updated_at || 0;
+        const timeA = a.created_at || a.updated_at || 0;
+        return timeB - timeA;
+      });
     }
-    // Default popular
-    return list.sort((a, b) => (b.plays || 0) - (a.plays || 0));
+    // Default popular: newly added games come first!
+    return list.sort((a, b) => {
+      if (Boolean(b.is_new) !== Boolean(a.is_new)) return (b.is_new ? 1 : 0) - (a.is_new ? 1 : 0);
+      if (b.is_new && a.is_new) {
+        const timeB = b.created_at || b.updated_at || 0;
+        const timeA = a.created_at || a.updated_at || 0;
+        if (timeB !== timeA) return timeB - timeA;
+      }
+      return (b.plays || 0) - (a.plays || 0);
+    });
   }
 
   createShelfSection({ title, subtitle = '', games }) {

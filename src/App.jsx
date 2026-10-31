@@ -236,15 +236,34 @@ export function App() {
       );
     }
 
-    // Sorting
+    // Sorting: Newly added games always come first!
     if (currentSort === 'popular') {
-      result.sort((a, b) => (b.plays || 0) - (a.plays || 0));
+      result.sort((a, b) => {
+        if (Boolean(b.is_new) !== Boolean(a.is_new)) {
+          return (b.is_new ? 1 : 0) - (a.is_new ? 1 : 0);
+        }
+        if (b.is_new && a.is_new) {
+          const timeB = b.created_at || b.updated_at || 0;
+          const timeA = a.created_at || a.updated_at || 0;
+          if (timeB !== timeA) return timeB - timeA;
+        }
+        return (b.plays || 0) - (a.plays || 0);
+      });
     } else if (currentSort === 'rating') {
-      result.sort((a, b) => (b.rating || 0) - (a.rating || 0));
+      result.sort((a, b) => {
+        if (Boolean(b.is_new) !== Boolean(a.is_new)) {
+          return (b.is_new ? 1 : 0) - (a.is_new ? 1 : 0);
+        }
+        return (b.rating || 0) - (a.rating || 0);
+      });
     } else if (currentSort === 'title') {
       result.sort((a, b) => a.title.localeCompare(b.title));
     } else if (currentSort === 'new') {
-      result.sort((a, b) => (b.is_new ? 1 : 0) - (a.is_new ? 1 : 0));
+      result.sort((a, b) => {
+        const timeB = b.created_at || b.updated_at || 0;
+        const timeA = a.created_at || a.updated_at || 0;
+        return timeB - timeA;
+      });
     }
 
     return result;
@@ -260,6 +279,17 @@ export function App() {
   const cricketList = games.filter((g) => g.category === 'cricket');
   const actionList = games.filter((g) => g.category === 'action');
   const puzzleList = games.filter((g) => g.category === 'puzzle');
+
+  // Freshly Added Releases List (Newest first)
+  const newList = useMemo(() => {
+    return [...games]
+      .filter((g) => g.is_new || (g.tags && g.tags.includes('new')))
+      .sort((a, b) => {
+        const timeB = b.created_at || b.updated_at || 0;
+        const timeA = a.created_at || a.updated_at || 0;
+        return timeB - timeA;
+      });
+  }, [games]);
 
   // Dynamic Personalized Recommendations
   const recommendedList = useMemo(() => {
@@ -463,6 +493,18 @@ export function App() {
                   )}
                 </div>
               </section>
+
+              {/* ✨ New & Recent Releases Shelf (Always First!) */}
+              {newList.length > 0 && (
+                <GameShelf
+                  title="✨ New & Recent Releases"
+                  subtitle="Freshly added games • Be the first to play and set high scores!"
+                  games={newList}
+                  onSelectGame={handleSelectGame}
+                  favorites={favorites}
+                  onToggleFavorite={handleToggleFavorite}
+                />
+              )}
 
               {/* Jump Back In (Recently Played) */}
               {recentList.length > 0 && (

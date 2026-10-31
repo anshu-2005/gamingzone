@@ -6,13 +6,14 @@ const LEGACY_STORAGE_KEY = 'pokirush_progression_portal_v6';
 
 export const DEFAULT_HOMEPAGE_SECTIONS = [
   { id: 'hero_carousel', title: '⭐ FEATURED SPOTLIGHT', type: 'hero', enabled: true, order: 1 },
-  { id: 'daily_challenges', title: '🔥 DAILY & WEEKLY QUESTS', type: 'daily_challenges', enabled: true, order: 2 },
-  { id: 'ai_recommendations', title: '🤖 RECOMMENDED FOR YOU (AI DISCOVERY)', type: 'ai_recommendations', enabled: true, order: 3 },
-  { id: 'recently_played', title: '🕒 CONTINUE PLAYING', type: 'recently_played', enabled: true, order: 4 },
-  { id: 'trending_games', title: '⚡ TRENDING NOW', type: 'tag_filter', filter: 'trending', enabled: true, order: 5 },
-  { id: 'two_player_games', title: '👥 2-PLAYER & MULTIPLAYER BATTLES', type: 'tag_filter', filter: '2player', enabled: true, order: 6 },
-  { id: 'editors_choice', title: '🏆 EDITOR\'S CHOICE', type: 'tag_filter', filter: 'action', enabled: true, order: 7 },
-  { id: 'all_popular_games', title: '🔥 ALL POPULAR GAMES', type: 'all_grid', enabled: true, order: 8 }
+  { id: 'new_releases', title: '✨ NEW & RECENT RELEASES', type: 'tag_filter', filter: 'new', enabled: true, order: 2 },
+  { id: 'daily_challenges', title: '🔥 DAILY & WEEKLY QUESTS', type: 'daily_challenges', enabled: true, order: 3 },
+  { id: 'ai_recommendations', title: '🤖 RECOMMENDED FOR YOU (AI DISCOVERY)', type: 'ai_recommendations', enabled: true, order: 4 },
+  { id: 'recently_played', title: '🕒 CONTINUE PLAYING', type: 'recently_played', enabled: true, order: 5 },
+  { id: 'trending_games', title: '⚡ TRENDING NOW', type: 'tag_filter', filter: 'trending', enabled: true, order: 6 },
+  { id: 'two_player_games', title: '👥 2-PLAYER & MULTIPLAYER BATTLES', type: 'tag_filter', filter: '2player', enabled: true, order: 7 },
+  { id: 'editors_choice', title: '🏆 EDITOR\'S CHOICE', type: 'tag_filter', filter: 'action', enabled: true, order: 8 },
+  { id: 'all_popular_games', title: '🔥 ALL POPULAR GAMES', type: 'all_grid', enabled: true, order: 9 }
 ];
 
 export const DEFAULT_ACHIEVEMENTS = [
