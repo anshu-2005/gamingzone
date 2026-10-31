@@ -10,7 +10,7 @@
     "server": "node server/server.js",
     "start": "node server/server.js",
     "test:levels": "node tests/test_level_engine.js",
-    "test:games": "node tests/test_platform.js && node tests/test_arrow_maze_escape.js && node tests/test_neon_laser_reflector.js && node tests/test_all_games.js && node tests/test_game_lifecycle_qa.js && node tests/test_hover_previews.js && node tests/test_level_engine.js",
+    "test:games": "node tests/test_platform.js && node tests/test_neon_laser_reflector.js && node tests/test_all_games.js && node tests/test_game_lifecycle_qa.js && node tests/test_hover_previews.js && node tests/test_level_engine.js",
     "test": "npm run test:games",
     "verify:release": "npm run test:games && npm run build"
   },

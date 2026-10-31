@@ -24,3 +24,4 @@ const recentAdded = db.prepare(`
 
 console.log('\n--- 10 Most Recently Created Games ---');
 recentAdded.forEach(g => console.log(`[${g.id}] "${g.title}" (slug: ${g.slug}, status: ${g.status}, type: ${g.game_type}, url: ${g.external_url})`));
+
