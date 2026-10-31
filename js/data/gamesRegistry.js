@@ -13,7 +13,31 @@ export const CATEGORIES = [
 ];
 
 export const DEFAULT_GAMES = [
-  // 🏹 0. Arrow Maze Escape (Trending Viral Tangled Arrow Puzzle)
+  // 🏹 0. Arrow Escape (Flutter Web Edition)
+  {
+    id: 'game_arrow_escape_flutter',
+    title: 'Arrow Escape',
+    slug: 'arrow-escape-flutter',
+    category: 'puzzle',
+    tags: ['puzzle', 'arrow', 'escape', 'strategy', 'brain', 'trending'],
+    game_type: 'external',
+    gameMode: 'puzzle',
+    icon: '🏹',
+    rating: 4.9,
+    plays: 42100,
+    featured: true,
+    is_new: true,
+    is_trending: true,
+    bannerColor: 'linear-gradient(135deg, #4f46e5, #06b6d4)',
+    description: 'A challenging arrow-based puzzle game where players plan their moves and solve escape challenges.',
+    controls: 'Desktop & Mobile: Tap/Click arrows to slide them off the grid.',
+    instructions: 'Plan your moves and tap unobstructed arrows to clear the board.',
+    external_url: 'https://arrow-bro.vercel.app',
+    entry_path: 'index.html',
+    status: 'published'
+  },
+
+  // 🏹 0b. Arrow Maze Escape (Trending Viral Tangled Arrow Puzzle)
   {
     id: 'game_arrow_maze_escape',
     title: 'Arrow Maze Escape (Tangled Arrows)',

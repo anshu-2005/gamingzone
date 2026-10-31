@@ -174,6 +174,18 @@ export function GamePlayer({
               <span>{isPaused ? '▶️' : '⏸️'}</span>
             </button>
           )}
+          {(game.external_url || game.game_type === 'external') && (
+            <a
+              href={game.external_url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-icon"
+              title="Open Game in New Tab"
+              style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', textDecoration: 'none' }}
+            >
+              <span>↗️</span>
+            </a>
+          )}
           <button className="btn-icon" onClick={handleToggleFullscreen} title="Fullscreen Mode">
             <span>⛶</span>
           </button>
@@ -184,11 +196,11 @@ export function GamePlayer({
       <div className="game-stage-viewport" ref={viewportRef}>
         {isBundle ? (
           <iframe
-            src={game.bundle_url || game.bundleUrl || game.external_url}
+            src={game.game_type === 'external' ? (game.external_url || game.externalUrl) : (game.bundle_url || game.bundleUrl || game.external_url)}
             className="game-bundle-iframe"
             title={game.title}
-            sandbox="allow-scripts allow-same-origin allow-pointer-lock allow-forms"
-            allow="fullscreen; autoplay; gamepad"
+            sandbox="allow-scripts allow-same-origin allow-pointer-lock allow-forms allow-popups allow-popups-to-escape-sandbox allow-modals"
+            allow="fullscreen; autoplay; gamepad; clipboard-read; clipboard-write"
             allowFullScreen
           />
         ) : (

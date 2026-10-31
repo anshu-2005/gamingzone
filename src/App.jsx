@@ -53,7 +53,7 @@ export function App() {
 
   // Fetch games from live backend
   const fetchLiveGames = () => {
-    fetch('/api/games')
+    fetch('/api/games?limit=500')
       .then((r) => r.json())
       .then((d) => {
         if (d.games && d.games.length > 0) {
@@ -588,7 +588,14 @@ export function App() {
             </p>
           </div>
           <div style={{ display: 'flex', gap: '16px', fontSize: '0.82rem' }}>
-            <a href="#admin" onClick={() => setIsAdminOpen(true)} style={{ color: 'var(--brand-coral)' }}>
+            <a
+              href="#admin"
+              onClick={(e) => {
+                e.preventDefault();
+                setIsAdminOpen(true);
+              }}
+              style={{ color: 'var(--brand-coral)', cursor: 'pointer' }}
+            >
               ⚙️ Admin Portal
             </a>
             <a href="#home" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} style={{ color: '#94a3b8' }}>

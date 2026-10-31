@@ -211,13 +211,13 @@ export function initDatabase() {
   const insertGame = db.prepare(`
     INSERT OR IGNORE INTO games (
       id, slug, title, description, category, tags, thumbnail,
-      bundle_url, entry_path, game_type, engine, controls,
+      bundle_url, external_url, entry_path, game_type, engine, controls, instructions,
       version, status, is_featured, is_trending, is_new,
       plays, rating, created_at, updated_at
-    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
   `);
 
-  const checkGame = db.prepare('SELECT id FROM games WHERE id = ?');
+  const checkGame = db.prepare('SELECT id, external_url, game_type FROM games WHERE id = ?');
   const now = Date.now();
   let newSeededCount = 0;
 
@@ -232,27 +232,35 @@ export function initDatabase() {
         g.category || 'action',
         JSON.stringify(g.tags || [g.category]),
         g.icon || '🎮',
-        '', // bundle_url is empty for builtins
-        'index.html',
-        'builtin',
+        g.bundle_url || '',
+        g.external_url || '',
+        g.entry_path || 'index.html',
+        g.game_type || 'builtin',
         g.engine || '',
         g.controls || 'Keyboard / Touch controls',
+        g.instructions || '',
         '1.0.0',
-        'published',
+        g.status || 'published',
         g.featured ? 1 : 0,
-        (g.tags && g.tags.includes('trending')) ? 1 : 0,
-        (g.tags && g.tags.includes('new')) ? 1 : 0,
+        (g.is_trending || (g.tags && g.tags.includes('trending'))) ? 1 : 0,
+        (g.is_new || (g.tags && g.tags.includes('new'))) ? 1 : 0,
         g.plays || 1200,
         g.rating || 4.8,
         now,
         now
       );
       newSeededCount++;
+    } else if (g.external_url && (!existing.external_url || existing.game_type !== g.game_type)) {
+      db.prepare(`
+        UPDATE games
+        SET external_url = ?, game_type = ?, status = 'published', updated_at = ?
+        WHERE id = ?
+      `).run(g.external_url, g.game_type || 'external', now, g.id);
     }
   }
 
   if (newSeededCount > 0) {
-    console.log(`[Database] Synchronized ${newSeededCount} newly added builtin games from gamesRegistry.`);
+    console.log(`[Database] Synchronized ${newSeededCount} newly added games from gamesRegistry.`);
   }
 
   // 5. Seed Demo Identities for Leaderboards (Clearly Labeled is_demo = 1)

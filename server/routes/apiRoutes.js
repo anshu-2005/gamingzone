@@ -20,7 +20,7 @@ apiRouter.get('/health', (req, res) => {
  */
 apiRouter.get('/games', (req, res) => {
   try {
-    const { category, search, featured, trending, is_new, limit = 100, sort = 'popular' } = req.query;
+    const { category, search, featured, trending, is_new, limit = 500, sort = 'popular' } = req.query;
 
     let query = `
       SELECT id, slug, title, description, category, tags, thumbnail,
@@ -66,7 +66,7 @@ apiRouter.get('/games', (req, res) => {
     }
 
     query += ` LIMIT ?`;
-    params.push(Math.min(parseInt(limit, 10) || 100, 200));
+    params.push(Math.min(parseInt(limit, 10) || 500, 1000));
 
     const games = db.prepare(query).all(...params);
 

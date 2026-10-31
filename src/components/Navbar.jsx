@@ -124,7 +124,7 @@ export function Navbar({
 
         {/* Admin Login Subtle Icon */}
         <button
-          className="btn-header-admin-subtle"
+          className="btn-header-icon btn-header-admin-subtle"
           onClick={() => {
             sounds.playClick();
             onOpenAdmin();
