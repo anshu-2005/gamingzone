@@ -17,3 +17,4 @@ const totalPublished = db.prepare("SELECT COUNT(*) as count FROM games WHERE sta
 console.log('Total published games:', totalPublished.count);
 
 process.exit(0);
+

@@ -13,6 +13,30 @@ export const CATEGORIES = [
 ];
 
 export const DEFAULT_GAMES = [
+  // 🚇 Metro Rush: Endless Runner (Vercel Edition)
+  {
+    id: 'game_metro_rush_runner',
+    title: 'Metro Rush: Endless Runner',
+    slug: 'metro-rush-endless-runner',
+    category: 'action',
+    tags: ['action', 'arcade', '3d', 'runner', 'trending'],
+    game_type: 'external',
+    gameMode: 'highscore',
+    icon: '🚇',
+    rating: 4.9,
+    plays: 53400,
+    featured: true,
+    is_new: true,
+    is_trending: true,
+    bannerColor: 'linear-gradient(135deg, #f59e0b, #ef4444)',
+    description: 'Sprint down the vibrant metro subway tracks, dodge oncoming trains and barriers, grab gold coins and power-ups in this high-octane 3D endless runner!',
+    controls: 'Desktop: [A/D] or [Left/Right] arrows to switch lanes, [Up]/[Space] to jump, [Down] to roll/slide. Mobile: Swipe left, right, up, down.',
+    instructions: 'Dodge trains, jump over roadblocks, and slide under barriers to achieve the highest score!',
+    external_url: 'https://metro-rush-runner.vercel.app',
+    entry_path: 'index.html',
+    status: 'published'
+  },
+
   // 🏹 0. Arrow Escape (Flutter Web Edition)
   {
     id: 'game_arrow_escape_flutter',
