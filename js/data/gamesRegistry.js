@@ -55,30 +55,6 @@ export const DEFAULT_GAMES = [
     engine: 'ArrowMazeEscape'
   },
 
-  // 🚇 0c. Subway Surfers: Track Dash 3D
-  {
-    id: 'game_subway_surfers_dash',
-    title: 'Subway Surfers: Track Dash 3D',
-    slug: 'subway-surfers-track-dash-3d',
-    category: '3d',
-    tags: ['3d', 'action', 'trending', 'runner', 'subway'],
-    game_type: 'external',
-    gameMode: 'runner',
-    icon: '🚇',
-    rating: 4.9,
-    plays: 78500,
-    featured: true,
-    is_new: true,
-    is_trending: true,
-    bannerColor: 'linear-gradient(135deg, #f59e0b, #ef4444)',
-    description: 'Endless 3D track runner! Dash past train barriers, jump over oncoming obstacles, slide beneath signs, and grab gold coin multipliers in non-stop city railway action.',
-    controls: 'Desktop & Mobile: Arrow Keys / Swipe to switch lanes, jump over barriers, and slide.',
-    instructions: 'Dodge trains and obstacles, collect coins, and survive as long as possible!',
-    external_url: 'https://game-nu3y.vercel.app',
-    entry_path: 'index.html',
-    status: 'published'
-  },
-
   // 🏏 1. Cricket Premier League 3D (All Overs & Chase)
   {
     id: 'game_cricket_premier_league',
