@@ -16,3 +16,4 @@ for (const repo of repos) {
     console.error(`Failed ${repo.name}:`, e.message);
   }
 }
+

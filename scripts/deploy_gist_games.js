@@ -25,3 +25,4 @@ copyDir('scratch/skifree', 'public/skifree');
 copyDir('scratch/sorades', 'public/sorades');
 
 console.log('Finished copying game assets.');
+

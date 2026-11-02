@@ -207,3 +207,4 @@ soradesHtml = soradesHtml.replace(/<a href="http:\/\/www\.gramambo\.de\/"[\s\S]*
 fs.writeFileSync('public/sorades/index.html', soradesHtml, 'utf8');
 
 console.log('Successfully patched all 4 games!');
+

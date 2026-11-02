@@ -25,3 +25,4 @@ for (const repo of repos) {
     console.error(`Failed to clone ${repo.name}:`, e.message);
   }
 }
+

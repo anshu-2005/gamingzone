@@ -159,3 +159,4 @@ if (fs.existsSync(dbFile)) {
     }
   });
 }
+

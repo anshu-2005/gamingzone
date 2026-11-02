@@ -10,3 +10,4 @@ rl.on('line', (line) => {
     console.log(JSON.stringify(data.tool_calls, null, 2));
   }
 });
+

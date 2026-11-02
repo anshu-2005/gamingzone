@@ -29,3 +29,4 @@ console.log(`Found ${games.length} browser games:`);
 games.forEach((g, i) => {
   console.log(`${i + 1}. [${g.title}](${g.repo}) - ${g.desc}`);
 });
+

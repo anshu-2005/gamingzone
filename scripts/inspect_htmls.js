@@ -7,3 +7,4 @@ for (const name of ['alien-invasion', 'coil', 'skifree', 'sorades']) {
     console.log(fs.readFileSync(p, 'utf8'));
   }
 }
+

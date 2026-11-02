@@ -9,3 +9,4 @@ for (const name of ['alien-invasion', 'coil', 'skifree', 'sorades']) {
     console.error(e.message);
   }
 }
+

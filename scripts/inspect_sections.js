@@ -27,3 +27,4 @@ for (const [sec, items] of Object.entries(gamesBySection)) {
     items.forEach(it => console.log('  ' + it.slice(0, 100)));
   }
 }
+
