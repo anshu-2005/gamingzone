@@ -54,6 +54,9 @@ indexHtml = indexHtml.replace(/<div id='badges'>[\s\S]*?<\/div>/, '');
 // Remove Russian social share script
 indexHtml = indexHtml.replace(/<script type="text\/javascript">\s*\(function addRussianSocialShare[\s\S]*?<\/script>/, '');
 
+// Remove all twitter:app and store meta tags
+indexHtml = indexHtml.replace(/<meta property="twitter:app:[^"]+"[^>]+>\s*/g, '');
+
 fs.writeFileSync(indexPath, indexHtml, 'utf8');
 console.log('✅ Cleaned up index.html (removed Facebook, Twitter, Google Play, App Store buttons)');
 

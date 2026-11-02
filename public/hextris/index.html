@@ -33,13 +33,6 @@
 		<meta property="twitter:image:src" content="http://hextris.github.io/hextris/images/twitter-opengraph.png"/>
 		<meta property="twitter:image:width" content="512"/>
 		<meta property="twitter:image:height" content="512"/>
-		<meta property="twitter:app:id:iphone" content="id903769553">
-		<meta property="twitter:app:id:ipad" content="id903769553">
-		<meta property="twitter:app:id:googleplay" content="com.hextris.hextris">
-		<meta property="twitter:app:country" content="us">
-		<meta property="twitter:app:url:iphone" content="itunes.apple.com/us/app/id903769553?mt=8">
-		<meta property="twitter:app:url:ipad" content="itunes.apple.com/us/app/id903769553?mt=8">
-		<meta property="twitter:app:url:googleplay" content="https://play.google.com/store/apps/details?id=com.hextris.hextris">
 		<link rel="icon" type="image/png" href="favicon.ico">
 		<link href='http://fonts.googleapis.com/css?family=Exo+2' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" href="style/fa/css/font-awesome.min.css">
@@ -69,6 +62,14 @@
 				display: flex;
 				align-items: center;
 				gap: 6px;
+			}
+			#buttonCont, #badges, .rrssb-buttons, #socialShare, #androidBadge, #iOSBadge {
+				display: none !important;
+				visibility: hidden !important;
+				height: 0 !important;
+				width: 0 !important;
+				overflow: hidden !important;
+				pointer-events: none !important;
 			}
 			#buttonCont, #badges, .rrssb-buttons, #socialShare, #androidBadge, #iOSBadge {
 				display: none !important;
