@@ -148,11 +148,7 @@
         .click(() => Engine.toggleVolume())
         .appendTo(menu);
 
-      $('<span>')
-        .addClass('appStore menuBtn')
-        .text(_('get the app.'))
-        .click(Engine.getApp)
-        .appendTo(menu);
+      
 
       $('<span>')
         .addClass('lightsOff menuBtn')
@@ -474,37 +470,26 @@
 
     share: function() {
       Events.startEvent({
-        title: _('Share'),
+        title: _('Share GAMINGZONE'),
         scenes: {
           start: {
-            text: [_('bring your friends.')],
+            text: [_('Share this game with friends or check out developer portfolio.')],
             buttons: {
-              'facebook': {
-                text: _('facebook'),
+              'copy': {
+                text: _('Copy Game Link'),
                 nextScene: 'end',
                 onChoose: function() {
-                  window.open('https://www.facebook.com/sharer/sharer.php?u=' + Engine.SITE_URL, 'sharer', 'width=626,height=436,location=no,menubar=no,resizable=no,scrollbars=no,status=no,toolbar=no');
+                  if (navigator.clipboard) {
+                    navigator.clipboard.writeText(window.location.href);
+                    Notifications.notify(Room, 'Link copied to clipboard!');
+                  }
                 }
               },
-              'google': {
-                text:_('google+'),
+              'profile': {
+                text: _('Developer GitHub'),
                 nextScene: 'end',
                 onChoose: function() {
-                  window.open('https://plus.google.com/share?url=' + Engine.SITE_URL, 'sharer', 'width=480,height=436,location=no,menubar=no,resizable=no,scrollbars=no,status=no,toolbar=no');
-                }
-              },
-              'twitter': {
-                text: _('twitter'),
-                nextScene: 'end',
-                onChoose: function() {
-                  window.open('https://twitter.com/intent/tweet?text=A%20Dark%20Room&url=' + Engine.SITE_URL, 'sharer', 'width=660,height=260,location=no,menubar=no,resizable=no,scrollbars=yes,status=no,toolbar=no');
-                }
-              },
-              'reddit': {
-                text: _('reddit'),
-                nextScene: 'end',
-                onChoose: function() {
-                  window.open('http://www.reddit.com/submit?url=' + Engine.SITE_URL, 'sharer', 'width=960,height=700,location=no,menubar=no,resizable=no,scrollbars=yes,status=no,toolbar=no');
+                  window.open('https://github.com/anshu-2005', '_blank');
                 }
               },
               'close': {
@@ -516,7 +501,7 @@
         }
       },
       {
-        width: '400px'
+        width: '420px'
       });
     },
 
