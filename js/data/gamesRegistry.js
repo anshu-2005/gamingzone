@@ -14,6 +14,146 @@ export const CATEGORIES = [
 
 export const DEFAULT_GAMES = [
   {
+  "id": "game_green_mahjong",
+  "title": "Green Mahjong: Solitaire Zen",
+  "slug": "green-mahjong-solitaire-zen",
+  "category": "puzzle",
+  "tags": [
+    "puzzle",
+    "mahjong",
+    "casual",
+    "board",
+    "zen",
+    "trending",
+    "new"
+  ],
+  "game_type": "bundle",
+  "bundle_url": "/green-mahjong/",
+  "entry_path": "index.html",
+  "icon": "🀄",
+  "rating": 4.9,
+  "plays": 91200,
+  "featured": true,
+  "is_new": true,
+  "is_trending": true,
+  "bannerColor": "linear-gradient(135deg, #15803d, #047857)",
+  "description": "Relaxing and beautiful solitaire Mahjong puzzle game! Match matching traditional tiles to clear the pyramid board.",
+  "controls": "Mouse/Touch: Click or tap uncovered matching tiles to pair and clear them.",
+  "instructions": "Find free tiles with matching symbols to remove them. Clear the entire board to achieve high score masteries!"
+},
+
+  {
+  "id": "game_gladiator_3d",
+  "title": "Gladiator 3D: Raycast Dungeon",
+  "slug": "gladiator-3d-raycast-dungeon",
+  "category": "action",
+  "tags": [
+    "action",
+    "3d",
+    "fps",
+    "retro",
+    "raycast",
+    "dungeon",
+    "new"
+  ],
+  "game_type": "bundle",
+  "bundle_url": "/gladiator-3d/",
+  "entry_path": "index.html",
+  "icon": "🗡️",
+  "rating": 4.8,
+  "plays": 87400,
+  "featured": true,
+  "is_new": true,
+  "is_trending": true,
+  "bannerColor": "linear-gradient(135deg, #b91c1c, #991b1b)",
+  "description": "Fast-paced Wolfenstein-style pseudo-3D raycast FPS dungeon crawler! Navigate stone labyrinths and eliminate gladiators.",
+  "controls": "Desktop: [WASD / Arrow Keys] to move & turn, [Space] to interact/attack.",
+  "instructions": "Search dark stone labyrinths, use your minimap radar, and eliminate arena enemies before they strike."
+},
+
+  {
+  "id": "game_cellmates_breakout",
+  "title": "Cell Mates: Prison Break Rush",
+  "slug": "cell-mates-prison-break",
+  "category": "arcade",
+  "tags": [
+    "arcade",
+    "stealth",
+    "pixel",
+    "action",
+    "new"
+  ],
+  "game_type": "bundle",
+  "bundle_url": "/cellmates/",
+  "entry_path": "index.html",
+  "icon": "⛓️",
+  "rating": 4.7,
+  "plays": 72600,
+  "featured": true,
+  "is_new": true,
+  "is_trending": true,
+  "bannerColor": "linear-gradient(135deg, #475569, #334155)",
+  "description": "Stealth prison breakout action game! Sneak past laser surveillance and guards to help your fellow inmate escape.",
+  "controls": "Desktop: [Arrow Keys] to creep, navigate corridors, and dodge security cameras.",
+  "instructions": "Evade spotlights, coordinate timing with your partner, and reach the safe exit hatch."
+},
+
+  {
+  "id": "game_marblesoccer_3d",
+  "title": "Marble Soccer: 3D Physics Arena",
+  "slug": "marble-soccer-3d-physics",
+  "category": "sports",
+  "tags": [
+    "sports",
+    "3d",
+    "marble",
+    "soccer",
+    "physics",
+    "new"
+  ],
+  "game_type": "bundle",
+  "bundle_url": "/marblesoccer/",
+  "entry_path": "index.html",
+  "icon": "⚽",
+  "rating": 4.8,
+  "plays": 85900,
+  "featured": true,
+  "is_new": true,
+  "is_trending": true,
+  "bannerColor": "linear-gradient(135deg, #2563eb, #1d4ed8)",
+  "description": "3D real-time physics arcade soccer! Steer your rolling marble to dribble balls into the goal zones.",
+  "controls": "Desktop: [Arrow Keys / WASD] to steer marble velocity and push the ball.",
+  "instructions": "Dribble the soccer ball past obstacles and score clean goals into the red square net zones!"
+},
+
+  {
+  "id": "game_pixelplatformer_jump",
+  "title": "Pixel Platformer: Retro Jump",
+  "slug": "pixel-platformer-retro-jump",
+  "category": "arcade",
+  "tags": [
+    "arcade",
+    "platformer",
+    "retro",
+    "pixel",
+    "new"
+  ],
+  "game_type": "bundle",
+  "bundle_url": "/pixelplatformer/",
+  "entry_path": "index.html",
+  "icon": "🏃",
+  "rating": 4.7,
+  "plays": 69800,
+  "featured": true,
+  "is_new": true,
+  "is_trending": true,
+  "bannerColor": "linear-gradient(135deg, #0284c7, #0369a1)",
+  "description": "Classic pixelated side-scrolling platformer! Leap over pits, dodge spike hazards, and collect golden gems.",
+  "controls": "Desktop: [Left/Right Arrow] to run, [Spacebar / Up Arrow] to jump.",
+  "instructions": "Time your jumps precisely between platforms and dodge hazards to reach the level exit."
+},
+
+  {
   "id": "game_asteroids_vector",
   "title": "Asteroids: Vector Arcade Classic",
   "slug": "asteroids-vector-classic",

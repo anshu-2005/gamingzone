@@ -54,3 +54,4 @@ for (const cand of candidates) {
 
 fs.writeFileSync('valid_arcade_candidates.json', JSON.stringify(valid, null, 2));
 console.log(`\nValid arcade games ready to bundle: ${valid.length}`);
+

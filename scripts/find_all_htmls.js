@@ -38,3 +38,4 @@ for (const d of dirs) {
 
 fs.writeFileSync('playable_summary.json', JSON.stringify(playable, null, 2));
 console.log(`\nTotal playable arcade games found: ${playable.length}`);
+

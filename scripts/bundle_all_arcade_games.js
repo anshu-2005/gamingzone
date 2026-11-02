@@ -381,3 +381,4 @@ for (let i = gamesToBundle.length - 1; i >= 0; i--) {
 fs.writeFileSync(registryPath, registryContent, 'utf8');
 
 console.log('Finished bundling and registering all arcade games!');
+

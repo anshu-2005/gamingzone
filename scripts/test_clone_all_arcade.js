@@ -54,3 +54,4 @@ for (const repo of repos) {
 
 fs.writeFileSync('arcade_clone_report.json', JSON.stringify(results, null, 2));
 console.log('\nFinished testing all arcade repos!');
+
