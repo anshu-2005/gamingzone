@@ -166,28 +166,7 @@ button:focus {
 }
 
 #inst_main_body {
-	padding:0px;
-	font-size:1.2em;
-	left:50%;
-	top:50%;
-	position: absolute;
-	text-align:left;
-	max-width:400px;
-	/*margin-top:30px;*/
-	transform:translate(-50%, -50%);
-	-webkit-transform:translate(-50%, -50%);
-	-moz-transform:translate(-50%, -50%);
-	-ms-transform:translate(-50%, -50%);
-}
-
-#inst_main_body > a {
-	font-weight:bold;
-}
-
-#inst_main_body > hr {
-	width:100%;
-	color:#232323;
-	background-color:#232323;
+	background-color: #030712 !important;
 	height:1px;
 	border:0;
 }
@@ -524,4 +503,13 @@ body {
 	-webkit-transform:translate(-50%, 0%);
 	-moz-transform:translate(-50%, 0%);
 	-ms-transform:translate(-50%, 0%);
+}
+
+#buttonCont, #badges, .rrssb-buttons, #socialShare, #androidBadge, #iOSBadge, .rrssb-facebook, .rrssb-twitter {
+	display: none !important;
+	visibility: hidden !important;
+	height: 0 !important;
+	width: 0 !important;
+	overflow: hidden !important;
+	pointer-events: none !important;
 }
