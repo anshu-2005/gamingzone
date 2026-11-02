@@ -173,28 +173,24 @@ export class GamePlayerUI {
       }
     }, 4500);
 
-    // Check if uploaded bundle game or custom URL
-    if ((this.currentGame.game_type === 'bundle' || this.currentGame.bundle_url) && this.currentGame.bundle_url) {
+    // Check if uploaded bundle game, external url, or custom URL
+    const targetIframeUrl = this.currentGame.bundle_url
+      ? `${this.currentGame.bundle_url.replace(/\/$/, '')}/${this.currentGame.entry_path || 'index.html'}`
+      : (this.currentGame.external_url || this.currentGame.embedUrl);
+
+    if (this.currentGame.game_type === 'bundle' || this.currentGame.game_type === 'external' || this.currentGame.bundle_url || this.currentGame.external_url || (this.currentGame.engine === 'custom_url' && this.currentGame.embedUrl)) {
       if (this.loadTimeoutId) clearTimeout(this.loadTimeoutId);
-      const entryUrl = `${this.currentGame.bundle_url}${this.currentGame.entry_path || 'index.html'}`;
       mountNode.innerHTML = `
         <iframe
           id="game-bundle-iframe"
           class="game-bundle-iframe"
-          src="${entryUrl}"
+          src="${targetIframeUrl}"
           sandbox="allow-scripts allow-same-origin allow-pointer-lock allow-forms"
           allow="fullscreen; autoplay"
           loading="lazy"
           title="${this.currentGame.title}"
         ></iframe>
       `;
-      this.gameShell.hideLoading();
-      return;
-    }
-
-    if (this.currentGame.engine === 'custom_url' && this.currentGame.embedUrl) {
-      if (this.loadTimeoutId) clearTimeout(this.loadTimeoutId);
-      mountNode.innerHTML = `<iframe src="${this.currentGame.embedUrl}" class="game-bundle-iframe" allowfullscreen></iframe>`;
       this.gameShell.hideLoading();
       return;
     }

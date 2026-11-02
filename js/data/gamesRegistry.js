@@ -13,6 +13,93 @@ export const CATEGORIES = [
 ];
 
 export const DEFAULT_GAMES = [
+  {
+  "id": "game_adarkroom_adventure",
+  "title": "A Dark Room: Minimalist Survival",
+  "slug": "a-dark-room-survival",
+  "category": "adventure",
+  "tags": [
+    "adventure",
+    "rpg",
+    "survival",
+    "minimalist",
+    "story",
+    "new"
+  ],
+  "game_type": "bundle",
+  "bundle_url": "/adarkroom/",
+  "entry_path": "index.html",
+  "icon": "🔥",
+  "rating": 4.9,
+  "plays": 112500,
+  "featured": true,
+  "is_new": true,
+  "is_trending": true,
+  "bannerColor": "linear-gradient(135deg, #64748b, #334155)",
+  "description": "The award-winning, hypnotic text adventure and atmospheric survival game. Awaken in a cold, dark room, light a fire, gather wood, and discover what lies outside.",
+  "controls": "Mouse/Touch: Click buttons and options to interact, build, and explore.",
+  "instructions": "Start by stoking the fire to keep warm. As the room warms up, strangers will visit and a deep world of survival and exploration will unfold.",
+  "status": "published"
+},
+
+  {
+  "id": "game_clumsy_bird",
+  "title": "Clumsy Bird: Flappy Arcade Rush",
+  "slug": "clumsy-bird-flappy-rush",
+  "category": "arcade",
+  "tags": [
+    "arcade",
+    "retro",
+    "flappy",
+    "casual",
+    "trending",
+    "new"
+  ],
+  "game_type": "bundle",
+  "bundle_url": "/clumsy-bird/",
+  "entry_path": "index.html",
+  "icon": "🐦",
+  "rating": 4.8,
+  "plays": 94100,
+  "featured": true,
+  "is_new": true,
+  "is_trending": true,
+  "bannerColor": "linear-gradient(135deg, #22c55e, #10b981)",
+  "description": "The beloved classic Flappy Bird reimagined in HTML5 with MelonJS engine! Flap through tricky pipe obstacles and aim for the legendary crown score.",
+  "controls": "Desktop: [Spacebar] or [Click] to flap. Mobile: Tap screen to flap.",
+  "instructions": "Tap or press Space to keep your bird airborne. Navigate between pipes without colliding to score points!",
+  "status": "published"
+},
+
+  {
+  "id": "game_hextris_blitz",
+  "title": "Hextris: Hexagonal Puzzle Blitz",
+  "slug": "hextris-hexagonal-blitz",
+  "category": "puzzle",
+  "tags": [
+    "puzzle",
+    "arcade",
+    "strategy",
+    "hexagonal",
+    "trending",
+    "new"
+  ],
+  "game_type": "bundle",
+  "bundle_url": "/hextris/",
+  "entry_path": "index.html",
+  "icon": "⬡",
+  "rating": 4.9,
+  "plays": 86400,
+  "featured": true,
+  "is_new": true,
+  "is_trending": true,
+  "bannerColor": "linear-gradient(135deg, #06b6d4, #3b82f6)",
+  "description": "Fast-paced hexagonal puzzle challenge! Rotate the central hexagon to match 3 or more blocks of the same color before the grey boundary is breached.",
+  "controls": "Desktop: [Left/Right Arrow] or [A/D] keys to rotate hexagon. Mobile: Tap left/right side of screen.",
+  "instructions": "Match 3+ blocks of identical color to clear them. Clear lines consecutively to rack up combo multipliers and climb the leaderboards!",
+  "status": "published"
+},
+
   // ♾️ Infinite Arena: Merge Without Limits (Vercel Edition)
   {
     id: 'game_infinite_arena',

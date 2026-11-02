@@ -12,3 +12,5 @@ uploads/previews/space-dodge*
 Thumbs.db
 *.log
 .vercel
+scratch/
+react-candy-crush-app/
