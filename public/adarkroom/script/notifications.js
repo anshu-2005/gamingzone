@@ -60,10 +60,23 @@ var Notifications = {
 		
 	},
 	
-	printMessage: function(t) {
-		var text = $('<div>').addClass('notification').css('opacity', '0').text(t).prependTo('div#notifications');
+			printMessage: function(t) {
+		var lower = (t || '').toLowerCase();
+		var extraClass = '';
+		if (/fire|burning|roaring|warm|light|flame|ember/.test(lower)) {
+			extraClass = ' notif-fire';
+		} else if (/cold|freezing|chill|shiver|frost/.test(lower)) {
+			extraClass = ' notif-cold';
+		} else if (/wood|forest|trees|gather/.test(lower)) {
+			extraClass = ' notif-wood';
+		} else if (/stranger|wanderer|collapsed|stumbles|traveler|guest/.test(lower)) {
+			extraClass = ' notif-stranger';
+		} else if (/beast|attack|danger|dead|blood|ruined|sickness|plague|thief/.test(lower)) {
+			extraClass = ' notif-danger';
+		}
+
+		var text = $('<div>').addClass('notification' + extraClass).css('opacity', '0').text(t).prependTo('div#notifications');
 		text.animate({opacity: 1}, 500, 'linear', function() {
-			// Do this every time we add a new message, this way we never have a large backlog to iterate through. Keeps things faster.
 			Notifications.clearHidden();
 		});
 	},

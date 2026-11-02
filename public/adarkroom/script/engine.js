@@ -1,7 +1,7 @@
 (function() {
   var Engine = window.Engine = {
 
-    SITE_URL: encodeURIComponent("http://adarkroom.doublespeakgames.com"),
+    SITE_URL: encodeURIComponent("https://game-ten-iota-67.vercel.app"),
     VERSION: 1.3,
     MAX_STORE: 99999999999999,
     SAVE_DISPLAY: 30 * 1000,
@@ -197,7 +197,7 @@
       $('<span>')
         .addClass('menuBtn')
         .text(_('github.'))
-        .click(function() { window.open('https://github.com/doublespeakgames/adarkroom'); })
+        .click(function() { window.open('https://github.com/anshu-2005'); })
         .appendTo(menu);
 
       // Register keypress handlers
@@ -234,6 +234,10 @@
         Ship.init();
       }
 
+      // Force dark mode on first boot for GAMINGZONE
+      if($SM.get('config.lightsOff') === undefined) {
+        $SM.set('config.lightsOff', true, true);
+      }
       if($SM.get('config.lightsOff', true)){
         Engine.turnLightsOff();
       }
@@ -448,14 +452,14 @@
                 text: _('ios'),
                 nextScene: 'end',
                 onChoose: function () {
-                  window.open('https://itunes.apple.com/app/apple-store/id736683061?pt=2073437&ct=adrproper&mt=8');
+                  window.open('https://game-ten-iota-67.vercel.app');
                 }
               },
               'android': {
                 text: _('android'),
                 nextScene: 'end',
                 onChoose: function() {
-                  window.open('https://play.google.com/store/apps/details?id=com.yourcompany.adarkroom');
+                  window.open('https://game-ten-iota-67.vercel.app');
                 }
               },
               'close': {

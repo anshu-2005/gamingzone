@@ -100,31 +100,25 @@
 	</script>
 	
 
-    <style>
-      .gz-badge {
-        position: fixed;
-        top: 12px;
-        left: 12px;
-        z-index: 9999;
-        font-family: monospace, sans-serif;
-        font-size: 11px;
-        letter-spacing: 1.5px;
-        font-weight: 700;
-        color: #e2e8f0;
-        background: rgba(15, 23, 42, 0.9);
-        backdrop-filter: blur(8px);
-        padding: 6px 14px;
-        border-radius: 999px;
-        border: 1px solid rgba(226, 232, 240, 0.3);
-        box-shadow: 0 0 15px rgba(226, 232, 240, 0.15);
-        text-transform: uppercase;
-        pointer-events: none;
-      }
-    </style>
-  </head>
+    
+    <link rel="stylesheet" type="text/css" href="css/gamingzone.css" />
+</head>
   <body>
-    <div class="gz-badge">🎮 GAMINGZONE EDITION</div>
-	<div id="wrapper">
+    
+	
+  
+  <!-- GAMINGZONE Modern Topbar -->
+  <div class="gz-topbar">
+    <div class="gz-brand">
+      <span>&#127918; GAMINGZONE</span>
+      <span class="badge-tag">CYBER SURVIVAL</span>
+    </div>
+    <a href="https://github.com/anshu-2005" target="_blank" class="gz-profile-link" title="Visit Anshu's GitHub Profile">
+      <span>&#128100; Anshu Profile &#8599;</span>
+    </a>
+  </div>
+
+  <div id="wrapper">
 		<div id="saveNotify"><script>document.write(_("saved."));</script></div>
 		<div id="content">
 			<div id="outerSlider">
@@ -134,10 +128,50 @@
 			</div>
 		</div>
   </div>
-  <a class="logo" href="https://www.doublespeakgames.com" alt="doublespeak games" target="_blank">
+  <a class="logo" href="https://github.com/anshu-2005" alt="Anshu Profile" title="Developer Profile: Anshu (GAMINGZONE)" target="_blank">
     <svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 41.75 32.84375" class="logo-icon">
       <path d="m 18.024533,28.5722 c 2.532365,-2.243 5.064679,-4.4861 7.596993,-6.7292 4.907813,0 9.815625,0 14.723438,0 0,-6.8136 0,-13.6272 0,-20.4408 -12.976656,0 -25.953312,0 -38.9299676,0 0,6.8136 0,13.6272 0,20.4408 3.2917905,0 6.5835811,0 9.8753716,0 -0.643311,2.2431 -1.286622,4.4861 -1.9299604,6.7292 2.5323644,-2.243 5.0646784,-4.4861 7.5969924,-6.7292 0.999066,0 1.998131,0 2.997197,0 -0.643345,2.2431 -1.286691,4.4861 -1.930064,6.7292 z" style="stroke-width:1.0;fill:none;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none"></path>
     </svg>
   </a>
+
+  
+  <!-- Bottom Instructions Panel -->
+  <div id="gz-instructions-panel" class="gz-instructions-panel">
+    <div class="gz-inst-header" onclick="toggleGzInstructions()">
+      <span class="gz-inst-title">&#128214; KAISE KHELE (HOW TO PLAY)</span>
+      <button id="gz-toggle-inst" class="gz-inst-toggle" type="button">Tips &amp; Guide &#9662;</button>
+    </div>
+    <div id="gz-inst-body" class="gz-inst-body">
+      <div class="gz-inst-step">
+        <span class="step-icon">&#128293;</span>
+        <div><strong>1. Stoke Fire:</strong> Aag ko jalaye rakhein taaki kamra garm rahe aur bhatke hue travelers aapke paas aayein.</div>
+      </div>
+      <div class="gz-inst-step">
+        <span class="step-icon">&#127794;</span>
+        <div><strong>2. Gather Wood:</strong> Silent Forest se lakdi ikatthi karein (Stores me wood badhega).</div>
+      </div>
+      <div class="gz-inst-step">
+        <span class="step-icon">&#128736;</span>
+        <div><strong>3. Build &amp; Craft:</strong> Cart, traps, aur huts banayein taaki log aapki basti me sharan lekar kaam karein.</div>
+      </div>
+      <div class="gz-inst-step">
+        <span class="step-icon">&#128506;</span>
+        <div><strong>4. Explore World:</strong> Compass aur weapons craft karke andheri duniya ke raaz explore karein!</div>
+      </div>
+    </div>
+  </div>
+  <script>
+    function toggleGzInstructions() {
+      var b = document.getElementById('gz-inst-body');
+      var btn = document.getElementById('gz-toggle-inst');
+      if (b.style.display === 'none') {
+        b.style.display = 'flex';
+        btn.innerHTML = 'Close &#9652;';
+      } else {
+        b.style.display = 'none';
+        btn.innerHTML = 'Tips &amp; Guide &#9662;';
+      }
+    }
+  </script>
 </body>
 </html>

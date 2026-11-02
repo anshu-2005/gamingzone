@@ -239,3 +239,4 @@ if (fs.existsSync(dbFile)) {
     console.log('Skipping DatabaseSync (fallback)');
   });
 }
+
