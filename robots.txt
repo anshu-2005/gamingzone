@@ -1,8 +1,20 @@
+# robots.txt for GAMINGZONE — https://game-ten-iota-67.vercel.app
 User-agent: *
 Allow: /
 Disallow: /admin
 Disallow: /api/
 Disallow: /uploads/temp/
 
-Sitemap: https://gamingzone.com/sitemap.xml
+# Dedicated crawler access for Google AdSense
+User-agent: Mediapartners-Google
+Allow: /
 
+# Dedicated crawler access for Googlebot
+User-agent: Googlebot
+Allow: /
+
+# Dedicated crawler access for Googlebot-Image
+User-agent: Googlebot-Image
+Allow: /
+
+Sitemap: https://game-ten-iota-67.vercel.app/sitemap.xml

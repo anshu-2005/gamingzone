@@ -6,6 +6,8 @@ import { GameShelf } from './components/GameShelf.jsx';
 import { GamePlayer } from './components/GamePlayer.jsx';
 import { AdminModal } from './components/AdminModal.jsx';
 import { ProfileModal } from './components/ProfileModal.jsx';
+import { PolicyModal } from './components/PolicyModal.jsx';
+import { CookieConsent } from './components/CookieConsent.jsx';
 import { DEFAULT_GAMES, CATEGORIES } from '../js/data/gamesRegistry.js';
 import { sounds } from '../js/core/soundFX.js';
 import { getGameThumbnailSVG } from '../js/utils/gameThumbnails.js';
@@ -21,6 +23,7 @@ export function App() {
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
   const [isAdminOpen, setIsAdminOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
+  const [policyModal, setPolicyModal] = useState({ isOpen: false, tab: 'privacy' });
   const [isMuted, setIsMuted] = useState(sounds.muted);
 
   // Local storage state
@@ -86,6 +89,14 @@ export function App() {
         setActiveGame(null);
       } else if (hash === '#admin') {
         setIsAdminOpen(true);
+      } else if (hash === '#privacy') {
+        setPolicyModal({ isOpen: true, tab: 'privacy' });
+      } else if (hash === '#terms') {
+        setPolicyModal({ isOpen: true, tab: 'terms' });
+      } else if (hash === '#about') {
+        setPolicyModal({ isOpen: true, tab: 'about' });
+      } else if (hash === '#contact') {
+        setPolicyModal({ isOpen: true, tab: 'contact' });
       } else if (hash === '#home' || !hash) {
         setActiveGame(null);
       }
@@ -95,6 +106,30 @@ export function App() {
     window.addEventListener('hashchange', handleHashChange);
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, [games]);
+
+  // Dynamic SEO & Google Analytics (GA4) Page View & Title Updates
+  useEffect(() => {
+    if (activeGame) {
+      document.title = `Play ${activeGame.title} Free Online - GAMINGZONE`;
+      const metaDesc = document.querySelector('meta[name="description"]');
+      if (metaDesc) {
+        metaDesc.setAttribute('content', `Play ${activeGame.title} free online on GAMINGZONE. ${activeGame.description}`);
+      }
+      if (typeof window.trackGameEvent === 'function') {
+        window.trackGameEvent('game_view', {
+          game_id: activeGame.id,
+          game_title: activeGame.title,
+          category: activeGame.category
+        });
+      }
+    } else {
+      document.title = 'GAMINGZONE — Play 140+ Free Online 3D & Browser Games';
+      const metaDesc = document.querySelector('meta[name="description"]');
+      if (metaDesc) {
+        metaDesc.setAttribute('content', 'Play 140+ free online browser games on GAMINGZONE. Instant high-performance 3D, action, arcade, sports, and puzzle games with zero downloads. Ad-safe, mobile-ready.');
+      }
+    }
+  }, [activeGame]);
 
   const addRecentlyPlayed = (gameId) => {
     setRecentlyPlayed((prev) => {
@@ -196,6 +231,13 @@ export function App() {
     window.location.hash = `#game/${game.slug || game.id}`;
     setActiveGame(game);
     addRecentlyPlayed(game.id);
+    if (typeof window.trackGameEvent === 'function') {
+      window.trackGameEvent('game_play', {
+        game_id: game.id,
+        game_title: game.title,
+        category: game.category
+      });
+    }
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -620,32 +662,130 @@ export function App() {
         </main>
       </div>
 
-      {/* Footer */}
-      <footer className="crazy-footer">
-        <div style={{ maxWidth: '1200px', margin: '0 auto', width: '100%', padding: '0 24px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '16px' }}>
-          <div>
-            <span style={{ color: '#fff', fontWeight: 800 }}>GAMINGZONE</span>
-            <p style={{ color: '#64748b', fontSize: '0.8rem', marginTop: '4px' }}>
-              High-performance instant HTML5 browser games platform with 65+ free games.
-            </p>
+      {/* Enhanced AdSense-Compliant SEO Footer */}
+      <footer className="crazy-footer" style={{ borderTop: '1px solid rgba(255, 255, 255, 0.08)', background: '#030712', padding: '40px 0 24px' }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto', width: '100%', padding: '0 24px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '32px', marginBottom: '32px' }}>
+            {/* Column 1: Brand & Mission */}
+            <div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
+                <span style={{ fontSize: '1.4rem' }}>🎮</span>
+                <span style={{ color: '#fff', fontWeight: 900, fontSize: '1.2rem', letterSpacing: '0.5px' }}>GAMINGZONE</span>
+              </div>
+              <p style={{ color: '#94a3b8', fontSize: '0.86rem', lineHeight: 1.6, margin: 0 }}>
+                Play 140+ free instant online browser games across desktop, mobile, and tablet. No installs, zero downloads. Safe, fast, and high-performance WebGL &amp; Canvas entertainment.
+              </p>
+              <div style={{ marginTop: '14px', fontSize: '0.82rem', color: '#64748b' }}>
+                Created &amp; Maintained by <a href="https://github.com/anshu-2005" target="_blank" rel="noreferrer" style={{ color: '#38bdf8', fontWeight: 600 }}>Anshu Kumar</a>
+              </div>
+            </div>
+
+            {/* Column 2: Popular Categories */}
+            <div>
+              <h4 style={{ color: '#f8fafc', fontSize: '0.92rem', fontWeight: 700, marginBottom: '12px', textTransform: 'uppercase', letterSpacing: '1px' }}>Categories</h4>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '0.84rem' }}>
+                <a href="#category/arcade" onClick={() => setCurrentCategory('arcade')} style={{ color: '#94a3b8', textDecoration: 'none' }}>🕹️ Retro Arcade Classics</a>
+                <a href="#category/action" onClick={() => setCurrentCategory('action')} style={{ color: '#94a3b8', textDecoration: 'none' }}>⚔️ Action &amp; Strategy RTS</a>
+                <a href="#category/puzzle" onClick={() => setCurrentCategory('puzzle')} style={{ color: '#94a3b8', textDecoration: 'none' }}>🧩 Logic &amp; Brain Puzzles</a>
+                <a href="#category/sports" onClick={() => setCurrentCategory('sports')} style={{ color: '#94a3b8', textDecoration: 'none' }}>⚽ Sports &amp; Athletics Arena</a>
+                <a href="#category/racing" onClick={() => setCurrentCategory('racing')} style={{ color: '#94a3b8', textDecoration: 'none' }}>🏎️ 3D Speed &amp; Racing</a>
+                <a href="#category/2player" onClick={() => setCurrentCategory('2player')} style={{ color: '#94a3b8', textDecoration: 'none' }}>👥 2-Player Local Duels</a>
+              </div>
+            </div>
+
+            {/* Column 3: Trust, Safety & AdSense Mandatory Links */}
+            <div>
+              <h4 style={{ color: '#f8fafc', fontSize: '0.92rem', fontWeight: 700, marginBottom: '12px', textTransform: 'uppercase', letterSpacing: '1px' }}>Trust &amp; Legal</h4>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '0.84rem' }}>
+                <button
+                  type="button"
+                  onClick={() => setPolicyModal({ isOpen: true, tab: 'about' })}
+                  style={{ background: 'none', border: 'none', color: '#94a3b8', textAlign: 'left', padding: 0, cursor: 'pointer', font: 'inherit' }}
+                >
+                  📖 About Us &amp; Mission
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setPolicyModal({ isOpen: true, tab: 'privacy' })}
+                  style={{ background: 'none', border: 'none', color: '#94a3b8', textAlign: 'left', padding: 0, cursor: 'pointer', font: 'inherit' }}
+                >
+                  🔒 Privacy &amp; Cookie Policy
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setPolicyModal({ isOpen: true, tab: 'terms' })}
+                  style={{ background: 'none', border: 'none', color: '#94a3b8', textAlign: 'left', padding: 0, cursor: 'pointer', font: 'inherit' }}
+                >
+                  📜 Terms of Service
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setPolicyModal({ isOpen: true, tab: 'contact' })}
+                  style={{ background: 'none', border: 'none', color: '#94a3b8', textAlign: 'left', padding: 0, cursor: 'pointer', font: 'inherit' }}
+                >
+                  ✉️ Contact Support &amp; DMCA
+                </button>
+                <a
+                  href="/ads.txt"
+                  target="_blank"
+                  style={{ color: '#64748b', textDecoration: 'none' }}
+                >
+                  📄 ads.txt Verified
+                </a>
+                <a
+                  href="/sitemap.xml"
+                  target="_blank"
+                  style={{ color: '#64748b', textDecoration: 'none' }}
+                >
+                  🗺️ XML Sitemap
+                </a>
+              </div>
+            </div>
           </div>
-          <div style={{ display: 'flex', gap: '16px', fontSize: '0.82rem' }}>
-            <a
-              href="#admin"
-              onClick={(e) => {
-                e.preventDefault();
-                setIsAdminOpen(true);
-              }}
-              style={{ color: 'var(--brand-coral)', cursor: 'pointer' }}
-            >
-              ⚙️ Admin Portal
-            </a>
-            <a href="#home" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} style={{ color: '#94a3b8' }}>
-              Top ↑
-            </a>
+
+          {/* Bottom Copyright & Admin Row */}
+          <div style={{ borderTop: '1px solid rgba(255, 255, 255, 0.06)', paddingTop: '20px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '14px', fontSize: '0.8rem', color: '#64748b' }}>
+            <div>
+              © 2026 <strong>GAMINGZONE</strong>. All games belong to their respective creators &amp; open-source licensors.
+            </div>
+            <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+              <a
+                href="#admin"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setIsAdminOpen(true);
+                }}
+                style={{ color: 'var(--brand-coral)', cursor: 'pointer', textDecoration: 'none' }}
+              >
+                ⚙️ Admin Portal
+              </a>
+              <button
+                type="button"
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                style={{ background: 'none', border: 'none', color: '#94a3b8', cursor: 'pointer', font: 'inherit', padding: 0 }}
+              >
+                Top ↑
+              </button>
+            </div>
           </div>
         </div>
       </footer>
+
+      {/* Modals */}
+      <PolicyModal
+        isOpen={policyModal.isOpen}
+        initialTab={policyModal.tab}
+        onClose={() => {
+          setPolicyModal({ isOpen: false, tab: 'privacy' });
+          if (['#privacy', '#terms', '#about', '#contact'].includes(window.location.hash)) {
+            window.location.hash = '#home';
+          }
+        }}
+      />
+
+      <CookieConsent
+        onOpenPrivacy={() => setPolicyModal({ isOpen: true, tab: 'privacy' })}
+      />
 
       {/* Modals */}
       <AdminModal

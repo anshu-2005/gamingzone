@@ -191,3 +191,4 @@ for (const g of newGames) {
 
 const total = db.prepare('SELECT count(*) as count FROM games').get();
 console.log(`✅ SQLite Database synchronized! Total games in database: ${total.count}`);
+

@@ -1,0 +1,1145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+  <!-- Homepage -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Legal & AdSense Mandatory Policy Pages -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#about</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#privacy</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#terms</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#contact</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Category: All 70+ Games -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#category/all</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <!-- Category: 3D Fun & Action -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#category/3d</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <!-- Category: Cricket Arena (1/5/10/50 Overs) -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#category/cricket</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <!-- Category: Trending & Chaser -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#category/trending</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <!-- Category: Racing & Speed -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#category/racing</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <!-- Category: Sports Champions -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#category/sports</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <!-- Category: Action & Combat -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#category/action</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <!-- Category: Arcade Classics -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#category/arcade</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <!-- Category: Brain & Puzzles -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#category/puzzle</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <!-- Category: 2-Player Versus -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#category/2player</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <!-- Category: Favorites -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#category/favorites</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <!-- Game: Command & Conquer: Tiberian Dawn RTS -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/command-and-conquer-rts</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Tower Defense 3D: Tactical Kingdom -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/tower-defense-3d-tactics</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Orbium: Marble Rotator Puzzle -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/orbium-marble-rotator</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Diablo JS: Isometric Canvas RPG -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/diablo-js-isometric-rpg</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: HeartLine: Pulse Platformer -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/heartline-pulse-platformer</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Cube Engine: 3D Voxel Sandbox -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/cube-engine-3d-sandbox</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Green Mahjong: Solitaire Zen -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/green-mahjong-solitaire-zen</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Gladiator 3D: Raycast Dungeon -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/gladiator-3d-raycast-dungeon</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Cell Mates: Prison Break Rush -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/cell-mates-prison-break</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Marble Soccer: 3D Physics Arena -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/marble-soccer-3d-physics</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Pixel Platformer: Retro Jump -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/pixel-platformer-retro-jump</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Asteroids: Vector Arcade Classic -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/asteroids-vector-classic</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Digger: Boulder Dash Remake -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/digger-boulder-dash</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Draconas: 3D Space Shmup -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/draconas-3d-shmup</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Hurry! Speedy Arcade Shooter -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/hurry-speedy-arcade</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Mario Bros HTML5: Infinite Run -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/mario-bros-infinite</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Duck Hunt: Retro Arcade Target -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/duck-hunt-retro-target</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Onslaught Arena: Medieval Combat -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/onslaught-arena-combat</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: HotFix: Git Stargazer Dash -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/hotfix-stargazer-dash</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Coffee Snake: Retro Slither -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/coffee-snake-retro</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Survivor 1982: Space Arcade -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/survivor-1982-arcade</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: ZED Invaders: Comic Arcade Defense -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/zed-invaders-comic</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Crappy Bird: 2D Flappy Challenge -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/crappy-bird-2d-canvas</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: EKG Runner: Rhythm Pulse -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/ekg-runner-rhythm</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Polybranch: Minimalist 3D Reflex -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/polybranch-3d-reflex</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Alien Invasion: Space Arcade Combat -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/alien-invasion-space-combat</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Coil: Neon Particle Reflex -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/coil-neon-particle-reflex</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Starship Sorades: Galaga 13K -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/starship-sorades-galaga</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: SkiFree: Classic Alpine Rush -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/skifree-classic-alpine-rush</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: A Dark Room: Minimalist Survival -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/a-dark-room-survival</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Clumsy Bird: Flappy Arcade Rush -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/clumsy-bird-flappy-rush</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Hextris: Hexagonal Puzzle Blitz -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/hextris-hexagonal-blitz</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Infinite Arena: Merge Without Limits -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/infinite-arena-merge</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Metro Rush: Endless Runner -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/metro-rush-endless-runner</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Arrow Escape -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/arrow-escape-flutter</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Arrow Maze Escape (Tangled Arrows) -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/arrow-maze-escape-tangled-puzzle</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Cricket Premier League 3D (1/5/10/50 Overs) -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/cricket-premier-league-3d</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Cricket World Cup 50-Over Target Chase -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/cricket-world-cup-50-over-target-chase</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Cyber Car Drift 2077 -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/cyber-car-drift-2077</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Helix Jump Neon Tower -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/helix-jump-neon-tower</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Stack Tower Builder Color Slice -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/stack-tower-builder-color-slice</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Candy Blast Match-3 Sweet Rush -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/candy-blast-match-3-sweet-rush</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Table Tennis Pro Ping Pong 1v1 -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/table-tennis-pro-ping-pong-1v1</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Darts Bullseye King 301 -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/darts-bullseye-king-301</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Pac-Maze Neon Labyrinth -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/pac-maze-neon-labyrinth</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: 8-Ball Pool Billiards Masters -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/8-ball-pool-billiards-masters</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Stickman Street Fighter Dojo -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/stickman-street-fighter-dojo</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Zombie Apocalypse Defense 3D -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/zombie-apocalypse-defense-3d</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Color Switch Pulse Neon -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/color-switch-pulse-neon</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Connect Four Neon Glow 1v1 -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/connect-four-neon-glow-1v1</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Neon Air Strike 1945 WW2 -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/neon-air-strike-1945-ww2</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Space Asteroids Vector Blast -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/space-asteroids-vector-blast</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Crossy Road Highway Hopper -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/crossy-road-highway-hopper</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Sudoku Cyber Master 9x9 -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/sudoku-cyber-master-9x9</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Cyber Space 3D Horizon Racer -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/cyber-space-3d-horizon-racer</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Drift Boss Mountain Hairpins -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/drift-boss-mountain-hairpins</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Laser Cannon Optics Matrix -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/laser-cannon-optics-matrix</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Paper Airplane Glider Distance -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/paper-airplane-glider-distance</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Speed Typing Cyber Warrior -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/speed-typing-cyber-warrior</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Dodgeball Arena Bullet Hell -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/dodgeball-arena-bullet-hell</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Fishing Legend Deep Ocean Catch -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/fishing-legend-deep-ocean-catch</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Word Scramble Anagram Rush -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/word-scramble-anagram-rush</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Chess Blitz Tactics Checkmate -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/chess-blitz-tactics-checkmate</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Archery Master: Bullseye Pro -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/archery-master-bullseye-pro</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: World Cup Penalty Shootout 3D -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/world-cup-penalty-shootout-3d</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Moto Xtreme Dirt Trials -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/moto-xtreme-dirt-trials</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Monster Truck Hill Climb -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/monster-truck-hill-climb</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Police Highway Pursuit 3D -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/police-highway-pursuit-3d</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Basketball Hoops Arc Master -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/basketball-hoops-arc-master</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Neon Air Hockey Battle 1v1 -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/neon-air-hockey-battle-1v1</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Fruit Slicer Ninja Dojo -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/fruit-slicer-ninja-dojo</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Knife Hit Rotating Target -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/knife-hit-rotating-target</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Neon Piano Tiles Rhythm -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/neon-piano-tiles-rhythm</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Bubble Shooter Blitz 3D -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/bubble-shooter-blitz-3d</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Subway Skater Rush 3D -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/subway-skater-rush-3d</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Bowling Strike 10-Pin Alley -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/bowling-strike-10-pin-alley</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Mini Golf Putting Paradise -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/mini-golf-putting-paradise</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Tank Arena Wars 2D 1v1 -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/tank-arena-wars-2d-1v1</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Helicopter Combat Gunship -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/helicopter-combat-gunship</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Stickman Shadow Combat Dojo -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/stickman-shadow-combat-dojo</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Tower Defense Kingdom Siege -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/tower-defense-kingdom-siege</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Neon Retro Pinball Magic -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/neon-retro-pinball-magic</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Galaxy Invaders 3000 -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/galaxy-invaders-3000</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Brick Breaker Extreme -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/brick-breaker-extreme</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Dino Runner: Jungle Jump -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/dino-runner-jungle-jump</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Neon Snake Arena -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/neon-snake-arena</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: 2048 Cyber Fusion -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/2048-cyber-fusion</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Flappy Wings Deluxe -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/flappy-wings-deluxe</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Cyber Pong: 2-Player Versus -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/cyber-pong-2-player-versus</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Memory Match Masters -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/memory-match-masters</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: MineSweeper Pro Cyber -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/minesweeper-pro-cyber</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Cosmic Idle Miner -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/cosmic-idle-miner</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Neon Survivor Arena -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/neon-survivor-arena</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Hex Conqueror IO -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/hex-conqueror-io</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Solitaire Klondike Pro -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/solitaire-klondike-pro</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Ragdoll Cannon Blast -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/ragdoll-cannon-blast</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Block Puzzle 1010 -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/block-puzzle-1010</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Jetpack Neon Escape -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/jetpack-neon-escape</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Draw Physics Drop -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/draw-physics-drop</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Rooftop Snipers Duel -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/rooftop-snipers-duel</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Slice Master ASMR -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/slice-master-asmr</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Cubes 2048 IO -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/cubes-2048-io</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Getaway Shootout Escape -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/getaway-shootout-escape</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Smash Karts Battle Arena -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/smash-karts-battle-arena</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: EvoWars IO Slasher -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/evowars-io-slasher</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Space Waves Runner -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/space-waves-runner</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Run 3 Tunnel Gravity -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/run-3-tunnel-gravity</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Shell Shockers Egg Arena -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/shell-shockers-egg-arena</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Bloxd Voxel Obby -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/bloxd-voxel-obby</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: House of Hazards Party -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/house-of-hazards-party</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Funny Battle Sandbox Wars -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/funny-battle-sandbox-wars</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Kirka Voxel Strike FPS -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/kirka-voxel-strike-fps</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Neon Laser Reflector -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/neon-laser-reflector</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Master Alchemist Merge -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/master-alchemist-merge</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Micro Drift Showdown -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/micro-drift-showdown</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Neon Hover Circuit -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/neon-hover-circuit</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Mountain Uphill Trial -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/mountain-uphill-trial</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Shadow Shinobi Dash -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/shadow-shinobi-dash</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Mini Kingdom Siege -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/mini-kingdom-siege</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Super Basketball Dunk -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/super-basketball-dunk</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Burger Chef Rush -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/burger-chef-rush</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Wobbly Delivery 3D -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/wobbly-delivery-3d</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Blob Arena 3D -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/blob-arena-3d</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Tiny Chaos Kitchen 3D -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/tiny-chaos-kitchen-3d</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Banana Bonk 3D -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/banana-bonk-3d</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Mini Golf Mayhem 3D -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/mini-golf-mayhem-3d</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Wacky Parkour 3D -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/wacky-parkour-3d</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Neon Dash Geometry -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/neon-dash-geometry</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Laser Reflex Dash -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/laser-reflex-dash</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Chrono Trigger Tap -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/chrono-trigger-tap</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Vortex Orbiter -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/vortex-orbiter</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Circuit Connect Neon -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/circuit-connect-neon</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Quantum Tile Slide -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/quantum-tile-slide</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Hexa Merge Color -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/hexa-merge-color</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Velocity Drift Tokyo -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/velocity-drift-tokyo</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Retro Highway Racer -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/retro-highway-racer</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Cyber Bike Sprint -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/cyber-bike-sprint</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Pixel Dungeon Crawler -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/pixel-dungeon-crawler</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Sky Island Hopper -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/sky-island-hopper</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Cyber Ninja Wall Jump -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/cyber-ninja-wall-jump</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Curling Stone Pro -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/curling-stone-pro</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Frisbee Golf Champion -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/frisbee-golf-champion</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Hex Territory Conquer -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/hex-territory-conquer</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Auto Battler Tactics -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/auto-battler-tactics</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Zen Sand Garden -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/zen-sand-garden</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Potion Craft Brewery -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/potion-craft-brewery</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Game: Orbit Satellite Gravity -->
+  <url>
+    <loc>https://game-ten-iota-67.vercel.app/#game/orbit-satellite-gravity</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+</urlset>

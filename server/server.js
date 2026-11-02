@@ -50,20 +50,37 @@ app.use('/api/admin', adminRouter);
 const distDir = path.join(rootDir, 'dist');
 const hasDist = fs.existsSync(path.join(distDir, 'index.html'));
 
-// SEO Endpoints: robots.txt & dynamic sitemap.xml
-app.get('/robots.txt', (req, res) => {
+// SEO Endpoints: robots.txt, sitemap.xml & ads.txt
+app.get('/ads.txt', (req, res) => {
   res.type('text/plain');
-  res.send(`User-agent: *\nAllow: /\nDisallow: /admin\nDisallow: /api/\nDisallow: /uploads/temp/\n\nSitemap: https://gamingzone.com/sitemap.xml\n`);
+  res.send(`# Google AdSense Authorized Digital Sellers (ads.txt) for GAMINGZONE\ngoogle.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0\n`);
+});
+
+app.get('/robots.txt', (req, res) => {
+  const host = req.headers['x-forwarded-host'] || req.headers.host || 'game-ten-iota-67.vercel.app';
+  const proto = req.headers['x-forwarded-proto'] || 'https';
+  res.type('text/plain');
+  res.send(`User-agent: *\nAllow: /\nDisallow: /admin\nDisallow: /api/\nDisallow: /uploads/temp/\n\nUser-agent: Mediapartners-Google\nAllow: /\n\nUser-agent: Googlebot\nAllow: /\n\nUser-agent: Googlebot-Image\nAllow: /\n\nSitemap: ${proto}://${host}/sitemap.xml\n`);
 });
 
 app.get('/sitemap.xml', (req, res) => {
   res.type('application/xml');
   try {
+    const host = req.headers['x-forwarded-host'] || req.headers.host || 'game-ten-iota-67.vercel.app';
+    const proto = req.headers['x-forwarded-proto'] || 'https';
+    const baseUrl = `${proto}://${host}`;
+    const today = new Date().toISOString().split('T')[0];
+
     const games = db.prepare("SELECT slug, updated_at FROM games WHERE status = 'published'").all();
     let xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
-    xml += `  <url><loc>https://gamingzone.com/</loc><changefreq>daily</changefreq><priority>1.0</priority></url>\n`;
+    xml += `  <url><loc>${baseUrl}/</loc><lastmod>${today}</lastmod><changefreq>daily</changefreq><priority>1.0</priority></url>\n`;
+    xml += `  <url><loc>${baseUrl}/#about</loc><lastmod>${today}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>\n`;
+    xml += `  <url><loc>${baseUrl}/#privacy</loc><lastmod>${today}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>\n`;
+    xml += `  <url><loc>${baseUrl}/#terms</loc><lastmod>${today}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>\n`;
+    xml += `  <url><loc>${baseUrl}/#contact</loc><lastmod>${today}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>\n`;
     for (const g of games) {
-      xml += `  <url><loc>https://gamingzone.com/#game/${g.slug}</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>\n`;
+      const lastmod = (g.updated_at || today).split('T')[0];
+      xml += `  <url><loc>${baseUrl}/#game/${g.slug}</loc><lastmod>${lastmod}</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>\n`;
     }
     xml += `</urlset>`;
     res.send(xml);

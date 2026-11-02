@@ -7,6 +7,7 @@
     { "source": "/uploads/(.*)", "destination": "/api" },
     { "source": "/robots.txt", "destination": "/api" },
     { "source": "/sitemap.xml", "destination": "/api" },
+    { "source": "/ads.txt", "destination": "/api" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }

@@ -102,3 +102,4 @@ if (fs.existsSync(path.join(cubeDest, 'play.htm'))) {
 }
 
 console.log('✅ Successfully copied and branded all 6 games into public/');
+
