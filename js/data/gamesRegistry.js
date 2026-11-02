@@ -13,6 +13,30 @@ export const CATEGORIES = [
 ];
 
 export const DEFAULT_GAMES = [
+  // ♾️ Infinite Arena: Merge Without Limits (Vercel Edition)
+  {
+    id: 'game_infinite_arena',
+    title: 'Infinite Arena: Merge Without Limits',
+    slug: 'infinite-arena-merge',
+    category: 'puzzle',
+    tags: ['puzzle', '2048', 'strategy', 'arcade', 'brain', 'trending', 'new'],
+    game_type: 'external',
+    gameMode: 'highscore',
+    icon: '♾️',
+    rating: 4.9,
+    plays: 62800,
+    featured: true,
+    is_new: true,
+    is_trending: true,
+    bannerColor: 'linear-gradient(135deg, #6366f1, #a855f7)',
+    description: 'Enter the competitive puzzle arena! Swipe or use arrow keys to slide and merge number tiles, trigger multipliers, and climb forever in infinite mode.',
+    controls: 'Desktop: Use [Arrow Keys] or [W, A, S, D] to slide and merge tiles. Mobile: Swipe left, right, up, or down.',
+    instructions: 'Slide tiles across the board. When two tiles with the same number touch, they merge into one! Keep merging to reach the highest scores and climb forever in infinite mode.',
+    external_url: 'https://infinite-arena-inky.vercel.app',
+    entry_path: 'index.html',
+    status: 'published'
+  },
+
   // 🚇 Metro Rush: Endless Runner (Vercel Edition)
   {
     id: 'game_metro_rush_runner',
