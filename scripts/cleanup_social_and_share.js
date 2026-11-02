@@ -64,3 +64,4 @@ const cleanShare = `share: function() {
 adrEngine = adrEngine.replace(/share:\s*function\(\)\s*\{[\s\S]*?width:\s*'400px'\s*\}\);/m, cleanShare);
 fs.writeFileSync(adrEnginePath, adrEngine, 'utf8');
 console.log('✅ Removed get the app & updated share in A Dark Room');
+

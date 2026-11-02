@@ -1,0 +1,26 @@
+@font-face 
+{
+	font-family: Disposable;
+	src: url(DisposableDroidBB_bld.ttf);
+}
+
+body 
+{
+	padding-top: 50px;
+	font-family: Disposable;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	background-color: black;
+	color:white;
+}
+
+:-webkit-full-screen 
+{
+	background-color: black;
+}
+
+a
+{
+	color:white;
+}

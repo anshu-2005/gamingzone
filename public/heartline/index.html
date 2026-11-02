@@ -1,0 +1,85 @@
+<html>
+	<head><title>HeartLine: Pulse Platformer | GAMINGZONE</title>
+		<link href='style/main.css' rel='stylesheet' type='text/css'>
+
+	</head>
+	<body>
+
+  <!-- GAMINGZONE Badge -->
+  <div style="position: fixed; top: 12px; left: 12px; z-index: 999999; font-family: 'Exo 2', -apple-system, sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; color: #38bdf8; background: rgba(15, 23, 42, 0.92); backdrop-filter: blur(8px); padding: 6px 14px; border-radius: 999px; border: 1px solid rgba(56, 189, 248, 0.4); box-shadow: 0 4px 15px rgba(0,0,0,0.5); text-transform: uppercase; display: flex; align-items: center; gap: 6px; pointer-events: auto;">
+    <span style="font-size: 14px;">🎮</span> GAMINGZONE EDITION
+    <a href="https://github.com/anshu-2005" target="_blank" style="color: #c084fc; text-decoration: none; margin-left: 6px; font-weight: 600;">• Anshu ↗</a>
+  </div>
+
+		<div id="wrapper" width="800" height"600">
+	HEARTLINE<br/>
+        <canvas id="gamecanvas" width="800" height="512"></canvas><br/>
+        <a id="click" href="#">Full Screen</a>
+    </div>
+	<br/>
+	<br/>
+		<script src='js/jquery.min.js'></script>
+		<script src='js/soundmanager2-nodebug-jsmin.js'></script>
+		<script src='js/room.js'></script>
+		<script src='js/entitymanager.js'></script>
+		<script src='js/entity.js'></script>
+			<script src='js/player.js'></script>
+			<script src='js/goo.js'></script>
+			<script src='js/door.js'></script>
+			<script src='js/heart.js'></script>
+			<script src='js/fire.js'></script>
+			<script src='js/smoke.js'></script>
+			<script src='js/grate.js'></script>
+			<script src='js/fan.js'></script>
+			<script src='js/breakable.js'></script>
+			<script src='js/goal.js'></script>
+			<script src='js/controller.js'></script>
+			
+			<script src='js/assetmanager.js'></script>
+		
+		<script src='js/game.js'></script>
+			<script src='js/images.js'></script>
+			<script src='js/sounds.js'></script>
+			<script src='js/levels.js'></script>
+
+		<script>
+		var div = document.getElementById("wrapper");
+		var link = document.getElementById("click");
+		function fs()
+		{
+			console.log("fs")
+			if (document.webkitIsFullScreen)
+				document.webkitExitFullscreen()
+			else
+				div.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+		}
+
+		link.onclick = fs;
+
+		var canvas = document.getElementById("gamecanvas");
+		var defaultHeight =  canvas.height;
+		var defaultWidth = canvas.width;
+
+		var ctx = canvas.getContext("2d");
+
+		window.onresize = function() {
+			console.log("resize");
+			var newHeight = window.innerHeight - 150;
+			var newWidth = window.innerWidth - 10;
+			console.log(newHeight, newWidth)
+			if (1.0 * defaultWidth / defaultHeight > 1.0 * newWidth / newHeight)
+				newHeight = 1.0 * newWidth / defaultWidth * defaultHeight
+			else
+				newWidth = 1.0 * newHeight / defaultHeight * defaultWidth;
+			canvas.height = newHeight;
+			canvas.width = newWidth;
+			ctx.scale(1.0 * newWidth/defaultWidth, 1.0 * newHeight/defaultHeight)
+		}
+
+		window.onresize();
+
+		//div.mozRequestFullScreen();
+		</script>
+
+	</body>
+</html>
