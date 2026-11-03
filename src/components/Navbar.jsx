@@ -2,6 +2,33 @@ import React, { useState, useRef, useEffect } from 'react';
 import { sounds } from '../../js/core/soundFX.js';
 import { getGameThumbnailSVG } from '../../js/utils/gameThumbnails.js';
 
+function DropdownThumb({ game }) {
+  const [error, setError] = useState(false);
+  const src = game?.thumbnail || (game?.slug ? `/images/games/${game.slug}.webp` : null);
+
+  if (error || !src) {
+    return (
+      <div
+        className="gz-dropdown-item-thumb"
+        dangerouslySetInnerHTML={{ __html: getGameThumbnailSVG(game) }}
+      />
+    );
+  }
+
+  return (
+    <div className="gz-dropdown-item-thumb">
+      <img
+        src={src}
+        alt={game.title}
+        loading="lazy"
+        decoding="async"
+        onError={() => setError(true)}
+        style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '6px' }}
+      />
+    </div>
+  );
+}
+
 export function Navbar({
   searchQuery,
   onSearchChange,
@@ -140,10 +167,7 @@ export function Navbar({
                       role="button"
                       tabIndex={0}
                     >
-                      <div
-                        className="gz-dropdown-item-thumb"
-                        dangerouslySetInnerHTML={{ __html: getGameThumbnailSVG(game) }}
-                      />
+                      <DropdownThumb game={game} />
                       <div className="gz-dropdown-item-info">
                         <div className="gz-dropdown-item-title">{game.title}</div>
                         <div className="gz-dropdown-item-meta">

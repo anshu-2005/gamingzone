@@ -1,0 +1,1178 @@
+{
+  "command-and-conquer-rts": {
+    "id": "game_cnc_tiberian_dawn",
+    "title": "Command & Conquer: Tiberian Dawn RTS",
+    "category": "action",
+    "thumbnail": "/images/games/command-and-conquer-rts.webp",
+    "source": "Local authentic asset: public/command-and-conquer/images/htitle.jpeg",
+    "type": "bundle_asset"
+  },
+  "tower-defense-3d-tactics": {
+    "id": "game_tower_defense_3d",
+    "title": "Tower Defense 3D: Tactical Kingdom",
+    "category": "3d",
+    "thumbnail": "/images/games/tower-defense-3d-tactics.webp",
+    "source": "Local authentic asset: public/tower-defense-3d/assets/ui/background.jpg",
+    "type": "bundle_asset"
+  },
+  "orbium-marble-rotator": {
+    "id": "game_orbium_puzzle",
+    "title": "Orbium: Marble Rotator Puzzle",
+    "category": "puzzle",
+    "thumbnail": "/images/games/orbium-marble-rotator.webp",
+    "source": "Bespoke authentic vector render",
+    "type": "custom_vector"
+  },
+  "diablo-js-isometric-rpg": {
+    "id": "game_diablo_js_rpg",
+    "title": "Diablo JS: Isometric Canvas RPG",
+    "category": "action",
+    "thumbnail": "/images/games/diablo-js-isometric-rpg.webp",
+    "source": "Bespoke authentic vector render",
+    "type": "custom_vector"
+  },
+  "heartline-pulse-platformer": {
+    "id": "game_heartline_pulse",
+    "title": "HeartLine: Pulse Platformer",
+    "category": "arcade",
+    "thumbnail": "/images/games/heartline-pulse-platformer.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "cube-engine-3d-sandbox": {
+    "id": "game_cube_engine_3d",
+    "title": "Cube Engine: 3D Voxel Sandbox",
+    "category": "3d",
+    "thumbnail": "/images/games/cube-engine-3d-sandbox.webp",
+    "source": "Local authentic asset: public/cube-engine/screenshot.png",
+    "type": "bundle_asset"
+  },
+  "green-mahjong-solitaire-zen": {
+    "id": "game_green_mahjong",
+    "title": "Green Mahjong: Solitaire Zen",
+    "category": "puzzle",
+    "thumbnail": "/images/games/green-mahjong-solitaire-zen.webp",
+    "source": "Bespoke authentic vector render",
+    "type": "custom_vector"
+  },
+  "gladiator-3d-raycast-dungeon": {
+    "id": "game_gladiator_3d",
+    "title": "Gladiator 3D: Raycast Dungeon",
+    "category": "action",
+    "thumbnail": "/images/games/gladiator-3d-raycast-dungeon.webp",
+    "source": "Local authentic asset: public/gladiator-3d/img/screenshot.png",
+    "type": "bundle_asset"
+  },
+  "cell-mates-prison-break": {
+    "id": "game_cellmates_breakout",
+    "title": "Cell Mates: Prison Break Rush",
+    "category": "arcade",
+    "thumbnail": "/images/games/cell-mates-prison-break.webp",
+    "source": "Bespoke authentic vector render",
+    "type": "custom_vector"
+  },
+  "marble-soccer-3d-physics": {
+    "id": "game_marblesoccer_3d",
+    "title": "Marble Soccer: 3D Physics Arena",
+    "category": "sports",
+    "thumbnail": "/images/games/marble-soccer-3d-physics.webp",
+    "source": "Bespoke authentic vector render",
+    "type": "custom_vector"
+  },
+  "pixel-platformer-retro-jump": {
+    "id": "game_pixelplatformer_jump",
+    "title": "Pixel Platformer: Retro Jump",
+    "category": "arcade",
+    "thumbnail": "/images/games/pixel-platformer-retro-jump.webp",
+    "source": "Local authentic asset: public/pixelplatformer/assets/title.png",
+    "type": "bundle_asset"
+  },
+  "asteroids-vector-classic": {
+    "id": "game_asteroids_vector",
+    "title": "Asteroids: Vector Arcade Classic",
+    "category": "arcade",
+    "thumbnail": "/images/games/asteroids-vector-classic.webp",
+    "source": "Bespoke authentic vector render",
+    "type": "custom_vector"
+  },
+  "digger-boulder-dash": {
+    "id": "game_digger_boulderdash",
+    "title": "Digger: Boulder Dash Remake",
+    "category": "arcade",
+    "thumbnail": "/images/games/digger-boulder-dash.webp",
+    "source": "Local authentic asset: public/digger/.github/screenshot.png",
+    "type": "bundle_asset"
+  },
+  "draconas-3d-shmup": {
+    "id": "game_draconas_3d",
+    "title": "Draconas: 3D Space Shmup",
+    "category": "action",
+    "thumbnail": "/images/games/draconas-3d-shmup.webp",
+    "source": "Local authentic asset: public/draconas/img/ui/background-mission.jpg",
+    "type": "bundle_asset"
+  },
+  "hurry-speedy-arcade": {
+    "id": "game_hurry_shooter",
+    "title": "Hurry! Speedy Arcade Shooter",
+    "category": "arcade",
+    "thumbnail": "/images/games/hurry-speedy-arcade.webp",
+    "source": "Local authentic asset: public/hurry-shooter/img/screenshots/0.png",
+    "type": "bundle_asset"
+  },
+  "mario-bros-infinite": {
+    "id": "game_mario_html5",
+    "title": "Mario Bros HTML5: Infinite Run",
+    "category": "arcade",
+    "thumbnail": "/images/games/mario-bros-infinite.webp",
+    "source": "Bespoke authentic vector render",
+    "type": "custom_vector"
+  },
+  "duck-hunt-retro-target": {
+    "id": "game_duck_hunt_retro",
+    "title": "Duck Hunt: Retro Arcade Target",
+    "category": "arcade",
+    "thumbnail": "/images/games/duck-hunt-retro-target.webp",
+    "source": "Bespoke authentic vector render",
+    "type": "custom_vector"
+  },
+  "onslaught-arena-combat": {
+    "id": "game_onslaught_arena",
+    "title": "Onslaught Arena: Medieval Combat",
+    "category": "action",
+    "thumbnail": "/images/games/onslaught-arena-combat.webp",
+    "source": "Bespoke authentic vector render",
+    "type": "custom_vector"
+  },
+  "hotfix-stargazer-dash": {
+    "id": "game_hotfix_rush",
+    "title": "HotFix: Git Stargazer Dash",
+    "category": "arcade",
+    "thumbnail": "/images/games/hotfix-stargazer-dash.webp",
+    "source": "Local authentic asset: public/hotfix-rush/images/screenshot-1.jpg",
+    "type": "bundle_asset"
+  },
+  "coffee-snake-retro": {
+    "id": "game_coffee_snake",
+    "title": "Coffee Snake: Retro Slither",
+    "category": "arcade",
+    "thumbnail": "/images/games/coffee-snake-retro.webp",
+    "source": "Bespoke authentic vector render",
+    "type": "custom_vector"
+  },
+  "survivor-1982-arcade": {
+    "id": "game_survivor_1982",
+    "title": "Survivor 1982: Space Arcade",
+    "category": "arcade",
+    "thumbnail": "/images/games/survivor-1982-arcade.webp",
+    "source": "Local authentic asset: public/survivor-1982/image/title-screen-cutout.png",
+    "type": "bundle_asset"
+  },
+  "zed-invaders-comic": {
+    "id": "game_zed_invaders",
+    "title": "ZED Invaders: Comic Arcade Defense",
+    "category": "arcade",
+    "thumbnail": "/images/games/zed-invaders-comic.webp",
+    "source": "Local authentic asset: public/zed-invaders/lib/images/zedinvaders.banner.png",
+    "type": "bundle_asset"
+  },
+  "crappy-bird-2d-canvas": {
+    "id": "game_crappy_bird_2d",
+    "title": "Crappy Bird: 2D Flappy Challenge",
+    "category": "arcade",
+    "thumbnail": "/images/games/crappy-bird-2d-canvas.webp",
+    "source": "Bespoke authentic vector render",
+    "type": "custom_vector"
+  },
+  "ekg-runner-rhythm": {
+    "id": "game_ekg_runner",
+    "title": "EKG Runner: Rhythm Pulse",
+    "category": "arcade",
+    "thumbnail": "/images/games/ekg-runner-rhythm.webp",
+    "source": "Bespoke authentic vector render",
+    "type": "custom_vector"
+  },
+  "polybranch-3d-reflex": {
+    "id": "game_polybranch_3d",
+    "title": "Polybranch: Minimalist 3D Reflex",
+    "category": "arcade",
+    "thumbnail": "/images/games/polybranch-3d-reflex.webp",
+    "source": "Bespoke authentic vector render",
+    "type": "custom_vector"
+  },
+  "alien-invasion-space-combat": {
+    "id": "game_alien_invasion",
+    "title": "Alien Invasion: Space Arcade Combat",
+    "category": "arcade",
+    "thumbnail": "/images/games/alien-invasion-space-combat.webp",
+    "source": "Bespoke authentic vector render",
+    "type": "custom_vector"
+  },
+  "coil-neon-particle-reflex": {
+    "id": "game_coil_reflex",
+    "title": "Coil: Neon Particle Reflex",
+    "category": "arcade",
+    "thumbnail": "/images/games/coil-neon-particle-reflex.webp",
+    "source": "Local authentic asset: public/coil/images/background.jpg",
+    "type": "bundle_asset"
+  },
+  "starship-sorades-galaga": {
+    "id": "game_sorades_galaga",
+    "title": "Starship Sorades: Galaga 13K",
+    "category": "action",
+    "thumbnail": "/images/games/starship-sorades-galaga.webp",
+    "source": "Bespoke authentic vector render",
+    "type": "custom_vector"
+  },
+  "skifree-classic-alpine-rush": {
+    "id": "game_skifree_alpine",
+    "title": "SkiFree: Classic Alpine Rush",
+    "category": "arcade",
+    "thumbnail": "/images/games/skifree-classic-alpine-rush.webp",
+    "source": "Bespoke authentic vector render",
+    "type": "custom_vector"
+  },
+  "a-dark-room-survival": {
+    "id": "game_adarkroom_adventure",
+    "title": "A Dark Room: Minimalist Survival",
+    "category": "adventure",
+    "thumbnail": "/images/games/a-dark-room-survival.webp",
+    "source": "Local authentic asset: public/adarkroom/img/Logo1.jpg",
+    "type": "bundle_asset"
+  },
+  "clumsy-bird-flappy-rush": {
+    "id": "game_clumsy_bird",
+    "title": "Clumsy Bird: Flappy Arcade Rush",
+    "category": "arcade",
+    "thumbnail": "/images/games/clumsy-bird-flappy-rush.webp",
+    "source": "Bespoke authentic vector render",
+    "type": "custom_vector"
+  },
+  "hextris-hexagonal-blitz": {
+    "id": "game_hextris_blitz",
+    "title": "Hextris: Hexagonal Puzzle Blitz",
+    "category": "puzzle",
+    "thumbnail": "/images/games/hextris-hexagonal-blitz.webp",
+    "source": "Bespoke authentic vector render",
+    "type": "custom_vector"
+  },
+  "infinite-arena-merge": {
+    "id": "game_infinite_arena",
+    "title": "Infinite Arena: Merge Without Limits",
+    "category": "puzzle",
+    "thumbnail": "/images/games/infinite-arena-merge.webp",
+    "source": "Bespoke authentic vector render",
+    "type": "custom_vector"
+  },
+  "metro-rush-endless-runner": {
+    "id": "game_metro_rush_runner",
+    "title": "Metro Rush: Endless Runner",
+    "category": "action",
+    "thumbnail": "/images/games/metro-rush-endless-runner.webp",
+    "source": "Bespoke authentic vector render",
+    "type": "custom_vector"
+  },
+  "arrow-escape-flutter": {
+    "id": "game_arrow_escape_flutter",
+    "title": "Arrow Escape",
+    "category": "puzzle",
+    "thumbnail": "/images/games/arrow-escape-flutter.webp",
+    "source": "Bespoke authentic vector render",
+    "type": "custom_vector"
+  },
+  "arrow-maze-escape-tangled-puzzle": {
+    "id": "game_arrow_maze_escape",
+    "title": "Arrow Maze Escape (Tangled Arrows)",
+    "category": "puzzle",
+    "thumbnail": "/images/games/arrow-maze-escape-tangled-puzzle.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "cricket-premier-league-3d": {
+    "id": "game_cricket_premier_league",
+    "title": "Cricket Premier League 3D (1/5/10/50 Overs)",
+    "category": "cricket",
+    "thumbnail": "/images/games/cricket-premier-league-3d.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "cricket-world-cup-50-over-target-chase": {
+    "id": "game_cricket_world_cup_chase",
+    "title": "Cricket World Cup 50-Over Target Chase",
+    "category": "cricket",
+    "thumbnail": "/images/games/cricket-world-cup-50-over-target-chase.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "cyber-car-drift-2077": {
+    "id": "game_cyber_car_drift",
+    "title": "Cyber Car Drift 2077",
+    "category": "racing",
+    "thumbnail": "/images/games/cyber-car-drift-2077.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "helix-jump-neon-tower": {
+    "id": "game_helix_jump_neon",
+    "title": "Helix Jump Neon Tower",
+    "category": "arcade",
+    "thumbnail": "/images/games/helix-jump-neon-tower.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "stack-tower-builder-color-slice": {
+    "id": "game_stack_tower_builder",
+    "title": "Stack Tower Builder Color Slice",
+    "category": "arcade",
+    "thumbnail": "/images/games/stack-tower-builder-color-slice.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "candy-blast-match-3-sweet-rush": {
+    "id": "game_candy_blast_match3",
+    "title": "Candy Blast Match-3 Sweet Rush",
+    "category": "puzzle",
+    "thumbnail": "/images/games/candy-blast-match-3-sweet-rush.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "table-tennis-pro-ping-pong-1v1": {
+    "id": "game_table_tennis_pro",
+    "title": "Table Tennis Pro Ping Pong 1v1",
+    "category": "sports",
+    "thumbnail": "/images/games/table-tennis-pro-ping-pong-1v1.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "darts-bullseye-king-301": {
+    "id": "game_darts_bullseye_king",
+    "title": "Darts Bullseye King 301",
+    "category": "sports",
+    "thumbnail": "/images/games/darts-bullseye-king-301.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "pac-maze-neon-labyrinth": {
+    "id": "game_pac_maze_classic",
+    "title": "Pac-Maze Neon Labyrinth",
+    "category": "arcade",
+    "thumbnail": "/images/games/pac-maze-neon-labyrinth.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "8-ball-pool-billiards-masters": {
+    "id": "game_billiards_8ball",
+    "title": "8-Ball Pool Billiards Masters",
+    "category": "sports",
+    "thumbnail": "/images/games/8-ball-pool-billiards-masters.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "stickman-street-fighter-dojo": {
+    "id": "game_street_fighter_stick",
+    "title": "Stickman Street Fighter Dojo",
+    "category": "action",
+    "thumbnail": "/images/games/stickman-street-fighter-dojo.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "zombie-apocalypse-defense-3d": {
+    "id": "game_zombie_survival_shooter",
+    "title": "Zombie Apocalypse Defense 3D",
+    "category": "action",
+    "thumbnail": "/images/games/zombie-apocalypse-defense-3d.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "color-switch-pulse-neon": {
+    "id": "game_color_switch_pulse",
+    "title": "Color Switch Pulse Neon",
+    "category": "arcade",
+    "thumbnail": "/images/games/color-switch-pulse-neon.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "connect-four-neon-glow-1v1": {
+    "id": "game_connect_four_glow",
+    "title": "Connect Four Neon Glow 1v1",
+    "category": "puzzle",
+    "thumbnail": "/images/games/connect-four-neon-glow-1v1.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "neon-air-strike-1945-ww2": {
+    "id": "game_neon_air_strike_1945",
+    "title": "Neon Air Strike 1945 WW2",
+    "category": "action",
+    "thumbnail": "/images/games/neon-air-strike-1945-ww2.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "space-asteroids-vector-blast": {
+    "id": "game_space_asteroids_blast",
+    "title": "Space Asteroids Vector Blast",
+    "category": "arcade",
+    "thumbnail": "/images/games/space-asteroids-vector-blast.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "crossy-road-highway-hopper": {
+    "id": "game_crossy_road_runner",
+    "title": "Crossy Road Highway Hopper",
+    "category": "arcade",
+    "thumbnail": "/images/games/crossy-road-highway-hopper.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "sudoku-cyber-master-9x9": {
+    "id": "game_sudoku_cyber_master",
+    "title": "Sudoku Cyber Master 9x9",
+    "category": "puzzle",
+    "thumbnail": "/images/games/sudoku-cyber-master-9x9.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "cyber-space-3d-horizon-racer": {
+    "id": "game_cyber_space_racer",
+    "title": "Cyber Space 3D Horizon Racer",
+    "category": "racing",
+    "thumbnail": "/images/games/cyber-space-3d-horizon-racer.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "drift-boss-mountain-hairpins": {
+    "id": "game_drift_boss_rally",
+    "title": "Drift Boss Mountain Hairpins",
+    "category": "racing",
+    "thumbnail": "/images/games/drift-boss-mountain-hairpins.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "laser-cannon-optics-matrix": {
+    "id": "game_laser_cannon_puzzle",
+    "title": "Laser Cannon Optics Matrix",
+    "category": "puzzle",
+    "thumbnail": "/images/games/laser-cannon-optics-matrix.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "paper-airplane-glider-distance": {
+    "id": "game_paper_airplane_flight",
+    "title": "Paper Airplane Glider Distance",
+    "category": "arcade",
+    "thumbnail": "/images/games/paper-airplane-glider-distance.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "speed-typing-cyber-warrior": {
+    "id": "game_speed_typing_warrior",
+    "title": "Speed Typing Cyber Warrior",
+    "category": "puzzle",
+    "thumbnail": "/images/games/speed-typing-cyber-warrior.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "dodgeball-arena-bullet-hell": {
+    "id": "game_dodgeball_extreme",
+    "title": "Dodgeball Arena Bullet Hell",
+    "category": "sports",
+    "thumbnail": "/images/games/dodgeball-arena-bullet-hell.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "fishing-legend-deep-ocean-catch": {
+    "id": "game_fishing_legend_catch",
+    "title": "Fishing Legend Deep Ocean Catch",
+    "category": "sports",
+    "thumbnail": "/images/games/fishing-legend-deep-ocean-catch.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "word-scramble-anagram-rush": {
+    "id": "game_word_scramble_rush",
+    "title": "Word Scramble Anagram Rush",
+    "category": "puzzle",
+    "thumbnail": "/images/games/word-scramble-anagram-rush.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "chess-blitz-tactics-checkmate": {
+    "id": "game_chess_blitz_tactics",
+    "title": "Chess Blitz Tactics Checkmate",
+    "category": "puzzle",
+    "thumbnail": "/images/games/chess-blitz-tactics-checkmate.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "archery-master-bullseye-pro": {
+    "id": "game_archery_master",
+    "title": "Archery Master: Bullseye Pro",
+    "category": "sports",
+    "thumbnail": "/images/games/archery-master-bullseye-pro.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "world-cup-penalty-shootout-3d": {
+    "id": "game_penalty_shootout",
+    "title": "World Cup Penalty Shootout 3D",
+    "category": "sports",
+    "thumbnail": "/images/games/world-cup-penalty-shootout-3d.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "moto-xtreme-dirt-trials": {
+    "id": "game_moto_xtreme",
+    "title": "Moto Xtreme Dirt Trials",
+    "category": "racing",
+    "thumbnail": "/images/games/moto-xtreme-dirt-trials.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "monster-truck-hill-climb": {
+    "id": "game_monster_truck_climb",
+    "title": "Monster Truck Hill Climb",
+    "category": "racing",
+    "thumbnail": "/images/games/monster-truck-hill-climb.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "police-highway-pursuit-3d": {
+    "id": "game_police_highway_pursuit",
+    "title": "Police Highway Pursuit 3D",
+    "category": "racing",
+    "thumbnail": "/images/games/police-highway-pursuit-3d.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "basketball-hoops-arc-master": {
+    "id": "game_basketball_hoops",
+    "title": "Basketball Hoops Arc Master",
+    "category": "sports",
+    "thumbnail": "/images/games/basketball-hoops-arc-master.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "neon-air-hockey-battle-1v1": {
+    "id": "game_air_hockey_battle",
+    "title": "Neon Air Hockey Battle 1v1",
+    "category": "2player",
+    "thumbnail": "/images/games/neon-air-hockey-battle-1v1.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "fruit-slicer-ninja-dojo": {
+    "id": "game_fruit_ninja_slicer",
+    "title": "Fruit Slicer Ninja Dojo",
+    "category": "action",
+    "thumbnail": "/images/games/fruit-slicer-ninja-dojo.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "knife-hit-rotating-target": {
+    "id": "game_knife_hit_master",
+    "title": "Knife Hit Rotating Target",
+    "category": "arcade",
+    "thumbnail": "/images/games/knife-hit-rotating-target.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "neon-piano-tiles-rhythm": {
+    "id": "game_neon_piano_tiles",
+    "title": "Neon Piano Tiles Rhythm",
+    "category": "arcade",
+    "thumbnail": "/images/games/neon-piano-tiles-rhythm.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "bubble-shooter-blitz-3d": {
+    "id": "game_bubble_shooter_blitz",
+    "title": "Bubble Shooter Blitz 3D",
+    "category": "puzzle",
+    "thumbnail": "/images/games/bubble-shooter-blitz-3d.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "subway-skater-rush-3d": {
+    "id": "game_subway_skater_rush",
+    "title": "Subway Skater Rush 3D",
+    "category": "action",
+    "thumbnail": "/images/games/subway-skater-rush-3d.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "bowling-strike-10-pin-alley": {
+    "id": "game_bowling_strike",
+    "title": "Bowling Strike 10-Pin Alley",
+    "category": "sports",
+    "thumbnail": "/images/games/bowling-strike-10-pin-alley.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "mini-golf-putting-paradise": {
+    "id": "game_mini_golf_paradise",
+    "title": "Mini Golf Putting Paradise",
+    "category": "sports",
+    "thumbnail": "/images/games/mini-golf-putting-paradise.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "tank-arena-wars-2d-1v1": {
+    "id": "game_tank_arena_wars",
+    "title": "Tank Arena Wars 2D 1v1",
+    "category": "action",
+    "thumbnail": "/images/games/tank-arena-wars-2d-1v1.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "helicopter-combat-gunship": {
+    "id": "game_helicopter_gunship",
+    "title": "Helicopter Combat Gunship",
+    "category": "action",
+    "thumbnail": "/images/games/helicopter-combat-gunship.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "stickman-shadow-combat-dojo": {
+    "id": "game_stickman_shadow_combat",
+    "title": "Stickman Shadow Combat Dojo",
+    "category": "action",
+    "thumbnail": "/images/games/stickman-shadow-combat-dojo.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "tower-defense-kingdom-siege": {
+    "id": "game_tower_defense_kingdom",
+    "title": "Tower Defense Kingdom Siege",
+    "category": "puzzle",
+    "thumbnail": "/images/games/tower-defense-kingdom-siege.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "neon-retro-pinball-magic": {
+    "id": "game_pinball_retro_magic",
+    "title": "Neon Retro Pinball Magic",
+    "category": "arcade",
+    "thumbnail": "/images/games/neon-retro-pinball-magic.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "galaxy-invaders-3000": {
+    "id": "game_galaxy_shooter",
+    "title": "Galaxy Invaders 3000",
+    "category": "action",
+    "thumbnail": "/images/games/galaxy-invaders-3000.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "brick-breaker-extreme": {
+    "id": "game_brick_breaker",
+    "title": "Brick Breaker Extreme",
+    "category": "arcade",
+    "thumbnail": "/images/games/brick-breaker-extreme.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "dino-runner-jungle-jump": {
+    "id": "game_pixel_runner",
+    "title": "Dino Runner: Jungle Jump",
+    "category": "arcade",
+    "thumbnail": "/images/games/dino-runner-jungle-jump.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "neon-snake-arena": {
+    "id": "game_neon_snake",
+    "title": "Neon Snake Arena",
+    "category": "arcade",
+    "thumbnail": "/images/games/neon-snake-arena.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "2048-cyber-fusion": {
+    "id": "game_2048_cyber",
+    "title": "2048 Cyber Fusion",
+    "category": "puzzle",
+    "thumbnail": "/images/games/2048-cyber-fusion.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "flappy-wings-deluxe": {
+    "id": "game_flappy_wings",
+    "title": "Flappy Wings Deluxe",
+    "category": "arcade",
+    "thumbnail": "/images/games/flappy-wings-deluxe.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "cyber-pong-2-player-versus": {
+    "id": "game_pong_battle",
+    "title": "Cyber Pong: 2-Player Versus",
+    "category": "2player",
+    "thumbnail": "/images/games/cyber-pong-2-player-versus.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "memory-match-masters": {
+    "id": "game_memory_cards",
+    "title": "Memory Match Masters",
+    "category": "puzzle",
+    "thumbnail": "/images/games/memory-match-masters.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "minesweeper-pro-cyber": {
+    "id": "game_mine_sweeper",
+    "title": "MineSweeper Pro Cyber",
+    "category": "puzzle",
+    "thumbnail": "/images/games/minesweeper-pro-cyber.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "cosmic-idle-miner": {
+    "id": "game_cosmic_idle_miner",
+    "title": "Cosmic Idle Miner",
+    "category": "arcade",
+    "thumbnail": "/images/games/cosmic-idle-miner.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "neon-survivor-arena": {
+    "id": "game_neon_survivor_arena",
+    "title": "Neon Survivor Arena",
+    "category": "action",
+    "thumbnail": "/images/games/neon-survivor-arena.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "hex-conqueror-io": {
+    "id": "game_hex_conqueror_io",
+    "title": "Hex Conqueror IO",
+    "category": "action",
+    "thumbnail": "/images/games/hex-conqueror-io.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "solitaire-klondike-pro": {
+    "id": "game_solitaire_klondike_pro",
+    "title": "Solitaire Klondike Pro",
+    "category": "puzzle",
+    "thumbnail": "/images/games/solitaire-klondike-pro.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "ragdoll-cannon-blast": {
+    "id": "game_ragdoll_cannon_blast",
+    "title": "Ragdoll Cannon Blast",
+    "category": "arcade",
+    "thumbnail": "/images/games/ragdoll-cannon-blast.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "block-puzzle-1010": {
+    "id": "game_block_puzzle_1010",
+    "title": "Block Puzzle 1010",
+    "category": "puzzle",
+    "thumbnail": "/images/games/block-puzzle-1010.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "jetpack-neon-escape": {
+    "id": "game_jetpack_neon_escape",
+    "title": "Jetpack Neon Escape",
+    "category": "arcade",
+    "thumbnail": "/images/games/jetpack-neon-escape.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "draw-physics-drop": {
+    "id": "game_draw_physics_drop",
+    "title": "Draw Physics Drop",
+    "category": "puzzle",
+    "thumbnail": "/images/games/draw-physics-drop.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "rooftop-snipers-duel": {
+    "id": "game_rooftop_snipers_duel",
+    "title": "Rooftop Snipers Duel",
+    "category": "2player",
+    "thumbnail": "/images/games/rooftop-snipers-duel.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "slice-master-asmr": {
+    "id": "game_slice_master_asmr",
+    "title": "Slice Master ASMR",
+    "category": "arcade",
+    "thumbnail": "/images/games/slice-master-asmr.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "cubes-2048-io": {
+    "id": "game_cubes_2048_io",
+    "title": "Cubes 2048 IO",
+    "category": "action",
+    "thumbnail": "/images/games/cubes-2048-io.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "getaway-shootout-escape": {
+    "id": "game_getaway_shootout_escape",
+    "title": "Getaway Shootout Escape",
+    "category": "2player",
+    "thumbnail": "/images/games/getaway-shootout-escape.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "smash-karts-battle-arena": {
+    "id": "game_smash_karts_battle",
+    "title": "Smash Karts Battle Arena",
+    "category": "racing",
+    "thumbnail": "/images/games/smash-karts-battle-arena.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "evowars-io-slasher": {
+    "id": "game_evowars_slasher",
+    "title": "EvoWars IO Slasher",
+    "category": "action",
+    "thumbnail": "/images/games/evowars-io-slasher.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "space-waves-runner": {
+    "id": "game_space_waves_runner",
+    "title": "Space Waves Runner",
+    "category": "arcade",
+    "thumbnail": "/images/games/space-waves-runner.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "run-3-tunnel-gravity": {
+    "id": "game_run_tunnel_gravity",
+    "title": "Run 3 Tunnel Gravity",
+    "category": "arcade",
+    "thumbnail": "/images/games/run-3-tunnel-gravity.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "shell-shockers-egg-arena": {
+    "id": "game_shell_shockers_arena",
+    "title": "Shell Shockers Egg Arena",
+    "category": "action",
+    "thumbnail": "/images/games/shell-shockers-egg-arena.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "bloxd-voxel-obby": {
+    "id": "game_bloxd_voxel_obby",
+    "title": "Bloxd Voxel Obby",
+    "category": "arcade",
+    "thumbnail": "/images/games/bloxd-voxel-obby.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "house-of-hazards-party": {
+    "id": "game_house_of_hazards_party",
+    "title": "House of Hazards Party",
+    "category": "2player",
+    "thumbnail": "/images/games/house-of-hazards-party.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "funny-battle-sandbox-wars": {
+    "id": "game_funny_battle_sandbox",
+    "title": "Funny Battle Sandbox Wars",
+    "category": "action",
+    "thumbnail": "/images/games/funny-battle-sandbox-wars.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "kirka-voxel-strike-fps": {
+    "id": "game_kirka_voxel_strike",
+    "title": "Kirka Voxel Strike FPS",
+    "category": "action",
+    "thumbnail": "/images/games/kirka-voxel-strike-fps.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "neon-laser-reflector": {
+    "id": "game_neon_laser_reflector",
+    "title": "Neon Laser Reflector",
+    "category": "puzzle",
+    "thumbnail": "/images/games/neon-laser-reflector.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "master-alchemist-merge": {
+    "id": "game_master_alchemist_merge",
+    "title": "Master Alchemist Merge",
+    "category": "puzzle",
+    "thumbnail": "/images/games/master-alchemist-merge.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "micro-drift-showdown": {
+    "id": "game_micro_drift_showdown",
+    "title": "Micro Drift Showdown",
+    "category": "racing",
+    "thumbnail": "/images/games/micro-drift-showdown.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "neon-hover-circuit": {
+    "id": "game_neon_hover_circuit",
+    "title": "Neon Hover Circuit",
+    "category": "racing",
+    "thumbnail": "/images/games/neon-hover-circuit.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "mountain-uphill-trial": {
+    "id": "game_mountain_uphill_trial",
+    "title": "Mountain Uphill Trial",
+    "category": "racing",
+    "thumbnail": "/images/games/mountain-uphill-trial.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "shadow-shinobi-dash": {
+    "id": "game_shadow_shinobi_dash",
+    "title": "Shadow Shinobi Dash",
+    "category": "action",
+    "thumbnail": "/images/games/shadow-shinobi-dash.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "mini-kingdom-siege": {
+    "id": "game_mini_kingdom_siege",
+    "title": "Mini Kingdom Siege",
+    "category": "2player",
+    "thumbnail": "/images/games/mini-kingdom-siege.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "super-basketball-dunk": {
+    "id": "game_super_basketball_dunk",
+    "title": "Super Basketball Dunk",
+    "category": "sports",
+    "thumbnail": "/images/games/super-basketball-dunk.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "burger-chef-rush": {
+    "id": "game_burger_chef_rush",
+    "title": "Burger Chef Rush",
+    "category": "arcade",
+    "thumbnail": "/images/games/burger-chef-rush.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "wobbly-delivery-3d": {
+    "id": "game_wobbly_delivery_3d",
+    "title": "Wobbly Delivery 3D",
+    "category": "3d",
+    "thumbnail": "/images/games/wobbly-delivery-3d.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "blob-arena-3d": {
+    "id": "game_blob_arena_3d",
+    "title": "Blob Arena 3D",
+    "category": "3d",
+    "thumbnail": "/images/games/blob-arena-3d.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "tiny-chaos-kitchen-3d": {
+    "id": "game_tiny_chaos_kitchen_3d",
+    "title": "Tiny Chaos Kitchen 3D",
+    "category": "3d",
+    "thumbnail": "/images/games/tiny-chaos-kitchen-3d.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "banana-bonk-3d": {
+    "id": "game_banana_bonk_3d",
+    "title": "Banana Bonk 3D",
+    "category": "3d",
+    "thumbnail": "/images/games/banana-bonk-3d.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "mini-golf-mayhem-3d": {
+    "id": "game_mini_golf_mayhem_3d",
+    "title": "Mini Golf Mayhem 3D",
+    "category": "3d",
+    "thumbnail": "/images/games/mini-golf-mayhem-3d.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "wacky-parkour-3d": {
+    "id": "game_wacky_parkour_3d",
+    "title": "Wacky Parkour 3D",
+    "category": "3d",
+    "thumbnail": "/images/games/wacky-parkour-3d.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "neon-dash-geometry": {
+    "id": "game_neon_dash_geometry",
+    "title": "Neon Dash Geometry",
+    "category": "arcade",
+    "thumbnail": "/images/games/neon-dash-geometry.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "laser-reflex-dash": {
+    "id": "game_laser_reflex_dash",
+    "title": "Laser Reflex Dash",
+    "category": "arcade",
+    "thumbnail": "/images/games/laser-reflex-dash.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "chrono-trigger-tap": {
+    "id": "game_chrono_trigger_tap",
+    "title": "Chrono Trigger Tap",
+    "category": "arcade",
+    "thumbnail": "/images/games/chrono-trigger-tap.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "vortex-orbiter": {
+    "id": "game_vortex_orbiter",
+    "title": "Vortex Orbiter",
+    "category": "arcade",
+    "thumbnail": "/images/games/vortex-orbiter.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "circuit-connect-neon": {
+    "id": "game_circuit_connect_neon",
+    "title": "Circuit Connect Neon",
+    "category": "puzzle",
+    "thumbnail": "/images/games/circuit-connect-neon.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "quantum-tile-slide": {
+    "id": "game_quantum_tile_slide",
+    "title": "Quantum Tile Slide",
+    "category": "puzzle",
+    "thumbnail": "/images/games/quantum-tile-slide.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "hexa-merge-color": {
+    "id": "game_hexa_merge_color",
+    "title": "Hexa Merge Color",
+    "category": "puzzle",
+    "thumbnail": "/images/games/hexa-merge-color.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "velocity-drift-tokyo": {
+    "id": "game_velocity_drift_tokyo",
+    "title": "Velocity Drift Tokyo",
+    "category": "racing",
+    "thumbnail": "/images/games/velocity-drift-tokyo.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "retro-highway-racer": {
+    "id": "game_retro_highway_racer",
+    "title": "Retro Highway Racer",
+    "category": "racing",
+    "thumbnail": "/images/games/retro-highway-racer.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "cyber-bike-sprint": {
+    "id": "game_cyber_bike_sprint",
+    "title": "Cyber Bike Sprint",
+    "category": "racing",
+    "thumbnail": "/images/games/cyber-bike-sprint.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "pixel-dungeon-crawler": {
+    "id": "game_pixel_dungeon_crawler",
+    "title": "Pixel Dungeon Crawler",
+    "category": "action",
+    "thumbnail": "/images/games/pixel-dungeon-crawler.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "sky-island-hopper": {
+    "id": "game_sky_island_hopper",
+    "title": "Sky Island Hopper",
+    "category": "arcade",
+    "thumbnail": "/images/games/sky-island-hopper.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "cyber-ninja-wall-jump": {
+    "id": "game_cyber_ninja_wall_jump",
+    "title": "Cyber Ninja Wall Jump",
+    "category": "action",
+    "thumbnail": "/images/games/cyber-ninja-wall-jump.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "curling-stone-pro": {
+    "id": "game_curling_stone_pro",
+    "title": "Curling Stone Pro",
+    "category": "sports",
+    "thumbnail": "/images/games/curling-stone-pro.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "frisbee-golf-champion": {
+    "id": "game_frisbee_golf_champion",
+    "title": "Frisbee Golf Champion",
+    "category": "sports",
+    "thumbnail": "/images/games/frisbee-golf-champion.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "hex-territory-conquer": {
+    "id": "game_hex_territory_conquer",
+    "title": "Hex Territory Conquer",
+    "category": "2player",
+    "thumbnail": "/images/games/hex-territory-conquer.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "auto-battler-tactics": {
+    "id": "game_auto_battler_tactics",
+    "title": "Auto Battler Tactics",
+    "category": "2player",
+    "thumbnail": "/images/games/auto-battler-tactics.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "zen-sand-garden": {
+    "id": "game_zen_sand_garden",
+    "title": "Zen Sand Garden",
+    "category": "arcade",
+    "thumbnail": "/images/games/zen-sand-garden.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "potion-craft-brewery": {
+    "id": "game_potion_craft_brewery",
+    "title": "Potion Craft Brewery",
+    "category": "arcade",
+    "thumbnail": "/images/games/potion-craft-brewery.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  },
+  "orbit-satellite-gravity": {
+    "id": "game_orbit_satellite_gravity",
+    "title": "Orbit Satellite Gravity",
+    "category": "arcade",
+    "thumbnail": "/images/games/orbit-satellite-gravity.webp",
+    "source": "High-resolution gaming vector render",
+    "type": "vector_rendered"
+  }
+}

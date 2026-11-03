@@ -665,6 +665,48 @@
   transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* Skeleton Loading Shimmer Placeholder */
+.gz-card-skeleton {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(15, 23, 42, 0.95) 0%,
+    rgba(30, 41, 59, 0.8) 50%,
+    rgba(15, 23, 42, 0.95) 100%
+  );
+  background-size: 200% 100%;
+  animation: gzSkeletonShimmer 1.4s infinite ease-in-out;
+  z-index: 1;
+}
+
+@keyframes gzSkeletonShimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Authentic Artwork Image */
+.gz-card-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+  will-change: transform, opacity;
+  z-index: 1;
+}
+
+.game-card-item:hover .gz-card-img {
+  transform: scale(1.07);
+}
+
+.game-card-item:hover {
+  border-color: rgba(0, 240, 255, 0.55);
+  box-shadow: 0 16px 36px -4px rgba(0, 0, 0, 0.75), 0 0 24px rgba(0, 240, 255, 0.22);
+}
+
 /* Inline Gameplay Video Slot */
 .gz-card-video-slot {
   position: absolute;
@@ -696,8 +738,10 @@
   opacity: 1;
 }
 
-.game-card-item.preview-active .gz-card-cover-art {
-  opacity: 0;
+.game-card-item.preview-active .gz-card-cover-art,
+.game-card-item.preview-active .gz-card-img {
+  opacity: 0 !important;
+  visibility: hidden;
 }
 
 .game-card-item.preview-active .card-hover-overlay {
@@ -2184,3 +2228,24 @@
     border-radius: 999px;
   }
 }
+
+/* Accessibility: Respect Reduced Motion Preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .game-card-item,
+  .gz-card-img,
+  .gz-bento-spotlight,
+  .gz-bento-tile,
+  .gz-card-skeleton {
+    transform: none !important;
+  }
+}
+

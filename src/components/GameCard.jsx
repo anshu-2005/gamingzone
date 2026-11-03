@@ -14,9 +14,12 @@ export function GameCard({
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const [tiltStyle, setTiltStyle] = useState({});
   const [glareStyle, setGlareStyle] = useState({ opacity: 0 });
+  const [imgLoaded, setImgLoaded] = useState(false);
+  const [imgError, setImgError] = useState(false);
 
   const previewMeta = getGamePreviewMeta(game);
   const activePreviewVideo = game.preview_video || (previewMeta?.hasPreview ? previewMeta.previewVideo : null);
+  const thumbnailSrc = game.thumbnail || `/images/games/${game.slug}.webp`;
 
   // 3D Perspective Tilt & Glare Math
   const handleMouseMove = (e) => {
@@ -113,12 +116,33 @@ export function GameCard({
       <div className="gz-spatial-glare" style={glareStyle} />
 
       <div className="card-thumbnail-box gz-card-thumbnail">
-        {/* Static SVG Vector Artwork */}
-        <div
-          className="gz-card-cover-art"
-          style={{ opacity: isVideoPlaying ? 0 : 1 }}
-          dangerouslySetInnerHTML={{ __html: getGameThumbnailSVG(game) }}
-        />
+        {/* Skeleton Shimmer Loading Placeholder */}
+        {!imgLoaded && !imgError && (
+          <div className="gz-card-skeleton" aria-hidden="true" />
+        )}
+
+        {/* Primary Artwork: Authentic Landscape WebP Artwork with SVG Fallback */}
+        {!imgError ? (
+          <img
+            src={thumbnailSrc}
+            alt={game.imageAlt || `${game.title} - Free Online Game`}
+            loading="lazy"
+            decoding="async"
+            className={`gz-card-img ${imgLoaded ? 'loaded' : ''}`}
+            style={{
+              opacity: isVideoPlaying ? 0 : imgLoaded ? 1 : 0,
+              visibility: isVideoPlaying ? 'hidden' : 'visible'
+            }}
+            onLoad={() => setImgLoaded(true)}
+            onError={() => setImgError(true)}
+          />
+        ) : (
+          <div
+            className="gz-card-cover-art"
+            style={{ opacity: isVideoPlaying ? 0 : 1 }}
+            dangerouslySetInnerHTML={{ __html: getGameThumbnailSVG(game) }}
+          />
+        )}
 
         {/* Inline Gameplay Video Slot */}
         {activePreviewVideo && isVideoPlaying && (
@@ -148,10 +172,10 @@ export function GameCard({
           </div>
         )}
 
-        {/* Subtle Play Overlay */}
+        {/* Subtle Play Overlay with Icon */}
         <div className="card-hover-overlay gz-hover-overlay">
-          <span className="btn-hover-play">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+          <span className="btn-hover-play" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
               <polygon points="5,3 19,12 5,21" />
             </svg>
           </span>
@@ -162,6 +186,7 @@ export function GameCard({
       <button
         className={`btn-card-fav ${isFavorite ? 'active' : ''}`}
         title={isFavorite ? 'Remove from Favorites' : 'Add to Favorites'}
+        aria-label={isFavorite ? 'Remove from Favorites' : 'Add to Favorites'}
         onClick={(e) => {
           e.stopPropagation();
           sounds.playClick();
@@ -182,4 +207,3 @@ export function GameCard({
     </article>
   );
 }
-

@@ -101,3 +101,4 @@ if (!hextrisHtml.includes('img[src*="btn_facebook"]')) {
 }
 
 console.log('All game style & branding patches applied successfully!');
+

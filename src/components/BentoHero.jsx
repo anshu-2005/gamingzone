@@ -1,6 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { sounds } from '../../js/core/soundFX.js';
 import { getGameThumbnailSVG } from '../../js/utils/gameThumbnails.js';
+
+function BentoArtwork({ game, className, altText }) {
+  const [error, setError] = useState(false);
+  const src = game?.thumbnail || (game?.slug ? `/images/games/${game.slug}.webp` : null);
+
+  if (error || !src) {
+    return (
+      <div
+        className={className}
+        dangerouslySetInnerHTML={{ __html: getGameThumbnailSVG(game) }}
+      />
+    );
+  }
+
+  return (
+    <div className={className}>
+      <img
+        src={src}
+        alt={altText || game?.imageAlt || game?.title || 'Featured Game'}
+        loading="lazy"
+        decoding="async"
+        onError={() => setError(true)}
+        style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+      />
+    </div>
+  );
+}
 
 export function BentoHero({ games, onSelectGame }) {
   if (!games || games.length === 0) return null;
@@ -41,9 +68,10 @@ export function BentoHero({ games, onSelectGame }) {
             }
           }}
         >
-          <div
+          <BentoArtwork
+            game={mainSpotlight}
             className="gz-bento-spotlight-art"
-            dangerouslySetInnerHTML={{ __html: getGameThumbnailSVG(mainSpotlight) }}
+            altText={`#1 Trending: ${mainSpotlight.title}`}
           />
           <div className="gz-bento-spotlight-overlay">
             <div className="gz-bento-tag-row">
@@ -105,9 +133,10 @@ export function BentoHero({ games, onSelectGame }) {
                   }
                 }}
               >
-                <div
+                <BentoArtwork
+                  game={game}
                   className="gz-bento-tile-art"
-                  dangerouslySetInnerHTML={{ __html: getGameThumbnailSVG(game) }}
+                  altText={game.title}
                 />
                 <div className="gz-bento-tile-overlay">
                   <div className="gz-bento-tile-top">
