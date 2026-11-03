@@ -445,3 +445,4 @@ export class PhaserQuestFantasyGame extends GameEngineBase {
 }
 
 export default PhaserQuestFantasyGame;
+

@@ -2257,6 +2257,196 @@ export function getGameThumbnailSVG(game) {
     </svg>`;
   }
 
+  // 133. Water Sort Puzzle
+  if (id === 'game_water_sort_puzzle' || engine === 'WaterSortPuzzle') {
+    return `<svg class="game-thumb-svg" viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+      <rect width="320" height="200" fill="#082f49"/>
+      <!-- Flask 1 -->
+      <rect x="90" y="45" width="36" height="100" rx="14" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
+      <rect x="94" y="115" width="28" height="26" rx="6" fill="#3b82f6"/>
+      <rect x="94" y="88" width="28" height="26" fill="#10b981"/>
+      <rect x="94" y="60" width="28" height="26" fill="#ef4444"/>
+      <!-- Flask 2 -->
+      <rect x="142" y="45" width="36" height="100" rx="14" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
+      <rect x="146" y="115" width="28" height="26" rx="6" fill="#f59e0b"/>
+      <rect x="146" y="88" width="28" height="26" fill="#ec4899"/>
+      <rect x="146" y="60" width="28" height="26" fill="#3b82f6"/>
+      <!-- Flask 3 (Sorted Cyan) -->
+      <rect x="194" y="45" width="36" height="100" rx="14" fill="#1e293b" stroke="#00f0ff" stroke-width="3"/>
+      <rect x="198" y="55" width="28" height="86" rx="8" fill="#06b6d4"/>
+      <text x="160" y="178" font-family="'Outfit', sans-serif" font-size="13" font-weight="900" fill="#7dd3fc" letter-spacing="1.5" text-anchor="middle">WATER SORT PUZZLE</text>
+    </svg>`;
+  }
+
+  // 134. Queens Crown Logic
+  if (id === 'game_queens_crown_logic' || engine === 'QueensCrownLogic') {
+    return `<svg class="game-thumb-svg" viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+      <rect width="320" height="200" fill="#451a03"/>
+      <!-- Color Regions Grid -->
+      <rect x="90" y="35" width="140" height="110" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="3"/>
+      <rect x="95" y="40" width="40" height="50" fill="#1e3a8a"/>
+      <rect x="135" y="40" width="45" height="50" fill="#14532d"/>
+      <rect x="180" y="40" width="45" height="50" fill="#701a75"/>
+      <rect x="95" y="90" width="65" height="50" fill="#78350f"/>
+      <rect x="160" y="90" width="65" height="50" fill="#0e7490"/>
+      <!-- Crowns -->
+      <text x="115" y="75" font-size="24" text-anchor="middle">👑</text>
+      <text x="195" y="125" font-size="24" text-anchor="middle">👑</text>
+      <text x="160" y="178" font-family="'Outfit', sans-serif" font-size="13" font-weight="900" fill="#fde68a" letter-spacing="1.5" text-anchor="middle">QUEENS CROWN LOGIC</text>
+    </svg>`;
+  }
+
+  // 135. Pipe Flow Connect
+  if (id === 'game_pipe_flow_connect' || engine === 'PipeFlowConnect') {
+    return `<svg class="game-thumb-svg" viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+      <rect width="320" height="200" fill="#042f2e"/>
+      <!-- Glowing Pipe Layout -->
+      <path d="M60 100 L140 100 L140 60 L220 60 L220 120 L260 120" stroke="#06b6d4" stroke-width="18" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M60 100 L140 100 L140 60 L220 60 L220 120 L260 120" stroke="#a5f3fc" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <!-- Valve wheels -->
+      <circle cx="60" cy="100" r="12" fill="#10b981"/>
+      <circle cx="260" cy="120" r="12" fill="#3b82f6"/>
+      <text x="160" y="178" font-family="'Outfit', sans-serif" font-size="13" font-weight="900" fill="#5eead4" letter-spacing="1.5" text-anchor="middle">PIPE FLOW CONNECT</text>
+    </svg>`;
+  }
+
+  // 136. Fifteen Slide Puzzle
+  if (id === 'game_fifteen_slide_puzzle' || engine === 'FifteenSlidePuzzle') {
+    return `<svg class="game-thumb-svg" viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+      <rect width="320" height="200" fill="#0f172a"/>
+      <!-- 4x4 Grid Board -->
+      <rect x="95" y="32" width="130" height="116" rx="8" fill="#1e293b" stroke="#3b82f6" stroke-width="2"/>
+      <!-- Tiles -->
+      <rect x="100" y="38" width="26" height="24" rx="4" fill="#3b82f6"/><text x="113" y="55" font-family="sans-serif" font-weight="bold" font-size="12" fill="#fff" text-anchor="middle">1</text>
+      <rect x="130" y="38" width="26" height="24" rx="4" fill="#3b82f6"/><text x="143" y="55" font-family="sans-serif" font-weight="bold" font-size="12" fill="#fff" text-anchor="middle">2</text>
+      <rect x="160" y="38" width="26" height="24" rx="4" fill="#3b82f6"/><text x="173" y="55" font-family="sans-serif" font-weight="bold" font-size="12" fill="#fff" text-anchor="middle">3</text>
+      <rect x="190" y="38" width="26" height="24" rx="4" fill="#3b82f6"/><text x="203" y="55" font-family="sans-serif" font-weight="bold" font-size="12" fill="#fff" text-anchor="middle">4</text>
+      <rect x="100" y="66" width="26" height="24" rx="4" fill="#3b82f6"/><text x="113" y="83" font-family="sans-serif" font-weight="bold" font-size="12" fill="#fff" text-anchor="middle">5</text>
+      <rect x="130" y="66" width="26" height="24" rx="4" fill="#3b82f6"/><text x="143" y="83" font-family="sans-serif" font-weight="bold" font-size="12" fill="#fff" text-anchor="middle">6</text>
+      <rect x="160" y="66" width="26" height="24" rx="4" fill="#3b82f6"/><text x="173" y="83" font-family="sans-serif" font-weight="bold" font-size="12" fill="#fff" text-anchor="middle">7</text>
+      <rect x="190" y="66" width="26" height="24" rx="4" fill="#3b82f6"/><text x="203" y="83" font-family="sans-serif" font-weight="bold" font-size="12" fill="#fff" text-anchor="middle">8</text>
+      <rect x="100" y="94" width="26" height="24" rx="4" fill="#3b82f6"/><text x="113" y="111" font-family="sans-serif" font-weight="bold" font-size="12" fill="#fff" text-anchor="middle">9</text>
+      <rect x="130" y="94" width="26" height="24" rx="4" fill="#3b82f6"/><text x="143" y="111" font-family="sans-serif" font-weight="bold" font-size="12" fill="#fff" text-anchor="middle">10</text>
+      <rect x="160" y="94" width="26" height="24" rx="4" fill="#3b82f6"/><text x="173" y="111" font-family="sans-serif" font-weight="bold" font-size="12" fill="#fff" text-anchor="middle">11</text>
+      <rect x="190" y="94" width="26" height="24" rx="4" fill="#3b82f6"/><text x="203" y="111" font-family="sans-serif" font-weight="bold" font-size="12" fill="#fff" text-anchor="middle">12</text>
+      <rect x="100" y="122" width="26" height="24" rx="4" fill="#3b82f6"/><text x="113" y="139" font-family="sans-serif" font-weight="bold" font-size="12" fill="#fff" text-anchor="middle">13</text>
+      <rect x="130" y="122" width="26" height="24" rx="4" fill="#3b82f6"/><text x="143" y="139" font-family="sans-serif" font-weight="bold" font-size="12" fill="#fff" text-anchor="middle">14</text>
+      <rect x="160" y="122" width="26" height="24" rx="4" fill="#3b82f6"/><text x="173" y="139" font-family="sans-serif" font-weight="bold" font-size="12" fill="#fff" text-anchor="middle">15</text>
+      <!-- Blank Slot at 190, 122 -->
+      <text x="160" y="180" font-family="'Outfit', sans-serif" font-size="13" font-weight="900" fill="#93c5fd" letter-spacing="1.5" text-anchor="middle">FIFTEEN SLIDE PUZZLE</text>
+    </svg>`;
+  }
+
+  // 137. Capybara Catch Frenzy
+  if (id === 'game_capybara_catch_frenzy' || engine === 'CapybaraCatchFrenzy') {
+    return `<svg class="game-thumb-svg" viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+      <rect width="320" height="200" fill="#065f46"/>
+      <!-- River Hotspring -->
+      <ellipse cx="160" cy="95" rx="90" ry="45" fill="#0284c7"/>
+      <!-- Capybara -->
+      <ellipse cx="160" cy="90" rx="36" ry="28" fill="#78350f"/>
+      <rect x="142" y="85" width="36" height="20" rx="8" fill="#92400e"/>
+      <circle cx="150" cy="80" r="3" fill="#000"/>
+      <circle cx="170" cy="80" r="3" fill="#000"/>
+      <!-- Orange on head -->
+      <circle cx="160" cy="60" r="10" fill="#f97316"/>
+      <rect x="160" y="47" width="3" height="5" fill="#22c55e"/>
+      <text x="160" y="178" font-family="'Outfit', sans-serif" font-size="13" font-weight="900" fill="#fef08a" letter-spacing="1.5" text-anchor="middle">CAPYBARA CATCH FRENZY</text>
+    </svg>`;
+  }
+
+  // 138. Speed Cube Rush
+  if (id === 'game_speed_cube_rush' || engine === 'SpeedCubeRush') {
+    return `<svg class="game-thumb-svg" viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+      <rect width="320" height="200" fill="#0f172a"/>
+      <!-- 3D Perspective Road -->
+      <polygon points="140,60 180,60 280,200 40,200" fill="#1e1b4b"/>
+      <line x1="160" y1="60" x2="160" y2="200" stroke="#06b6d4" stroke-width="2" stroke-dasharray="6,6"/>
+      <!-- Glowing Cube -->
+      <rect x="140" y="115" width="40" height="40" rx="6" fill="#00f0ff" stroke="#ffffff" stroke-width="2"/>
+      <!-- Red Obstacle Blocks -->
+      <rect x="80" y="145" width="45" height="25" rx="4" fill="#ef4444"/>
+      <rect x="195" y="145" width="45" height="25" rx="4" fill="#ef4444"/>
+      <text x="160" y="182" font-family="'Outfit', sans-serif" font-size="13" font-weight="900" fill="#38bdf8" letter-spacing="1.5" text-anchor="middle">SPEED CUBE RUSH</text>
+    </svg>`;
+  }
+
+  // 139. Missile Escape Pilot
+  if (id === 'game_missile_escape_pilot' || engine === 'MissileEscapePilot') {
+    return `<svg class="game-thumb-svg" viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+      <rect width="320" height="200" fill="#0369a1"/>
+      <!-- Plane -->
+      <ellipse cx="160" cy="85" rx="22" ry="7" fill="#fbbf24"/>
+      <rect x="155" y="65" width="8" height="40" rx="3" fill="#d97706"/>
+      <!-- Smoke trail -->
+      <circle cx="130" cy="85" r="8" fill="rgba(255,255,255,0.4)"/>
+      <circle cx="110" cy="88" r="12" fill="rgba(255,255,255,0.2)"/>
+      <!-- Homing Missile -->
+      <polygon points="230,110 210,105 210,115" fill="#ef4444"/>
+      <line x1="210" y1="110" x2="245" y2="110" stroke="#ef4444" stroke-width="3"/>
+      <!-- Star -->
+      <text x="195" y="65" font-size="20">⭐</text>
+      <text x="160" y="178" font-family="'Outfit', sans-serif" font-size="13" font-weight="900" fill="#fed7aa" letter-spacing="1.5" text-anchor="middle">MISSILE ESCAPE PILOT</text>
+    </svg>`;
+  }
+
+  // 140. Tiny Crate Box Toss
+  if (id === 'game_tiny_crate_platformer' || engine === 'TinyCratePlatformer') {
+    return `<svg class="game-thumb-svg" viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+      <rect width="320" height="200" fill="#0f172a"/>
+      <!-- Ledges -->
+      <rect x="30" y="140" width="260" height="30" fill="#334155"/>
+      <rect x="180" y="95" width="100" height="15" fill="#334155"/>
+      <!-- Wooden Crate -->
+      <rect x="110" y="112" width="28" height="28" fill="#d97706" stroke="#78350f" stroke-width="2"/>
+      <line x1="110" y1="112" x2="138" y2="140" stroke="#78350f" stroke-width="2"/>
+      <line x1="138" y1="112" x2="110" y2="140" stroke="#78350f" stroke-width="2"/>
+      <!-- Hero -->
+      <rect x="70" y="112" width="20" height="28" rx="4" fill="#38bdf8"/>
+      <!-- Exit Door -->
+      <rect x="240" y="55" width="24" height="40" fill="#10b981"/>
+      <text x="160" y="182" font-family="'Outfit', sans-serif" font-size="13" font-weight="900" fill="#fed7aa" letter-spacing="1.5" text-anchor="middle">TINY CRATE: BOX TOSS</text>
+    </svg>`;
+  }
+
+  // 141. Sunset Cyberspace
+  if (id === 'game_sunset_cyberspace' || engine === 'SunsetCyberspace') {
+    return `<svg class="game-thumb-svg" viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+      <rect width="320" height="200" fill="#3b0764"/>
+      <!-- Striped Sun -->
+      <circle cx="160" cy="80" r="42" fill="#f43f5e"/>
+      <line x1="118" y1="70" x2="202" y2="70" stroke="#3b0764" stroke-width="3"/>
+      <line x1="118" y1="80" x2="202" y2="80" stroke="#3b0764" stroke-width="3"/>
+      <line x1="118" y1="90" x2="202" y2="90" stroke="#3b0764" stroke-width="3"/>
+      <!-- Cyber Grid Floor -->
+      <polygon points="120,110 200,110 320,200 0,200" fill="#090014"/>
+      <line x1="160" y1="110" x2="160" y2="200" stroke="#ec4899" stroke-width="2"/>
+      <line x1="140" y1="110" x2="80" y2="200" stroke="#ec4899" stroke-width="1.5"/>
+      <line x1="180" y1="110" x2="240" y2="200" stroke="#ec4899" stroke-width="1.5"/>
+      <!-- Cyber Ship -->
+      <polygon points="160,135 145,155 175,155" fill="#06b6d4"/>
+      <text x="160" y="185" font-family="'Outfit', sans-serif" font-size="13" font-weight="900" fill="#f0abfc" letter-spacing="1.5" text-anchor="middle">SUNSET CYBERSPACE</text>
+    </svg>`;
+  }
+
+  // 142. Astro Loop Orbital
+  if (id === 'game_astro_loop_orbital' || engine === 'AstroLoopOrbital') {
+    return `<svg class="game-thumb-svg" viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+      <rect width="320" height="200" fill="#030712"/>
+      <!-- Core Planet -->
+      <circle cx="160" cy="95" r="26" fill="#0284c7" stroke="#38bdf8" stroke-width="3"/>
+      <!-- Orbital Ring -->
+      <circle cx="160" cy="95" r="62" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="6,6"/>
+      <!-- Player Starfighter -->
+      <polygon points="222,95 210,88 210,102" fill="#10b981"/>
+      <!-- Laser Blast Outward -->
+      <line x1="224" y1="95" x2="255" y2="95" stroke="#00f0ff" stroke-width="3"/>
+      <!-- Asteroid Hostile -->
+      <circle cx="270" cy="95" r="8" fill="#ef4444"/>
+      <text x="160" y="180" font-family="'Outfit', sans-serif" font-size="13" font-weight="900" fill="#bae6fd" letter-spacing="1.5" text-anchor="middle">ASTRO LOOP ORBITAL</text>
+    </svg>`;
+  }
+
   // Graceful Fallback (Genre-Specific & Polished)
   const colors = {
     cricket: ['#065f46', '#10b981'],

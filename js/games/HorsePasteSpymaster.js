@@ -226,3 +226,4 @@ export class HorsePasteSpymasterGame extends GameEngineBase {
 }
 
 export default HorsePasteSpymasterGame;
+

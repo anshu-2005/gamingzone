@@ -10,16 +10,16 @@ const rootDir = path.resolve(__dirname, '..');
 const outDir = path.join(rootDir, 'public', 'images', 'games');
 
 const newGames = [
-  { id: 'game_phaserquest_fantasy', engine: 'PhaserQuestFantasy', slug: 'phaserquest-fantasy-realm', title: 'PhaserQuest: Fantasy Realm' },
-  { id: 'game_horsepaste_spymaster', engine: 'HorsePasteSpymaster', slug: 'horsepaste-spymaster-agent', title: 'HorsePaste: Spymaster Agent' },
-  { id: 'game_gowog_cell_battle', engine: 'GowogCellBattle', slug: 'gowog-cell-battle-io', title: 'Gowog: Cell Battle IO' },
-  { id: 'game_csgo_aim_strike', engine: 'CsgoAimStrike', slug: 'csgo-aim-reflex-strike', title: 'CS:GO Aim Reflex & Strike' },
-  { id: 'game_racing_world_3d', engine: 'RacingWorld3D', slug: 'racing-world-3d-turbo', title: 'Racing World 3D Turbo' },
-  { id: 'game_robot_rumble_mech', engine: 'RobotRumbleMech', slug: 'robot-rumble-mech-arena', title: 'Robot Rumble: Mech Arena' },
-  { id: 'game_neon_cyber_casino', engine: 'NeonCyberCasino', slug: 'neon-cyber-casino', title: 'Neon Cyber Casino: Crash & Gems' },
-  { id: 'game_karaoke_beat_master', engine: 'KaraokeBeatMaster', slug: 'karaoke-beat-master', title: 'Karaoke Beat Master' },
-  { id: 'game_legends_future_past', engine: 'LegendsFuturePast', slug: 'legends-future-past', title: 'Legends of Future Past: Cyber MUD' },
-  { id: 'game_billiards_3d_pro', engine: 'Billiards3DPro', slug: 'billiards-3d-pro', title: 'Billiards 3D Pro: Master Pool' }
+  { id: 'game_water_sort_puzzle', engine: 'WaterSortPuzzle', slug: 'water-sort-puzzle-tubes', title: 'Water Sort Puzzle: Color Tubes' },
+  { id: 'game_queens_crown_logic', engine: 'QueensCrownLogic', slug: 'queens-crown-logic', title: 'Queens Crown: Grid Logic' },
+  { id: 'game_pipe_flow_connect', engine: 'PipeFlowConnect', slug: 'pipe-flow-connect', title: 'Pipe Flow Connect: Hydro Maze' },
+  { id: 'game_fifteen_slide_puzzle', engine: 'FifteenSlidePuzzle', slug: 'fifteen-slide-puzzle', title: 'Fifteen Sliding Puzzle' },
+  { id: 'game_capybara_catch_frenzy', engine: 'CapybaraCatchFrenzy', slug: 'capybara-catch-frenzy', title: 'Capybara Catch Frenzy' },
+  { id: 'game_speed_cube_rush', engine: 'SpeedCubeRush', slug: 'speed-cube-neon-rush', title: 'Speed Cube: Neon Obstacle Rush' },
+  { id: 'game_missile_escape_pilot', engine: 'MissileEscapePilot', slug: 'missile-escape-stunt-pilot', title: 'Missile Escape: Stunt Pilot' },
+  { id: 'game_tiny_crate_platformer', engine: 'TinyCratePlatformer', slug: 'tiny-crate-box-toss', title: 'Tiny Crate: Box Toss Platformer' },
+  { id: 'game_sunset_cyberspace', engine: 'SunsetCyberspace', slug: 'sunset-cyberspace-runner', title: 'Sunset Cyberspace: Retro Runner' },
+  { id: 'game_astro_loop_orbital', engine: 'AstroLoopOrbital', slug: 'astro-loop-orbital', title: 'Astro Loop: Orbital Roguelike' }
 ];
 
 async function run() {

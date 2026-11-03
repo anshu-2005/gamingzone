@@ -350,3 +350,4 @@ export class GowogCellBattleGame extends GameEngineBase {
 }
 
 export default GowogCellBattleGame;
+
