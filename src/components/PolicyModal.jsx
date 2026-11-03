@@ -340,3 +340,4 @@ export function PolicyModal({ isOpen, onClose, initialTab = 'privacy' }) {
     </div>
   );
 }
+

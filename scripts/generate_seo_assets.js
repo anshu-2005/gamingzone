@@ -117,3 +117,4 @@ sitemapXml += `</urlset>`;
 
 fs.writeFileSync(path.join(rootDir, 'public', 'sitemap.xml'), sitemapXml, 'utf8');
 console.log(`✅ Generated public/sitemap.xml with ${games.length} games and categories!`);
+

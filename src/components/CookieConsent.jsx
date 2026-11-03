@@ -104,3 +104,4 @@ export function CookieConsent({ onOpenPrivacy }) {
     </div>
   );
 }
+
