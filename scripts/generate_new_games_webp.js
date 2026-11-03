@@ -10,16 +10,18 @@ const rootDir = path.resolve(__dirname, '..');
 const outDir = path.join(rootDir, 'public', 'images', 'games');
 
 const newGames = [
-  { id: 'game_water_sort_puzzle', engine: 'WaterSortPuzzle', slug: 'water-sort-puzzle-tubes', title: 'Water Sort Puzzle: Color Tubes' },
-  { id: 'game_queens_crown_logic', engine: 'QueensCrownLogic', slug: 'queens-crown-logic', title: 'Queens Crown: Grid Logic' },
-  { id: 'game_pipe_flow_connect', engine: 'PipeFlowConnect', slug: 'pipe-flow-connect', title: 'Pipe Flow Connect: Hydro Maze' },
-  { id: 'game_fifteen_slide_puzzle', engine: 'FifteenSlidePuzzle', slug: 'fifteen-slide-puzzle', title: 'Fifteen Sliding Puzzle' },
-  { id: 'game_capybara_catch_frenzy', engine: 'CapybaraCatchFrenzy', slug: 'capybara-catch-frenzy', title: 'Capybara Catch Frenzy' },
-  { id: 'game_speed_cube_rush', engine: 'SpeedCubeRush', slug: 'speed-cube-neon-rush', title: 'Speed Cube: Neon Obstacle Rush' },
-  { id: 'game_missile_escape_pilot', engine: 'MissileEscapePilot', slug: 'missile-escape-stunt-pilot', title: 'Missile Escape: Stunt Pilot' },
-  { id: 'game_tiny_crate_platformer', engine: 'TinyCratePlatformer', slug: 'tiny-crate-box-toss', title: 'Tiny Crate: Box Toss Platformer' },
-  { id: 'game_sunset_cyberspace', engine: 'SunsetCyberspace', slug: 'sunset-cyberspace-runner', title: 'Sunset Cyberspace: Retro Runner' },
-  { id: 'game_astro_loop_orbital', engine: 'AstroLoopOrbital', slug: 'astro-loop-orbital', title: 'Astro Loop: Orbital Roguelike' }
+  { id: 'game_star_fighter_ace', engine: 'StarFighterAce', slug: 'star-fighter-ace', title: 'Star Fighter: Deep Space Ace' },
+  { id: 'game_terminal_breach', engine: 'TerminalBreach', slug: 'terminal-breach-decryptor', title: 'Terminal Breach: Fallout Decryptor' },
+  { id: 'game_buses_from_hell', engine: 'BusesFromHell', slug: 'buses-from-hell-dodge', title: 'Buses From Hell: Dodging Mayhem' },
+  { id: 'game_smash_copter', engine: 'SmashCopter', slug: 'smash-copter-hazard', title: 'Smash Copter: Falling Hazard' },
+  { id: 'game_dude_adventure', engine: 'DudeAdventure', slug: 'dude-adventure-quest', title: 'Dude Adventure: Forest Quest' },
+  { id: 'game_feed_the_flames', engine: 'FeedTheFlames', slug: 'feed-the-flames-idle', title: 'Feed The Flames: Idle Bonfire' },
+  { id: 'game_factory_defense_rts', engine: 'FactoryDefenseRTS', slug: 'factory-defense-rts', title: 'Factory Defense RTS: Automata' },
+  { id: 'game_rota_gravity_bend', engine: 'RotaGravityBend', slug: 'rota-gravity-bend', title: 'Rota: Gravity Bend Platformer' },
+  { id: 'game_legend_wings', engine: 'LegendWings', slug: 'legend-wings-striker', title: 'Legend Wings: Sky Striker' },
+  { id: 'game_binary_tetris', engine: 'BinaryTetris', slug: 'binary-tetris-matrix', title: 'Binary Tetris: Bit Matrix' },
+  { id: 'game_armored_tanks_blitz', engine: 'ArmoredTanksBlitz', slug: 'armored-tanks-blitz', title: 'Armored Tanks Blitz: Steel War' },
+  { id: 'game_fly_plane_sky', engine: 'FlyPlaneSky', slug: 'fly-plane-sky-obstacles', title: 'Fly Plane Fly: Sky Obstacles' }
 ];
 
 async function run() {
@@ -37,7 +39,7 @@ async function run() {
       console.error(`Failed ${g.slug}:`, err);
     }
   }
-  console.log('All 10 game webps successfully generated!');
+  console.log(`All ${newGames.length} game webps successfully generated!`);
 }
 
 run();

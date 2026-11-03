@@ -244,3 +244,4 @@ export class QueensCrownLogic extends GameEngineBase {
     ctx.fillText(this.statusMessage, 500, 542);
   }
 }
+

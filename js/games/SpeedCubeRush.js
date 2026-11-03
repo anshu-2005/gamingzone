@@ -240,3 +240,4 @@ export class SpeedCubeRush extends GameEngineBase {
     }
   }
 }
+

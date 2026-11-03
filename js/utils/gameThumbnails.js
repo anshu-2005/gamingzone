@@ -2447,6 +2447,210 @@ export function getGameThumbnailSVG(game) {
     </svg>`;
   }
 
+  // 143. Star Fighter: Deep Space Ace
+  if (id === 'game_star_fighter_ace' || engine === 'StarFighterAce') {
+    return `<svg class="game-thumb-svg" viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+      <rect width="320" height="200" fill="#030712"/>
+      <circle cx="160" cy="100" r="1" fill="#fff" opacity="0.8"/>
+      <circle cx="80" cy="40" r="1.5" fill="#38bdf8" opacity="0.6"/>
+      <circle cx="240" cy="160" r="1.5" fill="#38bdf8" opacity="0.6"/>
+      <!-- Starfighter Ship -->
+      <polygon points="160,50 140,130 155,120 160,115 165,120 180,130" fill="#0284c7" stroke="#38bdf8" stroke-width="2"/>
+      <!-- Twin Plasma Lasers -->
+      <line x1="135" y1="90" x2="135" y2="40" stroke="#00f0ff" stroke-width="3"/>
+      <line x1="185" y1="90" x2="185" y2="40" stroke="#00f0ff" stroke-width="3"/>
+      <!-- Enemy Drone Exploding -->
+      <circle cx="210" cy="50" r="14" fill="#ef4444" opacity="0.8"/>
+      <text x="160" y="180" font-family="'Outfit', sans-serif" font-size="13" font-weight="900" fill="#7dd3fc" letter-spacing="1.5" text-anchor="middle">STAR FIGHTER ACE</text>
+    </svg>`;
+  }
+
+  // 144. Terminal Breach: Fallout Decryptor
+  if (id === 'game_terminal_breach' || engine === 'TerminalBreach') {
+    return `<svg class="game-thumb-svg" viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+      <rect width="320" height="200" fill="#052e16"/>
+      <!-- CRT scanline overlay -->
+      <rect x="20" y="20" width="280" height="140" rx="8" fill="#022c22" stroke="#22c55e" stroke-width="2"/>
+      <text x="40" y="55" font-family="'Courier New', monospace" font-size="14" font-weight="700" fill="#4ade80">> ROBOCO TERMINAL</text>
+      <text x="40" y="80" font-family="'Courier New', monospace" font-size="12" fill="#22c55e">0xF240 [REACTOR] 3/7</text>
+      <text x="40" y="105" font-family="'Courier New', monospace" font-size="12" fill="#22c55e">0xF25C [OVERRIDE] 7/7</text>
+      <text x="40" y="130" font-family="'Courier New', monospace" font-size="13" font-weight="900" fill="#a7f3d0">ACCESS GRANTED ***</text>
+      <text x="160" y="184" font-family="'Outfit', sans-serif" font-size="13" font-weight="900" fill="#86efac" letter-spacing="1.5" text-anchor="middle">TERMINAL BREACH</text>
+    </svg>`;
+  }
+
+  // 145. Buses From Hell: Dodging Mayhem
+  if (id === 'game_buses_from_hell' || engine === 'BusesFromHell') {
+    return `<svg class="game-thumb-svg" viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+      <rect width="320" height="200" fill="#18181b"/>
+      <!-- Highway Lanes -->
+      <rect x="40" y="0" width="240" height="200" fill="#27272a"/>
+      <line x1="120" y1="0" x2="120" y2="200" stroke="#facc15" stroke-width="2" stroke-dasharray="12,12"/>
+      <line x1="200" y1="0" x2="200" y2="200" stroke="#facc15" stroke-width="2" stroke-dasharray="12,12"/>
+      <!-- Fiery Bus -->
+      <rect x="135" y="25" width="50" height="85" rx="6" fill="#dc2626" stroke="#f87171" stroke-width="2"/>
+      <rect x="142" y="30" width="36" height="15" rx="2" fill="#fef08a"/>
+      <!-- Player Car dodging -->
+      <rect x="65" y="120" width="35" height="55" rx="5" fill="#3b82f6" stroke="#93c5fd" stroke-width="2"/>
+      <text x="160" y="185" font-family="'Outfit', sans-serif" font-size="13" font-weight="900" fill="#fca5a5" letter-spacing="1.5" text-anchor="middle">BUSES FROM HELL</text>
+    </svg>`;
+  }
+
+  // 146. Smash Copter: Falling Hazard
+  if (id === 'game_smash_copter' || engine === 'SmashCopter') {
+    return `<svg class="game-thumb-svg" viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+      <rect width="320" height="200" fill="#1e1b4b"/>
+      <!-- Attack Helicopter -->
+      <line x1="120" y1="35" x2="200" y2="35" stroke="#94a3b8" stroke-width="3"/>
+      <ellipse cx="160" cy="50" rx="30" ry="16" fill="#475569" stroke="#94a3b8" stroke-width="2"/>
+      <!-- Falling Crate Hazard -->
+      <rect x="145" y="85" width="26" height="26" fill="#ea580c" stroke="#fed7aa" stroke-width="2"/>
+      <!-- Rooftop & Running Hero -->
+      <rect x="20" y="150" width="280" height="50" fill="#0f172a"/>
+      <rect x="90" y="125" width="16" height="25" rx="4" fill="#38bdf8"/>
+      <text x="160" y="185" font-family="'Outfit', sans-serif" font-size="13" font-weight="900" fill="#fdba74" letter-spacing="1.5" text-anchor="middle">SMASH COPTER</text>
+    </svg>`;
+  }
+
+  // 147. Dude Adventure: Forest Quest
+  if (id === 'game_dude_adventure' || engine === 'DudeAdventure') {
+    return `<svg class="game-thumb-svg" viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+      <rect width="320" height="200" fill="#064e3b"/>
+      <!-- Grass Platform -->
+      <rect x="0" y="145" width="320" height="55" fill="#166534"/>
+      <rect x="0" y="145" width="320" height="8" fill="#4ade80"/>
+      <!-- Dude Character -->
+      <circle cx="100" cy="115" r="14" fill="#facc15"/>
+      <rect x="92" y="128" width="16" height="18" rx="3" fill="#2563eb"/>
+      <!-- Cute Forest Slime Monster -->
+      <ellipse cx="210" cy="138" rx="16" ry="10" fill="#ec4899"/>
+      <!-- Gold Gem -->
+      <polygon points="150,90 160,80 170,90 160,105" fill="#fbbf24"/>
+      <text x="160" y="180" font-family="'Outfit', sans-serif" font-size="13" font-weight="900" fill="#bbf7d0" letter-spacing="1.5" text-anchor="middle">DUDE ADVENTURE</text>
+    </svg>`;
+  }
+
+  // 148. Feed The Flames: Idle Bonfire
+  if (id === 'game_feed_the_flames' || engine === 'FeedTheFlames') {
+    return `<svg class="game-thumb-svg" viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+      <rect width="320" height="200" fill="#0f172a"/>
+      <!-- Glowing Campfire Stone Ring -->
+      <ellipse cx="160" cy="140" rx="55" ry="18" fill="#334155"/>
+      <!-- Wood Logs -->
+      <line x1="130" y1="145" x2="190" y2="135" stroke="#78350f" stroke-width="8" stroke-linecap="round"/>
+      <line x1="135" y1="135" x2="185" y2="145" stroke="#92400e" stroke-width="8" stroke-linecap="round"/>
+      <!-- Blazing Flame Core -->
+      <path d="M 160 50 Q 185 95 180 135 Q 160 145 140 135 Q 135 95 160 50 Z" fill="#f97316"/>
+      <path d="M 160 75 Q 175 105 170 135 Q 160 140 150 135 Q 145 105 160 75 Z" fill="#facc15"/>
+      <text x="160" y="182" font-family="'Outfit', sans-serif" font-size="13" font-weight="900" fill="#fed7aa" letter-spacing="1.5" text-anchor="middle">FEED THE FLAMES</text>
+    </svg>`;
+  }
+
+  // 149. Factory Defense RTS: Automata
+  if (id === 'game_factory_defense_rts' || engine === 'FactoryDefenseRTS') {
+    return `<svg class="game-thumb-svg" viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+      <rect width="320" height="200" fill="#134e4a"/>
+      <!-- Grid Base Plate -->
+      <rect x="30" y="30" width="260" height="130" rx="6" fill="#115e59" stroke="#2dd4bf" stroke-width="1.5"/>
+      <!-- Core Base Reactor -->
+      <rect x="70" y="75" width="40" height="40" rx="4" fill="#0f766e" stroke="#5eead4" stroke-width="2"/>
+      <circle cx="90" cy="95" r="10" fill="#2dd4bf"/>
+      <!-- Conveyor Track -->
+      <line x1="110" y1="95" x2="190" y2="95" stroke="#facc15" stroke-width="6" stroke-dasharray="6,4"/>
+      <!-- Defense Turret -->
+      <circle cx="210" cy="95" r="18" fill="#1e293b" stroke="#f43f5e" stroke-width="2"/>
+      <line x1="210" y1="95" x2="245" y2="85" stroke="#f43f5e" stroke-width="4"/>
+      <text x="160" y="182" font-family="'Outfit', sans-serif" font-size="13" font-weight="900" fill="#99f6e4" letter-spacing="1.5" text-anchor="middle">FACTORY DEFENSE RTS</text>
+    </svg>`;
+  }
+
+  // 150. Rota: Gravity Bend Platformer
+  if (id === 'game_rota_gravity_bend' || engine === 'RotaGravityBend') {
+    return `<svg class="game-thumb-svg" viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+      <rect width="320" height="200" fill="#2e1065"/>
+      <!-- Circular Room Arena -->
+      <circle cx="160" cy="95" r="60" fill="#3b0764" stroke="#a855f7" stroke-width="3"/>
+      <!-- Gravity Rotation Arrows -->
+      <path d="M 140 45 A 55 55 0 0 1 180 45" fill="none" stroke="#e9d5ff" stroke-width="2"/>
+      <!-- Pushable Block -->
+      <rect x="145" y="80" width="24" height="24" rx="3" fill="#ec4899" stroke="#fbcfe8" stroke-width="2"/>
+      <!-- Hero on wall -->
+      <circle cx="115" cy="95" r="10" fill="#38bdf8"/>
+      <text x="160" y="182" font-family="'Outfit', sans-serif" font-size="13" font-weight="900" fill="#f5d0fe" letter-spacing="1.5" text-anchor="middle">ROTA: GRAVITY BEND</text>
+    </svg>`;
+  }
+
+  // 151. Legend Wings: Sky Striker
+  if (id === 'game_legend_wings' || engine === 'LegendWings') {
+    return `<svg class="game-thumb-svg" viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+      <rect width="320" height="200" fill="#1e3a8a"/>
+      <!-- Ocean water texture -->
+      <rect x="0" y="0" width="320" height="200" fill="#172554"/>
+      <!-- Island Outpost -->
+      <ellipse cx="230" cy="70" rx="35" ry="25" fill="#15803d"/>
+      <!-- WWII Strike Fighter -->
+      <polygon points="160,80 145,135 160,125 175,135" fill="#2563eb" stroke="#60a5fa" stroke-width="2"/>
+      <line x1="120" y1="110" x2="200" y2="110" stroke="#3b82f6" stroke-width="6"/>
+      <!-- Triple Laser Shot -->
+      <line x1="145" y1="75" x2="145" y2="35" stroke="#facc15" stroke-width="3"/>
+      <line x1="160" y1="70" x2="160" y2="30" stroke="#facc15" stroke-width="3"/>
+      <line x1="175" y1="75" x2="175" y2="35" stroke="#facc15" stroke-width="3"/>
+      <text x="160" y="180" font-family="'Outfit', sans-serif" font-size="13" font-weight="900" fill="#bfdbfe" letter-spacing="1.5" text-anchor="middle">LEGEND WINGS</text>
+    </svg>`;
+  }
+
+  // 152. Binary Tetris: Bit Matrix
+  if (id === 'game_binary_tetris' || engine === 'BinaryTetris') {
+    return `<svg class="game-thumb-svg" viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+      <rect width="320" height="200" fill="#022c22"/>
+      <!-- Matrix grid columns -->
+      <rect x="90" y="20" width="140" height="140" rx="4" fill="#064e3b" stroke="#10b981" stroke-width="2"/>
+      <text x="110" y="65" font-family="'Courier New', monospace" font-size="18" font-weight="900" fill="#34d399">1</text>
+      <text x="135" y="65" font-family="'Courier New', monospace" font-size="18" font-weight="900" fill="#34d399">0</text>
+      <text x="160" y="65" font-family="'Courier New', monospace" font-size="18" font-weight="900" fill="#34d399">1</text>
+      <text x="185" y="65" font-family="'Courier New', monospace" font-size="18" font-weight="900" fill="#34d399">1</text>
+      <rect x="130" y="90" width="55" height="25" rx="3" fill="#059669" stroke="#6ee7b7" stroke-width="2"/>
+      <text x="160" y="182" font-family="'Outfit', sans-serif" font-size="13" font-weight="900" fill="#a7f3d0" letter-spacing="1.5" text-anchor="middle">BINARY TETRIS</text>
+    </svg>`;
+  }
+
+  // 153. Armored Tanks Blitz: Steel War
+  if (id === 'game_armored_tanks_blitz' || engine === 'ArmoredTanksBlitz') {
+    return `<svg class="game-thumb-svg" viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+      <rect width="320" height="200" fill="#1e293b"/>
+      <!-- Destructible Bunker Wall -->
+      <rect x="40" y="50" width="30" height="90" fill="#475569" stroke="#64748b" stroke-width="2"/>
+      <!-- Tank Hull -->
+      <rect x="135" y="80" width="50" height="40" rx="4" fill="#15803d" stroke="#22c55e" stroke-width="2"/>
+      <rect x="130" y="74" width="60" height="10" rx="2" fill="#334155"/>
+      <rect x="130" y="116" width="60" height="10" rx="2" fill="#334155"/>
+      <!-- Turret & Cannon -->
+      <circle cx="160" cy="100" r="14" fill="#166534" stroke="#4ade80" stroke-width="2"/>
+      <line x1="160" y1="100" x2="205" y2="100" stroke="#22c55e" stroke-width="5"/>
+      <!-- Cannon Blast -->
+      <polygon points="208,95 224,100 208,105" fill="#facc15"/>
+      <text x="160" y="180" font-family="'Outfit', sans-serif" font-size="13" font-weight="900" fill="#86efac" letter-spacing="1.5" text-anchor="middle">ARMORED TANKS BLITZ</text>
+    </svg>`;
+  }
+
+  // 154. Fly Plane Fly: Sky Obstacles
+  if (id === 'game_fly_plane_sky' || engine === 'FlyPlaneSky') {
+    return `<svg class="game-thumb-svg" viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+      <rect width="320" height="200" fill="#0284c7"/>
+      <!-- Distant Mountains -->
+      <polygon points="0,170 80,100 160,150 240,90 320,170 320,200 0,200" fill="#0369a1"/>
+      <!-- Spire Obstacles -->
+      <polygon points="210,0 240,0 230,65 215,65" fill="#334155"/>
+      <polygon points="215,130 230,130 240,200 210,200" fill="#334155"/>
+      <!-- Glowing Aero Ring -->
+      <ellipse cx="170" cy="98" rx="8" ry="22" fill="none" stroke="#facc15" stroke-width="4"/>
+      <!-- Monoplane -->
+      <ellipse cx="105" cy="98" rx="20" ry="8" fill="#ef4444"/>
+      <polygon points="98,98 108,82 118,82 108,98" fill="#dc2626"/>
+      <text x="160" y="185" font-family="'Outfit', sans-serif" font-size="13" font-weight="900" fill="#bae6fd" letter-spacing="1.5" text-anchor="middle">FLY PLANE FLY</text>
+    </svg>`;
+  }
+
   // Graceful Fallback (Genre-Specific & Polished)
   const colors = {
     cricket: ['#065f46', '#10b981'],

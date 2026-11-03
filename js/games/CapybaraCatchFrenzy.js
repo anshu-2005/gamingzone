@@ -259,3 +259,4 @@ export class CapybaraCatchFrenzy extends GameEngineBase {
     }
   }
 }
+

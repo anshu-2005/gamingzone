@@ -229,3 +229,4 @@ export class FifteenSlidePuzzle extends GameEngineBase {
     ctx.fillText(this.statusMessage, 500, 540);
   }
 }
+
