@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { sounds } from '../../js/core/soundFX.js';
+import { getGameThumbnailSVG } from '../../js/utils/gameThumbnails.js';
 
 export function Navbar({
   searchQuery,
@@ -11,8 +12,38 @@ export function Navbar({
   profile,
   isMuted,
   onToggleMute,
-  onHomeClick
+  onHomeClick,
+  games = [],
+  onSelectGame
 }) {
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const searchWrapperRef = useRef(null);
+
+  // Filter matching games for autocomplete (up to 6)
+  const matchingGames = React.useMemo(() => {
+    if (!searchQuery || !searchQuery.trim()) return [];
+    const q = searchQuery.toLowerCase().trim();
+    return games
+      .filter(
+        (g) =>
+          g.title.toLowerCase().includes(q) ||
+          g.category?.toLowerCase().includes(q) ||
+          (g.tags && g.tags.some((t) => t.toLowerCase().includes(q)))
+      )
+      .slice(0, 6);
+  }, [games, searchQuery]);
+
+  // Handle outside click to close dropdown
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (searchWrapperRef.current && !searchWrapperRef.current.contains(e.target)) {
+        setIsDropdownOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
   return (
     <header className="crazy-top-header">
       <div className="header-left-zone">
@@ -25,7 +56,7 @@ export function Navbar({
           title="Toggle Sidebar"
           aria-label="Toggle Navigation"
         >
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
             <line x1="3" y1="12" x2="21" y2="12"></line>
             <line x1="3" y1="6" x2="21" y2="6"></line>
             <line x1="3" y1="18" x2="21" y2="18"></line>
@@ -46,28 +77,92 @@ export function Navbar({
         </a>
       </div>
 
-      {/* Center Search Input */}
-      <div className="crazy-search-wrapper">
+      {/* Center Search Input with Instant Autocomplete Dropdown */}
+      <div className="crazy-search-wrapper" ref={searchWrapperRef}>
         <div className="crazy-search-bar">
           <span className="search-lens-icon">🔍</span>
           <input
             type="text"
             className="crazy-search-input"
-            placeholder="Search 65+ games, tags, and genres..."
+            placeholder="Search 140+ games, categories, or tags..."
             value={searchQuery}
-            onChange={(e) => onSearchChange(e.target.value)}
+            onChange={(e) => {
+              onSearchChange(e.target.value);
+              setIsDropdownOpen(true);
+            }}
+            onFocus={() => {
+              if (searchQuery.trim()) setIsDropdownOpen(true);
+            }}
+            onKeyDown={(e) => {
+              if (e.key === 'Escape') {
+                setIsDropdownOpen(false);
+              } else if (e.key === 'Enter' && matchingGames.length > 0 && typeof onSelectGame === 'function') {
+                setIsDropdownOpen(false);
+              }
+            }}
             autoComplete="off"
           />
           {searchQuery && (
             <button
               className="btn-search-clear"
-              onClick={() => onSearchChange('')}
+              onClick={() => {
+                onSearchChange('');
+                setIsDropdownOpen(false);
+              }}
               title="Clear Search"
             >
               ✕
             </button>
           )}
         </div>
+
+        {/* Live Autocomplete Suggestions Dropdown */}
+        {isDropdownOpen && searchQuery.trim().length > 0 && (
+          <div className="gz-search-dropdown-menu">
+            {matchingGames.length > 0 ? (
+              <>
+                <div className="gz-dropdown-header">
+                  <span>Top Matches ({matchingGames.length})</span>
+                  <span className="gz-hint-text">Press Enter for all results</span>
+                </div>
+                <div className="gz-dropdown-list">
+                  {matchingGames.map((game) => (
+                    <div
+                      key={game.id}
+                      className="gz-dropdown-item"
+                      onClick={() => {
+                        sounds.playClick();
+                        setIsDropdownOpen(false);
+                        if (typeof onSelectGame === 'function') {
+                          onSelectGame(game);
+                        }
+                      }}
+                      role="button"
+                      tabIndex={0}
+                    >
+                      <div
+                        className="gz-dropdown-item-thumb"
+                        dangerouslySetInnerHTML={{ __html: getGameThumbnailSVG(game) }}
+                      />
+                      <div className="gz-dropdown-item-info">
+                        <div className="gz-dropdown-item-title">{game.title}</div>
+                        <div className="gz-dropdown-item-meta">
+                          <span className="gz-item-cat">{game.category || 'Arcade'}</span>
+                          <span className="gz-item-plays">{(game.plays || 1200).toLocaleString()} plays</span>
+                        </div>
+                      </div>
+                      <span className="gz-dropdown-play-icon">▶</span>
+                    </div>
+                  ))}
+                </div>
+              </>
+            ) : (
+              <div className="gz-dropdown-empty">
+                <span>No games found for "{searchQuery}"</span>
+              </div>
+            )}
+          </div>
+        )}
       </div>
 
       {/* Right Action Icons */}
@@ -137,4 +232,3 @@ export function Navbar({
     </header>
   );
 }
-

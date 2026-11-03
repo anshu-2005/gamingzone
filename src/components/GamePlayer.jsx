@@ -16,10 +16,12 @@ export function GamePlayer({
   const [isPaused, setIsPaused] = useState(false);
   const [resultData, setResultData] = useState(null); // { score, isVictory }
   const [isMuted, setIsMuted] = useState(sounds.muted);
+  const [isTheaterMode, setIsTheaterMode] = useState(false);
   const [leaderboard, setLeaderboard] = useState([]);
   const [leaderboardLoading, setLeaderboardLoading] = useState(false);
   const [submittedScore, setSubmittedScore] = useState(null);
   const [activeLeaderboardTab, setActiveLeaderboardTab] = useState('all');
+  const [iframeKey, setIframeKey] = useState(0);
   const viewportRef = useRef(null);
 
   const isBundle = game.game_type === 'bundle' || game.game_type === 'external' || Boolean(game.bundle_url || game.bundleUrl || game.external_url);
@@ -111,7 +113,11 @@ export function GamePlayer({
     sounds.playClick();
     setResultData(null);
     setIsPaused(false);
-    restart();
+    if (isBundle) {
+      setIframeKey((prev) => prev + 1);
+    } else {
+      restart();
+    }
   };
 
   const handleToggleFullscreen = () => {
@@ -121,6 +127,11 @@ export function GamePlayer({
     } else {
       document.exitFullscreen?.();
     }
+  };
+
+  const handleToggleTheater = () => {
+    sounds.playClick();
+    setIsTheaterMode(!isTheaterMode);
   };
 
   const handleShare = () => {
@@ -135,7 +146,7 @@ export function GamePlayer({
   };
 
   return (
-    <div className="game-shell-container">
+    <div className={`game-shell-container ${isTheaterMode ? 'theater-layout-active' : ''}`}>
       {/* Top Header Bar */}
       <header className="game-shell-header">
         <div className="header-left">
@@ -156,6 +167,16 @@ export function GamePlayer({
         </div>
 
         <div className="header-right">
+          <button
+            className={`btn-icon ${isTheaterMode ? 'active' : ''}`}
+            onClick={handleToggleTheater}
+            title={isTheaterMode ? 'Exit Cinema / Theater Mode' : 'Cinema / Theater Mode (Wide Display)'}
+          >
+            <span>{isTheaterMode ? '🔲 Standard' : '🎦 Theater'}</span>
+          </button>
+          <button className="btn-icon" onClick={handleRestart} title="Reload / Restart Game">
+            <span>🔄 Reload</span>
+          </button>
           <button className="btn-icon" onClick={handleShare} title="Share Game Link">
             <span>🔗</span>
           </button>
@@ -193,9 +214,10 @@ export function GamePlayer({
       </header>
 
       {/* Main Viewport Stage with Ambient Backlight Glow */}
-      <div className="game-stage-viewport" ref={viewportRef}>
+      <div className={`game-stage-viewport ${isTheaterMode ? 'theater-viewport' : ''}`} ref={viewportRef}>
         {isBundle ? (
           <iframe
+            key={iframeKey}
             src={game.game_type === 'external' ? (game.external_url || game.externalUrl) : (game.bundle_url || game.bundleUrl || game.external_url)}
             className="game-bundle-iframe"
             title={game.title}
@@ -281,33 +303,67 @@ export function GamePlayer({
         )}
       </div>
 
-      {/* Game Details & Controls Box */}
-      <div className="game-details-box" style={{
-        marginTop: '20px',
-        background: 'rgba(24, 26, 36, 0.72)',
-        backdropFilter: 'blur(16px)',
-        border: '1px solid var(--border-subtle)',
-        borderRadius: '16px',
-        padding: '24px',
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '12px'
-      }}>
-        <h3 style={{ color: '#fff', fontFamily: 'var(--font-heading)', fontSize: '1.2rem' }}>About {game.title}</h3>
-        <p style={{ color: '#94a3b8', lineHeight: 1.6, fontSize: '0.92rem' }}>
-          {game.description || 'Enjoy this fast, high-performance HTML5 browser game directly on GAMINGZONE.'}
-        </p>
-        <div style={{
-          background: 'rgba(255, 87, 51, 0.08)',
-          border: '1px solid rgba(255, 87, 51, 0.2)',
-          borderRadius: '10px',
-          padding: '12px 16px',
-          marginTop: '6px'
-        }}>
-          <strong style={{ color: 'var(--brand-coral)', fontSize: '0.86rem' }}>🎮 Controls & Instructions:</strong>
-          <p style={{ color: '#cbd5e1', fontSize: '0.84rem', marginTop: '4px' }}>
-            {game.controls || 'Keyboard / Touch controls supported.'}
+      {/* Non-intrusive Safe Ad Banner Slot */}
+      <div className="gz-ad-slot-container">
+        <span className="gz-ad-slot-label">ADVERTISEMENT • GAMINGZONE SAFE</span>
+        <div className="gz-ad-slot-banner">
+          <div className="gz-ad-placeholder-text">
+            <span>🎮 GamingZone High-Performance Browser Gaming Network</span>
+            <span style={{ fontSize: '0.74rem', opacity: 0.8 }}>Over 140+ free instant titles. Fast, ad-safe, zero downloads.</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Visual Keyboard Controls & How to Play Guide */}
+      <div className="gz-gameplay-guide-grid">
+        {/* Box 1: About & Story */}
+        <div className="gz-guide-card">
+          <h3 className="gz-guide-title">
+            <span>📖</span> About {game.title}
+          </h3>
+          <p className="gz-guide-desc">
+            {game.description || 'Enjoy this fast, high-performance HTML5 browser game directly on GAMINGZONE.'}
           </p>
+          {game.instructions && (
+            <div className="gz-instructions-callout">
+              <strong>💡 Strategy &amp; Objective:</strong>
+              <p>{game.instructions}</p>
+            </div>
+          )}
+        </div>
+
+        {/* Box 2: Visual Control Keys */}
+        <div className="gz-guide-card">
+          <h3 className="gz-guide-title">
+            <span>🎮</span> Visual Controls &amp; Hotkeys
+          </h3>
+          <div className="gz-keys-display-grid">
+            <div className="gz-key-pair">
+              <div className="gz-keycaps-cluster">
+                <span className="gz-keycap">W</span>
+                <div style={{ display: 'flex', gap: '4px' }}>
+                  <span className="gz-keycap">A</span>
+                  <span className="gz-keycap">S</span>
+                  <span className="gz-keycap">D</span>
+                </div>
+              </div>
+              <span className="gz-key-label">or Arrow Keys to Move / Steer</span>
+            </div>
+
+            <div className="gz-key-pair">
+              <span className="gz-keycap gz-keycap-wide">SPACE</span>
+              <span className="gz-key-label">Jump / Fire / Action</span>
+            </div>
+
+            <div className="gz-key-pair">
+              <span className="gz-keycap gz-keycap-wide">MOUSE / TAP</span>
+              <span className="gz-key-label">Aim, Shoot, or Touch Control</span>
+            </div>
+          </div>
+
+          <div className="gz-custom-controls-hint">
+            <strong>Game specific note:</strong> {game.controls || 'WASD / Arrow keys to move, Space to action.'}
+          </div>
         </div>
       </div>
 
@@ -490,4 +546,3 @@ export function GamePlayer({
     </div>
   );
 }
-

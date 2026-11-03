@@ -4,6 +4,8 @@ import { Sidebar } from './components/Sidebar.jsx';
 import { GameCard } from './components/GameCard.jsx';
 import { GameShelf } from './components/GameShelf.jsx';
 import { GamePlayer } from './components/GamePlayer.jsx';
+import { BentoHero } from './components/BentoHero.jsx';
+import { MobileNav } from './components/MobileNav.jsx';
 import { AdminModal } from './components/AdminModal.jsx';
 import { ProfileModal } from './components/ProfileModal.jsx';
 import { PolicyModal } from './components/PolicyModal.jsx';
@@ -359,6 +361,8 @@ export function App() {
       <Navbar
         searchQuery={searchQuery}
         onSearchChange={setSearchQuery}
+        games={games}
+        onSelectGame={handleSelectGame}
         onToggleSidebar={() => {
           if (window.innerWidth <= 900) {
             setIsSidebarOpen(!isSidebarOpen);
@@ -474,67 +478,8 @@ export function App() {
           ) : (
             /* Default Home View - Games immediately visible right in front! */
             <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-              {/* Standout Featured Cards (3D Tilt - Immediately Above Fold) */}
-              <section className="shelf-section" style={{ marginTop: '2px' }}>
-                <div className="shelf-header-row">
-                  <div>
-                    <h2 className="shelf-title">⭐ Featured Games</h2>
-                    <p className="shelf-subtitle">Handpicked instant hits • Zero downloads or installs</p>
-                  </div>
-                  <div style={{ display: 'flex', gap: '6px' }}>
-                    <span style={{ fontSize: '0.76rem', color: 'var(--brand-coral)', background: 'rgba(255, 87, 51, 0.1)', padding: '4px 10px', borderRadius: '12px', fontWeight: 700, border: '1px solid rgba(255, 87, 51, 0.25)' }}>
-                      ⚡ {games.length}+ Free Online Games
-                    </span>
-                  </div>
-                </div>
-
-                <div className="gz-featured-grid">
-                  {gameArrow && (
-                    <div className="gz-featured-card" onClick={() => handleSelectGame(gameArrow)}>
-                      <div className="gz-featured-thumb-wrap" dangerouslySetInnerHTML={{ __html: getGameThumbnailSVG(gameArrow) }} />
-                      <div className="gz-featured-overlay">
-                        <div className="gz-featured-header-row">
-                          <span className="gz-featured-tag">🔥 Trending #1</span>
-                          <span className="gz-featured-plays">{(gameArrow.plays || 68900).toLocaleString()} plays</span>
-                        </div>
-                        <h3 className="gz-featured-title">{gameArrow.title}</h3>
-                        <p className="gz-featured-desc">{gameArrow.description}</p>
-                        <button className="gz-featured-play-btn">Play Now ➔</button>
-                      </div>
-                    </div>
-                  )}
-
-                  {gameCricket && (
-                    <div className="gz-featured-card" onClick={() => handleSelectGame(gameCricket)}>
-                      <div className="gz-featured-thumb-wrap" dangerouslySetInnerHTML={{ __html: getGameThumbnailSVG(gameCricket) }} />
-                      <div className="gz-featured-overlay">
-                        <div className="gz-featured-header-row">
-                          <span className="gz-featured-tag" style={{ color: '#10b981', background: 'rgba(16, 185, 129, 0.1)' }}>🏏 3D Tournament</span>
-                          <span className="gz-featured-plays">{(gameCricket.plays || 58400).toLocaleString()} plays</span>
-                        </div>
-                        <h3 className="gz-featured-title">{gameCricket.title}</h3>
-                        <p className="gz-featured-desc">{gameCricket.description}</p>
-                        <button className="gz-featured-play-btn" style={{ background: '#10b981', color: '#fff' }}>Play Now ➔</button>
-                      </div>
-                    </div>
-                  )}
-
-                  {gameDrift && (
-                    <div className="gz-featured-card" onClick={() => handleSelectGame(gameDrift)}>
-                      <div className="gz-featured-thumb-wrap" dangerouslySetInnerHTML={{ __html: getGameThumbnailSVG(gameDrift) }} />
-                      <div className="gz-featured-overlay">
-                        <div className="gz-featured-header-row">
-                          <span className="gz-featured-tag" style={{ color: '#8b5cf6', background: 'rgba(139, 92, 246, 0.1)' }}>🏎️ High Speed</span>
-                          <span className="gz-featured-plays">{(gameDrift.plays || 31500).toLocaleString()} plays</span>
-                        </div>
-                        <h3 className="gz-featured-title">{gameDrift.title}</h3>
-                        <p className="gz-featured-desc">{gameDrift.description}</p>
-                        <button className="gz-featured-play-btn" style={{ background: '#8b5cf6', color: '#fff' }}>Play Now ➔</button>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </section>
+              {/* Poki & CrazyGames-Inspired Bento Hero Spotlight */}
+              <BentoHero games={games} onSelectGame={handleSelectGame} />
 
               {/* ✨ New & Recent Releases Shelf (Always First!) */}
               {newList.length > 0 && (
@@ -809,6 +754,34 @@ export function App() {
         onUpdateAvatar={handleUpdateAvatar}
         favoriteGames={favorites.map((id) => games.find((g) => g.id === id)).filter(Boolean)}
         onSelectGame={handleSelectGame}
+      />
+
+      {/* App-like Mobile Bottom Navigation Dock */}
+      <MobileNav
+        activeTab={currentCategory === 'favorites' ? 'favorites' : activeGame ? 'game' : 'home'}
+        favoritesCount={favorites.length}
+        onSelectTab={(tab) => {
+          if (tab === 'home') {
+            window.location.hash = '#home';
+            setActiveGame(null);
+            setCurrentCategory('all');
+            setSearchQuery('');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          } else if (tab === 'categories') {
+            setIsSidebarOpen(true);
+          } else if (tab === 'search') {
+            const searchInput = document.querySelector('.crazy-search-input');
+            searchInput?.focus();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          } else if (tab === 'favorites') {
+            setActiveGame(null);
+            setCurrentCategory('favorites');
+            setSearchQuery('');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          } else if (tab === 'profile') {
+            setIsProfileOpen(true);
+          }
+        }}
       />
     </div>
   );

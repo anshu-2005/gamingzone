@@ -678,6 +678,33 @@ export function AdminModal({
                    TAB 1: GAME CATALOG MANAGEMENT TABLE
                    ============================================== */
                 <div>
+                  {/* Real-Time Platform Analytics Cards */}
+                  <div
+                    style={{
+                      display: 'grid',
+                      gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))',
+                      gap: '12px',
+                      marginBottom: '16px'
+                    }}
+                  >
+                    <div style={{ background: 'rgba(15, 23, 42, 0.65)', border: '1px solid rgba(56, 189, 248, 0.3)', borderRadius: '12px', padding: '10px 14px' }}>
+                      <div style={{ color: '#94a3b8', fontSize: '0.72rem', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Total Games</div>
+                      <div style={{ color: '#38bdf8', fontSize: '1.35rem', fontWeight: 800, marginTop: '2px' }}>{games.length}</div>
+                    </div>
+                    <div style={{ background: 'rgba(15, 23, 42, 0.65)', border: '1px solid rgba(168, 85, 247, 0.3)', borderRadius: '12px', padding: '10px 14px' }}>
+                      <div style={{ color: '#94a3b8', fontSize: '0.72rem', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Genres / Cats</div>
+                      <div style={{ color: '#c084fc', fontSize: '1.35rem', fontWeight: 800, marginTop: '2px' }}>{new Set(games.map((g) => g.category)).size}</div>
+                    </div>
+                    <div style={{ background: 'rgba(15, 23, 42, 0.65)', border: '1px solid rgba(16, 185, 129, 0.3)', borderRadius: '12px', padding: '10px 14px' }}>
+                      <div style={{ color: '#94a3b8', fontSize: '0.72rem', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Total Plays</div>
+                      <div style={{ color: '#34d399', fontSize: '1.35rem', fontWeight: 800, marginTop: '2px' }}>{games.reduce((sum, g) => sum + (g.plays || 0), 0).toLocaleString()}</div>
+                    </div>
+                    <div style={{ background: 'rgba(15, 23, 42, 0.65)', border: '1px solid rgba(251, 146, 60, 0.3)', borderRadius: '12px', padding: '10px 14px' }}>
+                      <div style={{ color: '#94a3b8', fontSize: '0.72rem', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Featured</div>
+                      <div style={{ color: '#fb923c', fontSize: '1.35rem', fontWeight: 800, marginTop: '2px' }}>{games.filter((g) => g.featured || g.is_featured).length}</div>
+                    </div>
+                  </div>
+
                   {/* Table Controls */}
                   <div
                     style={{

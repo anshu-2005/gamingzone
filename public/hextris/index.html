@@ -102,7 +102,21 @@
 		<script src="vendor/sweet-alert.min.js"></script>
 		<link rel="stylesheet" href="style/rrssb.css"/>
 
-	</head>
+	
+<style>
+  #buttonCont, #badges, .rrssb-buttons, #socialShare, #androidBadge, #iOSBadge, .rrssb-facebook, .rrssb-twitter, img[src*="btn_facebook"], img[src*="btn_twitter"], img[src*="android"], img[src*="appstore"] {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    width: 0 !important;
+    pointer-events: none !important;
+    position: absolute !important;
+    left: -9999px !important;
+  }
+</style>
+
+</head>
 	<body>
 		<div class="gz-badge">🎮 GAMINGZONE EDITION</div>
 		<canvas id="canvas"></canvas>

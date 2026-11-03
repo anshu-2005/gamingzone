@@ -386,3 +386,47 @@ a.logo svg {
   fill: #38bdf8;
 }
 
+
+/* Force deep dark backgrounds and warm campfire colors across all scenes */
+body, #wrapper, #content, #main, #header, #stores, div#roomPanel, #village, .location, #notifications {
+  background-color: #030712 !important;
+  color: #f1f5f9 !important;
+}
+
+div.button, button {
+  background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%) !important;
+  border: 1px solid rgba(56, 189, 248, 0.5) !important;
+  color: #f8fafc !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.6) !important;
+}
+
+div.button:hover:not(.disabled) {
+  border-color: #38bdf8 !important;
+  box-shadow: 0 0 16px rgba(56, 189, 248, 0.5) !important;
+  color: #38bdf8 !important;
+}
+
+/* Stoke fire warm campfire orange accent */
+#lightButton, #stokeButton {
+  border-color: rgba(249, 115, 22, 0.7) !important;
+  color: #fed7aa !important;
+  background: linear-gradient(180deg, #431407 0%, #1f0802 100%) !important;
+  box-shadow: 0 0 18px rgba(249, 115, 22, 0.35) !important;
+}
+
+#lightButton:hover, #stokeButton:hover {
+  border-color: #f97316 !important;
+  color: #fff !important;
+  box-shadow: 0 0 24px rgba(249, 115, 22, 0.6) !important;
+}
+
+/* Links and menu in bottom bar */
+.menu, .menu span {
+  color: #94a3b8 !important;
+}
+
+.menu span:hover {
+  color: #38bdf8 !important;
+  text-shadow: 0 0 8px rgba(56, 189, 248, 0.4);
+}
