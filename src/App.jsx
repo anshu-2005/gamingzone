@@ -407,11 +407,11 @@ export function App() {
         }}
       />
 
-      <div className="crazy-app-layout">
+      <div className={`crazy-app-layout ${activeGame ? 'gameplay-active' : ''}`}>
         {/* Collapsible Sidebar */}
         <Sidebar
           isOpen={isSidebarOpen}
-          isCollapsed={isSidebarCollapsed}
+          isCollapsed={activeGame ? true : isSidebarCollapsed}
           currentCategory={currentCategory}
           onSelectCategory={(cat) => {
             setCurrentCategory(cat);

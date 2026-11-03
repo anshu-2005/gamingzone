@@ -25,3 +25,4 @@ console.log(`Successfully updated ${updated} game thumbnails in data/gamingzone.
 
 const sample = db.prepare('SELECT id, slug, thumbnail FROM games LIMIT 5').all();
 console.log('Sample rows:', sample);
+

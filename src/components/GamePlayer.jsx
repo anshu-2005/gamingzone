@@ -17,12 +17,17 @@ export function GamePlayer({
   const [resultData, setResultData] = useState(null); // { score, isVictory }
   const [isMuted, setIsMuted] = useState(sounds.muted);
   const [isTheaterMode, setIsTheaterMode] = useState(false);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+  const [isFallbackFullscreen, setIsFallbackFullscreen] = useState(false);
+  const [showFsHud, setShowFsHud] = useState(true);
   const [leaderboard, setLeaderboard] = useState([]);
   const [leaderboardLoading, setLeaderboardLoading] = useState(false);
   const [submittedScore, setSubmittedScore] = useState(null);
   const [activeLeaderboardTab, setActiveLeaderboardTab] = useState('all');
   const [iframeKey, setIframeKey] = useState(0);
   const viewportRef = useRef(null);
+  const iframeRef = useRef(null);
+  const hudTimerRef = useRef(null);
 
   const isBundle = game.game_type === 'bundle' || game.game_type === 'external' || Boolean(game.bundle_url || game.bundleUrl || game.external_url);
 
@@ -120,12 +125,108 @@ export function GamePlayer({
     }
   };
 
+  // Cross-browser Fullscreen Change & ESC key listener
+  useEffect(() => {
+    const onFullscreenChange = () => {
+      const fsElement =
+        document.fullscreenElement ||
+        document.webkitFullscreenElement ||
+        document.mozFullScreenElement ||
+        document.msFullscreenElement;
+
+      const active = Boolean(
+        fsElement &&
+          (fsElement === viewportRef.current || viewportRef.current?.contains(fsElement))
+      );
+      setIsFullscreen(active);
+      if (!active) {
+        setIsFallbackFullscreen(false);
+      }
+    };
+
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape' || e.key === 'Esc') {
+        if (isFallbackFullscreen) {
+          setIsFallbackFullscreen(false);
+        }
+      }
+    };
+
+    document.addEventListener('fullscreenchange', onFullscreenChange);
+    document.addEventListener('webkitfullscreenchange', onFullscreenChange);
+    document.addEventListener('mozfullscreenchange', onFullscreenChange);
+    document.addEventListener('MSFullscreenChange', onFullscreenChange);
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.removeEventListener('fullscreenchange', onFullscreenChange);
+      document.removeEventListener('webkitfullscreenchange', onFullscreenChange);
+      document.removeEventListener('mozfullscreenchange', onFullscreenChange);
+      document.removeEventListener('MSFullscreenChange', onFullscreenChange);
+      window.removeEventListener('keydown', handleKeyDown);
+      if (hudTimerRef.current) clearTimeout(hudTimerRef.current);
+    };
+  }, [isFallbackFullscreen]);
+
+  // Autofocus game on fullscreen entry so keys immediately work
+  useEffect(() => {
+    if (isFullscreen || isFallbackFullscreen) {
+      setShowFsHud(true);
+      resetHudTimer();
+      setTimeout(() => {
+        const target =
+          iframeRef.current ||
+          mountRef.current?.querySelector('canvas') ||
+          viewportRef.current;
+        target?.focus?.();
+      }, 100);
+    }
+  }, [isFullscreen, isFallbackFullscreen]);
+
+  const resetHudTimer = () => {
+    setShowFsHud(true);
+    if (hudTimerRef.current) clearTimeout(hudTimerRef.current);
+    hudTimerRef.current = setTimeout(() => {
+      setShowFsHud(false);
+    }, 2800);
+  };
+
   const handleToggleFullscreen = () => {
     sounds.playClick();
-    if (!document.fullscreenElement) {
-      viewportRef.current?.requestFullscreen?.();
+    const isCurrentlyFs = isFullscreen || isFallbackFullscreen;
+
+    if (!isCurrentlyFs) {
+      const elem = viewportRef.current;
+      if (!elem) return;
+
+      const requestMethod =
+        elem.requestFullscreen ||
+        elem.webkitRequestFullscreen ||
+        elem.mozRequestFullScreen ||
+        elem.msRequestFullscreen;
+
+      if (requestMethod) {
+        requestMethod.call(elem).catch((err) => {
+          console.warn('Native requestFullscreen denied or unavailable, activating pure viewport mode:', err);
+          setIsFallbackFullscreen(true);
+        });
+      } else {
+        setIsFallbackFullscreen(true);
+      }
     } else {
-      document.exitFullscreen?.();
+      if (isFallbackFullscreen) {
+        setIsFallbackFullscreen(false);
+      } else {
+        const exitMethod =
+          document.exitFullscreen ||
+          document.webkitExitFullscreen ||
+          document.mozCancelFullScreen ||
+          document.msExitFullscreen;
+
+        if (exitMethod) {
+          exitMethod.call(document).catch((err) => console.warn('Exit fullscreen error:', err));
+        }
+      }
     }
   };
 
@@ -143,6 +244,37 @@ export function GamePlayer({
   const handleToggleSound = () => {
     const muted = sounds.toggleMute();
     setIsMuted(muted);
+  };
+
+  // Safe iframe auto-theme and canvas centering
+  const handleIframeLoad = (e) => {
+    try {
+      const iframe = e.target;
+      const doc = iframe?.contentDocument || iframe?.contentWindow?.document;
+      if (doc) {
+        doc.documentElement.style.backgroundColor = '#030712';
+        doc.body.style.backgroundColor = '#030712';
+        doc.body.style.margin = '0';
+        doc.body.style.padding = '0';
+
+        const canvas = doc.querySelector('canvas');
+        if (canvas) {
+          doc.documentElement.style.height = '100%';
+          doc.body.style.height = '100%';
+          doc.body.style.display = 'flex';
+          doc.body.style.flexDirection = 'column';
+          doc.body.style.justifyContent = 'center';
+          doc.body.style.alignItems = 'center';
+          doc.body.style.overflow = 'hidden';
+          canvas.style.maxWidth = '100vw';
+          canvas.style.maxHeight = '100vh';
+          canvas.style.objectFit = 'contain';
+          canvas.style.margin = 'auto';
+        }
+      }
+    } catch (_) {
+      // Cross-origin iframe if any
+    }
   };
 
   return (
@@ -207,16 +339,51 @@ export function GamePlayer({
               <span>↗️</span>
             </a>
           )}
-          <button className="btn-icon" onClick={handleToggleFullscreen} title="Fullscreen Mode">
-            <span>⛶</span>
+          <button
+            className={`btn-icon ${isFullscreen || isFallbackFullscreen ? 'active' : ''}`}
+            onClick={handleToggleFullscreen}
+            title={isFullscreen || isFallbackFullscreen ? 'Exit Fullscreen (ESC)' : 'Expand to Fullscreen (Press ESC to exit)'}
+            style={{ fontWeight: 700 }}
+          >
+            <span>{isFullscreen || isFallbackFullscreen ? '🗗 Exit' : '⛶ Fullscreen'}</span>
           </button>
         </div>
       </header>
 
       {/* Main Viewport Stage with Ambient Backlight Glow */}
-      <div className={`game-stage-viewport ${isTheaterMode ? 'theater-viewport' : ''}`} ref={viewportRef}>
+      <div
+        className={`game-stage-viewport ${isTheaterMode ? 'theater-viewport' : ''} ${
+          isFullscreen ? 'gz-fullscreen-active' : ''
+        } ${isFallbackFullscreen ? 'gz-viewport-fullscreen-fallback' : ''}`}
+        ref={viewportRef}
+        tabIndex={0}
+        onMouseMove={resetHudTimer}
+        onTouchStart={resetHudTimer}
+      >
+        {(isFullscreen || isFallbackFullscreen) && (
+          <div className={`gz-fullscreen-hud ${showFsHud ? 'show-hud' : ''}`}>
+            <span className="gz-fs-title-pill">🎮 {game.title}</span>
+            <button
+              className="btn-icon"
+              onClick={handleToggleSound}
+              title="Toggle Sound"
+              style={{ padding: '4px 8px', fontSize: '0.8rem' }}
+            >
+              <span>{isMuted ? '🔇' : '🔊'}</span>
+            </button>
+            <button
+              className="btn-fs-exit"
+              onClick={handleToggleFullscreen}
+              title="Exit Fullscreen (ESC)"
+            >
+              <span>✕ Exit (ESC)</span>
+            </button>
+          </div>
+        )}
+
         {isBundle ? (
           <iframe
+            ref={iframeRef}
             key={iframeKey}
             src={game.game_type === 'external' ? (game.external_url || game.externalUrl) : (game.bundle_url || game.bundleUrl || game.external_url)}
             className="game-bundle-iframe"
@@ -224,6 +391,7 @@ export function GamePlayer({
             sandbox="allow-scripts allow-same-origin allow-pointer-lock allow-forms allow-popups allow-popups-to-escape-sandbox allow-modals"
             allow="fullscreen; autoplay; gamepad; clipboard-read; clipboard-write"
             allowFullScreen
+            onLoad={handleIframeLoad}
           />
         ) : (
           <div ref={mountRef} className="game-canvas-mount" />

@@ -1,0 +1,73 @@
+/* ====================================================
+   GAMINGZONE UNIVERSAL EMBEDDED THEATER STYLESHEET
+   Guarantees:
+   1. Zero white background bleed (Pure Deep Dark #030712)
+   2. Centered canvas without distortion or stretching
+   3. Aspect ratio preservation
+   4. High-performance GPU compositing
+   ==================================================== */
+
+html, body {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 100vh !important;
+  background-color: #030712 !important;
+  background: #030712 !important;
+  color: #f8fafc !important;
+  overflow: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+  box-sizing: border-box !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+}
+
+/* Standalone game canvases: Centered, aspect-ratio preserved, never stretched */
+canvas {
+  margin: auto !important;
+  max-width: 100vw !important;
+  max-height: 100vh !important;
+  object-fit: contain !important;
+  display: block !important;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.85);
+}
+
+/* Specific Game Containers */
+#canvas_container,
+#screen,
+#game,
+#wrapper,
+#container,
+.ge-mainscreen,
+.game-container {
+  margin: auto !important;
+  background-color: #030712 !important;
+  background: #030712 !important;
+}
+
+/* Top watermark badge styling */
+.gz-top-badge {
+  position: fixed !important;
+  top: 14px !important;
+  right: 18px !important;
+  z-index: 999999 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  background: rgba(3, 7, 18, 0.88) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(56, 189, 248, 0.4) !important;
+  padding: 6px 14px !important;
+  border-radius: 9999px !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  color: #38bdf8 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  pointer-events: none !important;
+  user-select: none !important;
+}

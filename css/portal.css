@@ -2012,10 +2012,21 @@
    ========================================================================== */
 .theater-layout-active .game-stage-viewport.theater-viewport {
   max-width: 100% !important;
-  height: calc(85vh) !important;
-  min-height: 580px !important;
-  box-shadow: 0 0 50px rgba(0, 0, 0, 0.9), 0 0 30px rgba(56, 189, 248, 0.25) !important;
-  border-color: rgba(56, 189, 248, 0.5) !important;
+  height: clamp(620px, 86vh, 960px) !important;
+  box-shadow: 0 0 70px rgba(0, 0, 0, 0.95), 0 0 40px rgba(0, 240, 255, 0.28) !important;
+  border-color: rgba(0, 240, 255, 0.5) !important;
+}
+
+.theater-layout-active .game-shell-container {
+  max-width: 100% !important;
+  padding-left: 8px !important;
+  padding-right: 8px !important;
+}
+
+/* Maximize gameplay area when activeGame is open */
+.crazy-app-layout.gameplay-active .crazy-main-content {
+  max-width: 100% !important;
+  padding: 10px 14px 48px !important;
 }
 
 .gz-ad-slot-container {
