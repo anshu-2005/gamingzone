@@ -90,46 +90,70 @@ export class PenaltyShootoutGame extends GameEngineBase {
       const rect = this.canvas.getBoundingClientRect();
       const scaleX = this.baseWidth / rect.width;
       const scaleY = this.baseHeight / rect.height;
-      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-      const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+      const clientX = e.clientX !== undefined ? e.clientX : (e.touches && e.touches[0] ? e.touches[0].clientX : (e.changedTouches && e.changedTouches[0] ? e.changedTouches[0].clientX : 0));
+      const clientY = e.clientY !== undefined ? e.clientY : (e.touches && e.touches[0] ? e.touches[0].clientY : (e.changedTouches && e.changedTouches[0] ? e.changedTouches[0].clientY : 0));
       return { x: (clientX - rect.left) * scaleX, y: (clientY - rect.top) * scaleY, time: performance.now() };
     };
 
+    let pointerIsDown = false;
+
     this.addListener(this.canvas, 'pointerdown', (e) => {
       if (this.state !== GameState.PLAYING || this.ball.isKicked) return;
+      pointerIsDown = true;
       const p = getPos(e);
-      if (Math.hypot(p.x - this.ball.x, p.y - this.ball.y) < 65) {
-        this.swipePath = [p];
-      }
+      this.swipePath = [p];
     });
 
-    this.addListener(this.canvas, 'pointermove', (e) => {
-      if (this.swipePath.length > 0) {
+    this.addListener(window, 'pointermove', (e) => {
+      if (pointerIsDown && this.swipePath.length > 0 && !this.ball.isKicked) {
         this.swipePath.push(getPos(e));
       }
     });
 
-    this.addListener(this.canvas, 'pointerup', () => {
-      if (this.swipePath.length >= 2 && !this.ball.isKicked) {
+    const finishShot = (e) => {
+      if (!pointerIsDown || this.ball.isKicked) {
+        pointerIsDown = false;
+        this.swipePath = [];
+        return;
+      }
+      pointerIsDown = false;
+
+      const p = getPos(e);
+      if (this.swipePath.length > 0) {
+        this.swipePath.push(p);
+      }
+
+      // 1. Check if user performed a swipe/flick
+      if (this.swipePath.length >= 2) {
         const start = this.swipePath[0];
         const end = this.swipePath[this.swipePath.length - 1];
-        const dt = Math.max(0.04, (end.time - start.time) / 1000);
-
         const dx = end.x - start.x;
         const dy = end.y - start.y;
 
-        // Check forward flick
-        if (dy < -40) {
-          // Calculate curve from midpoint deflection
+        if (dy < -25) {
           const mid = this.swipePath[Math.floor(this.swipePath.length / 2)];
           const lineX = start.x + dx * 0.5;
           const curveDeflection = (mid.x - lineX) * 2.5;
-
-          this.kickBall(dx * 1.6, dy * 1.5, curveDeflection);
+          this.kickBall(dx * 1.5, dy * 1.4, curveDeflection);
+          this.swipePath = [];
+          return;
         }
       }
+
+      // 2. Tap-to-Aim fallback: Click directly at goal to shoot at that location!
+      if (p.y < 350) {
+        const targetX = Math.max(this.goal.x + 15, Math.min(this.goal.x + this.goal.width - 15, p.x));
+        const targetY = Math.max(this.goal.y + 15, Math.min(this.goal.y + this.goal.height - 15, p.y));
+        const dx = targetX - this.ball.x;
+        const dy = targetY - this.ball.y;
+        this.kickBall(dx * 1.25, dy * 1.25, (targetX - this.baseWidth / 2) * 0.4);
+      }
+
       this.swipePath = [];
-    });
+    };
+
+    this.addListener(window, 'pointerup', finishShot);
+    this.addListener(window, 'pointercancel', finishShot);
   }
 
   kickBall(vx, vy, curve) {

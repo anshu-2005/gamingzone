@@ -46,6 +46,10 @@ export class GameEngineBase {
     // Canvas & Context setup
     this.canvas = null;
     this.ctx = null;
+    this.baseWidth = 800;
+    this.baseHeight = 540;
+    this.width = 800;
+    this.height = 540;
     this.virtualControlsContainer = null;
   }
 
@@ -54,6 +58,8 @@ export class GameEngineBase {
     this.canvas = document.createElement('canvas');
     this.baseWidth = width;
     this.baseHeight = height;
+    this.width = width;
+    this.height = height;
 
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
     this.canvas.width = width * dpr;

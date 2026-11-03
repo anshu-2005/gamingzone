@@ -352,3 +352,4 @@ export class LegendWings extends GameEngineBase {
     }
   }
 }
+

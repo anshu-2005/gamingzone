@@ -22,6 +22,8 @@ export class KirkaVoxelStrikeGame extends GameEngineBase {
     });
 
     this.createCanvas(860, 540);
+    this.width = this.baseWidth;
+    this.height = this.baseHeight;
 
     this.worldWidth = 2200;
     this.worldHeight = 1600;
@@ -90,20 +92,48 @@ export class KirkaVoxelStrikeGame extends GameEngineBase {
   }
 
   initControls() {
-    this.addEventListenerTracked(window, 'mousemove', (e) => {
+    const updateAim = (clientX, clientY) => {
       if (!this.canvas) return;
       const rect = this.canvas.getBoundingClientRect();
-      this.mouse.x = e.clientX - rect.left;
-      this.mouse.y = e.clientY - rect.top;
-      this.player.angle = Math.atan2(this.mouse.y - this.height / 2, this.mouse.x - this.width / 2);
+      const scaleX = this.baseWidth / rect.width;
+      const scaleY = this.baseHeight / rect.height;
+      this.mouse.x = (clientX - rect.left) * scaleX;
+      this.mouse.y = (clientY - rect.top) * scaleY;
+      const dx = this.mouse.x - this.baseWidth / 2;
+      const dy = this.mouse.y - this.baseHeight / 2;
+      if (Math.hypot(dx, dy) > 2) {
+        this.player.angle = Math.atan2(dy, dx);
+      }
+    };
+
+    this.addEventListenerTracked(window, 'mousemove', (e) => {
+      updateAim(e.clientX, e.clientY);
     });
+
+    this.addEventListenerTracked(this.canvas, 'touchmove', (e) => {
+      if (e.touches && e.touches[0]) {
+        updateAim(e.touches[0].clientX, e.touches[0].clientY);
+      }
+    }, { passive: true });
 
     this.addEventListenerTracked(window, 'mousedown', () => {
       this.mouse.down = true;
       this.fireWeapon(this.player);
     });
 
+    this.addEventListenerTracked(this.canvas, 'touchstart', (e) => {
+      if (e.touches && e.touches[0]) {
+        updateAim(e.touches[0].clientX, e.touches[0].clientY);
+      }
+      this.mouse.down = true;
+      this.fireWeapon(this.player);
+    }, { passive: true });
+
     this.addEventListenerTracked(window, 'mouseup', () => {
+      this.mouse.down = false;
+    });
+
+    this.addEventListenerTracked(window, 'touchend', () => {
       this.mouse.down = false;
     });
 

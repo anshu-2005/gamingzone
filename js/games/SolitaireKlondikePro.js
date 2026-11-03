@@ -87,19 +87,30 @@ export class SolitaireKlondikeProGame extends GameEngineBase {
   }
 
   initMouseEvents() {
-    this.addEventListenerTracked(this.canvas, 'click', (e) => {
+    this.lastClickTime = 0;
+    this.lastClickedTarget = null;
+
+    const handleAction = (e) => {
       if (this.state !== GameState.PLAYING) return;
       const rect = this.canvas.getBoundingClientRect();
       const scaleX = this.baseWidth / rect.width;
       const scaleY = this.baseHeight / rect.height;
-      const mx = (e.clientX - rect.left) * scaleX;
-      const my = (e.clientY - rect.top) * scaleY;
+      const clientX = e.clientX !== undefined ? e.clientX : (e.touches && e.touches[0] ? e.touches[0].clientX : 0);
+      const clientY = e.clientY !== undefined ? e.clientY : (e.touches && e.touches[0] ? e.touches[0].clientY : 0);
+      const mx = (clientX - rect.left) * scaleX;
+      const my = (clientY - rect.top) * scaleY;
 
-      this.handleClick(mx, my);
-    });
+      const now = performance.now();
+      const isDoubleClick = (now - this.lastClickTime < 350);
+      this.lastClickTime = now;
+
+      this.handleClick(mx, my, isDoubleClick);
+    };
+
+    this.addEventListenerTracked(this.canvas, 'pointerdown', handleAction);
   }
 
-  handleClick(x, y) {
+  handleClick(x, y, isDoubleClick = false) {
     // 1. Stock pile click (x: 40, y: 30)
     if (x >= 40 && x <= 40 + this.cardWidth && y >= 30 && y <= 30 + this.cardHeight) {
       this.drawFromStock();
@@ -110,12 +121,17 @@ export class SolitaireKlondikeProGame extends GameEngineBase {
     if (x >= 130 && x <= 130 + this.cardWidth && y >= 30 && y <= 30 + this.cardHeight) {
       if (this.waste.length > 0) {
         sounds.playClick();
-        if (this.tryAutoMoveToFoundations(this.waste[this.waste.length - 1], 'waste')) {
-          this.waste.pop();
-          this.moves++;
-          return;
+        const topCard = this.waste[this.waste.length - 1];
+        if (isDoubleClick) {
+          if (this.tryAutoMoveToFoundations(topCard, 'waste')) {
+            this.waste.pop();
+            this.moves++;
+            this.selected = null;
+            this.checkWinCondition();
+            return;
+          }
         }
-        this.selected = { from: 'waste', card: this.waste[this.waste.length - 1] };
+        this.selected = { from: 'waste', card: topCard };
       }
       return;
     }
@@ -161,7 +177,7 @@ export class SolitaireKlondikeProGame extends GameEngineBase {
 
           if (card.faceUp) {
             sounds.playClick();
-            if (this.selected) {
+            if (this.selected && (this.selected.pileIdx !== t || this.selected.from !== 'tableau')) {
               // Try placing selected onto this card
               if (this.canStackOnTableau(this.selected.card, card)) {
                 this.moveSelectedToTableau(t);
@@ -169,17 +185,33 @@ export class SolitaireKlondikeProGame extends GameEngineBase {
               }
             }
 
-            // Quick auto-move if clicking top card
-            if (c === pile.length - 1 && this.tryAutoMoveToFoundations(card, 'tableau', t)) {
-              pile.pop();
-              if (pile.length > 0) pile[pile.length - 1].faceUp = true;
-              this.moves++;
-              this.selected = null;
-              this.checkWinCondition();
-              return;
+            // Double click to auto-send top card to foundations
+            if (isDoubleClick && c === pile.length - 1) {
+              if (this.tryAutoMoveToFoundations(card, 'tableau', t)) {
+                pile.pop();
+                if (pile.length > 0) pile[pile.length - 1].faceUp = true;
+                this.moves++;
+                this.selected = null;
+                this.checkWinCondition();
+                return;
+              }
             }
 
-            this.selected = { from: 'tableau', pileIdx: t, cardIdx: c, card };
+            // Single click toggles selection
+            if (this.selected && this.selected.card === card) {
+              // Clicking same card again tries foundation
+              if (c === pile.length - 1 && this.tryAutoMoveToFoundations(card, 'tableau', t)) {
+                pile.pop();
+                if (pile.length > 0) pile[pile.length - 1].faceUp = true;
+                this.moves++;
+                this.selected = null;
+                this.checkWinCondition();
+                return;
+              }
+              this.selected = null;
+            } else {
+              this.selected = { from: 'tableau', pileIdx: t, cardIdx: c, card };
+            }
           }
           return;
         }

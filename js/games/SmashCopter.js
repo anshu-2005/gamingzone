@@ -252,3 +252,4 @@ export class SmashCopter extends GameEngineBase {
     }
   }
 }
+
