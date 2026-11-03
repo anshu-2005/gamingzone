@@ -10,11 +10,16 @@ const rootDir = path.resolve(__dirname, '..');
 const outDir = path.join(rootDir, 'public', 'images', 'games');
 
 const newGames = [
-  { id: 'game_swordbattle_io', engine: 'SwordBattleIO', slug: 'swordbattle-io', title: 'SwordBattle IO' },
-  { id: 'game_civis_4x_strategy', engine: 'Civis4XStrategy', slug: 'civis-4x-strategy', title: 'Civis 4X Strategy' },
-  { id: 'game_westward_bounty_rpg', engine: 'WestwardBounty', slug: 'westward-bounty-rpg', title: 'Westward Bounty RPG' },
-  { id: 'game_set_match_trio', engine: 'SetMatchTrio', slug: 'set-match-trio', title: 'Set Match Trio' },
-  { id: 'game_hacker_feud_cyber', engine: 'HackerFeudCyber', slug: 'hacker-feud-cyber', title: 'Hacker Feud: Cyber Breach' }
+  { id: 'game_phaserquest_fantasy', engine: 'PhaserQuestFantasy', slug: 'phaserquest-fantasy-realm', title: 'PhaserQuest: Fantasy Realm' },
+  { id: 'game_horsepaste_spymaster', engine: 'HorsePasteSpymaster', slug: 'horsepaste-spymaster-agent', title: 'HorsePaste: Spymaster Agent' },
+  { id: 'game_gowog_cell_battle', engine: 'GowogCellBattle', slug: 'gowog-cell-battle-io', title: 'Gowog: Cell Battle IO' },
+  { id: 'game_csgo_aim_strike', engine: 'CsgoAimStrike', slug: 'csgo-aim-reflex-strike', title: 'CS:GO Aim Reflex & Strike' },
+  { id: 'game_racing_world_3d', engine: 'RacingWorld3D', slug: 'racing-world-3d-turbo', title: 'Racing World 3D Turbo' },
+  { id: 'game_robot_rumble_mech', engine: 'RobotRumbleMech', slug: 'robot-rumble-mech-arena', title: 'Robot Rumble: Mech Arena' },
+  { id: 'game_neon_cyber_casino', engine: 'NeonCyberCasino', slug: 'neon-cyber-casino', title: 'Neon Cyber Casino: Crash & Gems' },
+  { id: 'game_karaoke_beat_master', engine: 'KaraokeBeatMaster', slug: 'karaoke-beat-master', title: 'Karaoke Beat Master' },
+  { id: 'game_legends_future_past', engine: 'LegendsFuturePast', slug: 'legends-future-past', title: 'Legends of Future Past: Cyber MUD' },
+  { id: 'game_billiards_3d_pro', engine: 'Billiards3DPro', slug: 'billiards-3d-pro', title: 'Billiards 3D Pro: Master Pool' }
 ];
 
 async function run() {
@@ -32,6 +37,7 @@ async function run() {
       console.error(`Failed ${g.slug}:`, err);
     }
   }
+  console.log('All 10 game webps successfully generated!');
 }
 
 run();

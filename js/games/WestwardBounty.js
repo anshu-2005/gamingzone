@@ -548,3 +548,4 @@ export class WestwardBountyGame extends GameEngineBase {
 }
 
 export default WestwardBountyGame;
+

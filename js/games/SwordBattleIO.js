@@ -562,3 +562,4 @@ export class SwordBattleIOGame extends GameEngineBase {
 }
 
 export default SwordBattleIOGame;
+

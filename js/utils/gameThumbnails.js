@@ -2111,6 +2111,152 @@ export function getGameThumbnailSVG(game) {
     </svg>`;
   }
 
+  // 123. PhaserQuest Fantasy Realm
+  if (id === 'game_phaserquest_fantasy' || engine === 'PhaserQuestFantasy') {
+    return `<svg class="game-thumb-svg" viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="pq-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#1e1b4b"/>
+          <stop offset="100%" stop-color="#312e81"/>
+        </linearGradient>
+      </defs>
+      <rect width="320" height="200" fill="url(#pq-bg)"/>
+      <circle cx="160" cy="95" r="46" fill="#4338ca" stroke="#818cf8" stroke-width="2"/>
+      <text x="160" y="108" font-size="38" text-anchor="middle">⚔️</text>
+      <path d="M120 140 L160 115 L200 140" stroke="#c7d2fe" stroke-width="2" fill="none"/>
+      <text x="160" y="175" font-family="'Outfit', sans-serif" font-size="13" font-weight="900" fill="#e0e7ff" letter-spacing="1.5" text-anchor="middle">PHASERQUEST FANTASY</text>
+    </svg>`;
+  }
+
+  // 124. HorsePaste Spymaster
+  if (id === 'game_horsepaste_spymaster' || engine === 'HorsePasteSpymaster') {
+    return `<svg class="game-thumb-svg" viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+      <rect width="320" height="200" fill="#090d16"/>
+      <!-- Secret file folder -->
+      <rect x="70" y="45" width="180" height="100" rx="8" fill="#1e293b" stroke="#3b82f6" stroke-width="2"/>
+      <rect x="85" y="60" width="40" height="20" rx="3" fill="#3b82f6"/>
+      <rect x="135" y="60" width="40" height="20" rx="3" fill="#ef4444"/>
+      <rect x="185" y="60" width="50" height="20" rx="3" fill="#f59e0b"/>
+      <text x="160" y="112" font-size="28" text-anchor="middle">🕵️</text>
+      <text x="160" y="175" font-family="'Outfit', sans-serif" font-size="12" font-weight="800" fill="#60a5fa" letter-spacing="1.5" text-anchor="middle">HORSEPASTE SPYMASTER</text>
+    </svg>`;
+  }
+
+  // 125. Gowog Cell Battle IO
+  if (id === 'game_gowog_cell_battle' || engine === 'GowogCellBattle') {
+    return `<svg class="game-thumb-svg" viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+      <rect width="320" height="200" fill="#042f2e"/>
+      <circle cx="160" cy="95" r="42" fill="#10b981" stroke="#6ee7b7" stroke-width="4"/>
+      <circle cx="160" cy="95" r="16" fill="#065f46"/>
+      <circle cx="95" cy="70" r="14" fill="#06b6d4"/>
+      <circle cx="230" cy="120" r="20" fill="#ec4899"/>
+      <circle cx="120" cy="130" r="6" fill="#f59e0b"/>
+      <circle cx="200" cy="60" r="5" fill="#f59e0b"/>
+      <text x="160" y="175" font-family="'Outfit', sans-serif" font-size="13" font-weight="800" fill="#a7f3d0" letter-spacing="1.5" text-anchor="middle">GOWOG: CELL BATTLE IO</text>
+    </svg>`;
+  }
+
+  // 126. CS:GO Aim Reflex & Strike
+  if (id === 'game_csgo_aim_strike' || engine === 'CsgoAimStrike') {
+    return `<svg class="game-thumb-svg" viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+      <rect width="320" height="200" fill="#0f172a"/>
+      <!-- Crosshair Target -->
+      <circle cx="160" cy="95" r="44" fill="none" stroke="#ef4444" stroke-width="3"/>
+      <circle cx="160" cy="95" r="22" fill="none" stroke="#ef4444" stroke-width="2"/>
+      <line x1="160" y1="35" x2="160" y2="155" stroke="#ef4444" stroke-width="2"/>
+      <line x1="100" y1="95" x2="220" y2="95" stroke="#ef4444" stroke-width="2"/>
+      <circle cx="160" cy="95" r="6" fill="#fbbf24"/>
+      <text x="160" y="175" font-family="'Outfit', sans-serif" font-size="13" font-weight="900" fill="#fca5a5" letter-spacing="1.5" text-anchor="middle">CS:GO AIM STRIKE</text>
+    </svg>`;
+  }
+
+  // 127. Racing World 3D Turbo
+  if (id === 'game_racing_world_3d' || engine === 'RacingWorld3D') {
+    return `<svg class="game-thumb-svg" viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+      <rect width="320" height="200" fill="#431407"/>
+      <!-- 3D Perspective Road -->
+      <polygon points="140,80 180,80 280,200 40,200" fill="#1e293b"/>
+      <line x1="160" y1="80" x2="160" y2="200" stroke="#fbbf24" stroke-width="4" stroke-dasharray="10,10"/>
+      <!-- Neon Supercar Tail -->
+      <rect x="135" y="125" width="50" height="26" rx="6" fill="#ef4444"/>
+      <circle cx="145" cy="138" r="4" fill="#fbbf24"/>
+      <circle cx="175" cy="138" r="4" fill="#fbbf24"/>
+      <text x="160" y="180" font-family="'Outfit', sans-serif" font-size="13" font-weight="900" fill="#fdba74" letter-spacing="1.5" text-anchor="middle">RACING WORLD 3D</text>
+    </svg>`;
+  }
+
+  // 128. Robot Rumble Mech Arena
+  if (id === 'game_robot_rumble_mech' || engine === 'RobotRumbleMech') {
+    return `<svg class="game-thumb-svg" viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+      <rect width="320" height="200" fill="#1e1b4b"/>
+      <rect x="120" y="65" width="80" height="65" rx="10" fill="#4338ca" stroke="#818cf8" stroke-width="3"/>
+      <!-- Visor -->
+      <rect x="135" y="80" width="50" height="14" rx="4" fill="#06b6d4"/>
+      <!-- Mech Cannons -->
+      <rect x="105" y="75" width="15" height="40" rx="3" fill="#6366f1"/>
+      <rect x="200" y="75" width="15" height="40" rx="3" fill="#6366f1"/>
+      <text x="160" y="175" font-family="'Outfit', sans-serif" font-size="13" font-weight="900" fill="#c7d2fe" letter-spacing="1.5" text-anchor="middle">ROBOT RUMBLE: MECH</text>
+    </svg>`;
+  }
+
+  // 129. Neon Cyber Casino
+  if (id === 'game_neon_cyber_casino' || engine === 'NeonCyberCasino') {
+    return `<svg class="game-thumb-svg" viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+      <rect width="320" height="200" fill="#2e1065"/>
+      <path d="M70 140 Q 150 140 220 70" stroke="#06b6d4" stroke-width="4" fill="none"/>
+      <polygon points="225,65 205,72 215,82" fill="#ec4899"/>
+      <!-- Multiplier text -->
+      <text x="160" y="90" font-family="'Outfit', sans-serif" font-size="28" font-weight="900" fill="#38bdf8" text-anchor="middle">5.82x</text>
+      <text x="160" y="175" font-family="'Outfit', sans-serif" font-size="13" font-weight="900" fill="#f0abfc" letter-spacing="1.5" text-anchor="middle">NEON CYBER CASINO</text>
+    </svg>`;
+  }
+
+  // 130. Karaoke Beat Master
+  if (id === 'game_karaoke_beat_master' || engine === 'KaraokeBeatMaster') {
+    return `<svg class="game-thumb-svg" viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+      <rect width="320" height="200" fill="#4c0519"/>
+      <circle cx="160" cy="85" r="35" fill="#f43f5e" stroke="#fda4af" stroke-width="3"/>
+      <text x="160" y="97" font-size="32" text-anchor="middle">🎤</text>
+      <!-- Soundwave bars -->
+      <rect x="70" y="75" width="10" height="25" rx="3" fill="#fb7185"/>
+      <rect x="90" y="60" width="10" height="55" rx="3" fill="#fb7185"/>
+      <rect x="220" y="60" width="10" height="55" rx="3" fill="#fb7185"/>
+      <rect x="240" y="75" width="10" height="25" rx="3" fill="#fb7185"/>
+      <text x="160" y="175" font-family="'Outfit', sans-serif" font-size="13" font-weight="900" fill="#fecdd3" letter-spacing="1.5" text-anchor="middle">KARAOKE BEAT MASTER</text>
+    </svg>`;
+  }
+
+  // 131. Legends of Future Past
+  if (id === 'game_legends_future_past' || engine === 'LegendsFuturePast') {
+    return `<svg class="game-thumb-svg" viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+      <rect width="320" height="200" fill="#082f49"/>
+      <rect x="40" y="40" width="240" height="100" rx="8" fill="#0f172a" stroke="#0284c7" stroke-width="2"/>
+      <text x="60" y="75" font-family="monospace" font-size="11" fill="#38bdf8">&gt; ACCESSING HELIOS AI...</text>
+      <text x="60" y="95" font-family="monospace" font-size="11" fill="#10b981">&gt; COMBAT AVATAR ONLINE</text>
+      <text x="60" y="115" font-family="monospace" font-size="11" fill="#f59e0b">&gt; NEURAL LINK: 100%</text>
+      <text x="160" y="175" font-family="'Outfit', sans-serif" font-size="13" font-weight="900" fill="#bae6fd" letter-spacing="1.5" text-anchor="middle">LEGENDS FUTURE PAST</text>
+    </svg>`;
+  }
+
+  // 132. Billiards 3D Pro
+  if (id === 'game_billiards_3d_pro' || engine === 'Billiards3DPro') {
+    return `<svg class="game-thumb-svg" viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+      <rect width="320" height="200" fill="#064e3b"/>
+      <rect x="30" y="30" width="260" height="120" rx="14" fill="#047857" stroke="#78350f" stroke-width="8"/>
+      <!-- Pockets -->
+      <circle cx="45" cy="45" r="10" fill="#0f172a"/>
+      <circle cx="275" cy="45" r="10" fill="#0f172a"/>
+      <circle cx="160" cy="42" r="10" fill="#0f172a"/>
+      <!-- Balls -->
+      <circle cx="120" cy="90" r="12" fill="#ffffff"/>
+      <circle cx="190" cy="90" r="12" fill="#1e293b"/>
+      <circle cx="190" cy="90" r="4" fill="#ffffff"/>
+      <circle cx="215" cy="78" r="12" fill="#ef4444"/>
+      <circle cx="215" cy="102" r="12" fill="#eab308"/>
+      <text x="160" y="180" font-family="'Outfit', sans-serif" font-size="13" font-weight="900" fill="#a7f3d0" letter-spacing="1.5" text-anchor="middle">BILLIARDS 3D PRO</text>
+    </svg>`;
+  }
+
   // Graceful Fallback (Genre-Specific & Polished)
   const colors = {
     cricket: ['#065f46', '#10b981'],
