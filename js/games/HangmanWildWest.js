@@ -306,3 +306,4 @@ export class HangmanWildWestGame extends GameEngineBase {
 }
 
 export default HangmanWildWestGame;
+

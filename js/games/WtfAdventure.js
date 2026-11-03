@@ -741,3 +741,4 @@ export class WtfAdventureGame extends GameEngineBase {
 }
 
 export default WtfAdventureGame;
+

@@ -2033,6 +2033,84 @@ export function getGameThumbnailSVG(game) {
     </svg>`;
   }
 
+  // 118. SwordBattle IO
+  if (id === 'game_swordbattle_io' || engine === 'SwordBattleIO') {
+    return `<svg class="game-thumb-svg" viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+      <rect width="320" height="200" fill="#030712"/>
+      <!-- Clashing Broadswords -->
+      <path d="M 120,140 L 195,65 L 205,75 L 130,150 Z" fill="#e2e8f0" stroke="#00e5ff" stroke-width="2"/>
+      <path d="M 200,140 L 125,65 L 115,75 L 190,150 Z" fill="#e2e8f0" stroke="#ef4444" stroke-width="2"/>
+      <!-- Clash spark starburst -->
+      <circle cx="160" cy="108" r="12" fill="#fbbf24"/>
+      <circle cx="160" cy="108" r="22" fill="none" stroke="#fef08a" stroke-width="2" stroke-dasharray="4,4"/>
+      <text x="160" y="184" font-family="'Outfit', sans-serif" font-size="13" font-weight="900" fill="#00e5ff" letter-spacing="2" text-anchor="middle">SWORDBATTLE .IO</text>
+    </svg>`;
+  }
+
+  // 119. Civis 4X Strategy
+  if (id === 'game_civis_4x_strategy' || engine === 'Civis4XStrategy') {
+    return `<svg class="game-thumb-svg" viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+      <rect width="320" height="200" fill="#0f172a"/>
+      <!-- Hex Tiles -->
+      <polygon points="120,60 145,45 170,60 170,90 145,105 120,90" fill="#15803d" stroke="#22c55e" stroke-width="2"/>
+      <polygon points="170,60 195,45 220,60 220,90 195,105 170,90" fill="#ca8a04" stroke="#fbbf24" stroke-width="2"/>
+      <polygon points="145,105 170,90 195,105 195,135 170,150 145,135" fill="#0284c7" stroke="#38bdf8" stroke-width="2"/>
+      <!-- Roman Laurel & Banner -->
+      <circle cx="170" cy="98" r="14" fill="#78350f" stroke="#fbbf24" stroke-width="2"/>
+      <text x="170" y="103" font-size="12" text-anchor="middle">🏛️</text>
+      <text x="160" y="184" font-family="'Outfit', sans-serif" font-size="12" font-weight="800" fill="#fef08a" letter-spacing="1.5" text-anchor="middle">CIVIS 4X STRATEGY</text>
+    </svg>`;
+  }
+
+  // 120. Westward Bounty RPG
+  if (id === 'game_westward_bounty_rpg' || engine === 'WestwardBounty') {
+    return `<svg class="game-thumb-svg" viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="bg_west" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#78350f"/><stop offset="100%" stop-color="#451a03"/></linearGradient>
+      </defs>
+      <rect width="320" height="200" fill="url(#bg_west)"/>
+      <!-- Crossed Revolvers -->
+      <circle cx="160" cy="95" r="42" fill="#92400e" stroke="#fbbf24" stroke-width="2"/>
+      <text x="160" y="106" font-size="36" text-anchor="middle">🤠</text>
+      <!-- Gold Nuggets -->
+      <circle cx="105" cy="130" r="8" fill="#facc15"/>
+      <circle cx="215" cy="130" r="8" fill="#facc15"/>
+      <text x="160" y="182" font-family="'Outfit', sans-serif" font-size="12" font-weight="800" fill="#fbbf24" letter-spacing="1.5" text-anchor="middle">WESTWARD BOUNTY RPG</text>
+    </svg>`;
+  }
+
+  // 121. Set Match Trio
+  if (id === 'game_set_match_trio' || engine === 'SetMatchTrio') {
+    return `<svg class="game-thumb-svg" viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+      <rect width="320" height="200" fill="#064e3b"/>
+      <!-- 3 Set Cards -->
+      <rect x="65" y="55" width="55" height="85" rx="6" fill="#0f172a" stroke="#00e5ff" stroke-width="2"/>
+      <rect x="132" y="55" width="55" height="85" rx="6" fill="#0f172a" stroke="#a855f7" stroke-width="2"/>
+      <rect x="200" y="55" width="55" height="85" rx="6" fill="#0f172a" stroke="#fbbf24" stroke-width="2"/>
+      <!-- Shapes -->
+      <polygon points="92,85 102,97 92,110 82,97" fill="#00e5ff"/>
+      <circle cx="160" cy="85" r="9" fill="#a855f7"/>
+      <circle cx="160" cy="110" r="9" fill="#a855f7"/>
+      <rect x="216" y="88" width="22" height="20" fill="#fbbf24"/>
+      <text x="160" y="182" font-family="'Outfit', sans-serif" font-size="12" font-weight="800" fill="#a7f3d0" letter-spacing="1.5" text-anchor="middle">SET MATCH TRIO</text>
+    </svg>`;
+  }
+
+  // 122. Hacker Feud Cyber
+  if (id === 'game_hacker_feud_cyber' || engine === 'HackerFeudCyber') {
+    return `<svg class="game-thumb-svg" viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+      <rect width="320" height="200" fill="#05130b"/>
+      <rect x="14" y="14" width="292" height="172" fill="none" stroke="#10b981" stroke-width="2"/>
+      <!-- Terminal prompt -->
+      <text x="32" y="55" font-family="monospace" font-size="12" fill="#34d399">&gt; ROOT ACCESS GRANTED</text>
+      <text x="32" y="75" font-family="monospace" font-size="12" fill="#059669">&gt; DECRYPTING ICE NODES...</text>
+      <!-- Cyber Lock Icon -->
+      <circle cx="160" cy="115" r="24" fill="#064e3b" stroke="#10b981" stroke-width="2"/>
+      <text x="160" y="123" font-size="20" text-anchor="middle">💻</text>
+      <text x="160" y="172" font-family="'Outfit', sans-serif" font-size="12" font-weight="800" fill="#34d399" letter-spacing="1.5" text-anchor="middle">HACKER FEUD CYBER</text>
+    </svg>`;
+  }
+
   // Graceful Fallback (Genre-Specific & Polished)
   const colors = {
     cricket: ['#065f46', '#10b981'],

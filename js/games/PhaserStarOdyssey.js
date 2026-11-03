@@ -409,3 +409,4 @@ export class PhaserStarOdysseyGame extends GameEngineBase {
 }
 
 export default PhaserStarOdysseyGame;
+

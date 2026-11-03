@@ -3621,5 +3621,123 @@ export const DEFAULT_GAMES = [
     "engine": "HangmanWildWest",
     "thumbnail": "/images/games/hangman-wild-west.webp",
     "imageAlt": "Official artwork for Hangman Wild West: Word Bounty"
+  },
+  {
+    "id": "game_swordbattle_io",
+    "title": "SwordBattle IO",
+    "slug": "swordbattle-io",
+    "category": "action",
+    "tags": [
+      "action",
+      "io",
+      "multiplayer",
+      "sword"
+    ],
+    "gameMode": "endless",
+    "icon": "⚔️",
+    "rating": 4.9,
+    "plays": 54200,
+    "is_featured": 1,
+    "is_trending": 1,
+    "badge": "HOT .IO",
+    "bannerColor": "linear-gradient(135deg, #0284c7, #082f49)",
+    "description": "Multiplayer gladiator sword fighting IO arena! Slice enemy blades, gather colorful XP crystals to grow your weapon, and top the leaderboard.",
+    "controls": "Move Mouse to Steer • Click / Space to Sprint Dash • Cut with Sword",
+    "engine": "SwordBattleIO",
+    "thumbnail": "/images/games/swordbattle-io.webp",
+    "imageAlt": "Official artwork for SwordBattle IO"
+  },
+  {
+    "id": "game_civis_4x_strategy",
+    "title": "Civis 4X Strategy",
+    "slug": "civis-4x-strategy",
+    "category": "action",
+    "tags": [
+      "action",
+      "strategy",
+      "turn-based",
+      "4x"
+    ],
+    "gameMode": "story",
+    "icon": "🏛️",
+    "rating": 4.8,
+    "plays": 41300,
+    "is_featured": 1,
+    "badge": "4X STRATEGY",
+    "bannerColor": "linear-gradient(135deg, #b45309, #78350f)",
+    "description": "Turn-based hex 4X empire builder! Found magnificent cities, research technologies, train legions & archers, and defeat rival civilizations.",
+    "controls": "Click Hex Tiles to Move / Recruit • Click 'END TURN' button to advance",
+    "engine": "Civis4XStrategy",
+    "thumbnail": "/images/games/civis-4x-strategy.webp",
+    "imageAlt": "Official artwork for Civis 4X Strategy"
+  },
+  {
+    "id": "game_westward_bounty_rpg",
+    "title": "Westward Bounty RPG",
+    "slug": "westward-bounty-rpg",
+    "category": "action",
+    "tags": [
+      "action",
+      "rpg",
+      "adventure",
+      "shooter"
+    ],
+    "gameMode": "story",
+    "icon": "🤠",
+    "rating": 4.8,
+    "plays": 38900,
+    "badge": "WILD WEST",
+    "bannerColor": "linear-gradient(135deg, #d97706, #92400e)",
+    "description": "Frontier wild west cowboy action adventure! Duel bandit gangs in desert canyons, throw dynamite, reload six-shooters and claim bounties.",
+    "controls": "WASD to Move • Click to Shoot • R to Reload • E for Dynamite",
+    "engine": "WestwardBounty",
+    "thumbnail": "/images/games/westward-bounty-rpg.webp",
+    "imageAlt": "Official artwork for Westward Bounty RPG"
+  },
+  {
+    "id": "game_set_match_trio",
+    "title": "Set Match Trio",
+    "slug": "set-match-trio",
+    "category": "puzzle",
+    "tags": [
+      "puzzle",
+      "card",
+      "brain",
+      "casual"
+    ],
+    "gameMode": "endless",
+    "icon": "🃏",
+    "rating": 4.9,
+    "plays": 35400,
+    "badge": "BRAIN PUZZLE",
+    "bannerColor": "linear-gradient(135deg, #059669, #022c22)",
+    "description": "The visual perception card puzzle! Find sets of 3 cards where each feature (number, color, shape, shading) is all the same or all different.",
+    "controls": "Click cards to select 3 • Click HINT for guidance",
+    "engine": "SetMatchTrio",
+    "thumbnail": "/images/games/set-match-trio.webp",
+    "imageAlt": "Official artwork for Set Match Trio"
+  },
+  {
+    "id": "game_hacker_feud_cyber",
+    "title": "Hacker Feud: Cyber Breach",
+    "slug": "hacker-feud-cyber",
+    "category": "puzzle",
+    "tags": [
+      "puzzle",
+      "arcade",
+      "cyberpunk",
+      "typing"
+    ],
+    "gameMode": "endless",
+    "icon": "💻",
+    "rating": 4.8,
+    "plays": 36100,
+    "badge": "CYBER TERMINAL",
+    "bannerColor": "linear-gradient(135deg, #10b981, #064e3b)",
+    "description": "Cyberpunk terminal code breaker! Type root injection commands, bypass security ICE sweeps, and breach high-security megacorp nodes.",
+    "controls": "Type commands on keyboard or click on-screen letter buttons",
+    "engine": "HackerFeudCyber",
+    "thumbnail": "/images/games/hacker-feud-cyber.webp",
+    "imageAlt": "Official artwork for Hacker Feud: Cyber Breach"
   }
 ];

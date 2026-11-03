@@ -405,3 +405,4 @@ export class GallopQuestGame extends GameEngineBase {
 }
 
 export default GallopQuestGame;
+
