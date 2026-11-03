@@ -14,12 +14,41 @@ export function GameCard({
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const [tiltStyle, setTiltStyle] = useState({});
   const [glareStyle, setGlareStyle] = useState({ opacity: 0 });
+
+  // Thumbnail URL resolution & validation
+  const isValidThumbnail =
+    typeof game?.thumbnail === 'string' &&
+    game.thumbnail.length > 4 &&
+    (game.thumbnail.startsWith('/') ||
+     game.thumbnail.startsWith('http://') ||
+     game.thumbnail.startsWith('https://') ||
+     game.thumbnail.startsWith('data:image/'));
+
+  const canonicalWebp = game?.slug ? `/images/games/${game.slug}.webp` : '';
+  const initialSrc = isValidThumbnail ? game.thumbnail : canonicalWebp;
+
+  const [currentSrc, setCurrentSrc] = useState(initialSrc);
   const [imgLoaded, setImgLoaded] = useState(false);
   const [imgError, setImgError] = useState(false);
 
+  // Sync state when game data or thumbnail changes (e.g. after API fetch)
+  useEffect(() => {
+    const nextSrc = isValidThumbnail ? game.thumbnail : canonicalWebp;
+    setCurrentSrc(nextSrc);
+    setImgError(false);
+  }, [game?.id, game?.thumbnail, game?.slug]);
+
+  const handleImgError = () => {
+    // If a custom or external thumbnail fails, fallback to canonical local webp once
+    if (currentSrc !== canonicalWebp && canonicalWebp) {
+      setCurrentSrc(canonicalWebp);
+    } else {
+      setImgError(true);
+    }
+  };
+
   const previewMeta = getGamePreviewMeta(game);
-  const activePreviewVideo = game.preview_video || (previewMeta?.hasPreview ? previewMeta.previewVideo : null);
-  const thumbnailSrc = game.thumbnail || `/images/games/${game.slug}.webp`;
+  const activePreviewVideo = game?.preview_video || (previewMeta?.hasPreview ? previewMeta.previewVideo : null);
 
   // 3D Perspective Tilt & Glare Math
   const handleMouseMove = (e) => {
@@ -78,13 +107,13 @@ export function GameCard({
   // Badges
   let badgeText = null;
   let badgeClass = null;
-  if (game.featured) {
+  if (game?.featured || game?.is_featured) {
     badgeText = '⭐ Featured';
     badgeClass = 'badge-featured';
-  } else if (game.tags?.includes('new') || game.is_new) {
+  } else if (game?.tags?.includes('new') || game?.is_new) {
     badgeText = '✨ New';
     badgeClass = 'badge-new';
-  } else if (game.plays > 35000 || game.tags?.includes('trending')) {
+  } else if (game?.plays > 35000 || game?.tags?.includes('trending') || game?.is_trending) {
     badgeText = '🔥 Hot';
     badgeClass = 'badge-trending';
   }
@@ -103,7 +132,7 @@ export function GameCard({
       }}
       tabIndex={0}
       role="button"
-      aria-label={`Play ${game.title}`}
+      aria-label={`Play ${game?.title || 'Game'}`}
       onKeyDown={(e) => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
@@ -122,10 +151,10 @@ export function GameCard({
         )}
 
         {/* Primary Artwork: Authentic Landscape WebP Artwork with SVG Fallback */}
-        {!imgError ? (
+        {!imgError && currentSrc ? (
           <img
-            src={thumbnailSrc}
-            alt={game.imageAlt || `${game.title} - Free Online Game`}
+            src={currentSrc}
+            alt={game?.imageAlt || `${game?.title || 'Game'} - Free Online Game`}
             loading="lazy"
             decoding="async"
             className={`gz-card-img ${imgLoaded ? 'loaded' : ''}`}
@@ -134,7 +163,7 @@ export function GameCard({
               visibility: isVideoPlaying ? 'hidden' : 'visible'
             }}
             onLoad={() => setImgLoaded(true)}
-            onError={() => setImgError(true)}
+            onError={handleImgError}
           />
         ) : (
           <div
@@ -190,7 +219,7 @@ export function GameCard({
         onClick={(e) => {
           e.stopPropagation();
           sounds.playClick();
-          onToggleFavorite(game.id);
+          onToggleFavorite(game?.id);
         }}
       >
         <span>{isFavorite ? '❤️' : '🤍'}</span>
@@ -198,10 +227,10 @@ export function GameCard({
 
       {/* Card Info Box */}
       <div className="card-info-box gz-card-meta">
-        <h4 className="card-title gz-card-title">{game.title}</h4>
+        <h4 className="card-title gz-card-title">{game?.title}</h4>
         <div className="card-meta-row">
-          <span className="genre-badge">{game.category || 'Arcade'}</span>
-          <span className="card-plays-text">{(game.plays || 1200).toLocaleString()} plays</span>
+          <span className="genre-badge">{game?.category || 'Arcade'}</span>
+          <span className="card-plays-text">{(game?.plays || 1200).toLocaleString()} plays</span>
         </div>
       </div>
     </article>

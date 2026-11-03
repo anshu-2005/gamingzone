@@ -208,6 +208,16 @@ export function initDatabase() {
   }
 
   // 4. Seed or Synchronize Default Games from gamesRegistry
+  try {
+    db.exec(`
+      UPDATE games
+      SET thumbnail = '/images/games/' || slug || '.webp'
+      WHERE thumbnail IS NULL OR thumbnail = '' OR (thumbnail NOT LIKE '/%' AND thumbnail NOT LIKE 'http%');
+    `);
+  } catch (migErr) {
+    console.warn('[Database] Thumbnail migration notice:', migErr);
+  }
+
   const insertGame = db.prepare(`
     INSERT OR IGNORE INTO games (
       id, slug, title, description, category, tags, thumbnail,
@@ -217,12 +227,14 @@ export function initDatabase() {
     ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
   `);
 
-  const checkGame = db.prepare('SELECT id, external_url, game_type FROM games WHERE id = ?');
+  const checkGame = db.prepare('SELECT id, external_url, game_type, thumbnail FROM games WHERE id = ?');
   const now = Date.now();
   let newSeededCount = 0;
 
   for (const g of DEFAULT_GAMES) {
     const existing = checkGame.get(g.id);
+    const correctThumbnail = g.thumbnail || `/images/games/${g.slug}.webp`;
+
     if (!existing) {
       insertGame.run(
         g.id,
@@ -231,7 +243,7 @@ export function initDatabase() {
         g.description || '',
         g.category || 'action',
         JSON.stringify(g.tags || [g.category]),
-        g.icon || '🎮',
+        correctThumbnail,
         g.bundle_url || '',
         g.external_url || '',
         g.entry_path || 'index.html',
@@ -250,12 +262,19 @@ export function initDatabase() {
         now
       );
       newSeededCount++;
-    } else if (g.external_url && (!existing.external_url || existing.game_type !== g.game_type)) {
-      db.prepare(`
-        UPDATE games
-        SET external_url = ?, game_type = ?, status = 'published', updated_at = ?
-        WHERE id = ?
-      `).run(g.external_url, g.game_type || 'external', now, g.id);
+    } else {
+      // Keep thumbnails in sync if old DB had emoji or empty string
+      if (!existing.thumbnail || (!existing.thumbnail.startsWith('/') && !existing.thumbnail.startsWith('http'))) {
+        db.prepare('UPDATE games SET thumbnail = ?, updated_at = ? WHERE id = ?').run(correctThumbnail, now, g.id);
+      }
+
+      if (g.external_url && (!existing.external_url || existing.game_type !== g.game_type)) {
+        db.prepare(`
+          UPDATE games
+          SET external_url = ?, game_type = ?, status = 'published', updated_at = ?
+          WHERE id = ?
+        `).run(g.external_url, g.game_type || 'external', now, g.id);
+      }
     }
   }
 

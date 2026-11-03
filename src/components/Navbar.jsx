@@ -4,9 +4,34 @@ import { getGameThumbnailSVG } from '../../js/utils/gameThumbnails.js';
 
 function DropdownThumb({ game }) {
   const [error, setError] = useState(false);
-  const src = game?.thumbnail || (game?.slug ? `/images/games/${game.slug}.webp` : null);
 
-  if (error || !src) {
+  const isValidThumbnail =
+    typeof game?.thumbnail === 'string' &&
+    game.thumbnail.length > 4 &&
+    (game.thumbnail.startsWith('/') ||
+     game.thumbnail.startsWith('http://') ||
+     game.thumbnail.startsWith('https://') ||
+     game.thumbnail.startsWith('data:image/'));
+
+  const canonicalWebp = game?.slug ? `/images/games/${game.slug}.webp` : null;
+  const initialSrc = isValidThumbnail ? game.thumbnail : canonicalWebp;
+  const [currentSrc, setCurrentSrc] = useState(initialSrc);
+
+  useEffect(() => {
+    const nextSrc = isValidThumbnail ? game.thumbnail : canonicalWebp;
+    setCurrentSrc(nextSrc);
+    setError(false);
+  }, [game?.id, game?.slug, game?.thumbnail]);
+
+  const handleImgError = () => {
+    if (currentSrc !== canonicalWebp && canonicalWebp) {
+      setCurrentSrc(canonicalWebp);
+    } else {
+      setError(true);
+    }
+  };
+
+  if (error || !currentSrc) {
     return (
       <div
         className="gz-dropdown-item-thumb"
@@ -18,11 +43,11 @@ function DropdownThumb({ game }) {
   return (
     <div className="gz-dropdown-item-thumb">
       <img
-        src={src}
+        src={currentSrc}
         alt={game.title}
         loading="lazy"
         decoding="async"
-        onError={() => setError(true)}
+        onError={handleImgError}
         style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '6px' }}
       />
     </div>

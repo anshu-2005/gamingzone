@@ -56,13 +56,36 @@ export function App() {
     }
   });
 
-  // Fetch games from live backend
+  // Fetch games from live backend and merge cleanly with registry metadata
   const fetchLiveGames = () => {
     fetch('/api/games?limit=500')
       .then((r) => r.json())
       .then((d) => {
-        if (d.games && d.games.length > 0) {
-          setGames(d.games);
+        if (d.games && Array.isArray(d.games) && d.games.length > 0) {
+          const registryMap = new Map(DEFAULT_GAMES.map((g) => [g.id, g]));
+          const slugMap = new Map(DEFAULT_GAMES.map((g) => [g.slug, g]));
+
+          const merged = d.games.map((liveGame) => {
+            const staticMeta = registryMap.get(liveGame.id) || slugMap.get(liveGame.slug) || {};
+            let thumb = liveGame.thumbnail;
+            const isValidThumb =
+              typeof thumb === 'string' &&
+              thumb.length > 4 &&
+              (thumb.startsWith('/') || thumb.startsWith('http') || thumb.startsWith('data:image/'));
+
+            const finalThumb = isValidThumb
+              ? thumb
+              : staticMeta.thumbnail || `/images/games/${liveGame.slug || staticMeta.slug}.webp`;
+
+            return {
+              ...staticMeta,
+              ...liveGame,
+              thumbnail: finalThumb,
+              imageAlt: staticMeta.imageAlt || `${liveGame.title} - Free Online Game`
+            };
+          });
+
+          setGames(merged);
         }
       })
       .catch((err) => {

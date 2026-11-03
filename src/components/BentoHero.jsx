@@ -1,12 +1,37 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { sounds } from '../../js/core/soundFX.js';
 import { getGameThumbnailSVG } from '../../js/utils/gameThumbnails.js';
 
 function BentoArtwork({ game, className, altText }) {
   const [error, setError] = useState(false);
-  const src = game?.thumbnail || (game?.slug ? `/images/games/${game.slug}.webp` : null);
 
-  if (error || !src) {
+  const isValidThumbnail =
+    typeof game?.thumbnail === 'string' &&
+    game.thumbnail.length > 4 &&
+    (game.thumbnail.startsWith('/') ||
+     game.thumbnail.startsWith('http://') ||
+     game.thumbnail.startsWith('https://') ||
+     game.thumbnail.startsWith('data:image/'));
+
+  const canonicalWebp = game?.slug ? `/images/games/${game.slug}.webp` : null;
+  const initialSrc = isValidThumbnail ? game.thumbnail : canonicalWebp;
+  const [currentSrc, setCurrentSrc] = useState(initialSrc);
+
+  useEffect(() => {
+    const nextSrc = isValidThumbnail ? game.thumbnail : canonicalWebp;
+    setCurrentSrc(nextSrc);
+    setError(false);
+  }, [game?.id, game?.slug, game?.thumbnail]);
+
+  const handleImgError = () => {
+    if (currentSrc !== canonicalWebp && canonicalWebp) {
+      setCurrentSrc(canonicalWebp);
+    } else {
+      setError(true);
+    }
+  };
+
+  if (error || !currentSrc) {
     return (
       <div
         className={className}
@@ -18,11 +43,11 @@ function BentoArtwork({ game, className, altText }) {
   return (
     <div className={className}>
       <img
-        src={src}
+        src={currentSrc}
         alt={altText || game?.imageAlt || game?.title || 'Featured Game'}
         loading="lazy"
         decoding="async"
-        onError={() => setError(true)}
+        onError={handleImgError}
         style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
       />
     </div>
@@ -34,12 +59,12 @@ export function BentoHero({ games, onSelectGame }) {
 
   // Select top featured candidates
   const mainSpotlight =
-    games.find((g) => g.slug === 'arrow-maze-puzzle' || g.slug === 'mario-html5' || g.featured) ||
+    games.find((g) => g.slug === 'arrow-maze-escape-tangled-puzzle' || g.slug === 'mario-bros-infinite' || g.featured || g.is_featured) ||
     games[0];
 
   const secondaryCandidates = games
     .filter((g) => g.id !== mainSpotlight.id)
-    .filter((g) => g.featured || g.plays > 25000 || g.is_new)
+    .filter((g) => g.featured || g.is_featured || g.plays > 25000 || g.is_new)
     .slice(0, 4);
 
   // Fallback to first 4 if needed

@@ -70,14 +70,22 @@ apiRouter.get('/games', (req, res) => {
 
     const games = db.prepare(query).all(...params);
 
-    // Format tags array and booleans
-    const formatted = games.map(g => ({
-      ...g,
-      tags: typeof g.tags === 'string' ? JSON.parse(g.tags || '[]') : g.tags,
-      is_featured: Boolean(g.is_featured),
-      is_trending: Boolean(g.is_trending),
-      is_new: Boolean(g.is_new)
-    }));
+    // Format tags array, booleans, and authentic WebP thumbnails
+    const formatted = games.map(g => {
+      let thumb = g.thumbnail;
+      if (!thumb || (!thumb.startsWith('/') && !thumb.startsWith('http') && !thumb.startsWith('data:image/'))) {
+        thumb = `/images/games/${g.slug}.webp`;
+      }
+      return {
+        ...g,
+        thumbnail: thumb,
+        imageAlt: `${g.title} - Free Online Game`,
+        tags: typeof g.tags === 'string' ? JSON.parse(g.tags || '[]') : g.tags,
+        is_featured: Boolean(g.is_featured),
+        is_trending: Boolean(g.is_trending),
+        is_new: Boolean(g.is_new)
+      };
+    });
 
     res.json({
       success: true,
@@ -109,10 +117,17 @@ apiRouter.get('/games/:slug', (req, res) => {
       });
     }
 
+    let thumb = game.thumbnail;
+    if (!thumb || (!thumb.startsWith('/') && !thumb.startsWith('http') && !thumb.startsWith('data:image/'))) {
+      thumb = `/images/games/${game.slug}.webp`;
+    }
+
     res.json({
       success: true,
       game: {
         ...game,
+        thumbnail: thumb,
+        imageAlt: `${game.title} - Free Online Game`,
         tags: typeof game.tags === 'string' ? JSON.parse(game.tags || '[]') : game.tags,
         is_featured: Boolean(game.is_featured),
         is_trending: Boolean(game.is_trending),
