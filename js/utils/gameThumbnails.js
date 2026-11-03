@@ -1926,6 +1926,113 @@ export function getGameThumbnailSVG(game) {
     </svg>`;
   }
 
+  // 112. WTF?! Adventure RPG
+  if (id === 'game_wtf_adventure_rpg' || engine === 'WtfAdventure') {
+    return `<svg class="game-thumb-svg" viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="bg_wtf" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#022c22"/><stop offset="100%" stop-color="#064e3b"/></linearGradient>
+      </defs>
+      <rect width="320" height="200" fill="url(#bg_wtf)"/>
+      <circle cx="160" cy="95" r="54" fill="#059669" opacity="0.3"/>
+      <!-- Sword -->
+      <path d="M 160,45 L 166,115 L 160,125 L 154,115 Z" fill="#e2e8f0" stroke="#00e5ff" stroke-width="1.5"/>
+      <rect x="142" y="120" width="36" height="8" rx="2" fill="#fbbf24"/>
+      <rect x="156" y="128" width="8" height="20" rx="2" fill="#78350f"/>
+      <circle cx="160" cy="152" r="5" fill="#fbbf24"/>
+      <!-- Floating Gems -->
+      <circle cx="115" cy="85" r="9" fill="#10b981" stroke="#a7f3d0" stroke-width="2"/>
+      <circle cx="205" cy="85" r="9" fill="#f59e0b" stroke="#fde68a" stroke-width="2"/>
+      <text x="160" y="186" font-family="'Outfit', sans-serif" font-size="12" font-weight="800" fill="#34d399" letter-spacing="1.5" text-anchor="middle">WTF?! ADVENTURE RPG</text>
+    </svg>`;
+  }
+
+  // 113. Pits of Doom RPG
+  if (id === 'game_pits_of_doom_rpg' || engine === 'PitsOfDoom') {
+    return `<svg class="game-thumb-svg" viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="bg_pit" cx="50%" cy="50%" r="60%"><stop offset="0%" stop-color="#450a0a"/><stop offset="100%" stop-color="#0f172a"/></radialGradient>
+      </defs>
+      <rect width="320" height="200" fill="url(#bg_pit)"/>
+      <!-- Pit Hole -->
+      <ellipse cx="160" cy="115" rx="70" ry="32" fill="#000000" stroke="#ef4444" stroke-width="3"/>
+      <!-- Crypt Skull -->
+      <circle cx="160" cy="75" r="18" fill="#f8fafc"/>
+      <rect x="152" y="88" width="16" height="10" fill="#f8fafc"/>
+      <circle cx="153" cy="73" r="4" fill="#0f172a"/>
+      <circle cx="167" cy="73" r="4" fill="#0f172a"/>
+      <!-- Torches -->
+      <circle cx="85" cy="80" r="12" fill="#f97316" opacity="0.6"/>
+      <circle cx="235" cy="80" r="12" fill="#f97316" opacity="0.6"/>
+      <text x="160" y="184" font-family="'Outfit', sans-serif" font-size="12" font-weight="800" fill="#ef4444" letter-spacing="1.5" text-anchor="middle">PITS OF DOOM RPG</text>
+    </svg>`;
+  }
+
+  // 114. PLEX World Builder
+  if (id === 'game_plex_world_builder' || engine === 'PlexWorldBuilder') {
+    return `<svg class="game-thumb-svg" viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+      <rect width="320" height="200" fill="#090d16"/>
+      <!-- Grid Blocks -->
+      <rect x="80" y="60" width="36" height="36" fill="#15803d" stroke="#22c55e" stroke-width="1.5"/>
+      <rect x="120" y="60" width="36" height="36" fill="#475569" stroke="#94a3b8" stroke-width="1.5"/>
+      <rect x="160" y="60" width="36" height="36" fill="#0284c7" stroke="#38bdf8" stroke-width="1.5"/>
+      <rect x="200" y="60" width="36" height="36" fill="#b45309" stroke="#f59e0b" stroke-width="1.5"/>
+      <!-- Hero Avatar -->
+      <rect x="142" y="108" width="36" height="36" fill="#a855f7" stroke="#00e5ff" stroke-width="2.5"/>
+      <circle cx="160" cy="126" r="6" fill="#00e5ff"/>
+      <text x="160" y="184" font-family="'Outfit', sans-serif" font-size="12" font-weight="800" fill="#00e5ff" letter-spacing="1.5" text-anchor="middle">PLEX WORLD BUILDER</text>
+    </svg>`;
+  }
+
+  // 115. Phaser Star Odyssey
+  if (id === 'game_phaser_star_odyssey' || engine === 'PhaserStarOdyssey') {
+    return `<svg class="game-thumb-svg" viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+      <rect width="320" height="200" fill="#030712"/>
+      <!-- Starship -->
+      <path d="M 190,95 L 125,72 L 140,95 L 125,118 Z" fill="#38bdf8" stroke="#00e5ff" stroke-width="2"/>
+      <!-- Laser Blasts -->
+      <line x1="195" y1="88" x2="250" y2="88" stroke="#00e5ff" stroke-width="3" stroke-linecap="round"/>
+      <line x1="195" y1="102" x2="250" y2="102" stroke="#00e5ff" stroke-width="3" stroke-linecap="round"/>
+      <!-- Asteroid -->
+      <circle cx="265" cy="95" r="18" fill="#475569" stroke="#94a3b8" stroke-width="2"/>
+      <text x="160" y="184" font-family="'Outfit', sans-serif" font-size="12" font-weight="800" fill="#38bdf8" letter-spacing="1.5" text-anchor="middle">PHASER STAR ODYSSEY</text>
+    </svg>`;
+  }
+
+  // 116. GallopQuest Derby
+  if (id === 'game_gallop_quest_derby' || engine === 'GallopQuest') {
+    return `<svg class="game-thumb-svg" viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="bg_gallop" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0284c7"/><stop offset="60%" stop-color="#7dd3fc"/><stop offset="60%" stop-color="#15803d"/><stop offset="100%" stop-color="#14532d"/></linearGradient>
+      </defs>
+      <rect width="320" height="200" fill="url(#bg_gallop)"/>
+      <!-- Hurdle -->
+      <rect x="210" y="90" width="16" height="36" fill="#b45309"/>
+      <rect x="206" y="96" width="24" height="6" fill="#fef08a"/>
+      <!-- Leaping Stallion Silhouette -->
+      <circle cx="140" cy="85" r="16" fill="#78350f"/>
+      <rect x="110" y="75" width="36" height="20" rx="6" fill="#78350f"/>
+      <!-- Horseshoe -->
+      <circle cx="160" cy="45" r="10" fill="none" stroke="#fbbf24" stroke-width="3.5" stroke-dasharray="24,10"/>
+      <text x="160" y="184" font-family="'Outfit', sans-serif" font-size="12" font-weight="800" fill="#fef08a" letter-spacing="1.5" text-anchor="middle">GALLOPQUEST DERBY</text>
+    </svg>`;
+  }
+
+  // 117. Hangman Wild West
+  if (id === 'game_hangman_wild_west' || engine === 'HangmanWildWest') {
+    return `<svg class="game-thumb-svg" viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+      <rect width="320" height="200" fill="#1c1917"/>
+      <rect x="12" y="12" width="296" height="176" fill="none" stroke="#78350f" stroke-width="2"/>
+      <!-- Gallows -->
+      <path d="M 80,150 L 120,150 M 100,150 L 100,60 L 150,60 L 150,85" stroke="#b45309" stroke-width="4" fill="none"/>
+      <!-- Outlaw figure -->
+      <circle cx="150" cy="98" r="12" fill="none" stroke="#fef08a" stroke-width="2.5"/>
+      <line x1="150" y1="110" x2="150" y2="135" stroke="#fef08a" stroke-width="2.5"/>
+      <!-- Sheriff Star -->
+      <polygon points="230,65 235,78 248,78 238,87 242,100 230,92 218,100 222,87 212,78 225,78" fill="#fbbf24"/>
+      <text x="160" y="180" font-family="'Outfit', sans-serif" font-size="12" font-weight="800" fill="#fbbf24" letter-spacing="1.5" text-anchor="middle">HANGMAN WILD WEST</text>
+    </svg>`;
+  }
+
   // Graceful Fallback (Genre-Specific & Polished)
   const colors = {
     cricket: ['#065f46', '#10b981'],

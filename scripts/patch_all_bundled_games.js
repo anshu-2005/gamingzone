@@ -53,3 +53,4 @@ for (const dir of dirs) {
 }
 
 console.log(`Successfully patched ${patched} games with dark theater styling!`);
+
