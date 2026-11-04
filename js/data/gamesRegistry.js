@@ -1,7 +1,7 @@
 export const CATEGORIES = [
   {
     "id": "all",
-    "name": "All 70+ Games",
+    "name": "All 190+ Games",
     "icon": "🔥"
   },
   {

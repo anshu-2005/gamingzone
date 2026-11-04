@@ -136,7 +136,7 @@ export function Navbar({
           <input
             type="text"
             className="crazy-search-input"
-            placeholder="Search 140+ games, categories, or tags..."
+            placeholder="Search 190+ games, categories, or tags..."
             value={searchQuery}
             onChange={(e) => {
               onSearchChange(e.target.value);

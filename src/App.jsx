@@ -519,7 +519,7 @@ export function App() {
                 <div className="search-empty-box">
                   <div className="search-empty-icon">🔍</div>
                   <h3 style={{ color: '#fff' }}>No matching games found</h3>
-                  <p style={{ color: '#94a3b8' }}>Try searching another term or browse all 65+ games.</p>
+                  <p style={{ color: '#94a3b8' }}>Try searching another term or browse all 190+ games.</p>
                 </div>
               ) : (
                 <div className="games-grid-layout">
