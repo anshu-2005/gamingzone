@@ -136,7 +136,7 @@ function startNeverEndingGame() {
 			`Travelled ${state.distanceTravelled}m`,
 			`Skiers left: ${state.livesLeft}`,
 			`High Score: ${state.highScore}`,
-			'Created by Dan Hough (@basicallydan)',
+			'Created by GamingZone Edition',
 			`Current Speed: ${player.getSpeed()}`,
 		]);
 	}
@@ -158,7 +158,7 @@ function startNeverEndingGame() {
 			'Travelled 0m',
 			`High Score: ${state.highScore}`,
 			`Skiers left: ${state.livesLeft}`,
-			'Created by Dan Hough (@basicallydan)',
+			'Created by GamingZone Edition',
 		],
 		position: { top: 15, right: 10 },
 	});

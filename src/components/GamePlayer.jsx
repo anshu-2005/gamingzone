@@ -2,6 +2,9 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useGameEngine } from '../hooks/useGameEngine.js';
 import { sounds } from '../../js/core/soundFX.js';
 import { GameShelf } from './GameShelf.jsx';
+import { AdBanner } from './AdBanner.jsx';
+import { ErrorBoundary } from './ErrorBoundary.jsx';
+import { SITE_CONFIG } from '../config/site.js';
 
 export function GamePlayer({
   game,
@@ -57,7 +60,8 @@ export function GamePlayer({
   // Dynamic SEO Structured Data (JSON-LD) for Google Rich Snippets
   useEffect(() => {
     if (!game) return;
-    const gameUrl = `https://game-ten-iota-67.vercel.app/#game/${game.id}`;
+    const baseUrl = SITE_CONFIG.domain || "https://game-ten-iota-67.vercel.app";
+    const gameUrl = `${baseUrl}/#game/${game.id}`;
     const schemaScriptId = 'game-jsonld-schema';
 
     let scriptTag = document.getElementById(schemaScriptId);
@@ -78,13 +82,13 @@ export function GamePlayer({
               "@type": "ListItem",
               "position": 1,
               "name": "Home",
-              "item": "https://game-ten-iota-67.vercel.app/"
+              "item": baseUrl + "/"
             },
             {
               "@type": "ListItem",
               "position": 2,
               "name": game.category || "Games",
-              "item": `https://game-ten-iota-67.vercel.app/#category/${encodeURIComponent((game.category || 'arcade').toLowerCase())}`
+              "item": `${baseUrl}/#category/${encodeURIComponent((game.category || 'arcade').toLowerCase())}`
             },
             {
               "@type": "ListItem",
@@ -454,6 +458,7 @@ export function GamePlayer({
       </header>
 
       {/* Main Viewport Stage with Ambient Backlight Glow */}
+      <ErrorBoundary context="game_viewport" isGameArea={true}>
       <div
         className={`game-stage-viewport ${isTheaterMode ? 'theater-viewport' : ''} ${
           isFullscreen ? 'gz-fullscreen-active' : ''
@@ -573,17 +578,9 @@ export function GamePlayer({
           </div>
         )}
       </div>
+      </ErrorBoundary>
 
-      {/* Non-intrusive Safe Ad Banner Slot */}
-      <div className="gz-ad-slot-container">
-        <span className="gz-ad-slot-label">ADVERTISEMENT • GAMINGZONE SAFE</span>
-        <div className="gz-ad-slot-banner">
-          <div className="gz-ad-placeholder-text">
-            <span>🎮 GamingZone High-Performance Browser Gaming Network</span>
-            <span style={{ fontSize: '0.74rem', opacity: 0.8 }}>Over 190+ free instant titles. Fast, ad-safe, zero downloads.</span>
-          </div>
-        </div>
-      </div>
+      <AdBanner slot="game-player-bottom" format="horizontal" />
 
       {/* Visual Keyboard Controls & How to Play Guide */}
       <div className="gz-gameplay-guide-grid">
@@ -814,6 +811,7 @@ export function GamePlayer({
           />
         </div>
       )}
+      <AdBanner slot="game-player-footer" format="horizontal" />
     </div>
   );
 }

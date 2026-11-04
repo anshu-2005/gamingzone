@@ -8,7 +8,7 @@ const __dirname = path.dirname(__filename);
 const rootDir = path.resolve(__dirname, '..');
 const sitemapPath = path.join(rootDir, 'public', 'sitemap.xml');
 
-const BASE_URL = 'https://game-ten-iota-67.vercel.app';
+const BASE_URL = process.env.VITE_SITE_URL || process.env.SITE_URL || 'https://game-ten-iota-67.vercel.app';
 const TODAY = new Date().toISOString().split('T')[0];
 
 const staticPages = [

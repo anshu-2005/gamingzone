@@ -13,6 +13,8 @@ import { CookieConsent } from './components/CookieConsent.jsx';
 import { DEFAULT_GAMES, CATEGORIES } from '../js/data/gamesRegistry.js';
 import { sounds } from '../js/core/soundFX.js';
 import { getGameThumbnailSVG } from '../js/utils/gameThumbnails.js';
+import { AdBanner } from './components/AdBanner.jsx';
+import { SITE_CONFIG } from './config/site.js';
 
 export function App() {
   const [games, setGames] = useState(DEFAULT_GAMES);
@@ -151,7 +153,8 @@ export function App() {
     if (activeGame) {
       const pageTitle = `Play ${activeGame.title} Free Online — GamingZone`;
       const descContent = `Play ${activeGame.title} free online on GamingZone. ${activeGame.description || 'Enjoy instant, high-performance browser gameplay with zero downloads.'} Controls: ${activeGame.controls || 'WASD / Touch'}.`;
-      const pageUrl = `https://game-ten-iota-67.vercel.app/#game/${activeGame.id}`;
+      const baseUrl = SITE_CONFIG.domain || "https://game-ten-iota-67.vercel.app";
+      const pageUrl = `${baseUrl}/#game/${activeGame.id}`;
 
       document.title = pageTitle;
       canonical.setAttribute('href', pageUrl);
@@ -171,7 +174,8 @@ export function App() {
       const catName = currentCategory.charAt(0).toUpperCase() + currentCategory.slice(1);
       const pageTitle = `Free ${catName} Games Online — Play on GamingZone`;
       const descContent = `Discover and play top-rated free ${catName} browser games on GamingZone. Instant play on PC, mobile and tablet with zero installs.`;
-      const pageUrl = `https://game-ten-iota-67.vercel.app/#category/${encodeURIComponent(currentCategory)}`;
+      const baseUrl = SITE_CONFIG.domain || "https://game-ten-iota-67.vercel.app";
+      const pageUrl = `${baseUrl}/#category/${encodeURIComponent(currentCategory)}`;
 
       document.title = pageTitle;
       canonical.setAttribute('href', pageUrl);
@@ -182,7 +186,8 @@ export function App() {
     } else {
       const defaultTitle = 'GamingZone — Play 190+ Free Online Browser & 3D Games';
       const defaultDesc = 'Play 190+ free online browser games on GamingZone. Instant high-performance 3D, action, arcade, sports, strategy, and puzzle games with zero downloads or installs. Safe, fast, and mobile-ready.';
-      const defaultUrl = 'https://game-ten-iota-67.vercel.app/';
+      const baseUrl = SITE_CONFIG.domain || "https://game-ten-iota-67.vercel.app";
+      const defaultUrl = baseUrl + "/";
 
       document.title = defaultTitle;
       canonical.setAttribute('href', defaultUrl);
@@ -825,6 +830,8 @@ export function App() {
         </main>
       </div>
 
+      <AdBanner slot="homepage-bottom" format="horizontal" />
+
       {/* Enhanced AdSense-Compliant SEO Footer */}
       <footer className="crazy-footer" style={{ borderTop: '1px solid rgba(255, 255, 255, 0.08)', background: '#030712', padding: '40px 0 24px' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto', width: '100%', padding: '0 24px' }}>
@@ -860,41 +867,41 @@ export function App() {
             <div>
               <h4 style={{ color: '#f8fafc', fontSize: '0.92rem', fontWeight: 700, marginBottom: '12px', textTransform: 'uppercase', letterSpacing: '1px' }}>Trust &amp; Legal</h4>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '0.84rem' }}>
-                <button
-                  type="button"
-                  onClick={() => setPolicyModal({ isOpen: true, tab: 'about' })}
-                  style={{ background: 'none', border: 'none', color: '#94a3b8', textAlign: 'left', padding: 0, cursor: 'pointer', font: 'inherit' }}
+                <a
+                  href="#about"
+                  onClick={(e) => { e.preventDefault(); window.location.hash = 'about'; setPolicyModal({ isOpen: true, tab: 'about' }); }}
+                  style={{ color: '#94a3b8', textDecoration: 'none' }}
                 >
                   📖 About Us &amp; Mission
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setPolicyModal({ isOpen: true, tab: 'privacy' })}
-                  style={{ background: 'none', border: 'none', color: '#94a3b8', textAlign: 'left', padding: 0, cursor: 'pointer', font: 'inherit' }}
+                </a>
+                <a
+                  href="#privacy"
+                  onClick={(e) => { e.preventDefault(); window.location.hash = 'privacy'; setPolicyModal({ isOpen: true, tab: 'privacy' }); }}
+                  style={{ color: '#94a3b8', textDecoration: 'none' }}
                 >
                   🔒 Privacy &amp; Cookie Policy
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setPolicyModal({ isOpen: true, tab: 'terms' })}
-                  style={{ background: 'none', border: 'none', color: '#94a3b8', textAlign: 'left', padding: 0, cursor: 'pointer', font: 'inherit' }}
+                </a>
+                <a
+                  href="#terms"
+                  onClick={(e) => { e.preventDefault(); window.location.hash = 'terms'; setPolicyModal({ isOpen: true, tab: 'terms' }); }}
+                  style={{ color: '#94a3b8', textDecoration: 'none' }}
                 >
                   📜 Terms of Service
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setPolicyModal({ isOpen: true, tab: 'disclaimer' })}
-                  style={{ background: 'none', border: 'none', color: '#94a3b8', textAlign: 'left', padding: 0, cursor: 'pointer', font: 'inherit' }}
+                </a>
+                <a
+                  href="#disclaimer"
+                  onClick={(e) => { e.preventDefault(); window.location.hash = 'disclaimer'; setPolicyModal({ isOpen: true, tab: 'disclaimer' }); }}
+                  style={{ color: '#94a3b8', textDecoration: 'none' }}
                 >
                   ⚖️ Legal Disclaimer &amp; DMCA
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setPolicyModal({ isOpen: true, tab: 'contact' })}
-                  style={{ background: 'none', border: 'none', color: '#94a3b8', textAlign: 'left', padding: 0, cursor: 'pointer', font: 'inherit' }}
+                </a>
+                <a
+                  href="#contact"
+                  onClick={(e) => { e.preventDefault(); window.location.hash = 'contact'; setPolicyModal({ isOpen: true, tab: 'contact' }); }}
+                  style={{ color: '#94a3b8', textDecoration: 'none' }}
                 >
                   ✉️ Contact Support &amp; DMCA
-                </button>
+                </a>
                 <a
                   href="/ads.txt"
                   target="_blank"

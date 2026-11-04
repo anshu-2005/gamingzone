@@ -17,20 +17,28 @@
   <!-- Replace ca-pub-XXXXXXXXXXXXXXXX with your AdSense Publisher ID -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
 
-  <!-- Google Analytics (GA4) Tag -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-YOUR_GA4_ID"></script>
+  <!-- Google Analytics (GA4) & Custom Events Gateway -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-YOUR_GA4_ID', { send_page_view: true });
-    
-    // Global helper for tracking custom gaming events
     window.trackGameEvent = function(eventName, eventParams) {
       if (typeof window.gtag === 'function') {
         window.gtag('event', eventName, eventParams || {});
       }
     };
+
+    // Conditional GA4 Loader: Injects real gtag only when valid non-placeholder ID is provided
+    (function() {
+      var gaId = (window.__GA_ID__) || null;
+      if (gaId && gaId.indexOf('G-') === 0 && gaId !== 'G-YOUR_GA4_ID') {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(gaId);
+        document.head.appendChild(s);
+        gtag('js', new Date());
+        gtag('config', gaId, { send_page_view: true });
+      }
+    })();
   </script>
 
   <!-- Open Graph / Facebook -->

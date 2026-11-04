@@ -1,4 +1,7 @@
 (function define_horde_Engine () {
+window.horde = window.horde || {};
+window.horde.isDemo = function () { return false; };
+
 
 var VERSION = "{{VERSION}}";
 var SCREEN_WIDTH = 640;
@@ -1403,44 +1406,9 @@ proto.updateGameOver = function horde_Engine_proto_updateGameOver (elapsed) {
  * Displays the Clay.io leaderboard
  * @param {Boolean} share If true, will give the player an option to share their score
  */
-proto.showLeaderboard = function horde_Engine_proto_showLeaderboard (share) {
-	var share = typeof share === 'undefined' ? false : share;
+proto.showLeaderboard = function horde_Engine_proto_showLeaderboard (share) { return; };
 
-	var html = []; // Post to social HTML. Array for readability
-	html.push("Share your score: " );
-	html.push("<a href='#' id='facebook-button'>Facebook</a>" );
-	html.push(" or <a href='#' id='twitter-button'>Twitter</a>" );
-	var _this = this;
-	if( share ) {
-		this.clayLeaderboard.show({ html: html.join("") }, function() {
-			document.getElementById('facebook-button').onclick = function() {
-				_this.postSocial('facebook');
-			}
-			document.getElementById('twitter-button').onclick = function() {
-				_this.postSocial('twitter');
-			}
-		});
-	}
-	else {
-		this.clayLeaderboard.show();
-	}
-}
-
-/**
- * Takes a screenshot and posts it to the specified site through Clay.io
- * @param {String} site facebook or twitter
- */
-proto.postSocial = function horde_Engine_proto_postSocial (site) {
-	var screenshot = new Clay.Screenshot({ prompt: false, id: 'display' });
-	var _this = this;
-	screenshot.save(function( response ) {
-		if(site == 'facebook')
-			(new Clay.Facebook()).post({ message: "I just scored " + _this.getTotalScore() + " in Onslaught! Arena - (screenshot: " + response.url + ")", link: "http://onslaughtarena.clay.io" });
-		else if(site == 'twitter')
-			(new Clay.Twitter()).post({ message: "I just scored " + _this.getTotalScore() + " in Onslaught! Arena - (sreenshot: " + response.url + ")! Play me: http://onslaughtarena.clay.io" });
-	} );
-
-}
+proto.postSocial = function horde_Engine_proto_postSocial (site) { return; };
 
 proto.openGates = function horde_Engine_proto_openGates () {
 	if (this.gateState !== "up") {
