@@ -54,6 +54,81 @@ export function GamePlayer({
     fetchLeaderboard(game.id);
   }, [game.id]);
 
+  // Dynamic SEO Structured Data (JSON-LD) for Google Rich Snippets
+  useEffect(() => {
+    if (!game) return;
+    const gameUrl = `https://game-ten-iota-67.vercel.app/#game/${game.id}`;
+    const schemaScriptId = 'game-jsonld-schema';
+
+    let scriptTag = document.getElementById(schemaScriptId);
+    if (!scriptTag) {
+      scriptTag = document.createElement('script');
+      scriptTag.id = schemaScriptId;
+      scriptTag.type = 'application/ld+json';
+      document.head.appendChild(scriptTag);
+    }
+
+    const structuredData = {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://game-ten-iota-67.vercel.app/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": game.category || "Games",
+              "item": `https://game-ten-iota-67.vercel.app/#category/${encodeURIComponent((game.category || 'arcade').toLowerCase())}`
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": game.title,
+              "item": gameUrl
+            }
+          ]
+        },
+        {
+          "@type": "VideoGame",
+          "@id": gameUrl,
+          "name": game.title,
+          "description": game.description || `Play ${game.title} free online on GamingZone with no download needed.`,
+          "url": gameUrl,
+          "genre": [game.category || "Online Game", "Browser Game", "HTML5 Game"],
+          "gamePlatform": ["Web Browser", "Desktop", "Mobile", "Tablet"],
+          "applicationCategory": "Game",
+          "operatingSystem": "Any modern web browser",
+          "inLanguage": "en",
+          "isAccessibleForFree": true,
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/InStock"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "GamingZone",
+            "url": "https://game-ten-iota-67.vercel.app"
+          }
+        }
+      ]
+    };
+
+    scriptTag.textContent = JSON.stringify(structuredData);
+
+    return () => {
+      const existing = document.getElementById(schemaScriptId);
+      if (existing) existing.remove();
+    };
+  }, [game]);
+
   const handleGameOver = (score, extra) => {
     const finalScore = typeof score === 'object' && score !== null ? (score.score || 0) : Number(score) || 0;
     const isVictory = extra?.isVictory || finalScore > 0;
@@ -293,8 +368,17 @@ export function GamePlayer({
             <span>◀ All Games</span>
           </button>
           <div className="game-identity">
-            <h2 className="game-title-text">{game.title}</h2>
-            <span className="genre-badge">{game.category}</span>
+            <nav aria-label="Breadcrumb" className="gz-breadcrumb-nav" style={{ fontSize: '0.78rem', color: '#94a3b8', marginBottom: '4px', display: 'flex', alignItems: 'center', gap: '6px' }}>
+              <a href="#all" onClick={(e) => { e.preventDefault(); onBack(); }} style={{ color: '#38bdf8', textDecoration: 'none' }}>Home</a>
+              <span>/</span>
+              <a href={`#category/${encodeURIComponent((game.category || 'arcade').toLowerCase())}`} onClick={(e) => { e.preventDefault(); onBack(); }} style={{ color: '#94a3b8', textDecoration: 'none' }}>{game.category || 'Arcade'}</a>
+              <span>/</span>
+              <span style={{ color: '#f8fafc', fontWeight: 600 }}>{game.title}</span>
+            </nav>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+              <h1 className="game-title-text" style={{ fontSize: '1.28rem', margin: 0, fontWeight: 800 }}>{game.title}</h1>
+              <span className="genre-badge">{game.category}</span>
+            </div>
           </div>
         </div>
 
@@ -477,7 +561,7 @@ export function GamePlayer({
         <div className="gz-ad-slot-banner">
           <div className="gz-ad-placeholder-text">
             <span>🎮 GamingZone High-Performance Browser Gaming Network</span>
-            <span style={{ fontSize: '0.74rem', opacity: 0.8 }}>Over 140+ free instant titles. Fast, ad-safe, zero downloads.</span>
+            <span style={{ fontSize: '0.74rem', opacity: 0.8 }}>Over 190+ free instant titles. Fast, ad-safe, zero downloads.</span>
           </div>
         </div>
       </div>

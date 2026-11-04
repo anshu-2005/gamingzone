@@ -64,6 +64,7 @@ export function PolicyModal({ isOpen, onClose, initialTab = 'privacy' }) {
             {[
               { id: 'privacy', label: '🔒 Privacy Policy' },
               { id: 'terms', label: '📜 Terms of Service' },
+              { id: 'disclaimer', label: '⚖️ Disclaimer' },
               { id: 'about', label: '🎮 About Us' },
               { id: 'contact', label: '✉️ Contact Us' }
             ].map((tab) => (
@@ -138,7 +139,7 @@ export function PolicyModal({ isOpen, onClose, initialTab = 'privacy' }) {
 
               <h3 style={{ color: '#f8fafc', marginTop: '20px', marginBottom: '8px' }}>2. Information We Collect</h3>
               <p>
-                GAMINGZONE operates primarily with client-side execution. We do not require account registration to enjoy our 140+ browser games.
+                GAMINGZONE operates primarily with client-side execution. We do not require account registration to enjoy our 190+ free browser games.
               </p>
               <ul style={{ paddingLeft: '20px', marginTop: '8px' }}>
                 <li><strong>Local Storage:</strong> High scores, game favorites, player customizations, and settings are saved locally on your device browser.</li>
@@ -211,6 +212,47 @@ export function PolicyModal({ isOpen, onClose, initialTab = 'privacy' }) {
             </div>
           )}
 
+          {activeTab === 'disclaimer' && (
+            <div>
+              <h2 style={{ color: '#38bdf8', fontSize: '1.4rem', fontWeight: 800, marginBottom: '8px' }}>
+                Legal &amp; Content Disclaimer
+              </h2>
+              <p style={{ fontSize: '0.82rem', color: '#64748b', marginBottom: '20px' }}>
+                Last Updated: November 4, 2026 • Transparency &amp; Copyright Compliance
+              </p>
+
+              <h3 style={{ color: '#f8fafc', marginBottom: '8px' }}>1. General Informational &amp; Entertainment Disclaimer</h3>
+              <p>
+                All content, interactive games, simulations, and utilities provided on <strong>GAMINGZONE</strong> (https://game-ten-iota-67.vercel.app) are published in good faith for general entertainment, recreation, and educational demonstration purposes only. GAMINGZONE makes no warranties about the completeness, reliability, and accuracy of this information. Any action you take upon the materials on this website is strictly at your own risk.
+              </p>
+
+              <h3 style={{ color: '#f8fafc', marginTop: '20px', marginBottom: '8px' }}>2. Open Source Software &amp; Third-Party Games Attribution</h3>
+              <p>
+                A portion of the games featured on GAMINGZONE are open-source web games created by independent developers, universities, and open-source contributors from global repositories (such as GitHub, itch.io, and CodePen). All third-party open-source games retain their original licenses (including MIT, Apache 2.0, BSD, and GNU GPL), copyrights, and author attributions. GAMINGZONE claims no ownership over third-party trademarks, game engines, or intellectual property created by other authors.
+              </p>
+
+              <h3 style={{ color: '#f8fafc', marginTop: '20px', marginBottom: '8px' }}>3. Trademark &amp; Brand Disclaimer</h3>
+              <p>
+                All product names, logos, brands, trademarks, and registered trademarks displayed on GAMINGZONE are property of their respective owners. Any reference to specific game franchises, characters, or brands is strictly for identification and descriptive comparison purposes only and does not imply endorsement, sponsorship, or affiliation with GAMINGZONE.
+              </p>
+
+              <h3 style={{ color: '#f8fafc', marginTop: '20px', marginBottom: '8px' }}>4. External Links &amp; Iframe Content</h3>
+              <p>
+                Certain games or assets may load through external secure iframes or reference external resources. While we strive to provide only quality and ethical links, we have no control over the content and nature of these external sites. Site owners and content may change without notice.
+              </p>
+
+              <h3 style={{ color: '#f8fafc', marginTop: '20px', marginBottom: '8px' }}>5. Advertising &amp; Commercial Disclosure</h3>
+              <p>
+                GAMINGZONE may display advertisements powered by Google AdSense and third-party advertising networks to support server hosting and development costs. We adhere strictly to Google AdSense program policies, ensuring ads do not interfere with game controls or masquerade as gameplay elements.
+              </p>
+
+              <h3 style={{ color: '#f8fafc', marginTop: '20px', marginBottom: '8px' }}>6. DMCA / Takedown Requests</h3>
+              <p>
+                If you are a copyright owner or an agent thereof and believe that any content hosted on GAMINGZONE infringes upon your copyright, please send a written notice containing your contact info and proof of ownership to <a href="mailto:anshuparihar848@gmail.com" style={{ color: '#38bdf8' }}>anshuparihar848@gmail.com</a>. We respond to verified DMCA requests within 24–48 hours and promptly remove offending content.
+              </p>
+            </div>
+          )}
+
           {activeTab === 'about' && (
             <div>
               <h2 style={{ color: '#38bdf8', fontSize: '1.4rem', fontWeight: 800, marginBottom: '8px' }}>
@@ -221,7 +263,7 @@ export function PolicyModal({ isOpen, onClose, initialTab = 'privacy' }) {
               </p>
 
               <p>
-                Welcome to <strong>GAMINGZONE</strong> — a premier gaming destination dedicated to bringing players worldwide over <strong>140+ free, instant, high-performance 3D &amp; 2D browser games</strong> with zero installation, zero downloads, and zero paywalls.
+                Welcome to <strong>GAMINGZONE</strong> — a premier gaming destination dedicated to bringing players worldwide over <strong>190+ free, instant, high-performance 3D &amp; 2D browser games</strong> with zero installation, zero downloads, and zero paywalls.
               </p>
 
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px', margin: '24px 0' }}>
@@ -230,7 +272,7 @@ export function PolicyModal({ isOpen, onClose, initialTab = 'privacy' }) {
                   <div style={{ fontSize: '0.85rem', color: '#94a3b8' }}>Load any game in under 1 second directly in modern web browsers on mobile, desktop, or tablet.</div>
                 </div>
                 <div style={{ background: 'rgba(255, 255, 255, 0.04)', padding: '16px', borderRadius: '12px', border: '1px solid rgba(168, 85, 247, 0.2)' }}>
-                  <div style={{ fontSize: '1.5rem', marginBottom: '6px' }}>🎮 147+ Games</div>
+                  <div style={{ fontSize: '1.5rem', marginBottom: '6px' }}>🎮 190+ Games</div>
                   <div style={{ fontSize: '0.85rem', color: '#94a3b8' }}>Massive catalog spanning 3D racing, action combat, RTS strategy, retro arcades, and logic puzzles.</div>
                 </div>
                 <div style={{ background: 'rgba(255, 255, 255, 0.04)', padding: '16px', borderRadius: '12px', border: '1px solid rgba(16, 185, 129, 0.2)' }}>

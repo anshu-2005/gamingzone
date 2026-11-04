@@ -118,6 +118,8 @@ export function App() {
         setPolicyModal({ isOpen: true, tab: 'privacy' });
       } else if (hash === '#terms') {
         setPolicyModal({ isOpen: true, tab: 'terms' });
+      } else if (hash === '#disclaimer') {
+        setPolicyModal({ isOpen: true, tab: 'disclaimer' });
       } else if (hash === '#about') {
         setPolicyModal({ isOpen: true, tab: 'about' });
       } else if (hash === '#contact') {
@@ -134,12 +136,30 @@ export function App() {
 
   // Dynamic SEO & Google Analytics (GA4) Page View & Title Updates
   useEffect(() => {
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement('link');
+      canonical.rel = 'canonical';
+      document.head.appendChild(canonical);
+    }
+
+    const metaDesc = document.querySelector('meta[name="description"]');
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    const ogDesc = document.querySelector('meta[property="og:description"]');
+    const ogUrl = document.querySelector('meta[property="og:url"]');
+
     if (activeGame) {
-      document.title = `Play ${activeGame.title} Free Online - GAMINGZONE`;
-      const metaDesc = document.querySelector('meta[name="description"]');
-      if (metaDesc) {
-        metaDesc.setAttribute('content', `Play ${activeGame.title} free online on GAMINGZONE. ${activeGame.description}`);
-      }
+      const pageTitle = `Play ${activeGame.title} Free Online — GamingZone`;
+      const descContent = `Play ${activeGame.title} free online on GamingZone. ${activeGame.description || 'Enjoy instant, high-performance browser gameplay with zero downloads.'} Controls: ${activeGame.controls || 'WASD / Touch'}.`;
+      const pageUrl = `https://game-ten-iota-67.vercel.app/#game/${activeGame.id}`;
+
+      document.title = pageTitle;
+      canonical.setAttribute('href', pageUrl);
+      if (metaDesc) metaDesc.setAttribute('content', descContent);
+      if (ogTitle) ogTitle.setAttribute('content', pageTitle);
+      if (ogDesc) ogDesc.setAttribute('content', descContent);
+      if (ogUrl) ogUrl.setAttribute('content', pageUrl);
+
       if (typeof window.trackGameEvent === 'function') {
         window.trackGameEvent('game_view', {
           game_id: activeGame.id,
@@ -147,14 +167,31 @@ export function App() {
           category: activeGame.category
         });
       }
+    } else if (currentCategory && currentCategory !== 'all') {
+      const catName = currentCategory.charAt(0).toUpperCase() + currentCategory.slice(1);
+      const pageTitle = `Free ${catName} Games Online — Play on GamingZone`;
+      const descContent = `Discover and play top-rated free ${catName} browser games on GamingZone. Instant play on PC, mobile and tablet with zero installs.`;
+      const pageUrl = `https://game-ten-iota-67.vercel.app/#category/${encodeURIComponent(currentCategory)}`;
+
+      document.title = pageTitle;
+      canonical.setAttribute('href', pageUrl);
+      if (metaDesc) metaDesc.setAttribute('content', descContent);
+      if (ogTitle) ogTitle.setAttribute('content', pageTitle);
+      if (ogDesc) ogDesc.setAttribute('content', descContent);
+      if (ogUrl) ogUrl.setAttribute('content', pageUrl);
     } else {
-      document.title = 'GAMINGZONE — Play 140+ Free Online 3D & Browser Games';
-      const metaDesc = document.querySelector('meta[name="description"]');
-      if (metaDesc) {
-        metaDesc.setAttribute('content', 'Play 140+ free online browser games on GAMINGZONE. Instant high-performance 3D, action, arcade, sports, and puzzle games with zero downloads. Ad-safe, mobile-ready.');
-      }
+      const defaultTitle = 'GamingZone — Play 190+ Free Online Browser & 3D Games';
+      const defaultDesc = 'Play 190+ free online browser games on GamingZone. Instant high-performance 3D, action, arcade, sports, strategy, and puzzle games with zero downloads or installs. Safe, fast, and mobile-ready.';
+      const defaultUrl = 'https://game-ten-iota-67.vercel.app/';
+
+      document.title = defaultTitle;
+      canonical.setAttribute('href', defaultUrl);
+      if (metaDesc) metaDesc.setAttribute('content', defaultDesc);
+      if (ogTitle) ogTitle.setAttribute('content', defaultTitle);
+      if (ogDesc) ogDesc.setAttribute('content', defaultDesc);
+      if (ogUrl) ogUrl.setAttribute('content', defaultUrl);
     }
-  }, [activeGame]);
+  }, [activeGame, currentCategory]);
 
   const addRecentlyPlayed = (gameId) => {
     setRecentlyPlayed((prev) => {
@@ -463,10 +500,10 @@ export function App() {
             /* Filtered / Search View */
             <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <h2 style={{ color: '#fff', fontFamily: 'var(--font-heading)', fontSize: '1.4rem' }}>
-                  {searchQuery ? `Search Results for "${searchQuery}"` : `Category: ${currentCategory.toUpperCase()}`}
-                  <span style={{ color: 'var(--brand-coral)', fontSize: '1rem', marginLeft: '10px' }}>({filteredGames.length} games)</span>
-                </h2>
+                <h1 style={{ color: '#fff', fontFamily: 'var(--font-heading)', fontSize: '1.4rem', margin: 0, fontWeight: 800 }}>
+                  {searchQuery ? `Search Results for "${searchQuery}"` : `Free ${currentCategory.charAt(0).toUpperCase() + currentCategory.slice(1)} Games Online`}
+                  <span style={{ color: 'var(--brand-coral)', fontSize: '1rem', marginLeft: '10px', fontWeight: 600 }}>({filteredGames.length} games)</span>
+                </h1>
                 <button
                   className="btn btn-secondary"
                   onClick={() => {
@@ -501,6 +538,38 @@ export function App() {
           ) : (
             /* Default Home View - Games immediately visible right in front! */
             <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+              {/* Primary SEO Heading */}
+              <header className="gz-seo-hero-heading" style={{ margin: '4px 0 8px' }}>
+                <h1 style={{
+                  fontSize: 'clamp(1.25rem, 2.2vw, 1.75rem)',
+                  fontWeight: 900,
+                  color: '#f8fafc',
+                  letterSpacing: '-0.02em',
+                  margin: 0,
+                  display: 'flex',
+                  alignItems: 'center',
+                  flexWrap: 'wrap',
+                  gap: '10px'
+                }}>
+                  <span>Play 190+ Free Online Games on GamingZone</span>
+                  <span style={{
+                    fontSize: '0.74rem',
+                    fontWeight: 700,
+                    background: 'linear-gradient(135deg, #0284c7, #38bdf8)',
+                    color: '#fff',
+                    padding: '3px 10px',
+                    borderRadius: '999px',
+                    letterSpacing: '0.04em',
+                    textTransform: 'uppercase'
+                  }}>
+                    Instant Play • No Downloads
+                  </span>
+                </h1>
+                <p style={{ color: '#94a3b8', fontSize: '0.86rem', margin: '4px 0 0', maxWidth: '780px' }}>
+                  Play top-rated 3D action, sports, arcade, speed racing, and brain puzzle games in modern browsers on desktop and mobile.
+                </p>
+              </header>
+
               {/* Poki & CrazyGames-Inspired Bento Hero Spotlight */}
               <BentoHero games={games} onSelectGame={handleSelectGame} />
 
@@ -625,6 +694,132 @@ export function App() {
                   ))}
                 </div>
               </section>
+
+              {/* Comprehensive SEO Content & FAQ Section */}
+              <section className="gz-seo-guide-section" style={{
+                marginTop: '32px',
+                padding: '32px',
+                background: 'linear-gradient(180deg, rgba(15, 23, 42, 0.6) 0%, rgba(3, 7, 18, 0.9) 100%)',
+                border: '1px solid rgba(255, 255, 255, 0.08)',
+                borderRadius: '20px',
+                color: '#cbd5e1'
+              }}>
+                <header style={{ marginBottom: '24px' }}>
+                  <h2 style={{ fontSize: '1.4rem', fontWeight: 800, color: '#f8fafc', margin: '0 0 8px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <span>⚡</span> Free Online Browser Gaming on GamingZone
+                  </h2>
+                  <p style={{ fontSize: '0.92rem', color: '#94a3b8', lineHeight: 1.6, margin: 0 }}>
+                    GamingZone delivers a fast, instant-play library of over 190+ high-quality HTML5 and WebGL games directly to your desktop, smartphone, or Chromebook. With zero downloads, zero account setup required, and completely unblocked gameplay, your next favorite gaming adventure starts in one click.
+                  </p>
+                </header>
+
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px', marginBottom: '28px' }}>
+                  <article style={{ background: 'rgba(255, 255, 255, 0.03)', padding: '18px', borderRadius: '12px', border: '1px solid rgba(255, 255, 255, 0.06)' }}>
+                    <h3 style={{ fontSize: '1.05rem', color: '#38bdf8', margin: '0 0 8px', fontWeight: 700 }}>⚡ Zero Install &amp; Instant Loading</h3>
+                    <p style={{ fontSize: '0.86rem', color: '#94a3b8', lineHeight: 1.6, margin: 0 }}>
+                      All games load in seconds via modern web standards (Canvas 2D, Three.js, WebAudio). Play on any device without storage footprint or executable virus worries.
+                    </p>
+                  </article>
+                  <article style={{ background: 'rgba(255, 255, 255, 0.03)', padding: '18px', borderRadius: '12px', border: '1px solid rgba(255, 255, 255, 0.06)' }}>
+                    <h3 style={{ fontSize: '1.05rem', color: '#a855f7', margin: '0 0 8px', fontWeight: 700 }}>🛡️ Safe, Family-Friendly &amp; Unblocked</h3>
+                    <p style={{ fontSize: '0.86rem', color: '#94a3b8', lineHeight: 1.6, margin: 0 }}>
+                      Our curated collection adheres strictly to Google AdSense family safety guidelines, offering clean non-intrusive entertainment suitable for school, office, and home breaks.
+                    </p>
+                  </article>
+                  <article style={{ background: 'rgba(255, 255, 255, 0.03)', padding: '18px', borderRadius: '12px', border: '1px solid rgba(255, 255, 255, 0.06)' }}>
+                    <h3 style={{ fontSize: '1.05rem', color: '#34d399', margin: '0 0 8px', fontWeight: 700 }}>🏆 Live Hall of Fame &amp; Cloud Ranks</h3>
+                    <p style={{ fontSize: '0.86rem', color: '#94a3b8', lineHeight: 1.6, margin: 0 }}>
+                      Compete for real-time global leaderboard crowns, earn game coins, unlock avatar customizers, and save personal best records across all 190+ titles.
+                    </p>
+                  </article>
+                </div>
+
+                <div style={{ marginBottom: '28px' }}>
+                  <h3 style={{ fontSize: '1.15rem', color: '#f8fafc', marginBottom: '12px', fontWeight: 700 }}>
+                    Explore All 12 Game Categories
+                  </h3>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+                    {[
+                      { name: 'Arcade', icon: '🕹️', id: 'arcade' },
+                      { name: 'Action & RTS', icon: '⚔️', id: 'action' },
+                      { name: 'Puzzles & Logic', icon: '🧩', id: 'puzzle' },
+                      { name: 'Sports & Arena', icon: '⚽', id: 'sports' },
+                      { name: '3D Racing', icon: '🏎️', id: 'racing' },
+                      { name: 'Strategy', icon: '🏰', id: 'strategy' },
+                      { name: 'Adventure', icon: '🗺️', id: 'adventure' },
+                      { name: 'Shooter', icon: '🎯', id: 'shooter' },
+                      { name: 'Multiplayer', icon: '🌐', id: 'multiplayer' },
+                      { name: '2 Player Local', icon: '👥', id: '2player' },
+                      { name: 'Cricket Arena', icon: '🏏', id: 'cricket' },
+                      { name: 'Card & Board', icon: '🃏', id: 'cards' }
+                    ].map((cat) => (
+                      <a
+                        key={cat.id}
+                        href={`#category/${cat.id}`}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          setCurrentCategory(cat.id);
+                          window.scrollTo({ top: 300, behavior: 'smooth' });
+                        }}
+                        style={{
+                          background: 'rgba(30, 41, 59, 0.6)',
+                          border: '1px solid rgba(255, 255, 255, 0.1)',
+                          padding: '6px 14px',
+                          borderRadius: '8px',
+                          color: '#e2e8f0',
+                          textDecoration: 'none',
+                          fontSize: '0.84rem',
+                          fontWeight: 600,
+                          transition: 'all 0.2s ease'
+                        }}
+                      >
+                        {cat.icon} {cat.name}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Frequently Asked Questions */}
+                <div>
+                  <h3 style={{ fontSize: '1.15rem', color: '#f8fafc', marginBottom: '14px', fontWeight: 700 }}>
+                    Frequently Asked Questions (FAQ)
+                  </h3>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                    <details style={{ background: 'rgba(255, 255, 255, 0.02)', padding: '12px 16px', borderRadius: '8px', border: '1px solid rgba(255, 255, 255, 0.06)' }}>
+                      <summary style={{ fontWeight: 700, color: '#f1f5f9', cursor: 'pointer', fontSize: '0.92rem' }}>
+                        Are all games on GamingZone 100% free to play?
+                      </summary>
+                      <p style={{ margin: '8px 0 0', fontSize: '0.86rem', color: '#94a3b8', lineHeight: 1.6 }}>
+                        Yes! Every game on GamingZone is 100% free with unlimited play sessions. We never charge subscription fees, sell pay-to-win items, or lock games behind paywalls.
+                      </p>
+                    </details>
+                    <details style={{ background: 'rgba(255, 255, 255, 0.02)', padding: '12px 16px', borderRadius: '8px', border: '1px solid rgba(255, 255, 255, 0.06)' }}>
+                      <summary style={{ fontWeight: 700, color: '#f1f5f9', cursor: 'pointer', fontSize: '0.92rem' }}>
+                        Do I need to download or install any apps to play?
+                      </summary>
+                      <p style={{ margin: '8px 0 0', fontSize: '0.86rem', color: '#94a3b8', lineHeight: 1.6 }}>
+                        No downloads, plugins, or software installations are needed. GamingZone games run directly in modern browsers (Chrome, Edge, Safari, Firefox, Opera) using HTML5 Canvas and WebGL technology.
+                      </p>
+                    </details>
+                    <details style={{ background: 'rgba(255, 255, 255, 0.02)', padding: '12px 16px', borderRadius: '8px', border: '1px solid rgba(255, 255, 255, 0.06)' }}>
+                      <summary style={{ fontWeight: 700, color: '#f1f5f9', cursor: 'pointer', fontSize: '0.92rem' }}>
+                        Can I play games on mobile phones and tablets?
+                      </summary>
+                      <p style={{ margin: '8px 0 0', fontSize: '0.86rem', color: '#94a3b8', lineHeight: 1.6 }}>
+                        Yes, our catalog features full responsive mobile support with touch gesture controls, adaptive UI scaling, and portrait/landscape orientation modes.
+                      </p>
+                    </details>
+                    <details style={{ background: 'rgba(255, 255, 255, 0.02)', padding: '12px 16px', borderRadius: '8px', border: '1px solid rgba(255, 255, 255, 0.06)' }}>
+                      <summary style={{ fontWeight: 700, color: '#f1f5f9', cursor: 'pointer', fontSize: '0.92rem' }}>
+                        How do I submit my high score to the global leaderboards?
+                      </summary>
+                      <p style={{ margin: '8px 0 0', fontSize: '0.86rem', color: '#94a3b8', lineHeight: 1.6 }}>
+                        High scores are automatically verified and submitted to our live leaderboard API when completing any round or game over screen. You can customize your player nickname and avatar in the Profile menu.
+                      </p>
+                    </details>
+                  </div>
+                </div>
+              </section>
             </div>
           )}
         </main>
@@ -641,7 +836,7 @@ export function App() {
                 <span style={{ color: '#fff', fontWeight: 900, fontSize: '1.2rem', letterSpacing: '0.5px' }}>GAMINGZONE</span>
               </div>
               <p style={{ color: '#94a3b8', fontSize: '0.86rem', lineHeight: 1.6, margin: 0 }}>
-                Play 140+ free instant online browser games across desktop, mobile, and tablet. No installs, zero downloads. Safe, fast, and high-performance WebGL &amp; Canvas entertainment.
+                Play 190+ free instant online browser games across desktop, mobile, and tablet. No installs, zero downloads. Safe, fast, and high-performance WebGL &amp; Canvas entertainment.
               </p>
               <div style={{ marginTop: '14px', fontSize: '0.82rem', color: '#64748b' }}>
                 Created &amp; Maintained by <a href="https://github.com/anshu-2005" target="_blank" rel="noreferrer" style={{ color: '#38bdf8', fontWeight: 600 }}>Anshu Kumar</a>
@@ -685,6 +880,13 @@ export function App() {
                   style={{ background: 'none', border: 'none', color: '#94a3b8', textAlign: 'left', padding: 0, cursor: 'pointer', font: 'inherit' }}
                 >
                   📜 Terms of Service
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setPolicyModal({ isOpen: true, tab: 'disclaimer' })}
+                  style={{ background: 'none', border: 'none', color: '#94a3b8', textAlign: 'left', padding: 0, cursor: 'pointer', font: 'inherit' }}
+                >
+                  ⚖️ Legal Disclaimer &amp; DMCA
                 </button>
                 <button
                   type="button"
@@ -745,7 +947,7 @@ export function App() {
         initialTab={policyModal.tab}
         onClose={() => {
           setPolicyModal({ isOpen: false, tab: 'privacy' });
-          if (['#privacy', '#terms', '#about', '#contact'].includes(window.location.hash)) {
+          if (['#privacy', '#terms', '#disclaimer', '#about', '#contact'].includes(window.location.hash)) {
             window.location.hash = '#home';
           }
         }}
