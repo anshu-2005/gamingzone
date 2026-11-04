@@ -23,7 +23,7 @@ Marble.PageLandingMain	= function()
 	}else{
 		this._menuShow();		
 	}
-	this._chromeWebStoreCtor();
+	// this._chromeWebStoreCtor();
 
 	jQuery(this._pageSel+" .menuDialog .button.play").removeClass('disable');
 	
@@ -77,9 +77,7 @@ Marble.PageLandingMain.prototype._nowebglShow	= function()
 {
 	var dialogSel	= this._pageSel+' .nowebglDialog';
 
-	var youtubeUrl	= 'http://www.youtube.com/embed/kW4oHaHCilo';
-	var youtubeHtml	= '<iframe width="560" height="315" src="'+youtubeUrl+'" frameborder="0" allowfullscreen></iframe>';
-	jQuery(dialogSel+ ' .youtube').html(youtubeHtml);
+	
 	
 	jQuery(dialogSel).jqm( {overlay : 0} );
 	jQuery(dialogSel).jqmShow();
