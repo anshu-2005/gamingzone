@@ -142,41 +142,35 @@ proto.cacheBust = function () {
 };
 
 proto.resize = function horde_Engine_proto_resize () {
-	var windowWidth = window.innerWidth;
-	var windowHeight = window.innerHeight;
+	var windowWidth = window.innerWidth || document.documentElement.clientWidth || 800;
+	var windowHeight = window.innerHeight || document.documentElement.clientHeight || 600;
 	var stage = document.getElementById("stage");
-	var stageHeight = (windowHeight - stage.offsetTop);
-	stage.style.height = stageHeight + "px";
-	if (this.enableFullscreen) {
-		height = (stageHeight - 50);
-		if (height < 480) {
-			height = 480;
-		}
-		if (height > 768) {
-			height = 768;
-		}
-		var width = Math.round(height * 1.333);
-	} else {
-		width = 640;
-		height = 480;
+	if (stage) {
+		stage.style.width = windowWidth + "px";
+		stage.style.height = windowHeight + "px";
+		stage.style.top = "0px";
+		stage.style.left = "0px";
 	}
-	var c = this.canvases["display"];
-	// iOS
-	/*
-	Basically width/height on the canvas needs to be the entire resolution of the viewport.
-	So like on iPad that's 1024x768. Just remove all chrome (like the nav) from the page and resize the canvas to 100%.
-	*/
-	c.style.width = width + "px";
-	c.style.height = height + "px";
-	var gameLeft = Math.max((windowWidth / 2) - (width / 2), 0);
-	var gameTop = Math.max((stageHeight / 2) - (height / 2), 30);
-	c.style.left = gameLeft + "px";
-	c.style.top = gameTop + "px";
-	var tip = document.getElementById("tip");
-	if (tip) {
-		tip.style.top = (gameTop - 30) + "px";
-		tip.style.left = gameLeft + "px";
-		tip.style.width = width + "px";
+	
+	// Aspect ratio scale for 640x480
+	var scaleW = (windowWidth - 20) / 640;
+	var scaleH = (windowHeight - 20) / 480;
+	var scale = Math.min(scaleW, scaleH);
+	if (scale < 0.6) scale = 0.6;
+	if (scale > 2.0) scale = 2.0;
+
+	var width = Math.round(640 * scale);
+	var height = Math.round(480 * scale);
+
+	var c = this.canvases ? this.canvases["display"] : null;
+	if (c) {
+		c.style.width = width + "px";
+		c.style.height = height + "px";
+		var gameLeft = Math.max(0, Math.round((windowWidth - width) / 2));
+		var gameTop = Math.max(0, Math.round((windowHeight - height) / 2));
+		c.style.left = gameLeft + "px";
+		c.style.top = gameTop + "px";
+		c.style.margin = "0";
 	}
 };
 

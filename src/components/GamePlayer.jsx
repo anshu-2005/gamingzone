@@ -321,7 +321,7 @@ export function GamePlayer({
     setIsMuted(muted);
   };
 
-  // Safe iframe auto-theme and canvas centering
+  // Safe iframe auto-theme, social cleaner, and canvas centering
   const handleIframeLoad = (e) => {
     try {
       const iframe = e.target;
@@ -332,8 +332,27 @@ export function GamePlayer({
         doc.body.style.margin = '0';
         doc.body.style.padding = '0';
 
+        // Strip any third-party social / promotional / blog elements
+        const socialSelectors = [
+          'a[href*="twitter.com"]', 'a[href*="x.com"]',
+          'a[href*="facebook.com"]', 'a[href*="fb.com"]',
+          '.twitter-share-button', '.twitter-follow-button',
+          '.fb-like', '.share_box', '.nav', '#tip', '#socialbadges',
+          'img[alt*="Fork me"]', 'img[src*="github/ribbons"]', '.chromeWebstoreInstall'
+        ];
+        socialSelectors.forEach((sel) => {
+          doc.querySelectorAll(sel).forEach((el) => {
+            el.style.setProperty('display', 'none', 'important');
+          });
+        });
+
+        const stage = doc.getElementById('stage') || doc.getElementById('game') || doc.getElementById('screen');
+        if (stage) {
+          stage.style.margin = '0 auto';
+        }
+
         const canvas = doc.querySelector('canvas');
-        if (canvas) {
+        if (canvas && canvas.parentElement === doc.body) {
           doc.documentElement.style.height = '100%';
           doc.body.style.height = '100%';
           doc.body.style.display = 'flex';

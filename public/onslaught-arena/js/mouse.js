@@ -27,18 +27,16 @@ Mouse.Buttons = {
 };
 
 proto.handleMouseMove = function (e) {
-	/*
-	// iOS
-	var touch = e.touches[0];
-	e = {
-		clientX: touch.pageX,
-		clientY: touch.pageY
-	};
-	*/
-
-	var offset = horde.getOffset(this.canvas);
-	this.mouseX = (((e.clientX - offset.x) * 640) / this.canvas.offsetWidth);
-	this.mouseY = (((e.clientY - offset.y) * 480) / this.canvas.offsetHeight);
+	if (!this.canvas) return;
+	var rect = this.canvas.getBoundingClientRect();
+	var clientX = e.clientX;
+	var clientY = e.clientY;
+	if (clientX === undefined && e.touches && e.touches[0]) {
+		clientX = e.touches[0].clientX;
+		clientY = e.touches[0].clientY;
+	}
+	this.mouseX = Math.max(0, Math.min(640, ((clientX - rect.left) * 640) / (rect.width || 640)));
+	this.mouseY = Math.max(0, Math.min(480, ((clientY - rect.top) * 480) / (rect.height || 480)));
 	this.hasMoved = true;
 };
 

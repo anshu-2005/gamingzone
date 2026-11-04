@@ -45,7 +45,7 @@ canvas {
 	font-weight: bold;
 }
 
-.nav {
+.nav { display: none !important;
 	border-bottom: solid 2px #3c3533;
 	padding: 5px 10px;
 	overflow: hidden;
@@ -79,7 +79,7 @@ canvas {
 	color: #faa61a;
 }
 
-#tip {
+#tip { display: none !important;
 	position: absolute;
 	left: 0;
 	top: 0;

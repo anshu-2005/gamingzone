@@ -72,3 +72,49 @@ canvas {
   user-select: none !important;
 }
 
+
+/* =========================================================
+   UNIVERSAL SOCIAL, BLOG, FORK-ME & PROMO SUPPRESSION RULES
+   Hides any lingering Twitter, Facebook, Blog, Store & Ribbon elements
+   ========================================================= */
+a[href*="twitter.com"],
+a[href*="x.com"],
+a[href*="facebook.com"],
+a[href*="fb.com"],
+a[href*="instagram.com"],
+a[href*="plus.google.com"],
+a[href*="t.co"],
+a[href*="lostdecadegames.com"],
+a[href*="learningthreejs.com"],
+a[href*="github.com/ribbons"],
+a[href*="s3.amazonaws.com/github/ribbons"],
+img[src*="github/ribbons"],
+img[alt*="Fork me"],
+.twitter-share-button,
+.twitter-follow-button,
+.fb-like,
+.fb-share-button,
+.share_box,
+.tweeter,
+#socialbadges,
+#socialShare,
+.social-links,
+.rrssb-buttons,
+.rrssb-facebook,
+.rrssb-twitter,
+#badges,
+#buttonCont,
+.chromeWebstoreInstall,
+.nav,
+#tip,
+#tip_message {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  position: absolute !important;
+  left: -9999px !important;
+  width: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
+}

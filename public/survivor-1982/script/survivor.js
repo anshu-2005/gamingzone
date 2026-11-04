@@ -8357,7 +8357,7 @@ function go_go_go() {
 
         mapData = str.substr(str.indexOf('mapData') + 8);
 
-        serviceURL = 'https://twitter.com/share/?text=';
+        serviceURL = '#';
 
         msg = 'I designed an 80\'s-era arcade game level. Think you can beat it? Play and remix it here.';
 

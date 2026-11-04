@@ -124,13 +124,7 @@ function hurt(e)
 		var url = /^\w+:\/\/maettig\.com/.test(location.href)
 			? location.href
 			: 'http://maettig.com/code/canvas/starship-sorades-13k/';
-		tweet.getElementsByTagName('A')[0].href = 'https://twitter.com/share?text=' +
-			encodeURIComponent(text) + '&url=' + encodeURIComponent(url) + '&via=maettig';
-		tweet.style.display = '';
-		var input = tweet.getElementsByTagName('INPUT')[0];
-		input.value = text + ' ' + url;
-		input.onfocus = function() { this.select(); }
-		input.focus();
+		if (tweet) tweet.style.display = 'none';
 		play(14); // Game over
 	}
 	else if (ship.e < 25)
@@ -771,7 +765,7 @@ enemies.TYPES = [
 ];
 
 // This global variable will be needed again when the game ends
-var tweet = document.getElementById('tweet');
+var tweet = document.getElementById('tweet') || document.createElement('div');
 tweet.style.display = 'none';
 
 // Initialization similar to the JS1K shim

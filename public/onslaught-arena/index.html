@@ -14,6 +14,52 @@
 </style>
 <link rel="stylesheet" href="/gamingzone-embedded.css">
 
+
+<style id="gz-centering-override">
+  html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 100vh !important;
+    overflow: hidden !important;
+    background-color: #030712 !important;
+    background: #030712 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+  .nav, #tip, .ad, #clay {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    height: 0 !important;
+    width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  #stage {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    overflow: hidden !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    background: transparent !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  #stage canvas {
+    position: absolute !important;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.9) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 4px !important;
+  }
+</style>
+
 </head>
 <body>
 
@@ -53,27 +99,9 @@
 </div>
 
 
-	<div class="nav">
-		<ul>
-			<li><a href="http://www.lostdecadegames.com/" target="_blank">Blog</a></li>
-			<li><a href="http://twitter.com/lostdecadegames" target="_blank">Twitter</a></li>
-			<li><a href="http://www.facebook.com/pages/Lost-Decade-Games/139862159378069" target="_blank">Facebook</a></li>
-		</ul>
-	</div>
+	
 
-	<div id="stage">
-		<div id="tip">
-			<div id="tip_message">
-				<span>Enjoy the demo!</span>
-				Buy the full version on the
-				<a href="http://goo.gl/COiGK" target="_blank">Chrome Web Store</a>
-				or
-				<a href="http://itunes.apple.com/us/app/onslaught-arena/id418268106" target="_blank">Mac App Store</a>
-				!
-			</div>
-
-		</div>
-	</div>
+	<div id="stage"></div>
 
 	<script src="js/base.js"></script>
 	<script src="js/timer.js"></script>
