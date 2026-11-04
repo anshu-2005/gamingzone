@@ -11,16 +11,10 @@ vphy.ThreexKeyboardAccelerator	= vphy.Class({
 		var keyboard	= this.keyboard;
 		var acc		= this.acceleration;
 		var key		= {
-			left	: keyboard.pressed('A') || keyboard.pressed('J') || keyboard.pressed('left') 	|| keyboard.pressed('Q') ,
-			right	: keyboard.pressed('D') || keyboard.pressed('L') || keyboard.pressed('right'),
-			up	: keyboard.pressed('W') || keyboard.pressed('I') || keyboard.pressed('up')	 || keyboard.pressed('Z') ,
-			down	: keyboard.pressed('S') || keyboard.pressed('K') || keyboard.pressed('down')
-		};
-		var key		= {
-			left	: keyboard.pressed('left'),
-			right	: keyboard.pressed('right'),
-			up	: keyboard.pressed('up'),
-			down	: keyboard.pressed('down')
+			left	: keyboard.pressed('left') || keyboard.pressed('a') || keyboard.pressed('A'),
+			right	: keyboard.pressed('right') || keyboard.pressed('d') || keyboard.pressed('D'),
+			up	: keyboard.pressed('up') || keyboard.pressed('w') || keyboard.pressed('W'),
+			down	: keyboard.pressed('down') || keyboard.pressed('s') || keyboard.pressed('S')
 		};
 		for(var i = 0; i < this.bodies.length; i++){
 			var body	= this.bodies[i];

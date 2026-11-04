@@ -278,6 +278,37 @@ export class GameEngineBase {
     }
   }
 
+  restart() {
+    this.score = 0;
+    this.level = this.config.level || 1;
+    this.lives = this.config.lives || 3;
+    this.timeLeft = this.config.timeLimit || 0;
+    this.state = GameState.PLAYING;
+    this.isDestroyed = false;
+
+    // Call game-specific reset or init hooks if defined by subclass
+    if (typeof this.resetState === 'function') {
+      this.resetState();
+    } else if (typeof this.resetGame === 'function') {
+      this.resetGame();
+    } else if (typeof this.initGame === 'function') {
+      this.initGame();
+    } else if (typeof this.initArena === 'function') {
+      this.initArena();
+    } else if (typeof this.initBoard === 'function') {
+      this.initBoard();
+    } else if (typeof this.setupNewGame === 'function') {
+      this.setupNewGame();
+    } else if (typeof this.resetBall === 'function') {
+      this.resetBall();
+    } else if (typeof this.initLevel === 'function') {
+      this.initLevel(this.level);
+    }
+
+    this.lastFrameTime = performance.now();
+    this.startLoop();
+  }
+
   startLoop() {
     this.stopLoop();
     const tick = (now) => {

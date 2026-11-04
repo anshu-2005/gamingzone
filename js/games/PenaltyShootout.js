@@ -62,9 +62,19 @@ export class PenaltyShootoutGame extends GameEngineBase {
       title: 'PENALTY SHOOTOUT',
       icon: '⚽',
       objective: 'Swipe from the ball toward the goal post to kick! Curve your finger path to bend the shot past the diving goalkeeper.',
-      controls: 'Swipe forward from the soccer ball into the goal net.',
+      controls: 'Swipe forward from the soccer ball into the goal net or click directly on the net.',
       onStart: () => this.start()
     });
+  }
+
+  restart() {
+    this.score = 0;
+    this.shotsLeft = this.config.shots || 5;
+    this.goals = 0;
+    this.streak = 0;
+    this.state = GameState.PLAYING;
+    this.resetBall();
+    this.startLoop();
   }
 
   resetBall() {
@@ -300,82 +310,60 @@ export class PenaltyShootoutGame extends GameEngineBase {
     ctx.arc(this.baseWidth / 2, 440, 60, Math.PI, 0);
     ctx.stroke();
 
-    // Goal Post Frame (White Steel Posts)
-    const gx = this.goal.x;
-    const gy = this.goal.y;
-    const gw = this.goal.width;
-    const gh = this.goal.height;
+    // Goal Net Depth Shadow
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.45)';
+    ctx.fillRect(this.goal.x, this.goal.y, this.goal.width, this.goal.height);
 
-    // Goal Net Mesh (Backing)
-    ctx.fillStyle = 'rgba(255, 255, 255, 0.15)';
-    ctx.fillRect(gx, gy, gw, gh);
-
-    ctx.strokeStyle = 'rgba(255, 255, 255, 0.35)';
+    // Goal Net Grid
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
     ctx.lineWidth = 1;
-    for (let x = gx; x <= gx + gw; x += 18) {
+    for (let gx = this.goal.x; gx <= this.goal.x + this.goal.width; gx += 20) {
       ctx.beginPath();
-      ctx.moveTo(x, gy);
-      ctx.lineTo(x, gy + gh);
+      ctx.moveTo(gx, this.goal.y);
+      ctx.lineTo(gx, this.goal.y + this.goal.height);
       ctx.stroke();
     }
-    for (let y = gy; y <= gy + gh; y += 18) {
+    for (let gy = this.goal.y; gy <= this.goal.y + this.goal.height; gy += 20) {
       ctx.beginPath();
-      ctx.moveTo(gx, y);
-      ctx.lineTo(gx + gw, y);
+      ctx.moveTo(this.goal.x, gy);
+      ctx.lineTo(this.goal.x + this.goal.width, gy);
       ctx.stroke();
     }
 
-    // Thick White Goal Posts & Crossbar
+    // Goal Posts & Crossbar (White Steel)
     ctx.strokeStyle = '#ffffff';
     ctx.lineWidth = 8;
-    ctx.strokeRect(gx, gy, gw, gh);
+    ctx.strokeRect(this.goal.x, this.goal.y, this.goal.width, this.goal.height);
 
-    // Target Corner Rings
-    ctx.strokeStyle = '#ffd166';
-    ctx.lineWidth = 3;
-    ctx.beginPath();
-    ctx.arc(gx + 30, gy + 30, 24, 0, Math.PI * 2);
-    ctx.stroke();
-
-    ctx.beginPath();
-    ctx.arc(gx + gw - 30, gy + 30, 24, 0, Math.PI * 2);
-    ctx.stroke();
-
-    // Draw Goalkeeper
+    // Goalkeeper
+    ctx.save();
+    ctx.translate(this.keeper.x, this.keeper.y);
+    if (this.keeper.state === 'diving') {
+      ctx.rotate(this.keeper.diveVx > 0 ? 0.35 : -0.35);
+    }
+    // Jersey
     ctx.fillStyle = '#f59e0b';
     ctx.beginPath();
-    ctx.arc(this.keeper.x, this.keeper.y, this.keeper.radius, 0, Math.PI * 2);
+    ctx.arc(0, 0, this.keeper.radius, 0, Math.PI * 2);
     ctx.fill();
     ctx.strokeStyle = '#d97706';
-    ctx.lineWidth = 2.5;
+    ctx.lineWidth = 3;
     ctx.stroke();
 
-    // Goalkeeper Gloves
-    ctx.fillStyle = '#ffffff';
+    // Gloves
+    ctx.fillStyle = '#10b981';
     ctx.beginPath();
-    ctx.arc(this.keeper.x - 24, this.keeper.y - 8, 8, 0, Math.PI * 2);
-    ctx.arc(this.keeper.x + 24, this.keeper.y - 8, 8, 0, Math.PI * 2);
+    ctx.arc(-26, 4, 8, 0, Math.PI * 2);
+    ctx.arc(26, 4, 8, 0, Math.PI * 2);
     ctx.fill();
+    ctx.restore();
 
-    // Draw Swipe Guide Line
-    if (this.swipePath.length >= 2) {
-      ctx.strokeStyle = 'rgba(0, 229, 255, 0.7)';
-      ctx.lineWidth = 4;
-      ctx.beginPath();
-      this.swipePath.forEach((p, idx) => {
-        if (idx === 0) ctx.moveTo(p.x, p.y);
-        else ctx.lineTo(p.x, p.y);
-      });
-      ctx.stroke();
-    }
-
-    // Draw Soccer Ball
+    // Soccer Ball
     ctx.fillStyle = '#ffffff';
     ctx.beginPath();
     ctx.arc(this.ball.x, this.ball.y, this.ball.radius, 0, Math.PI * 2);
     ctx.fill();
-
-    ctx.strokeStyle = '#111827';
+    ctx.strokeStyle = '#1e293b';
     ctx.lineWidth = 2;
     ctx.stroke();
 

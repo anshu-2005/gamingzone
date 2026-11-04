@@ -6,6 +6,7 @@
        Mode 1: Play Full Chess vs Computer AI (White vs Black)
        Mode 2: Tactical Checkmate & Fork Puzzles
    - Interactive Target Dots, Check Detection & Captured Trays
+   - Responsive Touch and Click Scaling
    ==================================================== */
 
 import { GameEngineBase, GameState } from '../core/GameEngineBase.js';
@@ -142,6 +143,13 @@ export class ChessBlitzTacticsGame extends GameEngineBase {
       controls: 'Tap a piece to see glowing move dots, then tap target square to move.',
       onStart: () => this.start()
     });
+  }
+
+  restart() {
+    this.score = 0;
+    this.state = GameState.PLAYING;
+    this.setupNewGame(this.gameMode || 'match');
+    this.startLoop();
   }
 
   setupNewGame(mode = 'match') {

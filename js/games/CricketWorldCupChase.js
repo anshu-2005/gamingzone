@@ -22,4 +22,10 @@ export class CricketWorldCupChaseGame extends CricketPremierLeagueGame {
       title: '👑 ICC World Cup Final: The Chase'
     });
   }
+
+  destroy() {
+    if (typeof super.destroy === 'function') {
+      super.destroy();
+    }
+  }
 }

@@ -25,7 +25,7 @@ Marble.PageLandingMain	= function()
 	}
 	this._chromeWebStoreCtor();
 
-	jQuery(this._pageSel+" .menuDialog .button.play").addClass('disable');
+	jQuery(this._pageSel+" .menuDialog .button.play").removeClass('disable');
 	
 	this._$playButtonClick		= this._playClick.bind(this);
 	this._$tutorialButtonClick	= this._tutorialShow.bind(this);
@@ -89,9 +89,7 @@ Marble.PageLandingMain.prototype._nowebglShow	= function()
 //		callbacks for button						//
 //////////////////////////////////////////////////////////////////////////////////
 
-Marble.PageLandingMain.prototype._playClick	= function()
-{
-	var disable	= jQuery(this._pageSel+" .menuDialog .button.play").hasClass('disable');
+Marble.PageLandingMain.prototype._playClick = function() {
 	this._pageGameMainCtor();
 }
 

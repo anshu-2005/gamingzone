@@ -76,7 +76,8 @@ export class KirkaVoxelStrikeGame extends GameEngineBase {
         if (dir === 'LEFT') this.keys['a'] = true;
         if (dir === 'RIGHT') this.keys['d'] = true;
       },
-      onAction: () => this.fireWeapon(this.player)
+      onAction: () => this.fireWeapon(this.player),
+      actionLabel: 'FIRE'
     });
 
     this.showStartCard({
@@ -89,6 +90,17 @@ export class KirkaVoxelStrikeGame extends GameEngineBase {
         this.start();
       }
     });
+  }
+
+  restart() {
+    this.score = 0;
+    this.kills = 0;
+    this.blueScore = 0;
+    this.redScore = 0;
+    this.matchTimer = 120;
+    this.state = GameState.PLAYING;
+    this.initArena();
+    this.startLoop();
   }
 
   initControls() {
@@ -156,9 +168,6 @@ export class KirkaVoxelStrikeGame extends GameEngineBase {
   initArena() {
     this.matchTimer = 120;
     this.timerFrames = 0;
-    this.kills = 0;
-    this.blueScore = 0;
-    this.redScore = 0;
     this.player.x = 400;
     this.player.y = 800;
     this.player.hp = 100;
@@ -211,7 +220,7 @@ export class KirkaVoxelStrikeGame extends GameEngineBase {
     if (p.isReloading || p.ammo === p.maxAmmo) return;
     p.isReloading = true;
     sounds.playClick();
-    setTimeout(() => {
+    this.setTimeout(() => {
       p.ammo = p.maxAmmo;
       p.isReloading = false;
       sounds.playSuccess();
@@ -315,10 +324,14 @@ export class KirkaVoxelStrikeGame extends GameEngineBase {
     if (this.timerFrames >= 60) {
       this.timerFrames = 0;
       this.matchTimer--;
-      if (this.matchTimer <= 0) {
-        const win = this.blueScore >= this.redScore;
+      if (this.matchTimer <= 0 || this.blueScore >= 25 || this.redScore >= 25) {
+        const isVictory = this.blueScore >= this.redScore;
         sounds.playWin();
-        this.gameOver(this.kills * 400, { blueScore: this.blueScore, redScore: this.redScore });
+        this.finishGame(this.kills * 400 + this.blueScore * 100, {
+          isVictory,
+          blueScore: this.blueScore,
+          redScore: this.redScore
+        });
         return;
       }
     }
@@ -326,10 +339,10 @@ export class KirkaVoxelStrikeGame extends GameEngineBase {
     // Player WASD
     let mx = 0;
     let my = 0;
-    if (this.keys['w']) my -= 1;
-    if (this.keys['s']) my += 1;
-    if (this.keys['a']) mx -= 1;
-    if (this.keys['d']) mx += 1;
+    if (this.keys['w'] || this.keys['arrowup']) my -= 1;
+    if (this.keys['s'] || this.keys['arrowdown']) my += 1;
+    if (this.keys['a'] || this.keys['arrowleft']) mx -= 1;
+    if (this.keys['d'] || this.keys['arrowright']) mx += 1;
 
     if (mx !== 0 || my !== 0) {
       const len = Math.hypot(mx, my);
@@ -344,108 +357,108 @@ export class KirkaVoxelStrikeGame extends GameEngineBase {
       this.fireWeapon(this.player);
     }
 
-    this.cameraX = this.player.x - this.width / 2;
-    this.cameraY = this.player.y - this.height / 2;
+    this.cameraX = this.player.x - this.baseWidth / 2;
+    this.cameraY = this.player.y - this.baseHeight / 2;
 
     this.updateAI();
 
-    // Update Bullets
+    // Bullet physics & hit test
     for (let i = this.bullets.length - 1; i >= 0; i--) {
       const b = this.bullets[i];
       b.x += b.vx;
       b.y += b.vy;
       b.life--;
 
-      // Hit Player
-      if (b.team !== this.player.team && Math.hypot(b.x - this.player.x, b.y - this.player.y) < 22) {
-        sounds.playHit();
-        this.player.hp -= b.damage;
+      if (b.life <= 0) {
         this.bullets.splice(i, 1);
-
-        if (this.player.hp <= 0) {
-          sounds.playExplosion();
-          this.redScore++;
-          this.player.x = 400;
-          this.player.y = 800;
-          this.player.hp = 100;
-        }
         continue;
       }
 
-      // Hit Bots
-      let hit = false;
-      for (const bot of this.bots) {
-        if (b.team !== bot.team && Math.hypot(b.x - bot.x, b.y - bot.y) < 22) {
+      // Check hit Player
+      if (b.team === 'red') {
+        if (Math.hypot(b.x - this.player.x, b.y - this.player.y) < 18) {
+          this.player.hp -= b.damage;
           sounds.playHit();
+          this.bullets.splice(i, 1);
+
+          if (this.player.hp <= 0) {
+            this.redScore++;
+            this.player.hp = 100;
+            this.player.x = 400 + Math.random() * 100;
+            this.player.y = 800 + Math.random() * 100;
+          }
+          continue;
+        }
+      }
+
+      // Check hit Bots
+      const enemies = b.team === 'blue' ? this.bots.filter(x => x.team === 'red') : this.bots.filter(x => x.team === 'blue');
+      for (const bot of enemies) {
+        if (Math.hypot(b.x - bot.x, b.y - bot.y) < 18) {
           bot.hp -= b.damage;
-          hit = true;
+          this.bullets.splice(i, 1);
 
           if (bot.hp <= 0) {
-            sounds.playExplosion();
+            bot.hp = 100;
+            bot.x = bot.team === 'red' ? 1800 + Math.random() * 200 : 300 + Math.random() * 200;
+            bot.y = 600 + Math.random() * 400;
+
             if (b.team === 'blue') {
               this.blueScore++;
               if (b.owner === this.player.name) {
                 this.kills++;
-                this.score += 500;
+                this.score += 400;
+                sounds.playCoin();
               }
             } else {
               this.redScore++;
             }
-
-            // Respawn
-            bot.x = bot.team === 'blue' ? 300 : 1800;
-            bot.y = Math.random() * 800 + 400;
-            bot.hp = 100;
           }
           break;
         }
       }
-
-      if (hit) {
-        this.bullets.splice(i, 1);
-        continue;
-      }
-
-      if (b.life <= 0 || b.x < 0 || b.x > this.worldWidth || b.y < 0 || b.y > this.worldHeight) {
-        this.bullets.splice(i, 1);
-      }
     }
   }
 
-  render() {
-    const ctx = this.ctx;
-    ctx.clearRect(0, 0, this.width, this.height);
+  render(ctx) {
+    ctx.clearRect(0, 0, this.baseWidth, this.baseHeight);
 
     ctx.save();
     ctx.translate(-this.cameraX, -this.cameraY);
 
-    // 1. Desert Dust Arena Ground
+    // 1. Desert Arena Floor Grid
     ctx.fillStyle = '#b45309';
     ctx.fillRect(0, 0, this.worldWidth, this.worldHeight);
 
-    ctx.strokeStyle = 'rgba(0, 0, 0, 0.1)';
+    ctx.strokeStyle = 'rgba(0, 0, 0, 0.08)';
     ctx.lineWidth = 2;
-    for (let x = 0; x < this.worldWidth; x += 140) {
+    for (let x = 0; x < this.worldWidth; x += 120) {
       ctx.beginPath();
       ctx.moveTo(x, 0);
       ctx.lineTo(x, this.worldHeight);
       ctx.stroke();
     }
+    for (let y = 0; y < this.worldHeight; y += 120) {
+      ctx.beginPath();
+      ctx.moveTo(0, y);
+      ctx.lineTo(this.worldWidth, y);
+      ctx.stroke();
+    }
 
-    // 2. Render Barricades
+    // 2. Barricades
     this.barricades.forEach(b => {
       ctx.fillStyle = '#78350f';
       ctx.fillRect(b.x, b.y, b.w, b.h);
-      ctx.strokeStyle = '#f59e0b';
+      ctx.strokeStyle = '#451a03';
       ctx.lineWidth = 3;
       ctx.strokeRect(b.x, b.y, b.w, b.h);
     });
 
-    // 3. Render Bots & Player
-    this.bots.forEach(b => this.drawSoldier(ctx, b));
+    // 3. Draw Soldiers
     this.drawSoldier(ctx, this.player);
+    this.bots.forEach(bot => this.drawSoldier(ctx, bot));
 
-    // 4. Render Bullets
+    // 4. Bullets
     this.bullets.forEach(b => {
       ctx.fillStyle = b.color;
       ctx.beginPath();
@@ -484,27 +497,28 @@ export class KirkaVoxelStrikeGame extends GameEngineBase {
   renderHUD(ctx) {
     // Top Scoreboard
     ctx.fillStyle = 'rgba(15, 23, 42, 0.85)';
-    ctx.fillRect(this.width / 2 - 140, 16, 280, 52);
+    ctx.fillRect(this.baseWidth / 2 - 140, 16, 280, 52);
     ctx.strokeStyle = 'rgba(255, 255, 255, 0.15)';
-    ctx.strokeRect(this.width / 2 - 140, 16, 280, 52);
+    ctx.strokeRect(this.baseWidth / 2 - 140, 16, 280, 52);
 
     ctx.fillStyle = '#00e5ff';
     ctx.font = 'bold 22px Outfit, sans-serif';
     ctx.textAlign = 'left';
-    ctx.fillText(`BLUE: ${this.blueScore}`, this.width / 2 - 120, 50);
+    ctx.fillText(`BLUE: ${this.blueScore}`, this.baseWidth / 2 - 120, 50);
 
     ctx.fillStyle = '#ef4444';
     ctx.textAlign = 'right';
-    ctx.fillText(`RED: ${this.redScore}`, this.width / 2 + 120, 50);
+    ctx.fillText(`RED: ${this.redScore}`, this.baseWidth / 2 + 120, 50);
 
     ctx.fillStyle = '#fbbf24';
     ctx.font = 'bold 13px Outfit, sans-serif';
     ctx.textAlign = 'center';
-    ctx.fillText(`⏱️ ${this.matchTimer}s`, this.width / 2, 46);
+    ctx.fillText(`⏱️ ${this.matchTimer}s`, this.baseWidth / 2, 46);
 
     // Weapons Left
     ctx.fillStyle = 'rgba(15, 23, 42, 0.85)';
     ctx.fillRect(20, 20, 240, 56);
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.15)';
     ctx.strokeRect(20, 20, 240, 56);
 
     ctx.fillStyle = '#00e5ff';
@@ -516,4 +530,3 @@ export class KirkaVoxelStrikeGame extends GameEngineBase {
     ctx.fillText(`${this.player.weapon} [${this.player.ammo}/${this.player.maxAmmo}] • HP: ${this.player.hp}%`, 34, 64);
   }
 }
-

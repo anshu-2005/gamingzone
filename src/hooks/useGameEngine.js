@@ -7,6 +7,7 @@ import { useEffect, useRef, useState, useCallback } from 'react';
 export function useGameEngine(engineName, onGameOver, config = null) {
   const mountRef = useRef(null);
   const instanceRef = useRef(null);
+  const engineClassRef = useRef(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -41,6 +42,8 @@ export function useGameEngine(engineName, onGameOver, config = null) {
         if (!EngineClass) {
           throw new Error(`Engine class "${engineName}" not found in module`);
         }
+
+        engineClassRef.current = EngineClass;
 
         const instance = new EngineClass(
           mountRef.current,
@@ -90,9 +93,35 @@ export function useGameEngine(engineName, onGameOver, config = null) {
 
   const restart = useCallback(() => {
     if (instanceRef.current && typeof instanceRef.current.restart === 'function') {
-      instanceRef.current.restart();
+      try {
+        instanceRef.current.restart();
+        return;
+      } catch (e) {
+        console.warn('Instance restart threw, falling back to clean re-instantiate:', e);
+      }
     }
-  }, []);
+
+    // Universal Fallback: Clean re-instantiation of the engine class
+    if (engineClassRef.current && mountRef.current) {
+      if (instanceRef.current && typeof instanceRef.current.destroy === 'function') {
+        try { instanceRef.current.destroy(); } catch (e) {}
+      }
+      mountRef.current.innerHTML = '';
+      try {
+        instanceRef.current = new engineClassRef.current(
+          mountRef.current,
+          (score, extra) => {
+            if (typeof onGameOver === 'function') {
+              onGameOver(score, extra);
+            }
+          },
+          config
+        );
+      } catch (err) {
+        console.error('Failed to re-instantiate engine on restart:', err);
+      }
+    }
+  }, [config, onGameOver]);
 
   return {
     mountRef,

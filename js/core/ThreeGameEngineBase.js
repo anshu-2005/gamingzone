@@ -602,6 +602,37 @@ export class ThreeGameEngineBase extends GameEngineBase {
     return (performance.now() - this.startTime) / 1000;
   }
 
+  pause() {
+    if (this.state === GameState.PLAYING) {
+      this.state = GameState.PAUSED;
+    }
+  }
+
+  resume() {
+    if (this.state === GameState.PAUSED) {
+      this.state = GameState.PLAYING;
+      this.lastTime = performance.now();
+    }
+  }
+
+  restart() {
+    this.score = 0;
+    this.state = GameState.PLAYING;
+    this.isDestroyed = false;
+    this.lastTime = performance.now();
+
+    if (typeof this.resetGame === 'function') {
+      this.resetGame();
+    } else if (typeof this.resetState === 'function') {
+      this.resetState();
+    } else if (typeof this.initWorld === 'function') {
+      this.initWorld();
+    } else if (typeof this.initLevel === 'function') {
+      this.initLevel(1);
+    }
+    this.startLoop();
+  }
+
   // 10. Master Animation Loop
   startLoop() {
     if (this.animId) cancelAnimationFrame(this.animId);
